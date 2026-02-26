@@ -1,0 +1,49 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "vol": 168,
+            "source_id": "mem",
+            "dest_id": "cpu",
+            "id": 0
+        },
+        {
+            "vol": 117,
+            "source_id": "cpu",
+            "dest_id": "mem",
+            "id": 1
+        },
+        {
+            "vol": 42,
+            "source_id": "cpu",
+            "dest_id": "mem",
+            "id": 2
+        },
+        {
+            "vol": 91,
+            "source_id": "acc",
+            "dest_id": "mem",
+            "id": 3
+        }
+    ],
+    "edges": [
+        {
+            "source": 0,
+            "target": 2
+        },
+        {
+            "source": 0,
+            "target": 1
+        },
+        {
+            "source": 1,
+            "target": 3
+        },
+        {
+            "source": 2,
+            "target": 3
+        }
+    ]
+}
