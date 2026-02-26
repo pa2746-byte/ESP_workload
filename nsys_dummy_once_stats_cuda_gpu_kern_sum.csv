@@ -1,0 +1,4 @@
+Time (%),Total Time (ns),Instances,Avg (ns),Med (ns),Min (ns),Max (ns),StdDev (ns),Name
+41.8,38367862,50,767357.2,767441.0,759281,768145,1194.8,"vecAdd(const float *, const float *, float *, int)"
+29.1,26714972,50,534299.4,534245.5,533846,535030,253.1,"copyKernel(const float *, float *, int)"
+29.1,26706228,50,534124.6,534101.0,533782,534709,233.5,"scaleKernel(const float *, float *, float, int)"

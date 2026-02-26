@@ -1,0 +1,301 @@
+Start (ns),Duration (ns),CorrId,GrdX,GrdY,GrdZ,BlkX,BlkY,BlkZ,Reg/Trd,StcSMem (MB),DymSMem (MB),Bytes (MB),Throughput (MB/s),SrcMemKd,DstMemKd,Device,Ctx,GreenCtx,Strm,Name
+848676544,5477046,130,,,,,,,,,,67.109,12213.813,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+854155254,5586099,131,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+865580824,758513,132,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+866345513,534774,133,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+866886014,534070,134,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+867425876,5100029,135,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+872530961,5453302,136,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+877985959,5558772,137,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+883547739,757393,138,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+884306060,533654,139,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+884840737,533590,140,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+885380887,5099677,141,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+890488500,5444630,142,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+895934826,5558068,143,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+901502910,757265,144,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+902261039,533974,145,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+902796005,533974,146,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+903338426,5098717,147,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+908446039,5430518,148,,,,,,,,,,67.109,12348.031,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+913878253,5554197,149,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+919439969,757170,150,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+920198099,534134,151,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+920733448,533878,152,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+921272286,5099261,153,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+926376955,5437654,154,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+931816529,5571316,155,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+937397509,757233,156,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+938155638,534037,157,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+938690571,533782,158,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+939226753,5099805,159,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+944335518,5444470,160,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+949781684,5560436,161,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+955345832,757361,162,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+956104057,534614,163,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+956639695,533653,164,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+957179204,5103069,165,,,,,,,,,,67.109,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+962289985,5450102,166,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+967742903,5553268,167,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+973300235,757425,168,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+974058620,534038,169,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+974593650,533878,170,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+975129544,5110492,171,,,,,,,,,,67.109,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+980247524,5438870,172,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+985688059,5558099,173,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+991251694,757298,174,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+992009888,534133,175,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+992545045,533686,176,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+993087211,5103004,177,,,,,,,,,,67.109,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+998197895,5432215,178,,,,,,,,,,67.109,12348.031,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1003631806,5556308,179,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1009197970,757329,180,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1009956163,534326,181,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1010491481,533621,182,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1011027214,5098525,183,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1016133931,5449686,184,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1021585281,5552660,185,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1027146293,757297,186,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1027904550,534038,187,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1028439580,533526,188,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1028977266,5097948,189,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1034084302,5438679,190,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1039524324,5563924,191,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1045098328,773777,192,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1045872649,546454,193,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1046419775,546325,194,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1046974068,5108092,195,,,,,,,,,,67.109,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1052087825,5452950,196,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1057542118,5558485,197,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1063106042,773969,198,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1063880715,547158,199,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1064428449,546229,200,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1064979542,5097629,201,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1070085299,5431382,202,,,,,,,,,,67.109,12348.031,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1075518025,5547349,203,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1081070750,773744,204,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1081845070,545750,205,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1082391428,545845,206,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1082941145,5102685,207,,,,,,,,,,67.109,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1088050006,5438294,208,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1093490476,5566484,209,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1099060032,773585,210,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1099834193,546933,211,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1100381830,546742,212,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1100932476,5097277,213,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1106038233,5434550,214,,,,,,,,,,67.109,12348.031,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1111474831,5551828,215,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1117033955,773745,216,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1117808276,546293,217,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1118355209,545942,218,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1118904350,5099805,219,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1124012187,5448471,220,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1129462001,5533589,221,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1134999686,774545,222,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1135780087,546773,223,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1136327564,546006,224,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1136877281,5101981,225,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1141991230,5431574,226,,,,,,,,,,67.109,12348.031,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1147424852,5555764,227,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1152984872,774545,228,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1153760025,547606,229,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1154308303,546837,230,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1154856484,5099517,231,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1159968193,5439414,232,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1165408951,5549108,233,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1170968011,774577,234,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1171743228,546901,235,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1172290737,546326,236,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1172844775,5099260,237,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1177950307,5435927,238,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1183387578,5577715,239,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1188970637,774641,240,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1189745950,546806,241,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1190293332,546517,242,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1190842825,5102461,243,,,,,,,,,,67.109,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1195957030,5439510,244,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1201397884,5545044,245,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1206948656,774321,246,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1207723649,546997,247,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1208271222,546294,248,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1208825356,5100125,249,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1213934024,5429751,250,,,,,,,,,,67.109,12348.031,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1219366303,5571764,251,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1224948178,773969,252,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1225722787,546774,253,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1226270105,546581,254,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1226823886,5098013,255,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1231933547,5437718,256,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1237373313,5550996,257,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1242933333,775089,258,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1243709062,547285,259,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1244257051,546518,260,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1244811120,5100798,261,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1249916653,5425687,262,,,,,,,,,,67.109,12348.031,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1255343684,5559540,263,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1260908312,773873,264,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1261682793,546901,265,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1262230334,546614,266,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1262777876,5103932,267,,,,,,,,,,67.109,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1267893680,5434582,268,,,,,,,,,,67.109,12348.031,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1273329607,5543380,269,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1278875291,774961,270,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1279650956,547157,271,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1280198849,546390,272,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1280750550,5099229,273,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1285855315,5455126,274,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1291311785,5557684,275,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1296873565,774417,276,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1297648558,546326,277,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1298195747,546934,278,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1298744953,5097469,279,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1303850742,5439830,280,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1309291916,5550964,281,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1314850560,774289,282,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1315625425,546517,283,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1316172582,546678,284,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1316726267,5097214,285,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1321835928,5445207,286,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1327282478,5561588,287,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1332854146,774897,288,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1333629619,547349,289,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1334177576,546358,290,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1334724766,5102397,291,,,,,,,,,,67.109,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1339835450,5439767,292,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1345276561,5538964,293,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1350820901,774481,294,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1351596022,547093,295,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1352143755,546614,296,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1352697441,5101629,297,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1357805278,5457941,298,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1363264563,5556756,299,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1368823495,774225,300,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1369598264,546646,301,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1370145581,546710,302,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1370696963,5117949,303,,,,,,,,,,67.109,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1375827328,5448629,304,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1381277301,5528821,305,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1386812810,774353,306,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1387587803,547541,307,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1388135952,547477,308,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1388686277,5117469,309,,,,,,,,,,67.109,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1393815586,5447862,310,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1399264792,5554836,311,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1404829740,774417,312,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1405604797,546901,313,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1406152370,546294,314,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1406702152,5100060,315,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1411810692,5434167,316,,,,,,,,,,67.109,12348.031,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1417247387,5558100,317,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1422812879,774704,318,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1423588192,547733,319,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1424136597,546901,320,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1424684458,5099357,321,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1429794855,5440374,322,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1435236573,5558484,323,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1440803153,774097,324,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1441577922,546485,325,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1442125367,547350,326,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1442679917,5097725,327,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1447789577,5438007,328,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1453230432,5544148,329,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1458779124,774449,330,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1459554149,547061,331,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1460101786,546678,332,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1460649743,5098206,333,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1465756300,5441399,334,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1471199042,5551285,335,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1476760247,774033,336,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1477534920,547253,337,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1478082749,546549,338,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1478633682,5099005,339,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1483744591,5437238,340,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1489183173,5561204,341,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1494750521,773969,342,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1495525034,547669,343,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1496073375,546614,344,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1496627285,5107388,345,,,,,,,,,,67.109,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1501746161,5455030,346,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1507202503,5537300,347,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1512745947,774769,348,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1513521292,546582,349,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1514068450,546485,350,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1514622711,5100893,351,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1519728276,5435670,352,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1525165290,5566004,353,,,,,,,,,,67.109,12012.487,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1530738174,774033,354,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1531513135,547093,355,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1532061156,546325,356,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1532614809,5098269,357,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1537720630,5438038,358,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1543159981,5533108,359,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1548697889,774033,360,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1549472530,546485,361,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1550019623,546422,362,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1550568285,5105916,363,,,,,,,,,,67.109,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1555686361,5444919,364,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1561132623,5549652,365,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1566686148,774416,366,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1567461237,547029,367,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1568008874,546613,368,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1568562911,5097213,369,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1573676668,5430294,370,,,,,,,,,,67.109,12348.031,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1579108978,5530485,371,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1584641671,774513,372,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1585416760,547957,373,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1585965293,546933,374,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1586516162,5099741,375,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1591623967,5456310,376,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1597081621,5543093,377,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1602629897,774577,378,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1603405050,546517,379,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1603952656,546613,380,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1604505381,5098685,381,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1609612226,5435190,382,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1615048760,5533173,383,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1620589484,774609,384,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1621364669,546710,385,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1621911891,546709,386,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1622467272,5100509,387,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1627580005,5439990,388,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1633021339,5554708,389,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1638581839,774449,390,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1639356896,547701,391,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1639905205,546837,392,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1640458378,5098013,393,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1645564167,5435895,394,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1651001405,5532757,395,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1656537330,774353,396,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1657312227,546549,397,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1657859480,546582,398,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1658412846,5105852,399,,,,,,,,,,67.109,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1663528874,5435287,400,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1668965569,5552788,401,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1674526613,774705,402,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1675301958,546741,403,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1675849339,546773,404,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1676403376,5098173,405,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1681513037,5433750,406,,,,,,,,,,67.109,12348.031,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1686948099,5549397,407,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1692500344,774480,408,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1693275496,547158,409,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1693823358,546677,410,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1694375059,5098269,411,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1699478000,5438806,412,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1704918150,5550388,413,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1710475514,774321,414,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1711250443,547541,415,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1711798656,546358,416,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1712348630,5097341,417,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1717450642,5438167,418,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1722890153,5543476,419,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1728436093,774225,420,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1729210990,546262,421,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1729757796,546549,422,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1730307225,5098493,423,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+1735416374,5440022,424,,,,,,,,,,67.109,12280.922,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1740857740,5540532,425,,,,,,,,,,67.109,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+1746403872,774161,426,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+1747178673,546326,427,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+1747725575,546773,428,65536,1,1,256,1,1,16,0.000,0.000,,,,,Tesla T4 (0),1,,13,"copyKernel(const float *, float *, int)"
+1748278268,5097373,429,,,,,,,,,,67.109,13153.337,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]

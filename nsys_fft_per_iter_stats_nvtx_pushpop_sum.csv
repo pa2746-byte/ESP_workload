@@ -1,0 +1,4 @@
+Time (%),Total Time (ns),Instances,Avg (ns),Med (ns),Min (ns),Max (ns),StdDev (ns),Range
+47.6,441872,50,8837.4,6844.0,4774,51285,7377.2,cufftExecC2C_forward
+26.2,243526,50,4870.5,4513.0,2789,23006,3472.5,H2D_per_iter
+26.1,242669,50,4853.4,4434.0,2920,14434,2220.2,D2H_per_iter

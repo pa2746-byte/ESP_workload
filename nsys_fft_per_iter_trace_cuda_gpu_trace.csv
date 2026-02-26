@@ -1,0 +1,153 @@
+Start (ns),Duration (ns),CorrId,GrdX,GrdY,GrdZ,BlkX,BlkY,BlkZ,Reg/Trd,StcSMem (MB),DymSMem (MB),Bytes (MB),Throughput (MB/s),SrcMemKd,DstMemKd,Device,Ctx,GreenCtx,Strm,Name
+685423040,20597361,145,,,,,,,,,,6.799,326.330,Pageable,Device,Tesla T4 (0),1,,7,[CUDA memcpy Host-to-Device]
+706042480,512,147,,,,,,,,,,0.000,15.625,Pageable,Device,Tesla T4 (0),1,,7,[CUDA memcpy Host-to-Device]
+706508743,704435,166,,,,,,,,,,8.389,11903.435,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+707218074,67774,168,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+707290040,640212,169,,,,,,,,,,8.389,13094.617,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+707936780,687250,170,,,,,,,,,,8.389,12205.425,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+708633566,67263,172,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+708708860,639860,173,,,,,,,,,,8.389,13103.006,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+709360112,684179,174,,,,,,,,,,8.389,12255.756,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+710049411,66078,176,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+710116577,640564,177,,,,,,,,,,8.389,13094.617,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+710769141,689234,178,,,,,,,,,,8.389,12163.482,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+711467943,65951,180,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+711535814,639668,181,,,,,,,,,,8.389,13111.394,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+712183225,684371,182,,,,,,,,,,8.389,12255.756,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+712877964,67838,184,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+712953259,640403,185,,,,,,,,,,8.389,13094.617,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+713605566,696402,186,,,,,,,,,,8.389,12037.652,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+714312560,66047,188,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+714386831,640819,189,,,,,,,,,,8.389,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+715035010,689779,190,,,,,,,,,,8.389,12155.093,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+715728597,69022,192,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+715805043,639636,193,,,,,,,,,,8.389,13111.394,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+716452198,695283,194,,,,,,,,,,8.389,12062.818,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+717157177,67871,196,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+717226360,641171,197,,,,,,,,,,8.389,13077.840,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+717874539,690867,198,,,,,,,,,,8.389,12138.316,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+718575421,66783,200,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+718643516,639796,201,,,,,,,,,,8.389,13103.006,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+719295792,687858,202,,,,,,,,,,8.389,12188.647,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+719992578,66847,204,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+720060737,640275,205,,,,,,,,,,8.389,13094.617,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+720705812,688467,206,,,,,,,,,,8.389,12180.259,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+721404646,65983,208,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+721478917,640468,209,,,,,,,,,,8.389,13094.617,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+722127096,696339,210,,,,,,,,,,8.389,12046.041,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+722832075,65759,212,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+722900202,639859,213,,,,,,,,,,8.389,13103.006,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+723547357,691987,214,,,,,,,,,,8.389,12121.539,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+724243344,68190,216,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+724318414,640212,217,,,,,,,,,,8.389,13094.617,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+724964578,687378,218,,,,,,,,,,8.389,12197.036,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+725661332,67423,220,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+725730291,640179,221,,,,,,,,,,8.389,13103.006,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+726375590,687411,222,,,,,,,,,,8.389,12197.036,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+727072409,65662,224,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+727141271,639476,225,,,,,,,,,,8.389,13111.394,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+727788395,686290,226,,,,,,,,,,8.389,12222.202,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+728478333,66207,228,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+728545436,646292,229,,,,,,,,,,8.389,12977.177,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+729197711,685075,230,,,,,,,,,,8.389,12238.979,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+729892226,67198,232,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+729967393,641235,233,,,,,,,,,,8.389,13077.840,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+730617940,689746,234,,,,,,,,,,8.389,12155.093,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+731316774,68287,236,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+731386693,639636,237,,,,,,,,,,8.389,13111.394,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+732033080,686899,238,,,,,,,,,,8.389,12205.425,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+732729867,67423,240,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+732798057,640468,241,,,,,,,,,,8.389,13094.617,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+733445181,686643,242,,,,,,,,,,8.389,12213.813,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+734141935,66847,244,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+734217230,639924,245,,,,,,,,,,8.389,13103.006,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+734868482,685522,246,,,,,,,,,,8.389,12230.590,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+735558004,66303,248,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+735626995,639603,249,,,,,,,,,,8.389,13111.394,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+736277478,684691,250,,,,,,,,,,8.389,12247.368,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+736972217,66430,252,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+737041111,639508,253,,,,,,,,,,8.389,13111.394,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+737688555,694034,254,,,,,,,,,,8.389,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+738388285,66367,256,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+738462428,639923,257,,,,,,,,,,8.389,13103.006,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+739109807,690195,258,,,,,,,,,,8.389,12146.704,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+739803746,67838,260,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+739876769,640051,261,,,,,,,,,,8.389,13103.006,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+740523924,686611,262,,,,,,,,,,8.389,12213.813,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+741217543,65118,264,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+741283749,639572,265,,,,,,,,,,8.389,13111.394,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+741938072,693971,266,,,,,,,,,,8.389,12079.596,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+742640971,66814,268,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+742709866,640819,269,,,,,,,,,,8.389,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+743356253,690578,270,,,,,,,,,,8.389,12146.704,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+744053935,65727,272,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+744128334,639348,273,,,,,,,,,,8.389,13119.783,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+744774466,688082,274,,,,,,,,,,8.389,12188.647,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+745466356,69343,276,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+745540147,640915,277,,,,,,,,,,8.389,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+746185926,688979,278,,,,,,,,,,8.389,12171.870,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+746885400,67135,280,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+746953559,640404,281,,,,,,,,,,8.389,13094.617,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+747602731,686258,282,,,,,,,,,,8.389,12222.202,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+748294269,67103,284,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+748368380,647283,285,,,,,,,,,,8.389,12952.011,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+749028111,686291,286,,,,,,,,,,8.389,12222.202,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+749722658,66814,288,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+749790688,641972,289,,,,,,,,,,8.389,13061.063,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+750439123,687635,290,,,,,,,,,,8.389,12197.036,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+751135910,67647,292,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+751205125,640083,293,,,,,,,,,,8.389,13103.006,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+751850168,691315,294,,,,,,,,,,8.389,12129.927,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+752551051,69278,296,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+752628393,641300,297,,,,,,,,,,8.389,13077.840,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+753274557,695538,298,,,,,,,,,,8.389,12054.430,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+753980559,68095,300,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+754053773,639924,301,,,,,,,,,,8.389,13103.006,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+754705057,689618,302,,,,,,,,,,8.389,12163.482,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+755403860,66398,304,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+755473778,644915,305,,,,,,,,,,8.389,13002.342,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+756124261,685811,306,,,,,,,,,,8.389,12230.590,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+756813784,68351,308,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+756890198,640980,309,,,,,,,,,,8.389,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+757538410,686227,310,,,,,,,,,,8.389,12222.202,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+758235581,66974,312,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+758303355,639572,313,,,,,,,,,,8.389,13111.394,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+758949423,685714,314,,,,,,,,,,8.389,12230.590,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+759638945,66591,316,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+759711264,639443,317,,,,,,,,,,8.389,13111.394,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+760362515,687059,318,,,,,,,,,,8.389,12205.425,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+761059334,66943,320,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+761132548,643764,321,,,,,,,,,,8.389,13027.508,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+761781752,696210,322,,,,,,,,,,8.389,12046.041,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+762481834,66719,324,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+762555881,640787,325,,,,,,,,,,8.389,13086.228,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+763203068,692019,326,,,,,,,,,,8.389,12121.539,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+763899855,68798,328,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+763973837,639796,329,,,,,,,,,,8.389,13103.006,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+764621281,685874,330,,,,,,,,,,8.389,12222.202,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+765312819,66495,332,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+765387186,639603,333,,,,,,,,,,8.389,13111.394,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+766037413,685331,334,,,,,,,,,,8.389,12238.979,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+766732152,66302,336,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+766799446,640084,337,,,,,,,,,,8.389,13103.006,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+767446442,686515,338,,,,,,,,,,8.389,12213.813,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+768143196,66527,340,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+768213115,641108,341,,,,,,,,,,8.389,13077.840,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+768865646,684627,342,,,,,,,,,,8.389,12247.368,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+769559201,69023,344,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+769633311,642324,345,,,,,,,,,,8.389,13052.674,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+770285619,687346,346,,,,,,,,,,8.389,12197.036,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+770981669,67263,348,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+771051588,639380,349,,,,,,,,,,8.389,13119.783,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+771695959,686515,350,,,,,,,,,,8.389,12213.813,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+772391722,66719,352,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+772465961,642131,353,,,,,,,,,,8.389,13061.063,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+773113116,686899,354,,,,,,,,,,8.389,12205.425,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+773809903,66558,356,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+773883149,639540,357,,,,,,,,,,8.389,13111.394,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+774527649,687570,358,,,,,,,,,,8.389,12197.036,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+775224019,66719,360,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+775297266,640211,361,,,,,,,,,,8.389,13094.617,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]
+775944453,686739,362,,,,,,,,,,8.389,12213.813,Pinned,Device,Tesla T4 (0),1,,13,[CUDA memcpy Host-to-Device]
+776641208,66558,364,256,1,1,256,1,1,64,0.000,0.017,,,,,Tesla T4 (0),1,,13,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
+776715478,639732,365,,,,,,,,,,8.389,13111.394,Device,Pinned,Tesla T4 (0),1,,13,[CUDA memcpy Device-to-Host]

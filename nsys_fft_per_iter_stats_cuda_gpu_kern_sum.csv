@@ -1,0 +1,2 @@
+Time (%),Total Time (ns),Instances,Avg (ns),Med (ns),Min (ns),Max (ns),StdDev (ns),Name
+100.0,3353403,50,67068.1,66830.5,65118,69343,992.0,"void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)"
