@@ -5,20 +5,20 @@
     "nodes": [
         {
             "id": 0,
-            "vol": 6,
-            "source_id": "acc",
+            "vol": 7129268,
+            "source_id": "cpu",
             "dest_id": "acc"
         },
         {
             "id": 1,
             "vol": 0,
-            "source_id": "acc",
+            "source_id": "cpu",
             "dest_id": "acc"
         },
         {
             "id": 2,
-            "vol": 8,
-            "source_id": "acc",
+            "vol": 8796504,
+            "source_id": "cpu",
             "dest_id": "acc"
         },
         {
@@ -323,9 +323,9 @@
         },
         {
             "id": 53,
-            "vol": 8,
+            "vol": 8796504,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "cpu"
         }
     ],
     "edges": [
