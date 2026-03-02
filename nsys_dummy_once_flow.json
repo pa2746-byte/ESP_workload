@@ -7,919 +7,2684 @@
             "id": 0,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5519477,
+            "stream_id": 13
         },
         {
             "id": 1,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5443382,
+            "stream_id": 13
         },
         {
             "id": 2,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 759281,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 3,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534358,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 4,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534261,
+            "stream_id": 13
         },
         {
             "id": 5,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767218,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 6,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534005,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 7,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534390,
+            "stream_id": 13
         },
         {
             "id": 8,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767249,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 9,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 533877,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 10,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534037,
+            "stream_id": 13
         },
         {
             "id": 11,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767153,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 12,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534102,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 13,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534230,
+            "stream_id": 13
         },
         {
             "id": 14,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767249,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 15,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534294,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 16,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534454,
+            "stream_id": 13
         },
         {
             "id": 17,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767441,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 18,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 533877,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 19,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534262,
+            "stream_id": 13
         },
         {
             "id": 20,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767409,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 21,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534134,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 22,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534069,
+            "stream_id": 13
         },
         {
             "id": 23,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767633,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 24,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534101,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 25,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 533846,
+            "stream_id": 13
         },
         {
             "id": 26,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767441,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 27,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534165,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 28,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534134,
+            "stream_id": 13
         },
         {
             "id": 29,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767729,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 30,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 533910,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 31,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534230,
+            "stream_id": 13
         },
         {
             "id": 32,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767601,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 33,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534133,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 34,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534390,
+            "stream_id": 13
         },
         {
             "id": 35,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767345,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 36,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 533846,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 37,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534230,
+            "stream_id": 13
         },
         {
             "id": 38,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767473,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 39,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534198,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 40,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534357,
+            "stream_id": 13
         },
         {
             "id": 41,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767377,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 42,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534070,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 43,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534230,
+            "stream_id": 13
         },
         {
             "id": 44,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767282,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 45,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534261,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 46,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534134,
+            "stream_id": 13
         },
         {
             "id": 47,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767537,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 48,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 533910,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 49,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534262,
+            "stream_id": 13
         },
         {
             "id": 50,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767409,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 51,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 533910,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 52,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534165,
+            "stream_id": 13
         },
         {
             "id": 53,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767152,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 54,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534357,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 55,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534038,
+            "stream_id": 13
         },
         {
             "id": 56,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767665,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 57,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534230,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 58,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534261,
+            "stream_id": 13
         },
         {
             "id": 59,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 768113,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 60,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 533782,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 61,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534294,
+            "stream_id": 13
         },
         {
             "id": 62,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767282,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 63,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534229,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 64,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534198,
+            "stream_id": 13
         },
         {
             "id": 65,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767473,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 66,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534133,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 67,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 533910,
+            "stream_id": 13
         },
         {
             "id": 68,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767121,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 69,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 533878,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 70,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534133,
+            "stream_id": 13
         },
         {
             "id": 71,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767570,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 72,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534133,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 73,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534166,
+            "stream_id": 13
         },
         {
             "id": 74,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767858,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 75,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 533845,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 76,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534102,
+            "stream_id": 13
         },
         {
             "id": 77,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767185,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 78,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534038,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 79,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534101,
+            "stream_id": 13
         },
         {
             "id": 80,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767409,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 81,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534454,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 82,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534294,
+            "stream_id": 13
         },
         {
             "id": 83,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767313,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 84,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 533941,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 85,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534230,
+            "stream_id": 13
         },
         {
             "id": 86,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767665,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 87,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534326,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 88,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534261,
+            "stream_id": 13
         },
         {
             "id": 89,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767985,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 90,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534166,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 91,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534358,
+            "stream_id": 13
         },
         {
             "id": 92,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767761,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 93,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534005,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 94,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534166,
+            "stream_id": 13
         },
         {
             "id": 95,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767377,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 96,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 533973,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 97,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534294,
+            "stream_id": 13
         },
         {
             "id": 98,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767569,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 99,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 533910,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 100,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534229,
+            "stream_id": 13
         },
         {
             "id": 101,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767314,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 102,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534101,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 103,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534326,
+            "stream_id": 13
         },
         {
             "id": 104,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767665,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 105,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534005,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 106,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534005,
+            "stream_id": 13
         },
         {
             "id": 107,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767409,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 108,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 533846,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 109,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534357,
+            "stream_id": 13
         },
         {
             "id": 110,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767312,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 111,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534229,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 112,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534134,
+            "stream_id": 13
         },
         {
             "id": 113,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767377,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 114,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534006,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 115,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534134,
+            "stream_id": 13
         },
         {
             "id": 116,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767313,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 117,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 533878,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 118,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534293,
+            "stream_id": 13
         },
         {
             "id": 119,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767665,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 120,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 533782,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 121,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534486,
+            "stream_id": 13
         },
         {
             "id": 122,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767409,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 123,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534325,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 124,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534198,
+            "stream_id": 13
         },
         {
             "id": 125,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767665,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 126,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534037,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 127,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534197,
+            "stream_id": 13
         },
         {
             "id": 128,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767601,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 129,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534070,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 130,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534390,
+            "stream_id": 13
         },
         {
             "id": 131,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767377,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 132,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534005,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 133,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534486,
+            "stream_id": 13
         },
         {
             "id": 134,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767473,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 135,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534422,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 136,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534869,
+            "stream_id": 13
         },
         {
             "id": 137,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 768145,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 138,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534678,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 139,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534774,
+            "stream_id": 13
         },
         {
             "id": 140,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 768145,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 141,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534709,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 142,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534806,
+            "stream_id": 13
         },
         {
             "id": 143,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767985,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 144,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534517,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 145,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534806,
+            "stream_id": 13
         },
         {
             "id": 146,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767761,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 147,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534454,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 148,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534965,
+            "stream_id": 13
         },
         {
             "id": 149,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 767921,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 150,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534613,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 151,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 535030,
+            "stream_id": 13
         },
         {
             "id": 152,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5101726,
+            "stream_id": 13
         }
     ],
     "edges": [

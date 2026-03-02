@@ -7,325 +7,1095 @@
             "id": 0,
             "vol": 7129268,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 1622593,
+            "stream_id": 7
         },
         {
             "id": 1,
             "vol": 0,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 544,
+            "stream_id": 7
         },
         {
             "id": 2,
             "vol": 8796504,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 687827,
+            "stream_id": 13
         },
         {
             "id": 3,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66622,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 4,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 74687,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 5,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75870,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 6,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 76350,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 7,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 76670,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 8,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 76383,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 9,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75871,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 10,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 76446,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 11,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 76607,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 12,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 74846,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 13,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75615,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 14,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75614,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 15,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 74623,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 16,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75966,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 17,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 76159,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 18,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75742,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 19,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75583,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 20,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75902,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 21,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75679,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 22,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 77118,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 23,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 77919,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 24,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 76638,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 25,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 77663,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 26,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 77662,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 27,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75647,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 28,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 76670,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 29,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 74719,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 30,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 79262,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 31,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 74751,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 32,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75902,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 33,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75807,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 34,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 76158,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 35,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75423,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 36,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75358,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 37,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75295,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 38,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75006,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 39,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 74175,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 40,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 77726,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 41,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 74911,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 42,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75358,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 43,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 76831,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 44,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75455,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 45,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 77246,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 46,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75454,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 47,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75423,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 48,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 77119,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 49,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75326,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 50,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 75583,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 51,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 77343,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 52,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 78174,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 53,
             "vol": 8796504,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 668340,
+            "stream_id": 13
         }
     ],
     "edges": [

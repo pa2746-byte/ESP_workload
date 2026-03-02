@@ -7,1801 +7,4301 @@
             "id": 0,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5477046,
+            "stream_id": 13
         },
         {
             "id": 1,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5586099,
+            "stream_id": 13
         },
         {
             "id": 2,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 758513,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 3,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534774,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 4,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 534070,
+            "stream_id": 13
         },
         {
             "id": 5,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5100029,
+            "stream_id": 13
         },
         {
             "id": 6,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5453302,
+            "stream_id": 13
         },
         {
             "id": 7,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5558772,
+            "stream_id": 13
         },
         {
             "id": 8,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 757393,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 9,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 533654,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 10,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 533590,
+            "stream_id": 13
         },
         {
             "id": 11,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5099677,
+            "stream_id": 13
         },
         {
             "id": 12,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5444630,
+            "stream_id": 13
         },
         {
             "id": 13,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5558068,
+            "stream_id": 13
         },
         {
             "id": 14,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 757265,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 15,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 533974,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 16,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 533974,
+            "stream_id": 13
         },
         {
             "id": 17,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5098717,
+            "stream_id": 13
         },
         {
             "id": 18,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5430518,
+            "stream_id": 13
         },
         {
             "id": 19,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5554197,
+            "stream_id": 13
         },
         {
             "id": 20,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 757170,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 21,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534134,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 22,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 533878,
+            "stream_id": 13
         },
         {
             "id": 23,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5099261,
+            "stream_id": 13
         },
         {
             "id": 24,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5437654,
+            "stream_id": 13
         },
         {
             "id": 25,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5571316,
+            "stream_id": 13
         },
         {
             "id": 26,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 757233,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 27,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534037,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 28,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 533782,
+            "stream_id": 13
         },
         {
             "id": 29,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5099805,
+            "stream_id": 13
         },
         {
             "id": 30,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5444470,
+            "stream_id": 13
         },
         {
             "id": 31,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5560436,
+            "stream_id": 13
         },
         {
             "id": 32,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 757361,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 33,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534614,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 34,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 533653,
+            "stream_id": 13
         },
         {
             "id": 35,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5103069,
+            "stream_id": 13
         },
         {
             "id": 36,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5450102,
+            "stream_id": 13
         },
         {
             "id": 37,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5553268,
+            "stream_id": 13
         },
         {
             "id": 38,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 757425,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 39,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534038,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 40,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 533878,
+            "stream_id": 13
         },
         {
             "id": 41,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5110492,
+            "stream_id": 13
         },
         {
             "id": 42,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5438870,
+            "stream_id": 13
         },
         {
             "id": 43,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5558099,
+            "stream_id": 13
         },
         {
             "id": 44,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 757298,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 45,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534133,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 46,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 533686,
+            "stream_id": 13
         },
         {
             "id": 47,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5103004,
+            "stream_id": 13
         },
         {
             "id": 48,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5432215,
+            "stream_id": 13
         },
         {
             "id": 49,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5556308,
+            "stream_id": 13
         },
         {
             "id": 50,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 757329,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 51,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534326,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 52,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 533621,
+            "stream_id": 13
         },
         {
             "id": 53,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5098525,
+            "stream_id": 13
         },
         {
             "id": 54,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5449686,
+            "stream_id": 13
         },
         {
             "id": 55,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5552660,
+            "stream_id": 13
         },
         {
             "id": 56,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 757297,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 57,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 534038,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 58,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 533526,
+            "stream_id": 13
         },
         {
             "id": 59,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5097948,
+            "stream_id": 13
         },
         {
             "id": 60,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5438679,
+            "stream_id": 13
         },
         {
             "id": 61,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5563924,
+            "stream_id": 13
         },
         {
             "id": 62,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 773777,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 63,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546454,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 64,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546325,
+            "stream_id": 13
         },
         {
             "id": 65,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5108092,
+            "stream_id": 13
         },
         {
             "id": 66,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5452950,
+            "stream_id": 13
         },
         {
             "id": 67,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5558485,
+            "stream_id": 13
         },
         {
             "id": 68,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 773969,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 69,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 547158,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 70,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546229,
+            "stream_id": 13
         },
         {
             "id": 71,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5097629,
+            "stream_id": 13
         },
         {
             "id": 72,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5431382,
+            "stream_id": 13
         },
         {
             "id": 73,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5547349,
+            "stream_id": 13
         },
         {
             "id": 74,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 773744,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 75,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 545750,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 76,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 545845,
+            "stream_id": 13
         },
         {
             "id": 77,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5102685,
+            "stream_id": 13
         },
         {
             "id": 78,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5438294,
+            "stream_id": 13
         },
         {
             "id": 79,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5566484,
+            "stream_id": 13
         },
         {
             "id": 80,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 773585,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 81,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546933,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 82,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546742,
+            "stream_id": 13
         },
         {
             "id": 83,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5097277,
+            "stream_id": 13
         },
         {
             "id": 84,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5434550,
+            "stream_id": 13
         },
         {
             "id": 85,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5551828,
+            "stream_id": 13
         },
         {
             "id": 86,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 773745,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 87,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546293,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 88,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 545942,
+            "stream_id": 13
         },
         {
             "id": 89,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5099805,
+            "stream_id": 13
         },
         {
             "id": 90,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5448471,
+            "stream_id": 13
         },
         {
             "id": 91,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5533589,
+            "stream_id": 13
         },
         {
             "id": 92,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774545,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 93,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546773,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 94,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546006,
+            "stream_id": 13
         },
         {
             "id": 95,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5101981,
+            "stream_id": 13
         },
         {
             "id": 96,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5431574,
+            "stream_id": 13
         },
         {
             "id": 97,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5555764,
+            "stream_id": 13
         },
         {
             "id": 98,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774545,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 99,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 547606,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 100,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546837,
+            "stream_id": 13
         },
         {
             "id": 101,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5099517,
+            "stream_id": 13
         },
         {
             "id": 102,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5439414,
+            "stream_id": 13
         },
         {
             "id": 103,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5549108,
+            "stream_id": 13
         },
         {
             "id": 104,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774577,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 105,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546901,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 106,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546326,
+            "stream_id": 13
         },
         {
             "id": 107,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5099260,
+            "stream_id": 13
         },
         {
             "id": 108,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5435927,
+            "stream_id": 13
         },
         {
             "id": 109,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5577715,
+            "stream_id": 13
         },
         {
             "id": 110,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774641,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 111,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546806,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 112,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546517,
+            "stream_id": 13
         },
         {
             "id": 113,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5102461,
+            "stream_id": 13
         },
         {
             "id": 114,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5439510,
+            "stream_id": 13
         },
         {
             "id": 115,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5545044,
+            "stream_id": 13
         },
         {
             "id": 116,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774321,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 117,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546997,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 118,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546294,
+            "stream_id": 13
         },
         {
             "id": 119,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5100125,
+            "stream_id": 13
         },
         {
             "id": 120,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5429751,
+            "stream_id": 13
         },
         {
             "id": 121,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5571764,
+            "stream_id": 13
         },
         {
             "id": 122,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 773969,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 123,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546774,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 124,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546581,
+            "stream_id": 13
         },
         {
             "id": 125,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5098013,
+            "stream_id": 13
         },
         {
             "id": 126,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5437718,
+            "stream_id": 13
         },
         {
             "id": 127,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5550996,
+            "stream_id": 13
         },
         {
             "id": 128,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 775089,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 129,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 547285,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 130,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546518,
+            "stream_id": 13
         },
         {
             "id": 131,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5100798,
+            "stream_id": 13
         },
         {
             "id": 132,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5425687,
+            "stream_id": 13
         },
         {
             "id": 133,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5559540,
+            "stream_id": 13
         },
         {
             "id": 134,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 773873,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 135,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546901,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 136,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546614,
+            "stream_id": 13
         },
         {
             "id": 137,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5103932,
+            "stream_id": 13
         },
         {
             "id": 138,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5434582,
+            "stream_id": 13
         },
         {
             "id": 139,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5543380,
+            "stream_id": 13
         },
         {
             "id": 140,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774961,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 141,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 547157,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 142,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546390,
+            "stream_id": 13
         },
         {
             "id": 143,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5099229,
+            "stream_id": 13
         },
         {
             "id": 144,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5455126,
+            "stream_id": 13
         },
         {
             "id": 145,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5557684,
+            "stream_id": 13
         },
         {
             "id": 146,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774417,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 147,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546326,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 148,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546934,
+            "stream_id": 13
         },
         {
             "id": 149,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5097469,
+            "stream_id": 13
         },
         {
             "id": 150,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5439830,
+            "stream_id": 13
         },
         {
             "id": 151,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5550964,
+            "stream_id": 13
         },
         {
             "id": 152,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774289,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 153,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546517,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 154,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546678,
+            "stream_id": 13
         },
         {
             "id": 155,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5097214,
+            "stream_id": 13
         },
         {
             "id": 156,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5445207,
+            "stream_id": 13
         },
         {
             "id": 157,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5561588,
+            "stream_id": 13
         },
         {
             "id": 158,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774897,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 159,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 547349,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 160,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546358,
+            "stream_id": 13
         },
         {
             "id": 161,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5102397,
+            "stream_id": 13
         },
         {
             "id": 162,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5439767,
+            "stream_id": 13
         },
         {
             "id": 163,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5538964,
+            "stream_id": 13
         },
         {
             "id": 164,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774481,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 165,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 547093,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 166,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546614,
+            "stream_id": 13
         },
         {
             "id": 167,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5101629,
+            "stream_id": 13
         },
         {
             "id": 168,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5457941,
+            "stream_id": 13
         },
         {
             "id": 169,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5556756,
+            "stream_id": 13
         },
         {
             "id": 170,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774225,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 171,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546646,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 172,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546710,
+            "stream_id": 13
         },
         {
             "id": 173,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5117949,
+            "stream_id": 13
         },
         {
             "id": 174,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5448629,
+            "stream_id": 13
         },
         {
             "id": 175,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5528821,
+            "stream_id": 13
         },
         {
             "id": 176,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774353,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 177,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 547541,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 178,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 547477,
+            "stream_id": 13
         },
         {
             "id": 179,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5117469,
+            "stream_id": 13
         },
         {
             "id": 180,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5447862,
+            "stream_id": 13
         },
         {
             "id": 181,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5554836,
+            "stream_id": 13
         },
         {
             "id": 182,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774417,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 183,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546901,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 184,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546294,
+            "stream_id": 13
         },
         {
             "id": 185,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5100060,
+            "stream_id": 13
         },
         {
             "id": 186,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5434167,
+            "stream_id": 13
         },
         {
             "id": 187,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5558100,
+            "stream_id": 13
         },
         {
             "id": 188,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774704,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 189,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 547733,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 190,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546901,
+            "stream_id": 13
         },
         {
             "id": 191,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5099357,
+            "stream_id": 13
         },
         {
             "id": 192,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5440374,
+            "stream_id": 13
         },
         {
             "id": 193,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5558484,
+            "stream_id": 13
         },
         {
             "id": 194,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774097,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 195,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546485,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 196,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 547350,
+            "stream_id": 13
         },
         {
             "id": 197,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5097725,
+            "stream_id": 13
         },
         {
             "id": 198,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5438007,
+            "stream_id": 13
         },
         {
             "id": 199,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5544148,
+            "stream_id": 13
         },
         {
             "id": 200,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774449,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 201,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 547061,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 202,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546678,
+            "stream_id": 13
         },
         {
             "id": 203,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5098206,
+            "stream_id": 13
         },
         {
             "id": 204,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5441399,
+            "stream_id": 13
         },
         {
             "id": 205,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5551285,
+            "stream_id": 13
         },
         {
             "id": 206,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774033,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 207,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 547253,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 208,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546549,
+            "stream_id": 13
         },
         {
             "id": 209,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5099005,
+            "stream_id": 13
         },
         {
             "id": 210,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5437238,
+            "stream_id": 13
         },
         {
             "id": 211,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5561204,
+            "stream_id": 13
         },
         {
             "id": 212,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 773969,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 213,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 547669,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 214,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546614,
+            "stream_id": 13
         },
         {
             "id": 215,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5107388,
+            "stream_id": 13
         },
         {
             "id": 216,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5455030,
+            "stream_id": 13
         },
         {
             "id": 217,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5537300,
+            "stream_id": 13
         },
         {
             "id": 218,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774769,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 219,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546582,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 220,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546485,
+            "stream_id": 13
         },
         {
             "id": 221,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5100893,
+            "stream_id": 13
         },
         {
             "id": 222,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5435670,
+            "stream_id": 13
         },
         {
             "id": 223,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5566004,
+            "stream_id": 13
         },
         {
             "id": 224,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774033,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 225,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 547093,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 226,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546325,
+            "stream_id": 13
         },
         {
             "id": 227,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5098269,
+            "stream_id": 13
         },
         {
             "id": 228,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5438038,
+            "stream_id": 13
         },
         {
             "id": 229,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5533108,
+            "stream_id": 13
         },
         {
             "id": 230,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774033,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 231,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546485,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 232,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546422,
+            "stream_id": 13
         },
         {
             "id": 233,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5105916,
+            "stream_id": 13
         },
         {
             "id": 234,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5444919,
+            "stream_id": 13
         },
         {
             "id": 235,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5549652,
+            "stream_id": 13
         },
         {
             "id": 236,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774416,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 237,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 547029,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 238,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546613,
+            "stream_id": 13
         },
         {
             "id": 239,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5097213,
+            "stream_id": 13
         },
         {
             "id": 240,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5430294,
+            "stream_id": 13
         },
         {
             "id": 241,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5530485,
+            "stream_id": 13
         },
         {
             "id": 242,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774513,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 243,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 547957,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 244,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546933,
+            "stream_id": 13
         },
         {
             "id": 245,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5099741,
+            "stream_id": 13
         },
         {
             "id": 246,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5456310,
+            "stream_id": 13
         },
         {
             "id": 247,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5543093,
+            "stream_id": 13
         },
         {
             "id": 248,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774577,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 249,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546517,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 250,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546613,
+            "stream_id": 13
         },
         {
             "id": 251,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5098685,
+            "stream_id": 13
         },
         {
             "id": 252,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5435190,
+            "stream_id": 13
         },
         {
             "id": 253,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5533173,
+            "stream_id": 13
         },
         {
             "id": 254,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774609,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 255,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546710,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 256,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546709,
+            "stream_id": 13
         },
         {
             "id": 257,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5100509,
+            "stream_id": 13
         },
         {
             "id": 258,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5439990,
+            "stream_id": 13
         },
         {
             "id": 259,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5554708,
+            "stream_id": 13
         },
         {
             "id": 260,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774449,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 261,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 547701,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 262,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546837,
+            "stream_id": 13
         },
         {
             "id": 263,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5098013,
+            "stream_id": 13
         },
         {
             "id": 264,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5435895,
+            "stream_id": 13
         },
         {
             "id": 265,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5532757,
+            "stream_id": 13
         },
         {
             "id": 266,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774353,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 267,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546549,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 268,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546582,
+            "stream_id": 13
         },
         {
             "id": 269,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5105852,
+            "stream_id": 13
         },
         {
             "id": 270,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5435287,
+            "stream_id": 13
         },
         {
             "id": 271,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5552788,
+            "stream_id": 13
         },
         {
             "id": 272,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774705,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 273,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546741,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 274,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546773,
+            "stream_id": 13
         },
         {
             "id": 275,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5098173,
+            "stream_id": 13
         },
         {
             "id": 276,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5433750,
+            "stream_id": 13
         },
         {
             "id": 277,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5549397,
+            "stream_id": 13
         },
         {
             "id": 278,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774480,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 279,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 547158,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 280,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546677,
+            "stream_id": 13
         },
         {
             "id": 281,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5098269,
+            "stream_id": 13
         },
         {
             "id": 282,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5438806,
+            "stream_id": 13
         },
         {
             "id": 283,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5550388,
+            "stream_id": 13
         },
         {
             "id": 284,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774321,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 285,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 547541,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 286,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546358,
+            "stream_id": 13
         },
         {
             "id": 287,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5097341,
+            "stream_id": 13
         },
         {
             "id": 288,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5438167,
+            "stream_id": 13
         },
         {
             "id": 289,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5543476,
+            "stream_id": 13
         },
         {
             "id": 290,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774225,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 291,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546262,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 292,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546549,
+            "stream_id": 13
         },
         {
             "id": 293,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5098493,
+            "stream_id": 13
         },
         {
             "id": 294,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5440022,
+            "stream_id": 13
         },
         {
             "id": 295,
             "vol": 70368886,
             "source_id": "cpu",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 5540532,
+            "stream_id": 13
         },
         {
             "id": 296,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd(const float *, const float *, float *, int)",
+            "duration_ns": 774161,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 297,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel(const float *, float *, float, int)",
+            "duration_ns": 546326,
+            "stream_id": 13,
+            "grid": {
+                "x": 65536,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
         },
         {
             "id": 298,
             "vol": 0,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "acc",
+            "op_type": "memcpy",
+            "subtype": "d2d_copy",
+            "op_name": "copyKernel(const float *, float *, int)",
+            "duration_ns": 546773,
+            "stream_id": 13
         },
         {
             "id": 299,
             "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "cpu"
+            "dest_id": "cpu",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 5097373,
+            "stream_id": 13
         }
     ],
     "edges": [
