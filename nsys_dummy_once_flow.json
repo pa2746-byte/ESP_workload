@@ -5,14 +5,14 @@
     "nodes": [
         {
             "id": 0,
-            "vol": 67,
-            "source_id": "acc",
+            "vol": 70368886,
+            "source_id": "cpu",
             "dest_id": "acc"
         },
         {
             "id": 1,
-            "vol": 67,
-            "source_id": "acc",
+            "vol": 70368886,
+            "source_id": "cpu",
             "dest_id": "acc"
         },
         {
@@ -917,9 +917,9 @@
         },
         {
             "id": 152,
-            "vol": 67,
+            "vol": 70368886,
             "source_id": "acc",
-            "dest_id": "acc"
+            "dest_id": "cpu"
         }
     ],
     "edges": [
