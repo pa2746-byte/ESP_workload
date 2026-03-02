@@ -74,6 +74,29 @@ def parse_volume(row: dict, bytes_col: str):
         return int(val * 1024 * 1024 * 1024)
     return int(val)
 
+def classify_op(op_name: str, src: str, dst: str):
+    raw = (op_name or "").lower()
+    s = re.sub(r"[^a-z0-9]+", " ", raw)
+
+    if "memset" in raw:
+        return "memset", "memset"
+
+    if "memcpy" in raw or "copy" in s:
+        if src == "cpu" and dst == "acc":
+            return "memcpy", "h2d_copy"
+        if src == "acc" and dst == "cpu":
+            return "memcpy", "d2h_copy"
+        if src == "acc" and dst == "acc":
+            return "memcpy", "d2d_copy"
+        if src == "cpu" and dst == "cpu":
+            return "memcpy", "h2h_copy"
+        return "memcpy", "copy"
+
+    if "fft" in s or "cufft" in s:
+        return "kernel", "library_fft_kernel"
+
+    return "kernel", "compute_kernel"
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: python nsys_trace_to_flow_json.py <prefix>")
@@ -92,9 +115,17 @@ def main():
 
         name_col = pick_col(cols, ["name", "operation", "demangled"], required=False)
         start_col = pick_col(cols, ["start", "timestamp"], required=False)
+        duration_col = pick_col(cols, ["duration"], required=False)
+        stream_col = pick_col(cols, ["strm", "stream"], required=False)
         bytes_col = pick_col(cols, ["bytes", "size"], required=False)
         src_mem_kind_col = pick_col(cols, ["srcmemkd", "src mem", "source"], required=False)
         dst_mem_kind_col = pick_col(cols, ["dstmemkd", "dst mem", "dest"], required=False)
+        grid_x_col = pick_col(cols, ["grdx"], required=False)
+        grid_y_col = pick_col(cols, ["grdy"], required=False)
+        grid_z_col = pick_col(cols, ["grdz"], required=False)
+        block_x_col = pick_col(cols, ["blkx"], required=False)
+        block_y_col = pick_col(cols, ["blky"], required=False)
+        block_z_col = pick_col(cols, ["blkz"], required=False)
 
         rows = list(reader)
 
@@ -114,13 +145,35 @@ def main():
         if not src_mem_kind_col and not dst_mem_kind_col:
             fallback_name_mapping_count += 1
         vol = parse_volume(r, bytes_col) if bytes_col else 0
+        op_type, subtype = classify_op(op, src, dst)
+        duration_ns = to_int(r.get(duration_col), 0) if duration_col else 0
+        stream_id = to_int(r.get(stream_col), -1) if stream_col else -1
 
-        nodes.append({
+        node = {
             "id": i,
             "vol": vol,
             "source_id": src,
-            "dest_id": dst
-        })
+            "dest_id": dst,
+            "op_type": op_type,
+            "subtype": subtype,
+            "op_name": op,
+            "duration_ns": duration_ns,
+            "stream_id": stream_id,
+        }
+
+        if op_type == "kernel":
+            node["grid"] = {
+                "x": to_int(r.get(grid_x_col), 0) if grid_x_col else 0,
+                "y": to_int(r.get(grid_y_col), 0) if grid_y_col else 0,
+                "z": to_int(r.get(grid_z_col), 0) if grid_z_col else 0,
+            }
+            node["block"] = {
+                "x": to_int(r.get(block_x_col), 0) if block_x_col else 0,
+                "y": to_int(r.get(block_y_col), 0) if block_y_col else 0,
+                "z": to_int(r.get(block_z_col), 0) if block_z_col else 0,
+            }
+
+        nodes.append(node)
 
         if i > 0:
             edges.append({"source": i - 1, "target": i})
