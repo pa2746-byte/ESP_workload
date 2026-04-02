@@ -1,0 +1,81 @@
+Meeting 2 Update
+2/26/2026
+1
+
+Problem + Goal
+2
+Goal: create controlled CUDA workloads to validate trace → parse → dataflow graph pipeline.
+Why these two:
+dummy_transfer_pipeline.cu for transfer-heavy predictable behavior.
+fft_batched_transfer.cu for realistic accelerator workload (cuFFT).
+
+
+Workload and Knobs
+3
+Two execution modes in both workloads:
+mode=0: transfer once.
+mode=1: transfer every iteration.
+Parameters used:
+Dummy: N, iters.
+FFT: fft_size, batch, iters.
+NVTX ranges added (H2D_*, compute kernels, D2H_*) to segment timeline clearly.
+
+
+Methodology
+4
+Build + profile with build_and_profile.sh.
+Generated 4 Nsight reports:
+nsys_dummy_per_iter.nsys-rep
+nsys_dummy_once.nsys-rep
+nsys_fft_per_iter.nsys-rep
+nsys_fft_once.nsys-rep
+Extracted CSV + SQLite with nsys stats (version-specific report names).
+
+
+Key technical issue + resolution 
+5
+Issue: report names differed by Nsight version (gpu_memcpy_sum not available).
+Fix: enumerate supported reports via:
+nsys stats --help-reports
+Used compatible reports:
+cuda_gpu_kern_sum
+cuda_gpu_mem_size_sum
+cuda_gpu_mem_time_sum
+nvtx_sum, nvtx_pushpop_sum
+Also hit Graphviz dot missing; installed system Graphviz.
+
+
+Dataflow graph outputs
+6
+Produced two graph families:
+Measured flow JSON from Nsight traces (nsys_*_flow.json)
+Synthetic flow JSON without profiling (synthetic_*_flow.json)
+Schema matched the reference graph format:
+top-level: directed, multigraph, graph, nodes, edges
+node fields: id, vol, source_id, dest_id
+Validation passed for all generated JSON files.
+
+
+Main findings: 
+7
+Pipeline is working end-to-end:
+CUDA run → Nsight capture → stats/trace parse → flow JSON creation.
+Transfer pattern differences are reflected structurally:
+per_iter graphs are longer/repetitive chains.
+once graphs are shorter with boundary transfers.
+Expected vs measured note:
+Synthetic graphs preserve designed byte formulas.
+Nsight-derived vol depends on available trace columns in your Nsight version.
+
+
+
+Whats complete vs Whats Next
+8
+Completed:
+CUDA workloads, profiling script, report generation, flow JSON conversion, validation.
+Documentation in WORKFLOW_LOG.md.
+Next:
+Add compressed/iteration-collapsed DAG mode for cleaner visuals.
+Improve byte extraction for Nsight trace schema variants.
+Add comparison charts (transfer bytes and kernel time across 4 runs).
+

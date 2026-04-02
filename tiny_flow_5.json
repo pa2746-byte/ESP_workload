@@ -1,0 +1,88 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {
+        "workload": "tiny_demo",
+        "mode": "per_iter"
+    },
+    "nodes": [
+        {
+            "id": 0,
+            "vol": 4096,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "H2D_input"
+        },
+        {
+            "id": 1,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd"
+        },
+        {
+            "id": 2,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel"
+        },
+        {
+            "id": 3,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "copyKernel"
+        },
+        {
+            "id": 4,
+            "vol": 4096,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "D2H_output"
+        }
+    ],
+    "edges": [
+        {
+            "source": 0,
+            "target": 1
+        },
+        {
+            "source": 1,
+            "target": 2
+        },
+        {
+            "source": 2,
+            "target": 3
+        },
+        {
+            "source": 3,
+            "target": 4
+        }
+    ]
+}

@@ -1,0 +1,57 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {
+        "workload": "tiny_branch_demo",
+        "mode": "per_iter"
+    },
+    "nodes": [
+        {
+            "id": 0,
+            "vol": 4096,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_name": "H2D_input"
+        },
+        {
+            "id": 1,
+            "vol": 0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_name": "kernel_A"
+        },
+        {
+            "id": 2,
+            "vol": 0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_name": "kernel_B"
+        },
+        {
+            "id": 3,
+            "vol": 0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_name": "kernel_C"
+        },
+        {
+            "id": 4,
+            "vol": 4096,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_name": "D2H_output"
+        }
+    ],
+    "edges": [
+        { "source": 0, "target": 1 },
+        { "source": 0, "target": 2 },
+        { "source": 1, "target": 3 },
+        { "source": 2, "target": 3 },
+        { "source": 3, "target": 4 }
+    ]
+}
