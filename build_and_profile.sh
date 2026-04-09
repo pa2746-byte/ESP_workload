@@ -43,13 +43,6 @@ echo "Running Nsight Compute (ncu) for SM/L2/DRAM metrics..."
 NCU_ITERS=3
 NCU_METRICS="l1tex__t_bytes.sum,lts__t_bytes.sum,dram__bytes.sum"
 
-# Lower perf_event_paranoid so ncu can access hardware counters without sudo
-PARANOID=$(cat /proc/sys/kernel/perf_event_paranoid 2>/dev/null || echo "2")
-if [ "${PARANOID}" -gt 0 ]; then
-  echo "  Setting kernel.perf_event_paranoid=0 (currently ${PARANOID}) ..."
-  sudo sh -c 'echo 0 > /proc/sys/kernel/perf_event_paranoid' || \
-    echo "  [warn] Could not set perf_event_paranoid — ncu may fail. Try: sudo sh -c 'echo 0 > /proc/sys/kernel/perf_event_paranoid'"
-fi
 
 ncu --metrics "${NCU_METRICS}" --csv \
     ./dummy_pipeline "${N}" "${NCU_ITERS}" 1 \
