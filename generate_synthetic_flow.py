@@ -35,8 +35,14 @@ def add_node(nodes: List[Dict], vol: int, source_id: str, dest_id: str, **extra)
     return node_id
 
 
-def add_edge(edges: List[Dict], source: int, target: int) -> None:
-    edges.append({"source": int(source), "target": int(target)})
+def add_edge(edges: List[Dict], source: int, target: int, vol_bytes: int = 0) -> None:
+    vol_mb = round(vol_bytes / (1024 * 1024), 6) if vol_bytes > 0 else 0.0
+    edges.append({
+        "source": int(source),
+        "target": int(target),
+        "vol_bytes": vol_bytes,
+        "vol_mb": vol_mb,
+    })
 
 
 def _direction_key(source_id: str, dest_id: str) -> str:
@@ -62,6 +68,11 @@ def summarize_transfer_totals(nodes: List[Dict]) -> Dict:
         "h2h_bytes": h2h,
         "total_transfer_bytes": h2d + d2h + d2d + h2h,
     }
+
+
+def summarize_edge_transfer_totals(edges: List[Dict]) -> Dict:
+    total = sum(int(e.get("vol_bytes", 0)) for e in edges)
+    return {"total_edge_vol_bytes": total}
 
 
 def load_calibration(calibrate_from: str) -> Dict:
@@ -123,152 +134,82 @@ def build_dummy_graph(n: int, iters: int, mode: str, calib: Optional[Dict] = Non
 
     prev = None
 
-    def chain(node_id: int) -> None:
+    def chain(node_id: int, edge_vol: int = 0) -> None:
         nonlocal prev
         if prev is not None:
-            add_edge(edges, prev, node_id)
+            add_edge(edges, prev, node_id, vol_bytes=edge_vol)
         prev = node_id
 
     if mode == "once":
         chain(
-            add_node(
-                nodes,
-                h2d_bytes,
-                "cpu",
-                "acc",
-                op_type="memcpy",
-                subtype="h2d_copy",
-                op_name="H2D_a",
-            )
+            add_node(nodes, h2d_bytes, "cpu", "acc",
+                     op_type="memcpy", subtype="h2d_copy", op_name="H2D_a"),
         )
         chain(
-            add_node(
-                nodes,
-                h2d_bytes,
-                "cpu",
-                "acc",
-                op_type="memcpy",
-                subtype="h2d_copy",
-                op_name="H2D_b",
-            )
+            add_node(nodes, h2d_bytes, "cpu", "acc",
+                     op_type="memcpy", subtype="h2d_copy", op_name="H2D_b"),
+            edge_vol=h2d_bytes,
         )
 
-        for _ in range(iters):
+        for i in range(iters):
+            # First kernel after H2D (or after previous iteration's last kernel)
+            prev_vol = h2d_bytes if i == 0 else h2d_bytes
             chain(
-                add_node(
-                    nodes,
-                    0,
-                    "acc",
-                    "acc",
-                    op_type="kernel",
-                    subtype="compute_kernel",
-                    op_name="vecAdd",
-                )
+                add_node(nodes, 0, "acc", "acc",
+                         op_type="kernel", subtype="compute_kernel", op_name="vecAdd"),
+                edge_vol=prev_vol,
             )
             chain(
-                add_node(
-                    nodes,
-                    0,
-                    "acc",
-                    "acc",
-                    op_type="kernel",
-                    subtype="compute_kernel",
-                    op_name="scaleKernel",
-                )
+                add_node(nodes, 0, "acc", "acc",
+                         op_type="kernel", subtype="compute_kernel", op_name="scaleKernel"),
+                edge_vol=h2d_bytes,
             )
             chain(
-                add_node(
-                    nodes,
-                    0,
-                    "acc",
-                    "acc",
-                    op_type="kernel",
-                    subtype="compute_kernel",
-                    op_name="copyKernel",
-                )
+                add_node(nodes, 0, "acc", "acc",
+                         op_type="kernel", subtype="compute_kernel", op_name="copyKernel"),
+                edge_vol=h2d_bytes,
             )
 
         chain(
-            add_node(
-                nodes,
-                d2h_bytes,
-                "acc",
-                "cpu",
-                op_type="memcpy",
-                subtype="d2h_copy",
-                op_name="D2H_out",
-            )
+            add_node(nodes, d2h_bytes, "acc", "cpu",
+                     op_type="memcpy", subtype="d2h_copy", op_name="D2H_out"),
+            edge_vol=d2h_bytes,
         )
     else:
         for _ in range(iters):
             chain(
-                add_node(
-                    nodes,
-                    h2d_bytes,
-                    "cpu",
-                    "acc",
-                    op_type="memcpy",
-                    subtype="h2d_copy",
-                    op_name="H2D_a",
-                )
+                add_node(nodes, h2d_bytes, "cpu", "acc",
+                         op_type="memcpy", subtype="h2d_copy", op_name="H2D_a"),
+                edge_vol=0,  # iteration boundary: ordering only
             )
             chain(
-                add_node(
-                    nodes,
-                    h2d_bytes,
-                    "cpu",
-                    "acc",
-                    op_type="memcpy",
-                    subtype="h2d_copy",
-                    op_name="H2D_b",
-                )
+                add_node(nodes, h2d_bytes, "cpu", "acc",
+                         op_type="memcpy", subtype="h2d_copy", op_name="H2D_b"),
+                edge_vol=h2d_bytes,
             )
             chain(
-                add_node(
-                    nodes,
-                    0,
-                    "acc",
-                    "acc",
-                    op_type="kernel",
-                    subtype="compute_kernel",
-                    op_name="vecAdd",
-                )
+                add_node(nodes, 0, "acc", "acc",
+                         op_type="kernel", subtype="compute_kernel", op_name="vecAdd"),
+                edge_vol=h2d_bytes,
             )
             chain(
-                add_node(
-                    nodes,
-                    0,
-                    "acc",
-                    "acc",
-                    op_type="kernel",
-                    subtype="compute_kernel",
-                    op_name="scaleKernel",
-                )
+                add_node(nodes, 0, "acc", "acc",
+                         op_type="kernel", subtype="compute_kernel", op_name="scaleKernel"),
+                edge_vol=h2d_bytes,
             )
             chain(
-                add_node(
-                    nodes,
-                    0,
-                    "acc",
-                    "acc",
-                    op_type="kernel",
-                    subtype="compute_kernel",
-                    op_name="copyKernel",
-                )
+                add_node(nodes, 0, "acc", "acc",
+                         op_type="kernel", subtype="compute_kernel", op_name="copyKernel"),
+                edge_vol=h2d_bytes,
             )
             chain(
-                add_node(
-                    nodes,
-                    d2h_bytes,
-                    "acc",
-                    "cpu",
-                    op_type="memcpy",
-                    subtype="d2h_copy",
-                    op_name="D2H_out",
-                )
+                add_node(nodes, d2h_bytes, "acc", "cpu",
+                         op_type="memcpy", subtype="d2h_copy", op_name="D2H_out"),
+                edge_vol=d2h_bytes,
             )
 
     transfer_totals = summarize_transfer_totals(nodes)
+    edge_totals = summarize_edge_transfer_totals(edges)
     return {
         "directed": True,
         "multigraph": False,
@@ -278,6 +219,7 @@ def build_dummy_graph(n: int, iters: int, mode: str, calib: Optional[Dict] = Non
             "params": {"n": n, "iters": iters},
             "calibrated_from": calib.get("source_file") if calib else None,
             "transfer_totals": transfer_totals,
+            "edge_transfer_totals": edge_totals,
         },
         "nodes": nodes,
         "edges": edges,
@@ -304,84 +246,50 @@ def build_fft_graph(
 
     prev = None
 
-    def chain(node_id: int) -> None:
+    def chain(node_id: int, edge_vol: int = 0) -> None:
         nonlocal prev
         if prev is not None:
-            add_edge(edges, prev, node_id)
+            add_edge(edges, prev, node_id, vol_bytes=edge_vol)
         prev = node_id
 
     if mode == "once":
         chain(
-            add_node(
-                nodes,
-                h2d_bytes,
-                "cpu",
-                "acc",
-                op_type="memcpy",
-                subtype="h2d_copy",
-                op_name="H2D_fft_input",
-            )
+            add_node(nodes, h2d_bytes, "cpu", "acc",
+                     op_type="memcpy", subtype="h2d_copy", op_name="H2D_fft_input"),
         )
         for _ in range(iters):
             chain(
-                add_node(
-                    nodes,
-                    0,
-                    "acc",
-                    "acc",
-                    op_type="kernel",
-                    subtype="library_fft_kernel",
-                    op_name="cufftExecC2C_forward",
-                )
+                add_node(nodes, 0, "acc", "acc",
+                         op_type="kernel", subtype="library_fft_kernel",
+                         op_name="cufftExecC2C_forward"),
+                edge_vol=h2d_bytes,
             )
         chain(
-            add_node(
-                nodes,
-                d2h_bytes,
-                "acc",
-                "cpu",
-                op_type="memcpy",
-                subtype="d2h_copy",
-                op_name="D2H_fft_output",
-            )
+            add_node(nodes, d2h_bytes, "acc", "cpu",
+                     op_type="memcpy", subtype="d2h_copy", op_name="D2H_fft_output"),
+            edge_vol=d2h_bytes,
         )
     else:
         for _ in range(iters):
             chain(
-                add_node(
-                    nodes,
-                    h2d_bytes,
-                    "cpu",
-                    "acc",
-                    op_type="memcpy",
-                    subtype="h2d_copy",
-                    op_name="H2D_fft_input",
-                )
+                add_node(nodes, h2d_bytes, "cpu", "acc",
+                         op_type="memcpy", subtype="h2d_copy", op_name="H2D_fft_input"),
+                edge_vol=0,  # iteration boundary: ordering only
             )
             chain(
-                add_node(
-                    nodes,
-                    0,
-                    "acc",
-                    "acc",
-                    op_type="kernel",
-                    subtype="library_fft_kernel",
-                    op_name="cufftExecC2C_forward",
-                )
+                add_node(nodes, 0, "acc", "acc",
+                         op_type="kernel", subtype="library_fft_kernel",
+                         op_name="cufftExecC2C_forward"),
+                edge_vol=h2d_bytes,
             )
             chain(
-                add_node(
-                    nodes,
-                    d2h_bytes,
-                    "acc",
-                    "cpu",
-                    op_type="memcpy",
-                    subtype="d2h_copy",
-                    op_name="D2H_fft_output",
-                )
+                add_node(nodes, d2h_bytes, "acc", "cpu",
+                         op_type="memcpy", subtype="d2h_copy", op_name="D2H_fft_output"),
+                edge_vol=d2h_bytes,
             )
 
     transfer_totals = summarize_transfer_totals(nodes)
+    edge_totals = summarize_edge_transfer_totals(edges)
     return {
         "directed": True,
         "multigraph": False,
@@ -391,6 +299,7 @@ def build_fft_graph(
             "params": {"fft_size": fft_size, "batch": batch, "iters": iters},
             "calibrated_from": calib.get("source_file") if calib else None,
             "transfer_totals": transfer_totals,
+            "edge_transfer_totals": edge_totals,
         },
         "nodes": nodes,
         "edges": edges,

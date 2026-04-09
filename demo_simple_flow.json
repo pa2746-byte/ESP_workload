@@ -1,0 +1,237 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {
+        "workload": "dummy",
+        "mode": "per_iter",
+        "params": {
+            "n": 1024,
+            "iters": 2
+        },
+        "calibrated_from": null,
+        "transfer_totals": {
+            "h2d_bytes": 16384,
+            "d2h_bytes": 8192,
+            "d2d_bytes": 0,
+            "h2h_bytes": 0,
+            "total_transfer_bytes": 24576
+        },
+        "edge_transfer_totals": {
+            "total_edge_vol_bytes": 40960
+        }
+    },
+    "nodes": [
+        {
+            "vol": 4096,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "id": 0,
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "H2D_a"
+        },
+        {
+            "vol": 4096,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "id": 1,
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "H2D_b"
+        },
+        {
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "id": 2,
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd"
+        },
+        {
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "id": 3,
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel"
+        },
+        {
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "id": 4,
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "copyKernel"
+        },
+        {
+            "vol": 4096,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "id": 5,
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "D2H_out"
+        },
+        {
+            "vol": 4096,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "id": 6,
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "H2D_a"
+        },
+        {
+            "vol": 4096,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "id": 7,
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "H2D_b"
+        },
+        {
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "id": 8,
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vecAdd"
+        },
+        {
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "id": 9,
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "scaleKernel"
+        },
+        {
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "id": 10,
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "copyKernel"
+        },
+        {
+            "vol": 4096,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "id": 11,
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "D2H_out"
+        }
+    ],
+    "edges": [
+        {
+            "source": 0,
+            "target": 1,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906
+        },
+        {
+            "source": 1,
+            "target": 2,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906
+        },
+        {
+            "source": 2,
+            "target": 3,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906
+        },
+        {
+            "source": 3,
+            "target": 4,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906
+        },
+        {
+            "source": 4,
+            "target": 5,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906
+        },
+        {
+            "source": 5,
+            "target": 6,
+            "vol_bytes": 0,
+            "vol_mb": 0.0
+        },
+        {
+            "source": 6,
+            "target": 7,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906
+        },
+        {
+            "source": 7,
+            "target": 8,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906
+        },
+        {
+            "source": 8,
+            "target": 9,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906
+        },
+        {
+            "source": 9,
+            "target": 10,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906
+        },
+        {
+            "source": 10,
+            "target": 11,
+            "vol_bytes": 4096,
+            "vol_mb": 0.003906
+        }
+    ]
+}
