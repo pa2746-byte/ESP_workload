@@ -24,11 +24,16 @@ from typing import Dict, List, Optional
 # Metrics we care about, in ncu's exact column name form.
 # ncu --csv emits one row per (kernel, metric); we pivot these into a dict.
 METRICS_OF_INTEREST = {
+    # With and without .sum suffix (ncu 2022+ emits .sum)
+    "l1tex__t_bytes.sum":               "l1_bytes",
     "l1tex__t_bytes":                   "l1_bytes",
+    "lts__t_bytes.sum":                 "l2_bytes",
     "lts__t_bytes":                     "l2_bytes",
+    "dram__bytes.sum":                  "dram_bytes",
     "dram__bytes":                      "dram_bytes",
-    "sm__shared_memory_load_throughput":"sm_shared_load_throughput_gbs",
-    # Derived / alternative names nsight may emit depending on arch/version
+    "sm__shared_memory_load_throughput.sum": "sm_shared_load_throughput_gbs",
+    "sm__shared_memory_load_throughput":     "sm_shared_load_throughput_gbs",
+    # Alternative names older nsight may emit
     "l2_global_load_bytes":             "l2_bytes",
     "dram_read_bytes":                  "dram_bytes",
 }

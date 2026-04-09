@@ -11,7 +11,14 @@
             "h2h_bytes": 0,
             "total_transfer_bytes": 10555332900
         },
-        "sm_metric_totals": {}
+        "sm_metric_totals": {
+            "l1_bytes": 50331648000,
+            "l2_bytes": 50729254400,
+            "dram_bytes": 45401030400,
+            "l2_mb": 48379.2,
+            "dram_mb": 43297.8,
+            "l1_mb": 48000.0
+        }
     },
     "nodes": [
         {
@@ -65,7 +72,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -91,7 +105,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -173,7 +194,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -199,7 +227,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -281,7 +316,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -307,7 +349,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -389,7 +438,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -415,7 +471,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -497,7 +560,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -523,7 +593,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -605,7 +682,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -631,7 +715,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -713,7 +804,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -739,7 +837,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -821,7 +926,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -847,7 +959,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -929,7 +1048,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -955,7 +1081,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1037,7 +1170,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1063,7 +1203,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1145,7 +1292,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1171,7 +1325,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1253,7 +1414,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1279,7 +1447,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1361,7 +1536,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1387,7 +1569,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1469,7 +1658,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1495,7 +1691,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1577,7 +1780,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1603,7 +1813,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1685,7 +1902,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1711,7 +1935,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1793,7 +2024,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1819,7 +2057,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1901,7 +2146,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -1927,7 +2179,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2009,7 +2268,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2035,7 +2301,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2117,7 +2390,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2143,7 +2423,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2225,7 +2512,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2251,7 +2545,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2333,7 +2634,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2359,7 +2667,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2441,7 +2756,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2467,7 +2789,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2549,7 +2878,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2575,7 +2911,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2657,7 +3000,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2683,7 +3033,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2765,7 +3122,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2791,7 +3155,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2873,7 +3244,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2899,7 +3277,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -2981,7 +3366,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3007,7 +3399,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3089,7 +3488,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3115,7 +3521,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3197,7 +3610,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3223,7 +3643,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3305,7 +3732,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3331,7 +3765,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3413,7 +3854,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3439,7 +3887,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3521,7 +3976,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3547,7 +4009,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3629,7 +4098,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3655,7 +4131,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3737,7 +4220,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3763,7 +4253,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3845,7 +4342,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3871,7 +4375,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3953,7 +4464,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -3979,7 +4497,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4061,7 +4586,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4087,7 +4619,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4169,7 +4708,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4195,7 +4741,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4277,7 +4830,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4303,7 +4863,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4385,7 +4952,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4411,7 +4985,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4493,7 +5074,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4519,7 +5107,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4601,7 +5196,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4627,7 +5229,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4709,7 +5318,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4735,7 +5351,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4817,7 +5440,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4843,7 +5473,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4925,7 +5562,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -4951,7 +5595,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -5033,7 +5684,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -5059,7 +5717,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -5141,7 +5806,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -5167,7 +5839,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -5249,7 +5928,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -5275,7 +5961,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -5357,7 +6050,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 603979776,
+                "l2_bytes": 605448736,
+                "dram_bytes": 587119360,
+                "l2_mb": 577.401,
+                "dram_mb": 559.921,
+                "l1_mb": 576.0
+            },
             "ncu_invocation_count": 3
         },
         {
@@ -5383,7 +6083,14 @@
                 "y": 1,
                 "z": 1
             },
-            "sm_metrics": {},
+            "sm_metrics": {
+                "l1_bytes": 402653184,
+                "l2_bytes": 409136352,
+                "dram_bytes": 320901248,
+                "l2_mb": 390.183,
+                "dram_mb": 306.035,
+                "l1_mb": 384.0
+            },
             "ncu_invocation_count": 3
         },
         {
