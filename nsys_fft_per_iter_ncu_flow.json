@@ -1,0 +1,3352 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {
+        "aggregation": "raw",
+        "min_transfer_bytes": 0,
+        "transfer_totals": {
+            "h2d_bytes": 446954468,
+            "d2h_bytes": 439825200,
+            "d2d_bytes": 0,
+            "h2h_bytes": 0,
+            "total_transfer_bytes": 886779668
+        },
+        "sm_metric_totals": {}
+    },
+    "nodes": [
+        {
+            "id": 0,
+            "vol": 7129268,
+            "vol_bytes": 7129268,
+            "vol_mb": 6.799,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 20597361,
+            "stream_id": 7
+        },
+        {
+            "id": 1,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 512,
+            "stream_id": 7
+        },
+        {
+            "id": 2,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 704435,
+            "stream_id": 13
+        },
+        {
+            "id": 3,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 67774,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 4,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640212,
+            "stream_id": 13
+        },
+        {
+            "id": 5,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 687250,
+            "stream_id": 13
+        },
+        {
+            "id": 6,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 67263,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 7,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639860,
+            "stream_id": 13
+        },
+        {
+            "id": 8,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 684179,
+            "stream_id": 13
+        },
+        {
+            "id": 9,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66078,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 10,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640564,
+            "stream_id": 13
+        },
+        {
+            "id": 11,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 689234,
+            "stream_id": 13
+        },
+        {
+            "id": 12,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 65951,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 13,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639668,
+            "stream_id": 13
+        },
+        {
+            "id": 14,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 684371,
+            "stream_id": 13
+        },
+        {
+            "id": 15,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 67838,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 16,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640403,
+            "stream_id": 13
+        },
+        {
+            "id": 17,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 696402,
+            "stream_id": 13
+        },
+        {
+            "id": 18,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66047,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 19,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640819,
+            "stream_id": 13
+        },
+        {
+            "id": 20,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 689779,
+            "stream_id": 13
+        },
+        {
+            "id": 21,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 69022,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 22,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639636,
+            "stream_id": 13
+        },
+        {
+            "id": 23,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 695283,
+            "stream_id": 13
+        },
+        {
+            "id": 24,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 67871,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 25,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 641171,
+            "stream_id": 13
+        },
+        {
+            "id": 26,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 690867,
+            "stream_id": 13
+        },
+        {
+            "id": 27,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66783,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 28,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639796,
+            "stream_id": 13
+        },
+        {
+            "id": 29,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 687858,
+            "stream_id": 13
+        },
+        {
+            "id": 30,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66847,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 31,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640275,
+            "stream_id": 13
+        },
+        {
+            "id": 32,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 688467,
+            "stream_id": 13
+        },
+        {
+            "id": 33,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 65983,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 34,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640468,
+            "stream_id": 13
+        },
+        {
+            "id": 35,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 696339,
+            "stream_id": 13
+        },
+        {
+            "id": 36,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 65759,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 37,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639859,
+            "stream_id": 13
+        },
+        {
+            "id": 38,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 691987,
+            "stream_id": 13
+        },
+        {
+            "id": 39,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 68190,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 40,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640212,
+            "stream_id": 13
+        },
+        {
+            "id": 41,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 687378,
+            "stream_id": 13
+        },
+        {
+            "id": 42,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 67423,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 43,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640179,
+            "stream_id": 13
+        },
+        {
+            "id": 44,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 687411,
+            "stream_id": 13
+        },
+        {
+            "id": 45,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 65662,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 46,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639476,
+            "stream_id": 13
+        },
+        {
+            "id": 47,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 686290,
+            "stream_id": 13
+        },
+        {
+            "id": 48,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66207,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 49,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 646292,
+            "stream_id": 13
+        },
+        {
+            "id": 50,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 685075,
+            "stream_id": 13
+        },
+        {
+            "id": 51,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 67198,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 52,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 641235,
+            "stream_id": 13
+        },
+        {
+            "id": 53,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 689746,
+            "stream_id": 13
+        },
+        {
+            "id": 54,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 68287,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 55,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639636,
+            "stream_id": 13
+        },
+        {
+            "id": 56,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 686899,
+            "stream_id": 13
+        },
+        {
+            "id": 57,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 67423,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 58,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640468,
+            "stream_id": 13
+        },
+        {
+            "id": 59,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 686643,
+            "stream_id": 13
+        },
+        {
+            "id": 60,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66847,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 61,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639924,
+            "stream_id": 13
+        },
+        {
+            "id": 62,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 685522,
+            "stream_id": 13
+        },
+        {
+            "id": 63,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66303,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 64,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639603,
+            "stream_id": 13
+        },
+        {
+            "id": 65,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 684691,
+            "stream_id": 13
+        },
+        {
+            "id": 66,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66430,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 67,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639508,
+            "stream_id": 13
+        },
+        {
+            "id": 68,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 694034,
+            "stream_id": 13
+        },
+        {
+            "id": 69,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66367,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 70,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639923,
+            "stream_id": 13
+        },
+        {
+            "id": 71,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 690195,
+            "stream_id": 13
+        },
+        {
+            "id": 72,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 67838,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 73,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640051,
+            "stream_id": 13
+        },
+        {
+            "id": 74,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 686611,
+            "stream_id": 13
+        },
+        {
+            "id": 75,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 65118,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 76,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639572,
+            "stream_id": 13
+        },
+        {
+            "id": 77,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 693971,
+            "stream_id": 13
+        },
+        {
+            "id": 78,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66814,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 79,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640819,
+            "stream_id": 13
+        },
+        {
+            "id": 80,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 690578,
+            "stream_id": 13
+        },
+        {
+            "id": 81,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 65727,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 82,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639348,
+            "stream_id": 13
+        },
+        {
+            "id": 83,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 688082,
+            "stream_id": 13
+        },
+        {
+            "id": 84,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 69343,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 85,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640915,
+            "stream_id": 13
+        },
+        {
+            "id": 86,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 688979,
+            "stream_id": 13
+        },
+        {
+            "id": 87,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 67135,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 88,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640404,
+            "stream_id": 13
+        },
+        {
+            "id": 89,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 686258,
+            "stream_id": 13
+        },
+        {
+            "id": 90,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 67103,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 91,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 647283,
+            "stream_id": 13
+        },
+        {
+            "id": 92,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 686291,
+            "stream_id": 13
+        },
+        {
+            "id": 93,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66814,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 94,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 641972,
+            "stream_id": 13
+        },
+        {
+            "id": 95,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 687635,
+            "stream_id": 13
+        },
+        {
+            "id": 96,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 67647,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 97,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640083,
+            "stream_id": 13
+        },
+        {
+            "id": 98,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 691315,
+            "stream_id": 13
+        },
+        {
+            "id": 99,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 69278,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 100,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 641300,
+            "stream_id": 13
+        },
+        {
+            "id": 101,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 695538,
+            "stream_id": 13
+        },
+        {
+            "id": 102,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 68095,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 103,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639924,
+            "stream_id": 13
+        },
+        {
+            "id": 104,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 689618,
+            "stream_id": 13
+        },
+        {
+            "id": 105,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66398,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 106,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 644915,
+            "stream_id": 13
+        },
+        {
+            "id": 107,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 685811,
+            "stream_id": 13
+        },
+        {
+            "id": 108,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 68351,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 109,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640980,
+            "stream_id": 13
+        },
+        {
+            "id": 110,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 686227,
+            "stream_id": 13
+        },
+        {
+            "id": 111,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66974,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 112,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639572,
+            "stream_id": 13
+        },
+        {
+            "id": 113,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 685714,
+            "stream_id": 13
+        },
+        {
+            "id": 114,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66591,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 115,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639443,
+            "stream_id": 13
+        },
+        {
+            "id": 116,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 687059,
+            "stream_id": 13
+        },
+        {
+            "id": 117,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66943,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 118,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 643764,
+            "stream_id": 13
+        },
+        {
+            "id": 119,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 696210,
+            "stream_id": 13
+        },
+        {
+            "id": 120,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66719,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 121,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640787,
+            "stream_id": 13
+        },
+        {
+            "id": 122,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 692019,
+            "stream_id": 13
+        },
+        {
+            "id": 123,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 68798,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 124,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639796,
+            "stream_id": 13
+        },
+        {
+            "id": 125,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 685874,
+            "stream_id": 13
+        },
+        {
+            "id": 126,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66495,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 127,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639603,
+            "stream_id": 13
+        },
+        {
+            "id": 128,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 685331,
+            "stream_id": 13
+        },
+        {
+            "id": 129,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66302,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 130,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640084,
+            "stream_id": 13
+        },
+        {
+            "id": 131,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 686515,
+            "stream_id": 13
+        },
+        {
+            "id": 132,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66527,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 133,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 641108,
+            "stream_id": 13
+        },
+        {
+            "id": 134,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 684627,
+            "stream_id": 13
+        },
+        {
+            "id": 135,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 69023,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 136,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 642324,
+            "stream_id": 13
+        },
+        {
+            "id": 137,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 687346,
+            "stream_id": 13
+        },
+        {
+            "id": 138,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 67263,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 139,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639380,
+            "stream_id": 13
+        },
+        {
+            "id": 140,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 686515,
+            "stream_id": 13
+        },
+        {
+            "id": 141,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66719,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 142,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 642131,
+            "stream_id": 13
+        },
+        {
+            "id": 143,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 686899,
+            "stream_id": 13
+        },
+        {
+            "id": 144,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66558,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 145,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639540,
+            "stream_id": 13
+        },
+        {
+            "id": 146,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 687570,
+            "stream_id": 13
+        },
+        {
+            "id": 147,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66719,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 148,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 640211,
+            "stream_id": 13
+        },
+        {
+            "id": 149,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy Host-to-Device]",
+            "duration_ns": 686739,
+            "stream_id": 13
+        },
+        {
+            "id": 150,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "library_fft_kernel",
+            "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+            "duration_ns": 66558,
+            "stream_id": 13,
+            "grid": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            },
+            "sm_metrics": {},
+            "ncu_invocation_count": 3
+        },
+        {
+            "id": 151,
+            "vol": 8796504,
+            "vol_bytes": 8796504,
+            "vol_mb": 8.389,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy Device-to-Host]",
+            "duration_ns": 639732,
+            "stream_id": 13
+        }
+    ],
+    "edges": [
+        {
+            "source": 0,
+            "target": 1
+        },
+        {
+            "source": 1,
+            "target": 2
+        },
+        {
+            "source": 2,
+            "target": 3
+        },
+        {
+            "source": 3,
+            "target": 4
+        },
+        {
+            "source": 4,
+            "target": 5
+        },
+        {
+            "source": 5,
+            "target": 6
+        },
+        {
+            "source": 6,
+            "target": 7
+        },
+        {
+            "source": 7,
+            "target": 8
+        },
+        {
+            "source": 8,
+            "target": 9
+        },
+        {
+            "source": 9,
+            "target": 10
+        },
+        {
+            "source": 10,
+            "target": 11
+        },
+        {
+            "source": 11,
+            "target": 12
+        },
+        {
+            "source": 12,
+            "target": 13
+        },
+        {
+            "source": 13,
+            "target": 14
+        },
+        {
+            "source": 14,
+            "target": 15
+        },
+        {
+            "source": 15,
+            "target": 16
+        },
+        {
+            "source": 16,
+            "target": 17
+        },
+        {
+            "source": 17,
+            "target": 18
+        },
+        {
+            "source": 18,
+            "target": 19
+        },
+        {
+            "source": 19,
+            "target": 20
+        },
+        {
+            "source": 20,
+            "target": 21
+        },
+        {
+            "source": 21,
+            "target": 22
+        },
+        {
+            "source": 22,
+            "target": 23
+        },
+        {
+            "source": 23,
+            "target": 24
+        },
+        {
+            "source": 24,
+            "target": 25
+        },
+        {
+            "source": 25,
+            "target": 26
+        },
+        {
+            "source": 26,
+            "target": 27
+        },
+        {
+            "source": 27,
+            "target": 28
+        },
+        {
+            "source": 28,
+            "target": 29
+        },
+        {
+            "source": 29,
+            "target": 30
+        },
+        {
+            "source": 30,
+            "target": 31
+        },
+        {
+            "source": 31,
+            "target": 32
+        },
+        {
+            "source": 32,
+            "target": 33
+        },
+        {
+            "source": 33,
+            "target": 34
+        },
+        {
+            "source": 34,
+            "target": 35
+        },
+        {
+            "source": 35,
+            "target": 36
+        },
+        {
+            "source": 36,
+            "target": 37
+        },
+        {
+            "source": 37,
+            "target": 38
+        },
+        {
+            "source": 38,
+            "target": 39
+        },
+        {
+            "source": 39,
+            "target": 40
+        },
+        {
+            "source": 40,
+            "target": 41
+        },
+        {
+            "source": 41,
+            "target": 42
+        },
+        {
+            "source": 42,
+            "target": 43
+        },
+        {
+            "source": 43,
+            "target": 44
+        },
+        {
+            "source": 44,
+            "target": 45
+        },
+        {
+            "source": 45,
+            "target": 46
+        },
+        {
+            "source": 46,
+            "target": 47
+        },
+        {
+            "source": 47,
+            "target": 48
+        },
+        {
+            "source": 48,
+            "target": 49
+        },
+        {
+            "source": 49,
+            "target": 50
+        },
+        {
+            "source": 50,
+            "target": 51
+        },
+        {
+            "source": 51,
+            "target": 52
+        },
+        {
+            "source": 52,
+            "target": 53
+        },
+        {
+            "source": 53,
+            "target": 54
+        },
+        {
+            "source": 54,
+            "target": 55
+        },
+        {
+            "source": 55,
+            "target": 56
+        },
+        {
+            "source": 56,
+            "target": 57
+        },
+        {
+            "source": 57,
+            "target": 58
+        },
+        {
+            "source": 58,
+            "target": 59
+        },
+        {
+            "source": 59,
+            "target": 60
+        },
+        {
+            "source": 60,
+            "target": 61
+        },
+        {
+            "source": 61,
+            "target": 62
+        },
+        {
+            "source": 62,
+            "target": 63
+        },
+        {
+            "source": 63,
+            "target": 64
+        },
+        {
+            "source": 64,
+            "target": 65
+        },
+        {
+            "source": 65,
+            "target": 66
+        },
+        {
+            "source": 66,
+            "target": 67
+        },
+        {
+            "source": 67,
+            "target": 68
+        },
+        {
+            "source": 68,
+            "target": 69
+        },
+        {
+            "source": 69,
+            "target": 70
+        },
+        {
+            "source": 70,
+            "target": 71
+        },
+        {
+            "source": 71,
+            "target": 72
+        },
+        {
+            "source": 72,
+            "target": 73
+        },
+        {
+            "source": 73,
+            "target": 74
+        },
+        {
+            "source": 74,
+            "target": 75
+        },
+        {
+            "source": 75,
+            "target": 76
+        },
+        {
+            "source": 76,
+            "target": 77
+        },
+        {
+            "source": 77,
+            "target": 78
+        },
+        {
+            "source": 78,
+            "target": 79
+        },
+        {
+            "source": 79,
+            "target": 80
+        },
+        {
+            "source": 80,
+            "target": 81
+        },
+        {
+            "source": 81,
+            "target": 82
+        },
+        {
+            "source": 82,
+            "target": 83
+        },
+        {
+            "source": 83,
+            "target": 84
+        },
+        {
+            "source": 84,
+            "target": 85
+        },
+        {
+            "source": 85,
+            "target": 86
+        },
+        {
+            "source": 86,
+            "target": 87
+        },
+        {
+            "source": 87,
+            "target": 88
+        },
+        {
+            "source": 88,
+            "target": 89
+        },
+        {
+            "source": 89,
+            "target": 90
+        },
+        {
+            "source": 90,
+            "target": 91
+        },
+        {
+            "source": 91,
+            "target": 92
+        },
+        {
+            "source": 92,
+            "target": 93
+        },
+        {
+            "source": 93,
+            "target": 94
+        },
+        {
+            "source": 94,
+            "target": 95
+        },
+        {
+            "source": 95,
+            "target": 96
+        },
+        {
+            "source": 96,
+            "target": 97
+        },
+        {
+            "source": 97,
+            "target": 98
+        },
+        {
+            "source": 98,
+            "target": 99
+        },
+        {
+            "source": 99,
+            "target": 100
+        },
+        {
+            "source": 100,
+            "target": 101
+        },
+        {
+            "source": 101,
+            "target": 102
+        },
+        {
+            "source": 102,
+            "target": 103
+        },
+        {
+            "source": 103,
+            "target": 104
+        },
+        {
+            "source": 104,
+            "target": 105
+        },
+        {
+            "source": 105,
+            "target": 106
+        },
+        {
+            "source": 106,
+            "target": 107
+        },
+        {
+            "source": 107,
+            "target": 108
+        },
+        {
+            "source": 108,
+            "target": 109
+        },
+        {
+            "source": 109,
+            "target": 110
+        },
+        {
+            "source": 110,
+            "target": 111
+        },
+        {
+            "source": 111,
+            "target": 112
+        },
+        {
+            "source": 112,
+            "target": 113
+        },
+        {
+            "source": 113,
+            "target": 114
+        },
+        {
+            "source": 114,
+            "target": 115
+        },
+        {
+            "source": 115,
+            "target": 116
+        },
+        {
+            "source": 116,
+            "target": 117
+        },
+        {
+            "source": 117,
+            "target": 118
+        },
+        {
+            "source": 118,
+            "target": 119
+        },
+        {
+            "source": 119,
+            "target": 120
+        },
+        {
+            "source": 120,
+            "target": 121
+        },
+        {
+            "source": 121,
+            "target": 122
+        },
+        {
+            "source": 122,
+            "target": 123
+        },
+        {
+            "source": 123,
+            "target": 124
+        },
+        {
+            "source": 124,
+            "target": 125
+        },
+        {
+            "source": 125,
+            "target": 126
+        },
+        {
+            "source": 126,
+            "target": 127
+        },
+        {
+            "source": 127,
+            "target": 128
+        },
+        {
+            "source": 128,
+            "target": 129
+        },
+        {
+            "source": 129,
+            "target": 130
+        },
+        {
+            "source": 130,
+            "target": 131
+        },
+        {
+            "source": 131,
+            "target": 132
+        },
+        {
+            "source": 132,
+            "target": 133
+        },
+        {
+            "source": 133,
+            "target": 134
+        },
+        {
+            "source": 134,
+            "target": 135
+        },
+        {
+            "source": 135,
+            "target": 136
+        },
+        {
+            "source": 136,
+            "target": 137
+        },
+        {
+            "source": 137,
+            "target": 138
+        },
+        {
+            "source": 138,
+            "target": 139
+        },
+        {
+            "source": 139,
+            "target": 140
+        },
+        {
+            "source": 140,
+            "target": 141
+        },
+        {
+            "source": 141,
+            "target": 142
+        },
+        {
+            "source": 142,
+            "target": 143
+        },
+        {
+            "source": 143,
+            "target": 144
+        },
+        {
+            "source": 144,
+            "target": 145
+        },
+        {
+            "source": 145,
+            "target": 146
+        },
+        {
+            "source": 146,
+            "target": 147
+        },
+        {
+            "source": 147,
+            "target": 148
+        },
+        {
+            "source": 148,
+            "target": 149
+        },
+        {
+            "source": 149,
+            "target": 150
+        },
+        {
+            "source": 150,
+            "target": 151
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+==PROF== Connected to process 7511 (/home/pa2746/ESP_workload/fft_batched)
+==PROF== Disconnected from process 7511
+Batched FFT complete
+fft_size=4096, batch=256, iters=3, mode=1 (transfer_per_iter)
+Elapsed: 190.360 ms
+Expected host-device transfer bytes: 50331648
+Magnitude sum(0:1024): 2048.006291
+==WARNING== Found outstanding GPU clock reset, trying to revert...Success.
+"ID","Process ID","Process Name","Host Name","Kernel Name","Context","Stream","Block Size","Grid Size","Device","CC","Section Name","Metric Name","Metric Unit","Metric Value"
+"0","7511","fft_batched","127.0.0.1","void vector_fft<(unsigned int)4096, (unsigned int)16, (unsigned int)1, (unsigned int)5, (padding_t)6, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)","1","13","(256, 1, 1)","(256, 1, 1)","0","8.9","Command line profiler metrics","dram__bytes.sum","byte","12,127,872"
+"0","7511","fft_batched","127.0.0.1","void vector_fft<(unsigned int)4096, (unsigned int)16, (unsigned int)1, (unsigned int)5, (padding_t)6, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)","1","13","(256, 1, 1)","(256, 1, 1)","0","8.9","Command line profiler metrics","l1tex__t_bytes.sum","byte","17,498,112"
+"0","7511","fft_batched","127.0.0.1","void vector_fft<(unsigned int)4096, (unsigned int)16, (unsigned int)1, (unsigned int)5, (padding_t)6, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)","1","13","(256, 1, 1)","(256, 1, 1)","0","8.9","Command line profiler metrics","lts__t_bytes.sum","byte","17,255,104"
+"1","7511","fft_batched","127.0.0.1","void vector_fft<(unsigned int)4096, (unsigned int)16, (unsigned int)1, (unsigned int)5, (padding_t)6, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)","1","13","(256, 1, 1)","(256, 1, 1)","0","8.9","Command line profiler metrics","dram__bytes.sum","byte","8,409,600"
+"1","7511","fft_batched","127.0.0.1","void vector_fft<(unsigned int)4096, (unsigned int)16, (unsigned int)1, (unsigned int)5, (padding_t)6, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)","1","13","(256, 1, 1)","(256, 1, 1)","0","8.9","Command line profiler metrics","l1tex__t_bytes.sum","byte","17,498,112"
+"1","7511","fft_batched","127.0.0.1","void vector_fft<(unsigned int)4096, (unsigned int)16, (unsigned int)1, (unsigned int)5, (padding_t)6, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)","1","13","(256, 1, 1)","(256, 1, 1)","0","8.9","Command line profiler metrics","lts__t_bytes.sum","byte","17,234,848"
+"2","7511","fft_batched","127.0.0.1","void vector_fft<(unsigned int)4096, (unsigned int)16, (unsigned int)1, (unsigned int)5, (padding_t)6, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)","1","13","(256, 1, 1)","(256, 1, 1)","0","8.9","Command line profiler metrics","dram__bytes.sum","byte","8,439,680"
+"2","7511","fft_batched","127.0.0.1","void vector_fft<(unsigned int)4096, (unsigned int)16, (unsigned int)1, (unsigned int)5, (padding_t)6, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)","1","13","(256, 1, 1)","(256, 1, 1)","0","8.9","Command line profiler metrics","l1tex__t_bytes.sum","byte","17,498,112"
+"2","7511","fft_batched","127.0.0.1","void vector_fft<(unsigned int)4096, (unsigned int)16, (unsigned int)1, (unsigned int)5, (padding_t)6, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)","1","13","(256, 1, 1)","(256, 1, 1)","0","8.9","Command line profiler metrics","lts__t_bytes.sum","byte","17,245,312"

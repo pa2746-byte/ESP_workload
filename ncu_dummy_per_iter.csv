@@ -1,0 +1,36 @@
+==PROF== Connected to process 7493 (/home/pa2746/ESP_workload/dummy_pipeline)
+==PROF== Disconnected from process 7493
+Dummy pipeline complete
+N=16777216, iters=3, mode=1 (transfer_per_iter)
+Elapsed: 307.628 ms
+Expected host-device transfer bytes: 603979776
+Checksum(0:1024): 1347.394669
+==WARNING== Found outstanding GPU clock reset, trying to revert...Success.
+"ID","Process ID","Process Name","Host Name","Kernel Name","Context","Stream","Block Size","Grid Size","Device","CC","Section Name","Metric Name","Metric Unit","Metric Value"
+"0","7493","dummy_pipeline","127.0.0.1","vecAdd(const float *, const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","dram__bytes.sum","byte","202,468,480"
+"0","7493","dummy_pipeline","127.0.0.1","vecAdd(const float *, const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","l1tex__t_bytes.sum","byte","201,326,592"
+"0","7493","dummy_pipeline","127.0.0.1","vecAdd(const float *, const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","lts__t_bytes.sum","byte","201,984,224"
+"1","7493","dummy_pipeline","127.0.0.1","scaleKernel(const float *, float *, float, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","dram__bytes.sum","byte","95,747,456"
+"1","7493","dummy_pipeline","127.0.0.1","scaleKernel(const float *, float *, float, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","l1tex__t_bytes.sum","byte","134,217,728"
+"1","7493","dummy_pipeline","127.0.0.1","scaleKernel(const float *, float *, float, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","lts__t_bytes.sum","byte","134,390,400"
+"2","7493","dummy_pipeline","127.0.0.1","copyKernel(const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","dram__bytes.sum","byte","111,528,960"
+"2","7493","dummy_pipeline","127.0.0.1","copyKernel(const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","l1tex__t_bytes.sum","byte","134,217,728"
+"2","7493","dummy_pipeline","127.0.0.1","copyKernel(const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","lts__t_bytes.sum","byte","134,573,856"
+"3","7493","dummy_pipeline","127.0.0.1","vecAdd(const float *, const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","dram__bytes.sum","byte","192,579,968"
+"3","7493","dummy_pipeline","127.0.0.1","vecAdd(const float *, const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","l1tex__t_bytes.sum","byte","201,326,592"
+"3","7493","dummy_pipeline","127.0.0.1","vecAdd(const float *, const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","lts__t_bytes.sum","byte","201,956,608"
+"4","7493","dummy_pipeline","127.0.0.1","scaleKernel(const float *, float *, float, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","dram__bytes.sum","byte","114,894,208"
+"4","7493","dummy_pipeline","127.0.0.1","scaleKernel(const float *, float *, float, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","l1tex__t_bytes.sum","byte","134,217,728"
+"4","7493","dummy_pipeline","127.0.0.1","scaleKernel(const float *, float *, float, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","lts__t_bytes.sum","byte","140,063,648"
+"5","7493","dummy_pipeline","127.0.0.1","copyKernel(const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","dram__bytes.sum","byte","110,939,520"
+"5","7493","dummy_pipeline","127.0.0.1","copyKernel(const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","l1tex__t_bytes.sum","byte","134,217,728"
+"5","7493","dummy_pipeline","127.0.0.1","copyKernel(const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","lts__t_bytes.sum","byte","134,594,880"
+"6","7493","dummy_pipeline","127.0.0.1","vecAdd(const float *, const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","dram__bytes.sum","byte","192,070,912"
+"6","7493","dummy_pipeline","127.0.0.1","vecAdd(const float *, const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","l1tex__t_bytes.sum","byte","201,326,592"
+"6","7493","dummy_pipeline","127.0.0.1","vecAdd(const float *, const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","lts__t_bytes.sum","byte","201,507,904"
+"7","7493","dummy_pipeline","127.0.0.1","scaleKernel(const float *, float *, float, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","dram__bytes.sum","byte","110,259,584"
+"7","7493","dummy_pipeline","127.0.0.1","scaleKernel(const float *, float *, float, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","l1tex__t_bytes.sum","byte","134,217,728"
+"7","7493","dummy_pipeline","127.0.0.1","scaleKernel(const float *, float *, float, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","lts__t_bytes.sum","byte","134,682,304"
+"8","7493","dummy_pipeline","127.0.0.1","copyKernel(const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","dram__bytes.sum","byte","95,493,248"
+"8","7493","dummy_pipeline","127.0.0.1","copyKernel(const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","l1tex__t_bytes.sum","byte","134,217,728"
+"8","7493","dummy_pipeline","127.0.0.1","copyKernel(const float *, float *, int)","1","13","(256, 1, 1)","(65536, 1, 1)","0","8.9","Command line profiler metrics","lts__t_bytes.sum","byte","134,566,112"
