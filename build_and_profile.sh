@@ -14,8 +14,8 @@ BATCH="${4:-256}"
 FFT_ITERS="${5:-50}"
 
 echo "Building CUDA targets..."
-nvcc -O3 -lineinfo dummy_transfer_pipeline.cu -o dummy_pipeline -lnvToolsExt
-nvcc -O3 -lineinfo fft_batched_transfer.cu -o fft_batched -lcufft -lnvToolsExt
+nvcc -O3 -std=c++17 -lineinfo dummy_transfer_pipeline.cu -o dummy_pipeline -lnvToolsExt
+nvcc -O3 -std=c++17 -lineinfo fft_batched_transfer.cu -o fft_batched -lcufft -lnvToolsExt
 
 echo "Running Nsight Systems profiles..."
 nsys profile --trace=cuda,nvtx,osrt --sample=none -o nsys_dummy_per_iter \
