@@ -65,12 +65,27 @@ def parse_ncu_csv(path: Path) -> List[Dict]:
     kernels: Dict[tuple, Dict] = {}  # (id, kernel_name) -> aggregated record
 
     with path.open(newline="", encoding="utf-8-sig") as f:
-        # ncu sometimes emits comment lines starting with "==" — skip them.
-        lines = [l for l in f if not l.startswith("==")]
+        raw_lines = f.readlines()
 
-    if not lines:
-        print(f"  [warn] {path} is empty — ncu likely failed. Skipping.")
+    # ncu mixes its own ==PROF==/==WARNING== lines and the profiled program's
+    # stdout into the same stream. Find the CSV header (starts with "ID") and
+    # keep only lines from there onward that look like CSV rows.
+    header_idx = None
+    for i, line in enumerate(raw_lines):
+        stripped = line.strip().strip('"')
+        if stripped.startswith("ID"):
+            header_idx = i
+            break
+
+    if header_idx is None:
+        print(f"  [warn] {path} has no CSV header — ncu likely failed. Skipping.")
         return []
+
+    # Keep header + lines that start with a quoted field or digit (CSV rows).
+    lines = [raw_lines[header_idx]] + [
+        l for l in raw_lines[header_idx + 1:]
+        if l.strip() and (l.strip()[0] in ('"', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'))
+    ]
 
     reader = csv.DictReader(lines)
     if not reader.fieldnames:

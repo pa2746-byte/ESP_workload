@@ -31,8 +31,12 @@ nsys profile --trace=cuda,nvtx,osrt --sample=none --force-overwrite true \
   -o nsys_fft_once ./fft_batched "${FFT_SIZE}" "${BATCH}" "${FFT_ITERS}" 0
 
 echo "Extracting nsys trace CSVs..."
-nsys stats --report cuda_gpu_trace -o . --format csv nsys_dummy_per_iter.nsys-rep
-nsys stats --report cuda_gpu_trace -o . --format csv nsys_fft_per_iter.nsys-rep
+# Try the report name used by newer nsys; fall back to the name used by older versions.
+for PREFIX in nsys_dummy_per_iter nsys_fft_per_iter; do
+  nsys stats --report cuda_gpu_trace -o . --format csv "${PREFIX}.nsys-rep" 2>/dev/null || \
+  nsys stats --report gpukernsum    -o . --format csv "${PREFIX}.nsys-rep" 2>/dev/null || \
+  echo "  [warn] nsys stats failed for ${PREFIX} — trace CSV may be stale"
+done
 
 echo "Building flow JSONs from nsys traces..."
 python3 nsys_trace_to_flow_json.py nsys_dummy_per_iter
