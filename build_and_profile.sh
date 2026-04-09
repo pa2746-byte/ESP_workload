@@ -18,17 +18,17 @@ nvcc -O3 -std=c++17 -lineinfo dummy_transfer_pipeline.cu -o dummy_pipeline -lnvT
 nvcc -O3 -std=c++17 -lineinfo fft_batched_transfer.cu -o fft_batched -lcufft -lnvToolsExt
 
 echo "Running Nsight Systems profiles..."
-nsys profile --trace=cuda,nvtx,osrt --sample=none -o nsys_dummy_per_iter \
-  ./dummy_pipeline "${N}" "${DUMMY_ITERS}" 1
+nsys profile --trace=cuda,nvtx,osrt --sample=none --force-overwrite true \
+  -o nsys_dummy_per_iter ./dummy_pipeline "${N}" "${DUMMY_ITERS}" 1
 
-nsys profile --trace=cuda,nvtx,osrt --sample=none -o nsys_dummy_once \
-  ./dummy_pipeline "${N}" "${DUMMY_ITERS}" 0
+nsys profile --trace=cuda,nvtx,osrt --sample=none --force-overwrite true \
+  -o nsys_dummy_once ./dummy_pipeline "${N}" "${DUMMY_ITERS}" 0
 
-nsys profile --trace=cuda,nvtx,osrt --sample=none -o nsys_fft_per_iter \
-  ./fft_batched "${FFT_SIZE}" "${BATCH}" "${FFT_ITERS}" 1
+nsys profile --trace=cuda,nvtx,osrt --sample=none --force-overwrite true \
+  -o nsys_fft_per_iter ./fft_batched "${FFT_SIZE}" "${BATCH}" "${FFT_ITERS}" 1
 
-nsys profile --trace=cuda,nvtx,osrt --sample=none -o nsys_fft_once \
-  ./fft_batched "${FFT_SIZE}" "${BATCH}" "${FFT_ITERS}" 0
+nsys profile --trace=cuda,nvtx,osrt --sample=none --force-overwrite true \
+  -o nsys_fft_once ./fft_batched "${FFT_SIZE}" "${BATCH}" "${FFT_ITERS}" 0
 
 echo "Extracting nsys trace CSVs..."
 nsys stats --report cuda_gpu_trace -o . --format csv nsys_dummy_per_iter.nsys-rep
@@ -41,27 +41,38 @@ python3 nsys_trace_to_flow_json.py nsys_fft_per_iter
 echo "Running Nsight Compute (ncu) for SM/L2/DRAM metrics..."
 # Use a small iter count — ncu is slow (replays each kernel multiple times)
 NCU_ITERS=3
+NCU_METRICS="l1tex__t_bytes.sum,lts__t_bytes.sum,dram__bytes.sum"
 
-ncu --metrics l1tex__t_bytes,lts__t_bytes,dram__bytes \
-    --csv ./dummy_pipeline "${N}" "${NCU_ITERS}" 1 \
+# Lower perf_event_paranoid so ncu can access hardware counters without sudo
+PARANOID=$(cat /proc/sys/kernel/perf_event_paranoid 2>/dev/null || echo "2")
+if [ "${PARANOID}" -gt 0 ]; then
+  echo "  Setting kernel.perf_event_paranoid=0 (currently ${PARANOID}) ..."
+  sudo sh -c 'echo 0 > /proc/sys/kernel/perf_event_paranoid' || \
+    echo "  [warn] Could not set perf_event_paranoid — ncu may fail. Try: sudo sh -c 'echo 0 > /proc/sys/kernel/perf_event_paranoid'"
+fi
+
+ncu --metrics "${NCU_METRICS}" --csv \
+    ./dummy_pipeline "${N}" "${NCU_ITERS}" 1 \
     > ncu_dummy_per_iter.csv 2>/dev/null || \
-  echo "  [warn] ncu dummy failed — may need sudo or kernel.perf_event_paranoid=0"
+  echo "  [warn] ncu dummy failed"
 
-ncu --metrics l1tex__t_bytes,lts__t_bytes,dram__bytes \
-    --csv ./fft_batched "${FFT_SIZE}" "${BATCH}" "${NCU_ITERS}" 1 \
+ncu --metrics "${NCU_METRICS}" --csv \
+    ./fft_batched "${FFT_SIZE}" "${BATCH}" "${NCU_ITERS}" 1 \
     > ncu_fft_per_iter.csv 2>/dev/null || \
-  echo "  [warn] ncu fft failed — may need sudo or kernel.perf_event_paranoid=0"
+  echo "  [warn] ncu fft failed"
 
 echo "Attaching ncu metrics to flow JSONs..."
 python3 ncu_attach_metrics.py \
     --ncu  ncu_dummy_per_iter.csv \
     --flow nsys_dummy_per_iter_flow.json \
-    --out  nsys_dummy_per_iter_ncu_flow.json
+    --out  nsys_dummy_per_iter_ncu_flow.json || \
+  echo "  [skip] dummy ncu attach failed — run ncu manually first"
 
 python3 ncu_attach_metrics.py \
     --ncu  ncu_fft_per_iter.csv \
     --flow nsys_fft_per_iter_flow.json \
-    --out  nsys_fft_per_iter_ncu_flow.json
+    --out  nsys_fft_per_iter_ncu_flow.json || \
+  echo "  [skip] fft ncu attach failed — run ncu manually first"
 
 echo "Done."
 echo "Generated reports:"

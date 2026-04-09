@@ -68,8 +68,16 @@ def parse_ncu_csv(path: Path) -> List[Dict]:
         # ncu sometimes emits comment lines starting with "==" — skip them.
         lines = [l for l in f if not l.startswith("==")]
 
+    if not lines:
+        print(f"  [warn] {path} is empty — ncu likely failed. Skipping.")
+        return []
+
     reader = csv.DictReader(lines)
-    cols = [_strip(c) for c in (reader.fieldnames or [])]
+    if not reader.fieldnames:
+        print(f"  [warn] {path} has no header row — ncu likely failed. Skipping.")
+        return []
+
+    cols = [_strip(c) for c in reader.fieldnames]
 
     # Build a normalised-column reader
     def col(row: dict, *candidates: str) -> Optional[str]:
@@ -224,6 +232,8 @@ def main() -> None:
     print(f"Parsing ncu metrics from {ncu_path} ...")
     ncu_records = parse_ncu_csv(ncu_path)
     print(f"  Found {len(ncu_records)} kernel invocation records.")
+    if not ncu_records:
+        sys.exit("No ncu records found — check that ncu ran successfully.")
 
     with flow_path.open(encoding="utf-8") as f:
         flow = json.load(f)
