@@ -1,0 +1,19 @@
+Start (ns),Duration (ns),CorrId,GrdX,GrdY,GrdZ,BlkX,BlkY,BlkZ,Reg/Trd,StcSMem (MB),DymSMem (MB),Bytes (MB),Throughput (MB/s),SrcMemKd,DstMemKd,Device,Ctx,GreenCtx,Strm,Name
+257650337,2497040,130,,,,,,,,,,67.109,26843.546,Pinned,Device,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,[CUDA memcpy Host-to-Device]
+260148849,2497424,131,,,,,,,,,,67.109,26843.546,Pinned,Device,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,[CUDA memcpy Host-to-Device]
+262711457,257890,132,65536,1,1,256,1,1,16,0.000,0.000,,,,,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+262972387,187745,133,65536,1,1,256,1,1,16,0.000,0.000,,,,,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+263163428,211202,134,65536,1,1,256,1,1,16,0.000,0.000,,,,,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,"copyKernel(const float *, float *, int)"
+263376262,2475120,135,,,,,,,,,,67.109,27111.981,Device,Pinned,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,[CUDA memcpy Device-to-Host]
+265856278,2503536,136,,,,,,,,,,67.109,26776.437,Pinned,Device,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,[CUDA memcpy Host-to-Device]
+268360966,2496944,137,,,,,,,,,,67.109,26843.546,Pinned,Device,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,[CUDA memcpy Host-to-Device]
+270862198,299554,138,65536,1,1,256,1,1,16,0.000,0.000,,,,,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+271162328,194369,139,65536,1,1,256,1,1,16,0.000,0.000,,,,,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+271357273,215554,140,65536,1,1,256,1,1,16,0.000,0.000,,,,,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,"copyKernel(const float *, float *, int)"
+271579451,2479504,141,,,,,,,,,,67.109,27044.872,Device,Pinned,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,[CUDA memcpy Device-to-Host]
+274063691,2504880,142,,,,,,,,,,67.109,26776.437,Pinned,Device,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,[CUDA memcpy Host-to-Device]
+276569787,2497008,143,,,,,,,,,,67.109,26843.546,Pinned,Device,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,[CUDA memcpy Host-to-Device]
+279072683,305410,144,65536,1,1,256,1,1,16,0.000,0.000,,,,,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,"vecAdd(const float *, const float *, float *, int)"
+279378669,193857,145,65536,1,1,256,1,1,16,0.000,0.000,,,,,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,"scaleKernel(const float *, float *, float, int)"
+279573134,215490,146,65536,1,1,256,1,1,16,0.000,0.000,,,,,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,"copyKernel(const float *, float *, int)"
+279791984,2474863,147,,,,,,,,,,67.109,27111.981,Device,Pinned,NVIDIA GeForce RTX 4080 SUPER (0),1,,13,[CUDA memcpy Device-to-Host]

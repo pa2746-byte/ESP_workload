@@ -1,0 +1,207 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {
+        "aggregation": "semantic",
+        "min_transfer_bytes": 1048576,
+        "transfer_totals": {
+            "h2d_bytes": 422213316,
+            "d2h_bytes": 211106658,
+            "d2d_bytes": 0,
+            "h2h_bytes": 0,
+            "total_transfer_bytes": 633319974
+        }
+    },
+    "nodes": [
+        {
+            "id": 0,
+            "vol": 140737772,
+            "vol_bytes": 140737772,
+            "vol_mb": 134.217999,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "semantic_stage",
+            "subtype": "h2d_stage",
+            "op_name": "H2D",
+            "duration_ns": 4994464,
+            "event_count": 2,
+            "op_names": [
+                "[CUDA memcpy Host-to-Device]"
+            ]
+        },
+        {
+            "id": 1,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "semantic_stage",
+            "subtype": "compute_stage",
+            "op_name": "COMPUTE",
+            "duration_ns": 445635,
+            "event_count": 2,
+            "op_names": [
+                "vecAdd(const float *, const float *, float *, int)",
+                "scaleKernel(const float *, float *, float, int)"
+            ]
+        },
+        {
+            "id": 2,
+            "vol": 70368886,
+            "vol_bytes": 70368886,
+            "vol_mb": 67.108999,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "semantic_stage",
+            "subtype": "d2h_stage",
+            "op_name": "D2H",
+            "duration_ns": 2475120,
+            "event_count": 1,
+            "op_names": [
+                "[CUDA memcpy Device-to-Host]"
+            ]
+        },
+        {
+            "id": 3,
+            "vol": 140737772,
+            "vol_bytes": 140737772,
+            "vol_mb": 134.217999,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "semantic_stage",
+            "subtype": "h2d_stage",
+            "op_name": "H2D",
+            "duration_ns": 5000480,
+            "event_count": 2,
+            "op_names": [
+                "[CUDA memcpy Host-to-Device]"
+            ]
+        },
+        {
+            "id": 4,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "semantic_stage",
+            "subtype": "compute_stage",
+            "op_name": "COMPUTE",
+            "duration_ns": 493923,
+            "event_count": 2,
+            "op_names": [
+                "vecAdd(const float *, const float *, float *, int)",
+                "scaleKernel(const float *, float *, float, int)"
+            ]
+        },
+        {
+            "id": 5,
+            "vol": 70368886,
+            "vol_bytes": 70368886,
+            "vol_mb": 67.108999,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "semantic_stage",
+            "subtype": "d2h_stage",
+            "op_name": "D2H",
+            "duration_ns": 2479504,
+            "event_count": 1,
+            "op_names": [
+                "[CUDA memcpy Device-to-Host]"
+            ]
+        },
+        {
+            "id": 6,
+            "vol": 140737772,
+            "vol_bytes": 140737772,
+            "vol_mb": 134.217999,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "semantic_stage",
+            "subtype": "h2d_stage",
+            "op_name": "H2D",
+            "duration_ns": 5001888,
+            "event_count": 2,
+            "op_names": [
+                "[CUDA memcpy Host-to-Device]"
+            ]
+        },
+        {
+            "id": 7,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "semantic_stage",
+            "subtype": "compute_stage",
+            "op_name": "COMPUTE",
+            "duration_ns": 499267,
+            "event_count": 2,
+            "op_names": [
+                "vecAdd(const float *, const float *, float *, int)",
+                "scaleKernel(const float *, float *, float, int)"
+            ]
+        },
+        {
+            "id": 8,
+            "vol": 70368886,
+            "vol_bytes": 70368886,
+            "vol_mb": 67.108999,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "semantic_stage",
+            "subtype": "d2h_stage",
+            "op_name": "D2H",
+            "duration_ns": 2474863,
+            "event_count": 1,
+            "op_names": [
+                "[CUDA memcpy Device-to-Host]"
+            ]
+        }
+    ],
+    "edges": [
+        {
+            "source": 0,
+            "target": 1
+        },
+        {
+            "source": 1,
+            "target": 2
+        },
+        {
+            "source": 2,
+            "target": 3
+        },
+        {
+            "source": 3,
+            "target": 4
+        },
+        {
+            "source": 4,
+            "target": 5
+        },
+        {
+            "source": 5,
+            "target": 6
+        },
+        {
+            "source": 6,
+            "target": 7
+        },
+        {
+            "source": 7,
+            "target": 8
+        }
+    ]
+}
