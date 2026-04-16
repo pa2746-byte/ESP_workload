@@ -150,6 +150,16 @@ def parse_ncu_csv(path: Path) -> List[Dict]:
             kernels[key]["metrics"].get(mname, 0.0) + val
         )
 
+        # Clock cycle metrics
+        if mname in ("sm__cycles_elapsed.sum", "sm__cycles_elapsed"):
+            kernels[key]["metrics"]["cycles_elapsed"] = (
+                kernels[key]["metrics"].get("cycles_elapsed", 0.0) + val
+            )
+        if mname in ("sm__cycles_active.sum", "sm__cycles_active"):
+            kernels[key]["metrics"]["cycles_active"] = (
+                kernels[key]["metrics"].get("cycles_active", 0.0) + val
+            )
+
     return list(kernels.values())
 
 
@@ -210,9 +220,11 @@ def attach_metrics(flow: Dict, ncu_records: List[Dict]) -> Dict:
         for friendly in ["l1_bytes", "l2_bytes", "dram_bytes",
                          "l2_read_sectors", "l2_write_sectors",
                          "sm_shared_load_throughput_gbs",
-                         "sm_cycles_elapsed"]:
+                         "cycles_elapsed", "cycles_active"]:
             if friendly in combined:
-                sm_metrics[friendly] = int(combined[friendly]) if "bytes" in friendly or "sectors" in friendly else combined[friendly]
+                sm_metrics[friendly] = int(combined[friendly]) if (
+                    "bytes" in friendly or "sectors" in friendly or "cycles" in friendly
+                ) else combined[friendly]
 
         # Also attach L2 and DRAM in MB for readability
         if "l2_bytes" in sm_metrics:
