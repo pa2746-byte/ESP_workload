@@ -33,6 +33,10 @@ METRICS_OF_INTEREST = {
     "dram__bytes":                      "dram_bytes",
     "sm__shared_memory_load_throughput.sum": "sm_shared_load_throughput_gbs",
     "sm__shared_memory_load_throughput":     "sm_shared_load_throughput_gbs",
+    # SM cycle counts — actual elapsed SM clock cycles per kernel invocation
+    "sm__cycles_elapsed.avg":           "sm_cycles_elapsed",
+    "sm__cycles_elapsed.sum":           "sm_cycles_elapsed",
+    "smsp__cycles_elapsed.avg":         "sm_cycles_elapsed",
     # Alternative names older nsight may emit
     "l2_global_load_bytes":             "l2_bytes",
     "dram_read_bytes":                  "dram_bytes",
@@ -205,7 +209,8 @@ def attach_metrics(flow: Dict, ncu_records: List[Dict]) -> Dict:
         sm_metrics: Dict = {}
         for friendly in ["l1_bytes", "l2_bytes", "dram_bytes",
                          "l2_read_sectors", "l2_write_sectors",
-                         "sm_shared_load_throughput_gbs"]:
+                         "sm_shared_load_throughput_gbs",
+                         "sm_cycles_elapsed"]:
             if friendly in combined:
                 sm_metrics[friendly] = int(combined[friendly]) if "bytes" in friendly or "sectors" in friendly else combined[friendly]
 

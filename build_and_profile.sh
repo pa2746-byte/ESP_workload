@@ -39,13 +39,15 @@ for PREFIX in nsys_dummy_per_iter nsys_fft_per_iter; do
 done
 
 echo "Building flow JSONs from nsys traces..."
-python3 nsys_trace_to_flow_json.py nsys_dummy_per_iter
-python3 nsys_trace_to_flow_json.py nsys_fft_per_iter
+# T4 boost clock is 1590 MHz; adjust --gpu-clock-mhz for your GPU.
+# Run: nvidia-smi --query-gpu=clocks.max.sm --format=csv,noheader
+python3 nsys_trace_to_flow_json.py nsys_dummy_per_iter --gpu-clock-mhz 1590
+python3 nsys_trace_to_flow_json.py nsys_fft_per_iter   --gpu-clock-mhz 1590
 
 echo "Running Nsight Compute (ncu) for SM/L2/DRAM metrics..."
 # Use a small iter count — ncu is slow (replays each kernel multiple times)
 NCU_ITERS=3
-NCU_METRICS="l1tex__t_bytes.sum,lts__t_bytes.sum,dram__bytes.sum"
+NCU_METRICS="l1tex__t_bytes.sum,lts__t_bytes.sum,dram__bytes.sum,sm__cycles_elapsed.avg"
 
 
 ncu --metrics "${NCU_METRICS}" --csv \

@@ -141,6 +141,7 @@ def aggregate_semantic(raw_nodes):
                     "subtype": f"{stage}_stage",
                     "op_name": stage.upper(),
                     "duration_ns": 0,
+                    "duration_cycles": 0,
                     "event_count": 0,
                     "op_names": [],
                 }
@@ -150,6 +151,7 @@ def aggregate_semantic(raw_nodes):
         cur["vol"] += int(n.get("vol_bytes", n.get("vol", 0)))
         cur["vol_bytes"] += int(n.get("vol_bytes", n.get("vol", 0)))
         cur["duration_ns"] += int(n.get("duration_ns", 0))
+        cur["duration_cycles"] += int(n.get("duration_cycles", 0))
         cur["event_count"] += 1
         opn = n.get("op_name", "")
         if opn and len(cur["op_names"]) < 10 and opn not in cur["op_names"]:
@@ -157,6 +159,8 @@ def aggregate_semantic(raw_nodes):
 
     for n in agg_nodes:
         n["vol_mb"] = round(n["vol_bytes"] / (1024 * 1024), 6) if n["vol_bytes"] > 0 else 0.0
+        if n["duration_cycles"] == 0:
+            del n["duration_cycles"]  # omit if no clock was provided
 
     agg_edges = [{"source": i - 1, "target": i} for i in range(1, len(agg_nodes))]
     return agg_nodes, agg_edges
@@ -200,6 +204,16 @@ def main():
         "--out",
         default="",
         help="Optional output JSON path (default: <prefix>_flow.json or *_semantic_flow.json).",
+    )
+    parser.add_argument(
+        "--gpu-clock-mhz",
+        type=float,
+        default=None,
+        help=(
+            "GPU SM clock in MHz used to convert duration_ns → duration_cycles. "
+            "Pass the boost clock (e.g. 1590 for T4, 1410 for A100). "
+            "If omitted, duration_cycles is not added to nodes."
+        ),
     )
     args = parser.parse_args()
 
@@ -274,6 +288,9 @@ def main():
             "duration_ns": duration_ns,
             "stream_id": stream_id,
         }
+
+        if args.gpu_clock_mhz and duration_ns > 0:
+            node["duration_cycles"] = int(duration_ns * args.gpu_clock_mhz / 1000.0)
 
         if op_type == "kernel":
             node["grid"] = {
