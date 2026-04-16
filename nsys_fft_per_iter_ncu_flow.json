@@ -13,10 +13,12 @@
         },
         "sm_metric_totals": {
             "l1_bytes": 2624716800,
-            "l2_bytes": 2586465600,
-            "dram_bytes": 1444102400,
-            "l2_mb": 2466.65,
-            "dram_mb": 1377.2,
+            "l2_bytes": 2574684800,
+            "dram_bytes": 1259641600,
+            "cycles_elapsed": 528109000.0,
+            "cycles_active": 451780150.0,
+            "l2_mb": 2455.4,
+            "dram_mb": 1201.3,
             "l1_mb": 2503.1
         }
     },
@@ -88,10 +90,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -149,10 +153,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -210,10 +216,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -271,10 +279,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -332,10 +342,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -393,10 +405,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -454,10 +468,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -515,10 +531,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -576,10 +594,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -637,10 +657,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -698,10 +720,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -759,10 +783,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -820,10 +846,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -881,10 +909,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -942,10 +972,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -1003,10 +1035,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -1064,10 +1098,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -1125,10 +1161,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -1186,10 +1224,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -1247,10 +1287,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -1308,10 +1350,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -1369,10 +1413,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -1430,10 +1476,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -1491,10 +1539,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -1552,10 +1602,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -1613,10 +1665,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -1674,10 +1728,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -1735,10 +1791,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -1796,10 +1854,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -1857,10 +1917,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -1918,10 +1980,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -1979,10 +2043,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -2040,10 +2106,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -2101,10 +2169,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -2162,10 +2232,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -2223,10 +2295,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -2284,10 +2358,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -2345,10 +2421,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -2406,10 +2484,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -2467,10 +2547,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -2528,10 +2610,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -2589,10 +2673,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -2650,10 +2736,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -2711,10 +2799,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -2772,10 +2862,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -2833,10 +2925,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -2894,10 +2988,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -2955,10 +3051,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -3016,10 +3114,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
@@ -3077,10 +3177,12 @@
             },
             "sm_metrics": {
                 "l1_bytes": 52494336,
-                "l2_bytes": 51729312,
-                "dram_bytes": 28882048,
-                "l2_mb": 49.333,
-                "dram_mb": 27.544,
+                "l2_bytes": 51493696,
+                "dram_bytes": 25192832,
+                "cycles_elapsed": 10562180,
+                "cycles_active": 9035603,
+                "l2_mb": 49.108,
+                "dram_mb": 24.026,
                 "l1_mb": 50.062
             },
             "ncu_invocation_count": 3
