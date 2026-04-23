@@ -142,6 +142,7 @@ def aggregate_semantic(raw_nodes):
                     "op_name": stage.upper(),
                     "duration_ns": 0,
                     "duration_cycles": 0,
+                    "cycles_at_end": 0,
                     "event_count": 0,
                     "op_names": [],
                 }
@@ -152,6 +153,8 @@ def aggregate_semantic(raw_nodes):
         cur["vol_bytes"] += int(n.get("vol_bytes", n.get("vol", 0)))
         cur["duration_ns"] += int(n.get("duration_ns", 0))
         cur["duration_cycles"] += int(n.get("duration_cycles", 0))
+        # cycles_at_end is the absolute interrupt point — keep the latest one.
+        cur["cycles_at_end"] = max(cur["cycles_at_end"], int(n.get("cycles_at_end", 0)))
         cur["event_count"] += 1
         opn = n.get("op_name", "")
         if opn and len(cur["op_names"]) < 10 and opn not in cur["op_names"]:
@@ -161,6 +164,8 @@ def aggregate_semantic(raw_nodes):
         n["vol_mb"] = round(n["vol_bytes"] / (1024 * 1024), 6) if n["vol_bytes"] > 0 else 0.0
         if n["duration_cycles"] == 0:
             del n["duration_cycles"]  # omit if no clock was provided
+        if n["cycles_at_end"] == 0:
+            del n["cycles_at_end"]
 
     agg_edges = [{"source": i - 1, "target": i} for i in range(1, len(agg_nodes))]
     return agg_nodes, agg_edges
@@ -257,6 +262,9 @@ def main():
     fallback_name_mapping_count = 0
     transfer_totals = {"h2d_bytes": 0, "d2h_bytes": 0, "d2d_bytes": 0, "h2h_bytes": 0}
 
+    # Baseline timestamp: start of the first event (rows are sorted by start time).
+    first_start_ns = to_int(rows[0].get(start_col), 0) if (rows and start_col) else 0
+
     for i, r in enumerate(rows):
         op = r.get(name_col, "") if name_col else ""
         src_mem = r.get(src_mem_kind_col, "") if src_mem_kind_col else ""
@@ -267,7 +275,9 @@ def main():
         vol = parse_volume(r, bytes_col) if bytes_col else 0
         op_type, subtype = classify_op(op, src, dst)
         direction = direction_from_subtype(op_type, subtype)
+        start_ns = to_int(r.get(start_col), 0) if start_col else 0
         duration_ns = to_int(r.get(duration_col), 0) if duration_col else 0
+        end_ns = start_ns + duration_ns
         stream_id = to_int(r.get(stream_col), -1) if stream_col else -1
         vol_mb = round(vol / (1024 * 1024), 6) if vol > 0 else 0.0
 
@@ -291,6 +301,9 @@ def main():
 
         if args.gpu_clock_mhz and duration_ns > 0:
             node["duration_cycles"] = int(duration_ns * args.gpu_clock_mhz / 1000.0)
+            # Cycles elapsed from trace start to the END of this node — the
+            # interrupt fires here, and this is how many cycles have run total.
+            node["cycles_at_end"] = int((end_ns - first_start_ns) * args.gpu_clock_mhz / 1000.0)
 
         if op_type == "kernel":
             node["grid"] = {

@@ -27,7 +27,11 @@
             "duration_ns": 20597361,
             "stream_id": 7,
             "duration_cycles": 63954805,
-            "cycles_at_end": 63954805
+            "cycles_at_end": 63954805,
+            "interrupt_after": true,
+            "interrupt_event_index": 0,
+            "cycles_this_node": 63954805,
+            "cumulative_cycles_at_interrupt": 63954805
         },
         {
             "id": 1,
@@ -43,7 +47,11 @@
             "duration_ns": 512,
             "stream_id": 7,
             "duration_cycles": 1589,
-            "cycles_at_end": 64024950
+            "cycles_at_end": 64024950,
+            "interrupt_after": true,
+            "interrupt_event_index": 1,
+            "cycles_this_node": 1589,
+            "cumulative_cycles_at_interrupt": 64024950
         },
         {
             "id": 2,
@@ -59,7 +67,11 @@
             "duration_ns": 704435,
             "stream_id": 13,
             "duration_cycles": 2187270,
-            "cycles_at_end": 67658378
+            "cycles_at_end": 67658378,
+            "interrupt_after": true,
+            "interrupt_event_index": 2,
+            "cycles_this_node": 2187270,
+            "cumulative_cycles_at_interrupt": 67658378
         },
         {
             "id": 3,
@@ -85,7 +97,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 3,
+            "cycles_this_node": 210438,
+            "cumulative_cycles_at_interrupt": 67884018
         },
         {
             "id": 4,
@@ -101,7 +117,11 @@
             "duration_ns": 640212,
             "stream_id": 13,
             "duration_cycles": 1987858,
-            "cycles_at_end": 69884893
+            "cycles_at_end": 69884893,
+            "interrupt_after": true,
+            "interrupt_event_index": 4,
+            "cycles_this_node": 1987858,
+            "cumulative_cycles_at_interrupt": 69884893
         },
         {
             "id": 5,
@@ -117,7 +137,11 @@
             "duration_ns": 687250,
             "stream_id": 13,
             "duration_cycles": 2133911,
-            "cycles_at_end": 72039073
+            "cycles_at_end": 72039073,
+            "interrupt_after": true,
+            "interrupt_event_index": 5,
+            "cycles_this_node": 2133911,
+            "cumulative_cycles_at_interrupt": 72039073
         },
         {
             "id": 6,
@@ -143,7 +167,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 6,
+            "cycles_this_node": 208851,
+            "cumulative_cycles_at_interrupt": 72277534
         },
         {
             "id": 7,
@@ -159,7 +187,11 @@
             "duration_ns": 639860,
             "stream_id": 13,
             "duration_cycles": 1986765,
-            "cycles_at_end": 74289236
+            "cycles_at_end": 74289236,
+            "interrupt_after": true,
+            "interrupt_event_index": 7,
+            "cycles_this_node": 1986765,
+            "cumulative_cycles_at_interrupt": 74289236
         },
         {
             "id": 8,
@@ -175,7 +207,11 @@
             "duration_ns": 684179,
             "stream_id": 13,
             "duration_cycles": 2124375,
-            "cycles_at_end": 76448984
+            "cycles_at_end": 76448984,
+            "interrupt_after": true,
+            "interrupt_event_index": 8,
+            "cycles_this_node": 2124375,
+            "cumulative_cycles_at_interrupt": 76448984
         },
         {
             "id": 9,
@@ -201,7 +237,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 9,
+            "cycles_this_node": 205172,
+            "cumulative_cycles_at_interrupt": 76670054
         },
         {
             "id": 10,
@@ -217,7 +257,11 @@
             "duration_ns": 640564,
             "stream_id": 13,
             "duration_cycles": 1988951,
-            "cycles_at_end": 78662383
+            "cycles_at_end": 78662383,
+            "interrupt_after": true,
+            "interrupt_event_index": 10,
+            "cycles_this_node": 1988951,
+            "cumulative_cycles_at_interrupt": 78662383
         },
         {
             "id": 11,
@@ -233,7 +277,11 @@
             "duration_ns": 689234,
             "stream_id": 13,
             "duration_cycles": 2140071,
-            "cycles_at_end": 80839715
+            "cycles_at_end": 80839715,
+            "interrupt_after": true,
+            "interrupt_event_index": 11,
+            "cycles_this_node": 2140071,
+            "cumulative_cycles_at_interrupt": 80839715
         },
         {
             "id": 12,
@@ -259,7 +307,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 12,
+            "cycles_this_node": 204777,
+            "cumulative_cycles_at_interrupt": 81074201
         },
         {
             "id": 13,
@@ -275,7 +327,11 @@
             "duration_ns": 639668,
             "stream_id": 13,
             "duration_cycles": 1986169,
-            "cycles_at_end": 83066332
+            "cycles_at_end": 83066332,
+            "interrupt_after": true,
+            "interrupt_event_index": 13,
+            "cycles_this_node": 1986169,
+            "cumulative_cycles_at_interrupt": 83066332
         },
         {
             "id": 14,
@@ -291,7 +347,11 @@
             "duration_ns": 684371,
             "stream_id": 13,
             "duration_cycles": 2124971,
-            "cycles_at_end": 85215346
+            "cycles_at_end": 85215346,
+            "interrupt_after": true,
+            "interrupt_event_index": 14,
+            "cycles_this_node": 2124971,
+            "cumulative_cycles_at_interrupt": 85215346
         },
         {
             "id": 15,
@@ -317,7 +377,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 15,
+            "cycles_this_node": 210636,
+            "cumulative_cycles_at_interrupt": 85458176
         },
         {
             "id": 16,
@@ -333,7 +397,11 @@
             "duration_ns": 640403,
             "stream_id": 13,
             "duration_cycles": 1988451,
-            "cycles_at_end": 87469781
+            "cycles_at_end": 87469781,
+            "interrupt_after": true,
+            "interrupt_event_index": 16,
+            "cycles_this_node": 1988451,
+            "cumulative_cycles_at_interrupt": 87469781
         },
         {
             "id": 17,
@@ -349,7 +417,11 @@
             "duration_ns": 696402,
             "stream_id": 13,
             "duration_cycles": 2162328,
-            "cycles_at_end": 89669071
+            "cycles_at_end": 89669071,
+            "interrupt_after": true,
+            "interrupt_event_index": 17,
+            "cycles_this_node": 2162328,
+            "cumulative_cycles_at_interrupt": 89669071
         },
         {
             "id": 18,
@@ -375,7 +447,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 18,
+            "cycles_this_node": 205075,
+            "cumulative_cycles_at_interrupt": 89907035
         },
         {
             "id": 19,
@@ -391,7 +467,11 @@
             "duration_ns": 640819,
             "stream_id": 13,
             "duration_cycles": 1989742,
-            "cycles_at_end": 91922314
+            "cycles_at_end": 91922314,
+            "interrupt_after": true,
+            "interrupt_event_index": 19,
+            "cycles_this_node": 1989742,
+            "cumulative_cycles_at_interrupt": 91922314
         },
         {
             "id": 20,
@@ -407,7 +487,11 @@
             "duration_ns": 689779,
             "stream_id": 13,
             "duration_cycles": 2141763,
-            "cycles_at_end": 94086930
+            "cycles_at_end": 94086930,
+            "interrupt_after": true,
+            "interrupt_event_index": 20,
+            "cycles_this_node": 2141763,
+            "cumulative_cycles_at_interrupt": 94086930
         },
         {
             "id": 21,
@@ -433,7 +517,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 21,
+            "cycles_this_node": 214313,
+            "cumulative_cycles_at_interrupt": 94313067
         },
         {
             "id": 22,
@@ -449,7 +537,11 @@
             "duration_ns": 639636,
             "stream_id": 13,
             "duration_cycles": 1986069,
-            "cycles_at_end": 96322189
+            "cycles_at_end": 96322189,
+            "interrupt_after": true,
+            "interrupt_event_index": 22,
+            "cycles_this_node": 1986069,
+            "cumulative_cycles_at_interrupt": 96322189
         },
         {
             "id": 23,
@@ -465,7 +557,11 @@
             "duration_ns": 695283,
             "stream_id": 13,
             "duration_cycles": 2158853,
-            "cycles_at_end": 98504389
+            "cycles_at_end": 98504389,
+            "interrupt_after": true,
+            "interrupt_event_index": 23,
+            "cycles_this_node": 2158853,
+            "cumulative_cycles_at_interrupt": 98504389
         },
         {
             "id": 24,
@@ -491,7 +587,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 24,
+            "cycles_this_node": 210739,
+            "cumulative_cycles_at_interrupt": 98745234
         },
         {
             "id": 25,
@@ -507,7 +607,11 @@
             "duration_ns": 641171,
             "stream_id": 13,
             "duration_cycles": 1990835,
-            "cycles_at_end": 100740144
+            "cycles_at_end": 100740144,
+            "interrupt_after": true,
+            "interrupt_event_index": 25,
+            "cycles_this_node": 1990835,
+            "cumulative_cycles_at_interrupt": 100740144
         },
         {
             "id": 26,
@@ -523,7 +627,11 @@
             "duration_ns": 690867,
             "stream_id": 13,
             "duration_cycles": 2145142,
-            "cycles_at_end": 102907046
+            "cycles_at_end": 102907046,
+            "interrupt_after": true,
+            "interrupt_event_index": 26,
+            "cycles_this_node": 2145142,
+            "cumulative_cycles_at_interrupt": 102907046
         },
         {
             "id": 27,
@@ -549,7 +657,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 27,
+            "cycles_this_node": 207361,
+            "cumulative_cycles_at_interrupt": 103145504
         },
         {
             "id": 28,
@@ -565,7 +677,11 @@
             "duration_ns": 639796,
             "stream_id": 13,
             "duration_cycles": 1986566,
-            "cycles_at_end": 105136144
+            "cycles_at_end": 105136144,
+            "interrupt_after": true,
+            "interrupt_event_index": 28,
+            "cycles_this_node": 1986566,
+            "cumulative_cycles_at_interrupt": 105136144
         },
         {
             "id": 29,
@@ -581,7 +697,11 @@
             "duration_ns": 687858,
             "stream_id": 13,
             "duration_cycles": 2135799,
-            "cycles_at_end": 107310694
+            "cycles_at_end": 107310694,
+            "interrupt_after": true,
+            "interrupt_event_index": 29,
+            "cycles_this_node": 2135799,
+            "cumulative_cycles_at_interrupt": 107310694
         },
         {
             "id": 30,
@@ -607,7 +727,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 30,
+            "cycles_this_node": 207559,
+            "cumulative_cycles_at_interrupt": 107545975
         },
         {
             "id": 31,
@@ -623,7 +747,11 @@
             "duration_ns": 640275,
             "stream_id": 13,
             "duration_cycles": 1988053,
-            "cycles_at_end": 109538103
+            "cycles_at_end": 109538103,
+            "interrupt_after": true,
+            "interrupt_event_index": 31,
+            "cycles_this_node": 1988053,
+            "cumulative_cycles_at_interrupt": 109538103
         },
         {
             "id": 32,
@@ -639,7 +767,11 @@
             "duration_ns": 688467,
             "stream_id": 13,
             "duration_cycles": 2137690,
-            "cycles_at_end": 111690697
+            "cycles_at_end": 111690697,
+            "interrupt_after": true,
+            "interrupt_event_index": 32,
+            "cycles_this_node": 2137690,
+            "cumulative_cycles_at_interrupt": 111690697
         },
         {
             "id": 33,
@@ -665,7 +797,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 33,
+            "cycles_this_node": 204877,
+            "cumulative_cycles_at_interrupt": 111927763
         },
         {
             "id": 34,
@@ -681,7 +817,11 @@
             "duration_ns": 640468,
             "stream_id": 13,
             "duration_cycles": 1988653,
-            "cycles_at_end": 113942151
+            "cycles_at_end": 113942151,
+            "interrupt_after": true,
+            "interrupt_event_index": 34,
+            "cycles_this_node": 1988653,
+            "cumulative_cycles_at_interrupt": 113942151
         },
         {
             "id": 35,
@@ -697,7 +837,11 @@
             "duration_ns": 696339,
             "stream_id": 13,
             "duration_cycles": 2162132,
-            "cycles_at_end": 116128226
+            "cycles_at_end": 116128226,
+            "interrupt_after": true,
+            "interrupt_event_index": 35,
+            "cycles_this_node": 2162132,
+            "cumulative_cycles_at_interrupt": 116128226
         },
         {
             "id": 36,
@@ -723,7 +867,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 36,
+            "cycles_this_node": 204181,
+            "cumulative_cycles_at_interrupt": 116359235
         },
         {
             "id": 37,
@@ -739,7 +887,11 @@
             "duration_ns": 639859,
             "stream_id": 13,
             "duration_cycles": 1986762,
-            "cycles_at_end": 118353350
+            "cycles_at_end": 118353350,
+            "interrupt_after": true,
+            "interrupt_event_index": 37,
+            "cycles_this_node": 1986762,
+            "cumulative_cycles_at_interrupt": 118353350
         },
         {
             "id": 38,
@@ -755,7 +907,11 @@
             "duration_ns": 691987,
             "stream_id": 13,
             "duration_cycles": 2148619,
-            "cycles_at_end": 120524623
+            "cycles_at_end": 120524623,
+            "interrupt_after": true,
+            "interrupt_event_index": 38,
+            "cycles_this_node": 2148619,
+            "cumulative_cycles_at_interrupt": 120524623
         },
         {
             "id": 39,
@@ -781,7 +937,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 39,
+            "cycles_this_node": 211729,
+            "cumulative_cycles_at_interrupt": 120748773
         },
         {
             "id": 40,
@@ -797,7 +957,11 @@
             "duration_ns": 640212,
             "stream_id": 13,
             "duration_cycles": 1987858,
-            "cycles_at_end": 122757994
+            "cycles_at_end": 122757994,
+            "interrupt_after": true,
+            "interrupt_event_index": 40,
+            "cycles_this_node": 1987858,
+            "cumulative_cycles_at_interrupt": 122757994
         },
         {
             "id": 41,
@@ -813,7 +977,11 @@
             "duration_ns": 687378,
             "stream_id": 13,
             "duration_cycles": 2134308,
-            "cycles_at_end": 124910784
+            "cycles_at_end": 124910784,
+            "interrupt_after": true,
+            "interrupt_event_index": 41,
+            "cycles_this_node": 2134308,
+            "cumulative_cycles_at_interrupt": 124910784
         },
         {
             "id": 42,
@@ -839,7 +1007,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 42,
+            "cycles_this_node": 209348,
+            "cumulative_cycles_at_interrupt": 125149245
         },
         {
             "id": 43,
@@ -855,7 +1027,11 @@
             "duration_ns": 640179,
             "stream_id": 13,
             "duration_cycles": 1987755,
-            "cycles_at_end": 127141770
+            "cycles_at_end": 127141770,
+            "interrupt_after": true,
+            "interrupt_event_index": 43,
+            "cycles_this_node": 1987755,
+            "cumulative_cycles_at_interrupt": 127141770
         },
         {
             "id": 44,
@@ -871,7 +1047,11 @@
             "duration_ns": 687411,
             "stream_id": 13,
             "duration_cycles": 2134411,
-            "cycles_at_end": 129292078
+            "cycles_at_end": 129292078,
+            "interrupt_after": true,
+            "interrupt_event_index": 44,
+            "cycles_this_node": 2134411,
+            "cumulative_cycles_at_interrupt": 129292078
         },
         {
             "id": 45,
@@ -897,7 +1077,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 45,
+            "cycles_this_node": 203880,
+            "cumulative_cycles_at_interrupt": 129525171
         },
         {
             "id": 46,
@@ -913,7 +1097,11 @@
             "duration_ns": 639476,
             "stream_id": 13,
             "duration_cycles": 1985572,
-            "cycles_at_end": 131520680
+            "cycles_at_end": 131520680,
+            "interrupt_after": true,
+            "interrupt_event_index": 46,
+            "cycles_this_node": 1985572,
+            "cumulative_cycles_at_interrupt": 131520680
         },
         {
             "id": 47,
@@ -929,7 +1117,11 @@
             "duration_ns": 686290,
             "stream_id": 13,
             "duration_cycles": 2130930,
-            "cycles_at_end": 133675357
+            "cycles_at_end": 133675357,
+            "interrupt_after": true,
+            "interrupt_event_index": 47,
+            "cycles_this_node": 2130930,
+            "cumulative_cycles_at_interrupt": 133675357
         },
         {
             "id": 48,
@@ -955,7 +1147,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 48,
+            "cycles_this_node": 205572,
+            "cumulative_cycles_at_interrupt": 133892257
         },
         {
             "id": 49,
@@ -971,7 +1167,11 @@
             "duration_ns": 646292,
             "stream_id": 13,
             "duration_cycles": 2006736,
-            "cycles_at_end": 135901776
+            "cycles_at_end": 135901776,
+            "interrupt_after": true,
+            "interrupt_event_index": 49,
+            "cycles_this_node": 2006736,
+            "cumulative_cycles_at_interrupt": 135901776
         },
         {
             "id": 50,
@@ -987,7 +1187,11 @@
             "duration_ns": 685075,
             "stream_id": 13,
             "duration_cycles": 2127157,
-            "cycles_at_end": 138047511
+            "cycles_at_end": 138047511,
+            "interrupt_after": true,
+            "interrupt_event_index": 50,
+            "cycles_this_node": 2127157,
+            "cumulative_cycles_at_interrupt": 138047511
         },
         {
             "id": 51,
@@ -1013,7 +1217,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 51,
+            "cycles_this_node": 208649,
+            "cumulative_cycles_at_interrupt": 138285472
         },
         {
             "id": 52,
@@ -1029,7 +1237,11 @@
             "duration_ns": 641235,
             "stream_id": 13,
             "duration_cycles": 1991034,
-            "cycles_at_end": 140301250
+            "cycles_at_end": 140301250,
+            "interrupt_after": true,
+            "interrupt_event_index": 52,
+            "cycles_this_node": 1991034,
+            "cumulative_cycles_at_interrupt": 140301250
         },
         {
             "id": 53,
@@ -1045,7 +1257,11 @@
             "duration_ns": 689746,
             "stream_id": 13,
             "duration_cycles": 2141661,
-            "cycles_at_end": 142471825
+            "cycles_at_end": 142471825,
+            "interrupt_after": true,
+            "interrupt_event_index": 53,
+            "cycles_this_node": 2141661,
+            "cumulative_cycles_at_interrupt": 142471825
         },
         {
             "id": 54,
@@ -1071,7 +1287,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 54,
+            "cycles_this_node": 212031,
+            "cumulative_cycles_at_interrupt": 142712075
         },
         {
             "id": 55,
@@ -1087,7 +1307,11 @@
             "duration_ns": 639636,
             "stream_id": 13,
             "duration_cycles": 1986069,
-            "cycles_at_end": 144703212
+            "cycles_at_end": 144703212,
+            "interrupt_after": true,
+            "interrupt_event_index": 55,
+            "cycles_this_node": 1986069,
+            "cumulative_cycles_at_interrupt": 144703212
         },
         {
             "id": 56,
@@ -1103,7 +1327,11 @@
             "duration_ns": 686899,
             "stream_id": 13,
             "duration_cycles": 2132821,
-            "cycles_at_end": 146856995
+            "cycles_at_end": 146856995,
+            "interrupt_after": true,
+            "interrupt_event_index": 56,
+            "cycles_this_node": 2132821,
+            "cumulative_cycles_at_interrupt": 146856995
         },
         {
             "id": 57,
@@ -1129,7 +1357,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 57,
+            "cycles_this_node": 209348,
+            "cumulative_cycles_at_interrupt": 147097046
         },
         {
             "id": 58,
@@ -1145,7 +1377,11 @@
             "duration_ns": 640468,
             "stream_id": 13,
             "duration_cycles": 1988653,
-            "cycles_at_end": 149088080
+            "cycles_at_end": 149088080,
+            "interrupt_after": true,
+            "interrupt_event_index": 58,
+            "cycles_this_node": 1988653,
+            "cumulative_cycles_at_interrupt": 149088080
         },
         {
             "id": 59,
@@ -1161,7 +1397,11 @@
             "duration_ns": 686643,
             "stream_id": 13,
             "duration_cycles": 2132026,
-            "cycles_at_end": 151240774
+            "cycles_at_end": 151240774,
+            "interrupt_after": true,
+            "interrupt_event_index": 59,
+            "cycles_this_node": 2132026,
+            "cumulative_cycles_at_interrupt": 151240774
         },
         {
             "id": 60,
@@ -1187,7 +1427,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 60,
+            "cycles_this_node": 207559,
+            "cumulative_cycles_at_interrupt": 151479728
         },
         {
             "id": 61,
@@ -1203,7 +1447,11 @@
             "duration_ns": 639924,
             "stream_id": 13,
             "duration_cycles": 1986964,
-            "cycles_at_end": 153492923
+            "cycles_at_end": 153492923,
+            "interrupt_after": true,
+            "interrupt_event_index": 61,
+            "cycles_this_node": 1986964,
+            "cumulative_cycles_at_interrupt": 153492923
         },
         {
             "id": 62,
@@ -1219,7 +1467,11 @@
             "duration_ns": 685522,
             "stream_id": 13,
             "duration_cycles": 2128545,
-            "cycles_at_end": 155656643
+            "cycles_at_end": 155656643,
+            "interrupt_after": true,
+            "interrupt_event_index": 62,
+            "cycles_this_node": 2128545,
+            "cumulative_cycles_at_interrupt": 155656643
         },
         {
             "id": 63,
@@ -1245,7 +1497,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 63,
+            "cycles_this_node": 205870,
+            "cumulative_cycles_at_interrupt": 155874934
         },
         {
             "id": 64,
@@ -1261,7 +1517,11 @@
             "duration_ns": 639603,
             "stream_id": 13,
             "duration_cycles": 1985967,
-            "cycles_at_end": 157869247
+            "cycles_at_end": 157869247,
+            "interrupt_after": true,
+            "interrupt_event_index": 64,
+            "cycles_this_node": 1985967,
+            "cumulative_cycles_at_interrupt": 157869247
         },
         {
             "id": 65,
@@ -1277,7 +1537,11 @@
             "duration_ns": 684691,
             "stream_id": 13,
             "duration_cycles": 2125965,
-            "cycles_at_end": 160028995
+            "cycles_at_end": 160028995,
+            "interrupt_after": true,
+            "interrupt_event_index": 65,
+            "cycles_this_node": 2125965,
+            "cumulative_cycles_at_interrupt": 160028995
         },
         {
             "id": 66,
@@ -1303,7 +1567,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 66,
+            "cycles_this_node": 206265,
+            "cumulative_cycles_at_interrupt": 160266459
         },
         {
             "id": 67,
@@ -1319,7 +1587,11 @@
             "duration_ns": 639508,
             "stream_id": 13,
             "duration_cycles": 1985672,
-            "cycles_at_end": 162259782
+            "cycles_at_end": 162259782,
+            "interrupt_after": true,
+            "interrupt_event_index": 67,
+            "cycles_this_node": 1985672,
+            "cumulative_cycles_at_interrupt": 162259782
         },
         {
             "id": 68,
@@ -1335,7 +1607,11 @@
             "duration_ns": 694034,
             "stream_id": 13,
             "duration_cycles": 2154975,
-            "cycles_at_end": 164439399
+            "cycles_at_end": 164439399,
+            "interrupt_after": true,
+            "interrupt_event_index": 68,
+            "cycles_this_node": 2154975,
+            "cumulative_cycles_at_interrupt": 164439399
         },
         {
             "id": 69,
@@ -1361,7 +1637,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 69,
+            "cycles_this_node": 206069,
+            "cumulative_cycles_at_interrupt": 164663155
         },
         {
             "id": 70,
@@ -1377,7 +1657,11 @@
             "duration_ns": 639923,
             "stream_id": 13,
             "duration_cycles": 1986960,
-            "cycles_at_end": 166674260
+            "cycles_at_end": 166674260,
+            "interrupt_after": true,
+            "interrupt_event_index": 70,
+            "cycles_this_node": 1986960,
+            "cumulative_cycles_at_interrupt": 166674260
         },
         {
             "id": 71,
@@ -1393,7 +1677,11 @@
             "duration_ns": 690195,
             "stream_id": 13,
             "duration_cycles": 2143055,
-            "cycles_at_end": 168840467
+            "cycles_at_end": 168840467,
+            "interrupt_after": true,
+            "interrupt_event_index": 71,
+            "cycles_this_node": 2143055,
+            "cumulative_cycles_at_interrupt": 168840467
         },
         {
             "id": 72,
@@ -1419,7 +1707,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 72,
+            "cycles_this_node": 210636,
+            "cumulative_cycles_at_interrupt": 169062729
         },
         {
             "id": 73,
@@ -1435,7 +1727,11 @@
             "duration_ns": 640051,
             "stream_id": 13,
             "duration_cycles": 1987358,
-            "cycles_at_end": 171066186
+            "cycles_at_end": 171066186,
+            "interrupt_after": true,
+            "interrupt_event_index": 73,
+            "cycles_this_node": 1987358,
+            "cumulative_cycles_at_interrupt": 171066186
         },
         {
             "id": 74,
@@ -1451,7 +1747,11 @@
             "duration_ns": 686611,
             "stream_id": 13,
             "duration_cycles": 2131927,
-            "cycles_at_end": 173220171
+            "cycles_at_end": 173220171,
+            "interrupt_after": true,
+            "interrupt_event_index": 74,
+            "cycles_this_node": 2131927,
+            "cumulative_cycles_at_interrupt": 173220171
         },
         {
             "id": 75,
@@ -1477,7 +1777,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 75,
+            "cycles_this_node": 202191,
+            "cumulative_cycles_at_interrupt": 173444123
         },
         {
             "id": 76,
@@ -1493,7 +1797,11 @@
             "duration_ns": 639572,
             "stream_id": 13,
             "duration_cycles": 1985871,
-            "cycles_at_end": 175433372
+            "cycles_at_end": 175433372,
+            "interrupt_after": true,
+            "interrupt_event_index": 76,
+            "cycles_this_node": 1985871,
+            "cumulative_cycles_at_interrupt": 175433372
         },
         {
             "id": 77,
@@ -1509,7 +1817,11 @@
             "duration_ns": 693971,
             "stream_id": 13,
             "duration_cycles": 2154779,
-            "cycles_at_end": 177633954
+            "cycles_at_end": 177633954,
+            "interrupt_after": true,
+            "interrupt_event_index": 77,
+            "cycles_this_node": 2154779,
+            "cumulative_cycles_at_interrupt": 177633954
         },
         {
             "id": 78,
@@ -1535,7 +1847,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 78,
+            "cycles_this_node": 207457,
+            "cumulative_cycles_at_interrupt": 177869133
         },
         {
             "id": 79,
@@ -1551,7 +1867,11 @@
             "duration_ns": 640819,
             "stream_id": 13,
             "duration_cycles": 1989742,
-            "cycles_at_end": 179865337
+            "cycles_at_end": 179865337,
+            "interrupt_after": true,
+            "interrupt_event_index": 79,
+            "cycles_this_node": 1989742,
+            "cumulative_cycles_at_interrupt": 179865337
         },
         {
             "id": 80,
@@ -1567,7 +1887,11 @@
             "duration_ns": 690578,
             "stream_id": 13,
             "duration_cycles": 2144244,
-            "cycles_at_end": 182026871
+            "cycles_at_end": 182026871,
+            "interrupt_after": true,
+            "interrupt_event_index": 80,
+            "cycles_this_node": 2144244,
+            "cumulative_cycles_at_interrupt": 182026871
         },
         {
             "id": 81,
@@ -1593,7 +1917,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 81,
+            "cycles_this_node": 204082,
+            "cumulative_cycles_at_interrupt": 182253011
         },
         {
             "id": 82,
@@ -1609,7 +1937,11 @@
             "duration_ns": 639348,
             "stream_id": 13,
             "duration_cycles": 1985175,
-            "cycles_at_end": 184265113
+            "cycles_at_end": 184265113,
+            "interrupt_after": true,
+            "interrupt_event_index": 82,
+            "cycles_this_node": 1985175,
+            "cumulative_cycles_at_interrupt": 184265113
         },
         {
             "id": 83,
@@ -1625,7 +1957,11 @@
             "duration_ns": 688082,
             "stream_id": 13,
             "duration_cycles": 2136494,
-            "cycles_at_end": 186422672
+            "cycles_at_end": 186422672,
+            "interrupt_after": true,
+            "interrupt_event_index": 83,
+            "cycles_this_node": 2136494,
+            "cumulative_cycles_at_interrupt": 186422672
         },
         {
             "id": 84,
@@ -1651,7 +1987,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 84,
+            "cycles_this_node": 215310,
+            "cumulative_cycles_at_interrupt": 186649806
         },
         {
             "id": 85,
@@ -1667,7 +2007,11 @@
             "duration_ns": 640915,
             "stream_id": 13,
             "duration_cycles": 1990041,
-            "cycles_at_end": 188653658
+            "cycles_at_end": 188653658,
+            "interrupt_after": true,
+            "interrupt_event_index": 85,
+            "cycles_this_node": 1990041,
+            "cumulative_cycles_at_interrupt": 188653658
         },
         {
             "id": 86,
@@ -1683,7 +2027,11 @@
             "duration_ns": 688979,
             "stream_id": 13,
             "duration_cycles": 2139279,
-            "cycles_at_end": 190808040
+            "cycles_at_end": 190808040,
+            "interrupt_after": true,
+            "interrupt_event_index": 86,
+            "cycles_this_node": 2139279,
+            "cumulative_cycles_at_interrupt": 190808040
         },
         {
             "id": 87,
@@ -1709,7 +2057,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 87,
+            "cycles_this_node": 208454,
+            "cumulative_cycles_at_interrupt": 191049081
         },
         {
             "id": 88,
@@ -1725,7 +2077,11 @@
             "duration_ns": 640404,
             "stream_id": 13,
             "duration_cycles": 1988454,
-            "cycles_at_end": 193040715
+            "cycles_at_end": 193040715,
+            "interrupt_after": true,
+            "interrupt_event_index": 88,
+            "cycles_this_node": 1988454,
+            "cumulative_cycles_at_interrupt": 193040715
         },
         {
             "id": 89,
@@ -1741,7 +2097,11 @@
             "duration_ns": 686258,
             "stream_id": 13,
             "duration_cycles": 2130831,
-            "cycles_at_end": 195198771
+            "cycles_at_end": 195198771,
+            "interrupt_after": true,
+            "interrupt_event_index": 89,
+            "cycles_this_node": 2130831,
+            "cumulative_cycles_at_interrupt": 195198771
         },
         {
             "id": 90,
@@ -1767,7 +2127,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 90,
+            "cycles_this_node": 208354,
+            "cumulative_cycles_at_interrupt": 195423520
         },
         {
             "id": 91,
@@ -1783,7 +2147,11 @@
             "duration_ns": 647283,
             "stream_id": 13,
             "duration_cycles": 2009813,
-            "cycles_at_end": 197455094
+            "cycles_at_end": 197455094,
+            "interrupt_after": true,
+            "interrupt_event_index": 91,
+            "cycles_this_node": 2009813,
+            "cumulative_cycles_at_interrupt": 197455094
         },
         {
             "id": 92,
@@ -1799,7 +2167,11 @@
             "duration_ns": 686291,
             "stream_id": 13,
             "duration_cycles": 2130933,
-            "cycles_at_end": 199624679
+            "cycles_at_end": 199624679,
+            "interrupt_after": true,
+            "interrupt_event_index": 92,
+            "cycles_this_node": 2130933,
+            "cumulative_cycles_at_interrupt": 199624679
         },
         {
             "id": 93,
@@ -1825,7 +2197,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 93,
+            "cycles_this_node": 207457,
+            "cumulative_cycles_at_interrupt": 199857771
         },
         {
             "id": 94,
@@ -1841,7 +2217,11 @@
             "duration_ns": 641972,
             "stream_id": 13,
             "duration_cycles": 1993323,
-            "cycles_at_end": 201854870
+            "cycles_at_end": 201854870,
+            "interrupt_after": true,
+            "interrupt_event_index": 94,
+            "cycles_this_node": 1993323,
+            "cumulative_cycles_at_interrupt": 201854870
         },
         {
             "id": 95,
@@ -1857,7 +2237,11 @@
             "duration_ns": 687635,
             "stream_id": 13,
             "duration_cycles": 2135106,
-            "cycles_at_end": 204010044
+            "cycles_at_end": 204010044,
+            "interrupt_after": true,
+            "interrupt_event_index": 95,
+            "cycles_this_node": 2135106,
+            "cumulative_cycles_at_interrupt": 204010044
         },
         {
             "id": 96,
@@ -1883,7 +2267,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 96,
+            "cycles_this_node": 210043,
+            "cumulative_cycles_at_interrupt": 204248505
         },
         {
             "id": 97,
@@ -1899,7 +2287,11 @@
             "duration_ns": 640083,
             "stream_id": 13,
             "duration_cycles": 1987457,
-            "cycles_at_end": 206240831
+            "cycles_at_end": 206240831,
+            "interrupt_after": true,
+            "interrupt_event_index": 97,
+            "cycles_this_node": 1987457,
+            "cumulative_cycles_at_interrupt": 206240831
         },
         {
             "id": 98,
@@ -1915,7 +2307,11 @@
             "duration_ns": 691315,
             "stream_id": 13,
             "duration_cycles": 2146533,
-            "cycles_at_end": 208402765
+            "cycles_at_end": 208402765,
+            "interrupt_after": true,
+            "interrupt_event_index": 98,
+            "cycles_this_node": 2146533,
+            "cumulative_cycles_at_interrupt": 208402765
         },
         {
             "id": 99,
@@ -1941,7 +2337,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 99,
+            "cycles_this_node": 215108,
+            "cumulative_cycles_at_interrupt": 208647582
         },
         {
             "id": 100,
@@ -1957,7 +2357,11 @@
             "duration_ns": 641300,
             "stream_id": 13,
             "duration_cycles": 1991236,
-            "cycles_at_end": 210663857
+            "cycles_at_end": 210663857,
+            "interrupt_after": true,
+            "interrupt_event_index": 100,
+            "cycles_this_node": 1991236,
+            "cumulative_cycles_at_interrupt": 210663857
         },
         {
             "id": 101,
@@ -1973,7 +2377,11 @@
             "duration_ns": 695538,
             "stream_id": 13,
             "duration_cycles": 2159645,
-            "cycles_at_end": 212838605
+            "cycles_at_end": 212838605,
+            "interrupt_after": true,
+            "interrupt_event_index": 101,
+            "cycles_this_node": 2159645,
+            "cumulative_cycles_at_interrupt": 212838605
         },
         {
             "id": 102,
@@ -1999,7 +2407,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 102,
+            "cycles_this_node": 211434,
+            "cumulative_cycles_at_interrupt": 213082531
         },
         {
             "id": 103,
@@ -2015,7 +2427,11 @@
             "duration_ns": 639924,
             "stream_id": 13,
             "duration_cycles": 1986964,
-            "cycles_at_end": 215085389
+            "cycles_at_end": 215085389,
+            "interrupt_after": true,
+            "interrupt_event_index": 103,
+            "cycles_this_node": 1986964,
+            "cumulative_cycles_at_interrupt": 215085389
         },
         {
             "id": 104,
@@ -2031,7 +2447,11 @@
             "duration_ns": 689618,
             "stream_id": 13,
             "duration_cycles": 2141263,
-            "cycles_at_end": 217261926
+            "cycles_at_end": 217261926,
+            "interrupt_after": true,
+            "interrupt_event_index": 104,
+            "cycles_this_node": 2141263,
+            "cumulative_cycles_at_interrupt": 217261926
         },
         {
             "id": 105,
@@ -2057,7 +2477,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 105,
+            "cycles_this_node": 206165,
+            "cumulative_cycles_at_interrupt": 217496611
         },
         {
             "id": 106,
@@ -2073,7 +2497,11 @@
             "duration_ns": 644915,
             "stream_id": 13,
             "duration_cycles": 2002461,
-            "cycles_at_end": 219510002
+            "cycles_at_end": 219510002,
+            "interrupt_after": true,
+            "interrupt_event_index": 106,
+            "cycles_this_node": 2002461,
+            "cumulative_cycles_at_interrupt": 219510002
         },
         {
             "id": 107,
@@ -2089,7 +2517,11 @@
             "duration_ns": 685811,
             "stream_id": 13,
             "duration_cycles": 2129443,
-            "cycles_at_end": 221656734
+            "cycles_at_end": 221656734,
+            "interrupt_after": true,
+            "interrupt_event_index": 107,
+            "cycles_this_node": 2129443,
+            "cumulative_cycles_at_interrupt": 221656734
         },
         {
             "id": 108,
@@ -2115,7 +2547,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 108,
+            "cycles_this_node": 212229,
+            "cumulative_cycles_at_interrupt": 221880489
         },
         {
             "id": 109,
@@ -2131,7 +2567,11 @@
             "duration_ns": 640980,
             "stream_id": 13,
             "duration_cycles": 1990242,
-            "cycles_at_end": 223895768
+            "cycles_at_end": 223895768,
+            "interrupt_after": true,
+            "interrupt_event_index": 109,
+            "cycles_this_node": 1990242,
+            "cumulative_cycles_at_interrupt": 223895768
         },
         {
             "id": 110,
@@ -2147,7 +2587,11 @@
             "duration_ns": 686227,
             "stream_id": 13,
             "duration_cycles": 2130734,
-            "cycles_at_end": 226048958
+            "cycles_at_end": 226048958,
+            "interrupt_after": true,
+            "interrupt_event_index": 110,
+            "cycles_this_node": 2130734,
+            "cumulative_cycles_at_interrupt": 226048958
         },
         {
             "id": 111,
@@ -2173,7 +2617,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 111,
+            "cycles_this_node": 207954,
+            "cumulative_cycles_at_interrupt": 226290894
         },
         {
             "id": 112,
@@ -2189,7 +2637,11 @@
             "duration_ns": 639572,
             "stream_id": 13,
             "duration_cycles": 1985871,
-            "cycles_at_end": 228279249
+            "cycles_at_end": 228279249,
+            "interrupt_after": true,
+            "interrupt_event_index": 112,
+            "cycles_this_node": 1985871,
+            "cumulative_cycles_at_interrupt": 228279249
         },
         {
             "id": 113,
@@ -2205,7 +2657,11 @@
             "duration_ns": 685714,
             "stream_id": 13,
             "duration_cycles": 2129141,
-            "cycles_at_end": 230428561
+            "cycles_at_end": 230428561,
+            "interrupt_after": true,
+            "interrupt_event_index": 113,
+            "cycles_this_node": 2129141,
+            "cumulative_cycles_at_interrupt": 230428561
         },
         {
             "id": 114,
@@ -2231,7 +2687,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 114,
+            "cycles_this_node": 206765,
+            "cumulative_cycles_at_interrupt": 230647150
         },
         {
             "id": 115,
@@ -2247,7 +2707,11 @@
             "duration_ns": 639443,
             "stream_id": 13,
             "duration_cycles": 1985470,
-            "cycles_at_end": 232650406
+            "cycles_at_end": 232650406,
+            "interrupt_after": true,
+            "interrupt_event_index": 115,
+            "cycles_this_node": 1985470,
+            "cumulative_cycles_at_interrupt": 232650406
         },
         {
             "id": 116,
@@ -2263,7 +2727,11 @@
             "duration_ns": 687059,
             "stream_id": 13,
             "duration_cycles": 2133318,
-            "cycles_at_end": 234820388
+            "cycles_at_end": 234820388,
+            "interrupt_after": true,
+            "interrupt_event_index": 116,
+            "cycles_this_node": 2133318,
+            "cumulative_cycles_at_interrupt": 234820388
         },
         {
             "id": 117,
@@ -2289,7 +2757,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 117,
+            "cycles_this_node": 207858,
+            "cumulative_cycles_at_interrupt": 235058550
         },
         {
             "id": 118,
@@ -2305,7 +2777,11 @@
             "duration_ns": 643764,
             "stream_id": 13,
             "duration_cycles": 1998887,
-            "cycles_at_end": 237076909
+            "cycles_at_end": 237076909,
+            "interrupt_after": true,
+            "interrupt_event_index": 118,
+            "cycles_this_node": 1998887,
+            "cumulative_cycles_at_interrupt": 237076909
         },
         {
             "id": 119,
@@ -2321,7 +2797,11 @@
             "duration_ns": 696210,
             "stream_id": 13,
             "duration_cycles": 2161732,
-            "cycles_at_end": 239255532
+            "cycles_at_end": 239255532,
+            "interrupt_after": true,
+            "interrupt_event_index": 119,
+            "cycles_this_node": 2161732,
+            "cumulative_cycles_at_interrupt": 239255532
         },
         {
             "id": 120,
@@ -2347,7 +2827,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 120,
+            "cycles_this_node": 207162,
+            "cumulative_cycles_at_interrupt": 239474717
         },
         {
             "id": 121,
@@ -2363,7 +2847,11 @@
             "duration_ns": 640787,
             "stream_id": 13,
             "duration_cycles": 1989643,
-            "cycles_at_end": 241487114
+            "cycles_at_end": 241487114,
+            "interrupt_after": true,
+            "interrupt_event_index": 121,
+            "cycles_this_node": 1989643,
+            "cumulative_cycles_at_interrupt": 241487114
         },
         {
             "id": 122,
@@ -2379,7 +2867,11 @@
             "duration_ns": 692019,
             "stream_id": 13,
             "duration_cycles": 2148718,
-            "cycles_at_end": 243655705
+            "cycles_at_end": 243655705,
+            "interrupt_after": true,
+            "interrupt_event_index": 122,
+            "cycles_this_node": 2148718,
+            "cumulative_cycles_at_interrupt": 243655705
         },
         {
             "id": 123,
@@ -2405,7 +2897,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 123,
+            "cycles_this_node": 213617,
+            "cumulative_cycles_at_interrupt": 243884128
         },
         {
             "id": 124,
@@ -2421,7 +2917,11 @@
             "duration_ns": 639796,
             "stream_id": 13,
             "duration_cycles": 1986566,
-            "cycles_at_end": 245886791
+            "cycles_at_end": 245886791,
+            "interrupt_after": true,
+            "interrupt_event_index": 124,
+            "cycles_this_node": 1986566,
+            "cumulative_cycles_at_interrupt": 245886791
         },
         {
             "id": 125,
@@ -2437,7 +2937,11 @@
             "duration_ns": 685874,
             "stream_id": 13,
             "duration_cycles": 2129638,
-            "cycles_at_end": 248040177
+            "cycles_at_end": 248040177,
+            "interrupt_after": true,
+            "interrupt_event_index": 125,
+            "cycles_this_node": 2129638,
+            "cumulative_cycles_at_interrupt": 248040177
         },
         {
             "id": 126,
@@ -2463,7 +2967,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 126,
+            "cycles_this_node": 206466,
+            "cumulative_cycles_at_interrupt": 248264230
         },
         {
             "id": 127,
@@ -2479,7 +2987,11 @@
             "duration_ns": 639603,
             "stream_id": 13,
             "duration_cycles": 1985967,
-            "cycles_at_end": 250274640
+            "cycles_at_end": 250274640,
+            "interrupt_after": true,
+            "interrupt_event_index": 127,
+            "cycles_this_node": 1985967,
+            "cumulative_cycles_at_interrupt": 250274640
         },
         {
             "id": 128,
@@ -2495,7 +3007,11 @@
             "duration_ns": 685331,
             "stream_id": 13,
             "duration_cycles": 2127952,
-            "cycles_at_end": 252435580
+            "cycles_at_end": 252435580,
+            "interrupt_after": true,
+            "interrupt_event_index": 128,
+            "cycles_this_node": 2127952,
+            "cumulative_cycles_at_interrupt": 252435580
         },
         {
             "id": 129,
@@ -2521,7 +3037,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 129,
+            "cycles_this_node": 205867,
+            "cumulative_cycles_at_interrupt": 252670660
         },
         {
             "id": 130,
@@ -2537,7 +3057,11 @@
             "duration_ns": 640084,
             "stream_id": 13,
             "duration_cycles": 1987460,
-            "cycles_at_end": 254661201
+            "cycles_at_end": 254661201,
+            "interrupt_after": true,
+            "interrupt_event_index": 130,
+            "cycles_this_node": 1987460,
+            "cumulative_cycles_at_interrupt": 254661201
         },
         {
             "id": 131,
@@ -2553,7 +3077,11 @@
             "duration_ns": 686515,
             "stream_id": 13,
             "duration_cycles": 2131629,
-            "cycles_at_end": 256814292
+            "cycles_at_end": 256814292,
+            "interrupt_after": true,
+            "interrupt_event_index": 131,
+            "cycles_this_node": 2131629,
+            "cumulative_cycles_at_interrupt": 256814292
         },
         {
             "id": 132,
@@ -2579,7 +3107,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 132,
+            "cycles_this_node": 206566,
+            "cumulative_cycles_at_interrupt": 257052650
         },
         {
             "id": 133,
@@ -2595,7 +3127,11 @@
             "duration_ns": 641108,
             "stream_id": 13,
             "duration_cycles": 1990640,
-            "cycles_at_end": 259053823
+            "cycles_at_end": 259053823,
+            "interrupt_after": true,
+            "interrupt_event_index": 133,
+            "cycles_this_node": 1990640,
+            "cumulative_cycles_at_interrupt": 259053823
         },
         {
             "id": 134,
@@ -2611,7 +3147,11 @@
             "duration_ns": 684627,
             "stream_id": 13,
             "duration_cycles": 2125766,
-            "cycles_at_end": 261215058
+            "cycles_at_end": 261215058,
+            "interrupt_after": true,
+            "interrupt_event_index": 134,
+            "cycles_this_node": 2125766,
+            "cumulative_cycles_at_interrupt": 261215058
         },
         {
             "id": 135,
@@ -2637,7 +3177,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 135,
+            "cycles_this_node": 214316,
+            "cumulative_cycles_at_interrupt": 261457096
         },
         {
             "id": 136,
@@ -2653,7 +3197,11 @@
             "duration_ns": 642324,
             "stream_id": 13,
             "duration_cycles": 1994416,
-            "cycles_at_end": 263467307
+            "cycles_at_end": 263467307,
+            "interrupt_after": true,
+            "interrupt_event_index": 136,
+            "cycles_this_node": 1994416,
+            "cumulative_cycles_at_interrupt": 263467307
         },
         {
             "id": 137,
@@ -2669,7 +3217,11 @@
             "duration_ns": 687346,
             "stream_id": 13,
             "duration_cycles": 2134209,
-            "cycles_at_end": 265632517
+            "cycles_at_end": 265632517,
+            "interrupt_after": true,
+            "interrupt_event_index": 137,
+            "cycles_this_node": 2134209,
+            "cumulative_cycles_at_interrupt": 265632517
         },
         {
             "id": 138,
@@ -2695,7 +3247,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 138,
+            "cycles_this_node": 208851,
+            "cumulative_cycles_at_interrupt": 265868394
         },
         {
             "id": 139,
@@ -2711,7 +3267,11 @@
             "duration_ns": 639380,
             "stream_id": 13,
             "duration_cycles": 1985274,
-            "cycles_at_end": 267861916
+            "cycles_at_end": 267861916,
+            "interrupt_after": true,
+            "interrupt_event_index": 139,
+            "cycles_this_node": 1985274,
+            "cumulative_cycles_at_interrupt": 267861916
         },
         {
             "id": 140,
@@ -2727,7 +3287,11 @@
             "duration_ns": 686515,
             "stream_id": 13,
             "duration_cycles": 2131629,
-            "cycles_at_end": 270009042
+            "cycles_at_end": 270009042,
+            "interrupt_after": true,
+            "interrupt_event_index": 140,
+            "cycles_this_node": 2131629,
+            "cumulative_cycles_at_interrupt": 270009042
         },
         {
             "id": 141,
@@ -2753,7 +3317,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 141,
+            "cycles_this_node": 207162,
+            "cumulative_cycles_at_interrupt": 270244920
         },
         {
             "id": 142,
@@ -2769,7 +3337,11 @@
             "duration_ns": 642131,
             "stream_id": 13,
             "duration_cycles": 1993816,
-            "cycles_at_end": 272262086
+            "cycles_at_end": 272262086,
+            "interrupt_after": true,
+            "interrupt_event_index": 142,
+            "cycles_this_node": 1993816,
+            "cumulative_cycles_at_interrupt": 272262086
         },
         {
             "id": 143,
@@ -2785,7 +3357,11 @@
             "duration_ns": 686899,
             "stream_id": 13,
             "duration_cycles": 2132821,
-            "cycles_at_end": 274410507
+            "cycles_at_end": 274410507,
+            "interrupt_after": true,
+            "interrupt_event_index": 143,
+            "cycles_this_node": 2132821,
+            "cumulative_cycles_at_interrupt": 274410507
         },
         {
             "id": 144,
@@ -2811,7 +3387,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 144,
+            "cycles_this_node": 206662,
+            "cumulative_cycles_at_interrupt": 274647872
         },
         {
             "id": 145,
@@ -2827,7 +3407,11 @@
             "duration_ns": 639540,
             "stream_id": 13,
             "duration_cycles": 1985771,
-            "cycles_at_end": 276654410
+            "cycles_at_end": 276654410,
+            "interrupt_after": true,
+            "interrupt_event_index": 145,
+            "cycles_this_node": 1985771,
+            "cumulative_cycles_at_interrupt": 276654410
         },
         {
             "id": 146,
@@ -2843,7 +3427,11 @@
             "duration_ns": 687570,
             "stream_id": 13,
             "duration_cycles": 2134904,
-            "cycles_at_end": 278804715
+            "cycles_at_end": 278804715,
+            "interrupt_after": true,
+            "interrupt_event_index": 146,
+            "cycles_this_node": 2134904,
+            "cumulative_cycles_at_interrupt": 278804715
         },
         {
             "id": 147,
@@ -2869,7 +3457,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 147,
+            "cycles_this_node": 207162,
+            "cumulative_cycles_at_interrupt": 279039202
         },
         {
             "id": 148,
@@ -2885,7 +3477,11 @@
             "duration_ns": 640211,
             "stream_id": 13,
             "duration_cycles": 1987855,
-            "cycles_at_end": 281047326
+            "cycles_at_end": 281047326,
+            "interrupt_after": true,
+            "interrupt_event_index": 148,
+            "cycles_this_node": 1987855,
+            "cumulative_cycles_at_interrupt": 281047326
         },
         {
             "id": 149,
@@ -2901,7 +3497,11 @@
             "duration_ns": 686739,
             "stream_id": 13,
             "duration_cycles": 2132324,
-            "cycles_at_end": 283201311
+            "cycles_at_end": 283201311,
+            "interrupt_after": true,
+            "interrupt_event_index": 149,
+            "cycles_this_node": 2132324,
+            "cumulative_cycles_at_interrupt": 283201311
         },
         {
             "id": 150,
@@ -2927,7 +3527,11 @@
                 "x": 256,
                 "y": 1,
                 "z": 1
-            }
+            },
+            "interrupt_after": true,
+            "interrupt_event_index": 150,
+            "cycles_this_node": 206662,
+            "cumulative_cycles_at_interrupt": 283439074
         },
         {
             "id": 151,
@@ -2943,7 +3547,11 @@
             "duration_ns": 639732,
             "stream_id": 13,
             "duration_cycles": 1986367,
-            "cycles_at_end": 285449387
+            "cycles_at_end": 285449387,
+            "interrupt_after": true,
+            "interrupt_event_index": 151,
+            "cycles_this_node": 1986367,
+            "cumulative_cycles_at_interrupt": 285449387
         }
     ],
     "edges": [
@@ -3551,5 +4159,1228 @@
             "source": 150,
             "target": 151
         }
-    ]
+    ],
+    "events": {
+        "interrupt_events": [
+            {
+                "event_index": 0,
+                "type": "interrupt",
+                "node_id": 0,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 63954805,
+                "cumulative_cycles": 63954805
+            },
+            {
+                "event_index": 1,
+                "type": "interrupt",
+                "node_id": 1,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 1589,
+                "cumulative_cycles": 64024950
+            },
+            {
+                "event_index": 2,
+                "type": "interrupt",
+                "node_id": 2,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2187270,
+                "cumulative_cycles": 67658378
+            },
+            {
+                "event_index": 3,
+                "type": "interrupt",
+                "node_id": 3,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 210438,
+                "cumulative_cycles": 67884018
+            },
+            {
+                "event_index": 4,
+                "type": "interrupt",
+                "node_id": 4,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1987858,
+                "cumulative_cycles": 69884893
+            },
+            {
+                "event_index": 5,
+                "type": "interrupt",
+                "node_id": 5,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2133911,
+                "cumulative_cycles": 72039073
+            },
+            {
+                "event_index": 6,
+                "type": "interrupt",
+                "node_id": 6,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 208851,
+                "cumulative_cycles": 72277534
+            },
+            {
+                "event_index": 7,
+                "type": "interrupt",
+                "node_id": 7,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1986765,
+                "cumulative_cycles": 74289236
+            },
+            {
+                "event_index": 8,
+                "type": "interrupt",
+                "node_id": 8,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2124375,
+                "cumulative_cycles": 76448984
+            },
+            {
+                "event_index": 9,
+                "type": "interrupt",
+                "node_id": 9,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 205172,
+                "cumulative_cycles": 76670054
+            },
+            {
+                "event_index": 10,
+                "type": "interrupt",
+                "node_id": 10,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1988951,
+                "cumulative_cycles": 78662383
+            },
+            {
+                "event_index": 11,
+                "type": "interrupt",
+                "node_id": 11,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2140071,
+                "cumulative_cycles": 80839715
+            },
+            {
+                "event_index": 12,
+                "type": "interrupt",
+                "node_id": 12,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 204777,
+                "cumulative_cycles": 81074201
+            },
+            {
+                "event_index": 13,
+                "type": "interrupt",
+                "node_id": 13,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1986169,
+                "cumulative_cycles": 83066332
+            },
+            {
+                "event_index": 14,
+                "type": "interrupt",
+                "node_id": 14,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2124971,
+                "cumulative_cycles": 85215346
+            },
+            {
+                "event_index": 15,
+                "type": "interrupt",
+                "node_id": 15,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 210636,
+                "cumulative_cycles": 85458176
+            },
+            {
+                "event_index": 16,
+                "type": "interrupt",
+                "node_id": 16,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1988451,
+                "cumulative_cycles": 87469781
+            },
+            {
+                "event_index": 17,
+                "type": "interrupt",
+                "node_id": 17,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2162328,
+                "cumulative_cycles": 89669071
+            },
+            {
+                "event_index": 18,
+                "type": "interrupt",
+                "node_id": 18,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 205075,
+                "cumulative_cycles": 89907035
+            },
+            {
+                "event_index": 19,
+                "type": "interrupt",
+                "node_id": 19,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1989742,
+                "cumulative_cycles": 91922314
+            },
+            {
+                "event_index": 20,
+                "type": "interrupt",
+                "node_id": 20,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2141763,
+                "cumulative_cycles": 94086930
+            },
+            {
+                "event_index": 21,
+                "type": "interrupt",
+                "node_id": 21,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 214313,
+                "cumulative_cycles": 94313067
+            },
+            {
+                "event_index": 22,
+                "type": "interrupt",
+                "node_id": 22,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1986069,
+                "cumulative_cycles": 96322189
+            },
+            {
+                "event_index": 23,
+                "type": "interrupt",
+                "node_id": 23,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2158853,
+                "cumulative_cycles": 98504389
+            },
+            {
+                "event_index": 24,
+                "type": "interrupt",
+                "node_id": 24,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 210739,
+                "cumulative_cycles": 98745234
+            },
+            {
+                "event_index": 25,
+                "type": "interrupt",
+                "node_id": 25,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1990835,
+                "cumulative_cycles": 100740144
+            },
+            {
+                "event_index": 26,
+                "type": "interrupt",
+                "node_id": 26,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2145142,
+                "cumulative_cycles": 102907046
+            },
+            {
+                "event_index": 27,
+                "type": "interrupt",
+                "node_id": 27,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 207361,
+                "cumulative_cycles": 103145504
+            },
+            {
+                "event_index": 28,
+                "type": "interrupt",
+                "node_id": 28,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1986566,
+                "cumulative_cycles": 105136144
+            },
+            {
+                "event_index": 29,
+                "type": "interrupt",
+                "node_id": 29,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2135799,
+                "cumulative_cycles": 107310694
+            },
+            {
+                "event_index": 30,
+                "type": "interrupt",
+                "node_id": 30,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 207559,
+                "cumulative_cycles": 107545975
+            },
+            {
+                "event_index": 31,
+                "type": "interrupt",
+                "node_id": 31,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1988053,
+                "cumulative_cycles": 109538103
+            },
+            {
+                "event_index": 32,
+                "type": "interrupt",
+                "node_id": 32,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2137690,
+                "cumulative_cycles": 111690697
+            },
+            {
+                "event_index": 33,
+                "type": "interrupt",
+                "node_id": 33,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 204877,
+                "cumulative_cycles": 111927763
+            },
+            {
+                "event_index": 34,
+                "type": "interrupt",
+                "node_id": 34,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1988653,
+                "cumulative_cycles": 113942151
+            },
+            {
+                "event_index": 35,
+                "type": "interrupt",
+                "node_id": 35,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2162132,
+                "cumulative_cycles": 116128226
+            },
+            {
+                "event_index": 36,
+                "type": "interrupt",
+                "node_id": 36,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 204181,
+                "cumulative_cycles": 116359235
+            },
+            {
+                "event_index": 37,
+                "type": "interrupt",
+                "node_id": 37,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1986762,
+                "cumulative_cycles": 118353350
+            },
+            {
+                "event_index": 38,
+                "type": "interrupt",
+                "node_id": 38,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2148619,
+                "cumulative_cycles": 120524623
+            },
+            {
+                "event_index": 39,
+                "type": "interrupt",
+                "node_id": 39,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 211729,
+                "cumulative_cycles": 120748773
+            },
+            {
+                "event_index": 40,
+                "type": "interrupt",
+                "node_id": 40,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1987858,
+                "cumulative_cycles": 122757994
+            },
+            {
+                "event_index": 41,
+                "type": "interrupt",
+                "node_id": 41,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2134308,
+                "cumulative_cycles": 124910784
+            },
+            {
+                "event_index": 42,
+                "type": "interrupt",
+                "node_id": 42,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 209348,
+                "cumulative_cycles": 125149245
+            },
+            {
+                "event_index": 43,
+                "type": "interrupt",
+                "node_id": 43,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1987755,
+                "cumulative_cycles": 127141770
+            },
+            {
+                "event_index": 44,
+                "type": "interrupt",
+                "node_id": 44,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2134411,
+                "cumulative_cycles": 129292078
+            },
+            {
+                "event_index": 45,
+                "type": "interrupt",
+                "node_id": 45,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 203880,
+                "cumulative_cycles": 129525171
+            },
+            {
+                "event_index": 46,
+                "type": "interrupt",
+                "node_id": 46,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1985572,
+                "cumulative_cycles": 131520680
+            },
+            {
+                "event_index": 47,
+                "type": "interrupt",
+                "node_id": 47,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2130930,
+                "cumulative_cycles": 133675357
+            },
+            {
+                "event_index": 48,
+                "type": "interrupt",
+                "node_id": 48,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 205572,
+                "cumulative_cycles": 133892257
+            },
+            {
+                "event_index": 49,
+                "type": "interrupt",
+                "node_id": 49,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 2006736,
+                "cumulative_cycles": 135901776
+            },
+            {
+                "event_index": 50,
+                "type": "interrupt",
+                "node_id": 50,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2127157,
+                "cumulative_cycles": 138047511
+            },
+            {
+                "event_index": 51,
+                "type": "interrupt",
+                "node_id": 51,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 208649,
+                "cumulative_cycles": 138285472
+            },
+            {
+                "event_index": 52,
+                "type": "interrupt",
+                "node_id": 52,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1991034,
+                "cumulative_cycles": 140301250
+            },
+            {
+                "event_index": 53,
+                "type": "interrupt",
+                "node_id": 53,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2141661,
+                "cumulative_cycles": 142471825
+            },
+            {
+                "event_index": 54,
+                "type": "interrupt",
+                "node_id": 54,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 212031,
+                "cumulative_cycles": 142712075
+            },
+            {
+                "event_index": 55,
+                "type": "interrupt",
+                "node_id": 55,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1986069,
+                "cumulative_cycles": 144703212
+            },
+            {
+                "event_index": 56,
+                "type": "interrupt",
+                "node_id": 56,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2132821,
+                "cumulative_cycles": 146856995
+            },
+            {
+                "event_index": 57,
+                "type": "interrupt",
+                "node_id": 57,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 209348,
+                "cumulative_cycles": 147097046
+            },
+            {
+                "event_index": 58,
+                "type": "interrupt",
+                "node_id": 58,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1988653,
+                "cumulative_cycles": 149088080
+            },
+            {
+                "event_index": 59,
+                "type": "interrupt",
+                "node_id": 59,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2132026,
+                "cumulative_cycles": 151240774
+            },
+            {
+                "event_index": 60,
+                "type": "interrupt",
+                "node_id": 60,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 207559,
+                "cumulative_cycles": 151479728
+            },
+            {
+                "event_index": 61,
+                "type": "interrupt",
+                "node_id": 61,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1986964,
+                "cumulative_cycles": 153492923
+            },
+            {
+                "event_index": 62,
+                "type": "interrupt",
+                "node_id": 62,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2128545,
+                "cumulative_cycles": 155656643
+            },
+            {
+                "event_index": 63,
+                "type": "interrupt",
+                "node_id": 63,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 205870,
+                "cumulative_cycles": 155874934
+            },
+            {
+                "event_index": 64,
+                "type": "interrupt",
+                "node_id": 64,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1985967,
+                "cumulative_cycles": 157869247
+            },
+            {
+                "event_index": 65,
+                "type": "interrupt",
+                "node_id": 65,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2125965,
+                "cumulative_cycles": 160028995
+            },
+            {
+                "event_index": 66,
+                "type": "interrupt",
+                "node_id": 66,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 206265,
+                "cumulative_cycles": 160266459
+            },
+            {
+                "event_index": 67,
+                "type": "interrupt",
+                "node_id": 67,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1985672,
+                "cumulative_cycles": 162259782
+            },
+            {
+                "event_index": 68,
+                "type": "interrupt",
+                "node_id": 68,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2154975,
+                "cumulative_cycles": 164439399
+            },
+            {
+                "event_index": 69,
+                "type": "interrupt",
+                "node_id": 69,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 206069,
+                "cumulative_cycles": 164663155
+            },
+            {
+                "event_index": 70,
+                "type": "interrupt",
+                "node_id": 70,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1986960,
+                "cumulative_cycles": 166674260
+            },
+            {
+                "event_index": 71,
+                "type": "interrupt",
+                "node_id": 71,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2143055,
+                "cumulative_cycles": 168840467
+            },
+            {
+                "event_index": 72,
+                "type": "interrupt",
+                "node_id": 72,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 210636,
+                "cumulative_cycles": 169062729
+            },
+            {
+                "event_index": 73,
+                "type": "interrupt",
+                "node_id": 73,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1987358,
+                "cumulative_cycles": 171066186
+            },
+            {
+                "event_index": 74,
+                "type": "interrupt",
+                "node_id": 74,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2131927,
+                "cumulative_cycles": 173220171
+            },
+            {
+                "event_index": 75,
+                "type": "interrupt",
+                "node_id": 75,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 202191,
+                "cumulative_cycles": 173444123
+            },
+            {
+                "event_index": 76,
+                "type": "interrupt",
+                "node_id": 76,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1985871,
+                "cumulative_cycles": 175433372
+            },
+            {
+                "event_index": 77,
+                "type": "interrupt",
+                "node_id": 77,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2154779,
+                "cumulative_cycles": 177633954
+            },
+            {
+                "event_index": 78,
+                "type": "interrupt",
+                "node_id": 78,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 207457,
+                "cumulative_cycles": 177869133
+            },
+            {
+                "event_index": 79,
+                "type": "interrupt",
+                "node_id": 79,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1989742,
+                "cumulative_cycles": 179865337
+            },
+            {
+                "event_index": 80,
+                "type": "interrupt",
+                "node_id": 80,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2144244,
+                "cumulative_cycles": 182026871
+            },
+            {
+                "event_index": 81,
+                "type": "interrupt",
+                "node_id": 81,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 204082,
+                "cumulative_cycles": 182253011
+            },
+            {
+                "event_index": 82,
+                "type": "interrupt",
+                "node_id": 82,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1985175,
+                "cumulative_cycles": 184265113
+            },
+            {
+                "event_index": 83,
+                "type": "interrupt",
+                "node_id": 83,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2136494,
+                "cumulative_cycles": 186422672
+            },
+            {
+                "event_index": 84,
+                "type": "interrupt",
+                "node_id": 84,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 215310,
+                "cumulative_cycles": 186649806
+            },
+            {
+                "event_index": 85,
+                "type": "interrupt",
+                "node_id": 85,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1990041,
+                "cumulative_cycles": 188653658
+            },
+            {
+                "event_index": 86,
+                "type": "interrupt",
+                "node_id": 86,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2139279,
+                "cumulative_cycles": 190808040
+            },
+            {
+                "event_index": 87,
+                "type": "interrupt",
+                "node_id": 87,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 208454,
+                "cumulative_cycles": 191049081
+            },
+            {
+                "event_index": 88,
+                "type": "interrupt",
+                "node_id": 88,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1988454,
+                "cumulative_cycles": 193040715
+            },
+            {
+                "event_index": 89,
+                "type": "interrupt",
+                "node_id": 89,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2130831,
+                "cumulative_cycles": 195198771
+            },
+            {
+                "event_index": 90,
+                "type": "interrupt",
+                "node_id": 90,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 208354,
+                "cumulative_cycles": 195423520
+            },
+            {
+                "event_index": 91,
+                "type": "interrupt",
+                "node_id": 91,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 2009813,
+                "cumulative_cycles": 197455094
+            },
+            {
+                "event_index": 92,
+                "type": "interrupt",
+                "node_id": 92,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2130933,
+                "cumulative_cycles": 199624679
+            },
+            {
+                "event_index": 93,
+                "type": "interrupt",
+                "node_id": 93,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 207457,
+                "cumulative_cycles": 199857771
+            },
+            {
+                "event_index": 94,
+                "type": "interrupt",
+                "node_id": 94,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1993323,
+                "cumulative_cycles": 201854870
+            },
+            {
+                "event_index": 95,
+                "type": "interrupt",
+                "node_id": 95,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2135106,
+                "cumulative_cycles": 204010044
+            },
+            {
+                "event_index": 96,
+                "type": "interrupt",
+                "node_id": 96,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 210043,
+                "cumulative_cycles": 204248505
+            },
+            {
+                "event_index": 97,
+                "type": "interrupt",
+                "node_id": 97,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1987457,
+                "cumulative_cycles": 206240831
+            },
+            {
+                "event_index": 98,
+                "type": "interrupt",
+                "node_id": 98,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2146533,
+                "cumulative_cycles": 208402765
+            },
+            {
+                "event_index": 99,
+                "type": "interrupt",
+                "node_id": 99,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 215108,
+                "cumulative_cycles": 208647582
+            },
+            {
+                "event_index": 100,
+                "type": "interrupt",
+                "node_id": 100,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1991236,
+                "cumulative_cycles": 210663857
+            },
+            {
+                "event_index": 101,
+                "type": "interrupt",
+                "node_id": 101,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2159645,
+                "cumulative_cycles": 212838605
+            },
+            {
+                "event_index": 102,
+                "type": "interrupt",
+                "node_id": 102,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 211434,
+                "cumulative_cycles": 213082531
+            },
+            {
+                "event_index": 103,
+                "type": "interrupt",
+                "node_id": 103,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1986964,
+                "cumulative_cycles": 215085389
+            },
+            {
+                "event_index": 104,
+                "type": "interrupt",
+                "node_id": 104,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2141263,
+                "cumulative_cycles": 217261926
+            },
+            {
+                "event_index": 105,
+                "type": "interrupt",
+                "node_id": 105,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 206165,
+                "cumulative_cycles": 217496611
+            },
+            {
+                "event_index": 106,
+                "type": "interrupt",
+                "node_id": 106,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 2002461,
+                "cumulative_cycles": 219510002
+            },
+            {
+                "event_index": 107,
+                "type": "interrupt",
+                "node_id": 107,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2129443,
+                "cumulative_cycles": 221656734
+            },
+            {
+                "event_index": 108,
+                "type": "interrupt",
+                "node_id": 108,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 212229,
+                "cumulative_cycles": 221880489
+            },
+            {
+                "event_index": 109,
+                "type": "interrupt",
+                "node_id": 109,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1990242,
+                "cumulative_cycles": 223895768
+            },
+            {
+                "event_index": 110,
+                "type": "interrupt",
+                "node_id": 110,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2130734,
+                "cumulative_cycles": 226048958
+            },
+            {
+                "event_index": 111,
+                "type": "interrupt",
+                "node_id": 111,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 207954,
+                "cumulative_cycles": 226290894
+            },
+            {
+                "event_index": 112,
+                "type": "interrupt",
+                "node_id": 112,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1985871,
+                "cumulative_cycles": 228279249
+            },
+            {
+                "event_index": 113,
+                "type": "interrupt",
+                "node_id": 113,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2129141,
+                "cumulative_cycles": 230428561
+            },
+            {
+                "event_index": 114,
+                "type": "interrupt",
+                "node_id": 114,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 206765,
+                "cumulative_cycles": 230647150
+            },
+            {
+                "event_index": 115,
+                "type": "interrupt",
+                "node_id": 115,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1985470,
+                "cumulative_cycles": 232650406
+            },
+            {
+                "event_index": 116,
+                "type": "interrupt",
+                "node_id": 116,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2133318,
+                "cumulative_cycles": 234820388
+            },
+            {
+                "event_index": 117,
+                "type": "interrupt",
+                "node_id": 117,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 207858,
+                "cumulative_cycles": 235058550
+            },
+            {
+                "event_index": 118,
+                "type": "interrupt",
+                "node_id": 118,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1998887,
+                "cumulative_cycles": 237076909
+            },
+            {
+                "event_index": 119,
+                "type": "interrupt",
+                "node_id": 119,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2161732,
+                "cumulative_cycles": 239255532
+            },
+            {
+                "event_index": 120,
+                "type": "interrupt",
+                "node_id": 120,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 207162,
+                "cumulative_cycles": 239474717
+            },
+            {
+                "event_index": 121,
+                "type": "interrupt",
+                "node_id": 121,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1989643,
+                "cumulative_cycles": 241487114
+            },
+            {
+                "event_index": 122,
+                "type": "interrupt",
+                "node_id": 122,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2148718,
+                "cumulative_cycles": 243655705
+            },
+            {
+                "event_index": 123,
+                "type": "interrupt",
+                "node_id": 123,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 213617,
+                "cumulative_cycles": 243884128
+            },
+            {
+                "event_index": 124,
+                "type": "interrupt",
+                "node_id": 124,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1986566,
+                "cumulative_cycles": 245886791
+            },
+            {
+                "event_index": 125,
+                "type": "interrupt",
+                "node_id": 125,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2129638,
+                "cumulative_cycles": 248040177
+            },
+            {
+                "event_index": 126,
+                "type": "interrupt",
+                "node_id": 126,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 206466,
+                "cumulative_cycles": 248264230
+            },
+            {
+                "event_index": 127,
+                "type": "interrupt",
+                "node_id": 127,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1985967,
+                "cumulative_cycles": 250274640
+            },
+            {
+                "event_index": 128,
+                "type": "interrupt",
+                "node_id": 128,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2127952,
+                "cumulative_cycles": 252435580
+            },
+            {
+                "event_index": 129,
+                "type": "interrupt",
+                "node_id": 129,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 205867,
+                "cumulative_cycles": 252670660
+            },
+            {
+                "event_index": 130,
+                "type": "interrupt",
+                "node_id": 130,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1987460,
+                "cumulative_cycles": 254661201
+            },
+            {
+                "event_index": 131,
+                "type": "interrupt",
+                "node_id": 131,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2131629,
+                "cumulative_cycles": 256814292
+            },
+            {
+                "event_index": 132,
+                "type": "interrupt",
+                "node_id": 132,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 206566,
+                "cumulative_cycles": 257052650
+            },
+            {
+                "event_index": 133,
+                "type": "interrupt",
+                "node_id": 133,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1990640,
+                "cumulative_cycles": 259053823
+            },
+            {
+                "event_index": 134,
+                "type": "interrupt",
+                "node_id": 134,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2125766,
+                "cumulative_cycles": 261215058
+            },
+            {
+                "event_index": 135,
+                "type": "interrupt",
+                "node_id": 135,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 214316,
+                "cumulative_cycles": 261457096
+            },
+            {
+                "event_index": 136,
+                "type": "interrupt",
+                "node_id": 136,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1994416,
+                "cumulative_cycles": 263467307
+            },
+            {
+                "event_index": 137,
+                "type": "interrupt",
+                "node_id": 137,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2134209,
+                "cumulative_cycles": 265632517
+            },
+            {
+                "event_index": 138,
+                "type": "interrupt",
+                "node_id": 138,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 208851,
+                "cumulative_cycles": 265868394
+            },
+            {
+                "event_index": 139,
+                "type": "interrupt",
+                "node_id": 139,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1985274,
+                "cumulative_cycles": 267861916
+            },
+            {
+                "event_index": 140,
+                "type": "interrupt",
+                "node_id": 140,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2131629,
+                "cumulative_cycles": 270009042
+            },
+            {
+                "event_index": 141,
+                "type": "interrupt",
+                "node_id": 141,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 207162,
+                "cumulative_cycles": 270244920
+            },
+            {
+                "event_index": 142,
+                "type": "interrupt",
+                "node_id": 142,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1993816,
+                "cumulative_cycles": 272262086
+            },
+            {
+                "event_index": 143,
+                "type": "interrupt",
+                "node_id": 143,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2132821,
+                "cumulative_cycles": 274410507
+            },
+            {
+                "event_index": 144,
+                "type": "interrupt",
+                "node_id": 144,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 206662,
+                "cumulative_cycles": 274647872
+            },
+            {
+                "event_index": 145,
+                "type": "interrupt",
+                "node_id": 145,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1985771,
+                "cumulative_cycles": 276654410
+            },
+            {
+                "event_index": 146,
+                "type": "interrupt",
+                "node_id": 146,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2134904,
+                "cumulative_cycles": 278804715
+            },
+            {
+                "event_index": 147,
+                "type": "interrupt",
+                "node_id": 147,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 207162,
+                "cumulative_cycles": 279039202
+            },
+            {
+                "event_index": 148,
+                "type": "interrupt",
+                "node_id": 148,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1987855,
+                "cumulative_cycles": 281047326
+            },
+            {
+                "event_index": 149,
+                "type": "interrupt",
+                "node_id": 149,
+                "op_name": "[CUDA memcpy Host-to-Device]",
+                "cycles_this_node": 2132324,
+                "cumulative_cycles": 283201311
+            },
+            {
+                "event_index": 150,
+                "type": "interrupt",
+                "node_id": 150,
+                "op_name": "void vector_fft<(unsigned int)4096, EPT<(unsigned int)16>, (unsigned int)1, (unsigned int)2, (padding_t)70, (twiddle_t)0, (loadstore_modifier_t)2, (layout_t)0, unsigned int, float>(kernel_arguments_t<T9>)",
+                "cycles_this_node": 206662,
+                "cumulative_cycles": 283439074
+            },
+            {
+                "event_index": 151,
+                "type": "interrupt",
+                "node_id": 151,
+                "op_name": "[CUDA memcpy Device-to-Host]",
+                "cycles_this_node": 1986367,
+                "cumulative_cycles": 285449387
+            }
+        ],
+        "total_interrupts": 152,
+        "total_cycles": 285449387,
+        "cycle_source": "absolute_timestamps"
+    }
 }
