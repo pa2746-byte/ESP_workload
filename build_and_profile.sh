@@ -13,9 +13,12 @@ FFT_SIZE="${3:-4096}"
 BATCH="${4:-256}"
 FFT_ITERS="${5:-50}"
 
+DIAMOND_ITERS="${6:-50}"
+
 echo "Building CUDA targets..."
 nvcc -O3 -std=c++17 -lineinfo dummy_transfer_pipeline.cu -o dummy_pipeline -lnvToolsExt
-nvcc -O3 -std=c++17 -lineinfo fft_batched_transfer.cu -o fft_batched -lcufft -lnvToolsExt
+nvcc -O3 -std=c++17 -lineinfo fft_batched_transfer.cu    -o fft_batched    -lcufft -lnvToolsExt
+nvcc -O3 -std=c++17 -lineinfo diamond_pipeline.cu        -o diamond_pipeline -lnvToolsExt
 
 echo "Running Nsight Systems profiles..."
 nsys profile --trace=cuda,nvtx,osrt --sample=none --force-overwrite true \
@@ -30,9 +33,11 @@ nsys profile --trace=cuda,nvtx,osrt --sample=none --force-overwrite true \
 nsys profile --trace=cuda,nvtx,osrt --sample=none --force-overwrite true \
   -o nsys_fft_once ./fft_batched "${FFT_SIZE}" "${BATCH}" "${FFT_ITERS}" 0
 
+nsys profile --trace=cuda,nvtx,osrt --sample=none --force-overwrite true \
+  -o nsys_diamond ./diamond_pipeline "${N}" "${DIAMOND_ITERS}"
+
 echo "Extracting nsys trace CSVs..."
-# Try the report name used by newer nsys; fall back to the name used by older versions.
-for PREFIX in nsys_dummy_per_iter nsys_fft_per_iter; do
+for PREFIX in nsys_dummy_per_iter nsys_fft_per_iter nsys_diamond; do
   nsys stats --report cuda_gpu_trace -o . --format csv "${PREFIX}.nsys-rep" 2>/dev/null || \
   nsys stats --report gpukernsum    -o . --format csv "${PREFIX}.nsys-rep" 2>/dev/null || \
   echo "  [warn] nsys stats failed for ${PREFIX} — trace CSV may be stale"
@@ -40,9 +45,10 @@ done
 
 echo "Building flow JSONs from nsys traces..."
 # Boost clock from: nvidia-smi --query-gpu=clocks.max.sm --format=csv,noheader
-# Run: nvidia-smi --query-gpu=clocks.max.sm --format=csv,noheader
 python3 nsys_trace_to_flow_json.py nsys_dummy_per_iter --gpu-clock-mhz 3105
 python3 nsys_trace_to_flow_json.py nsys_fft_per_iter   --gpu-clock-mhz 3105
+# Diamond uses stream_dag mode to detect cross-stream dependencies
+python3 nsys_trace_to_flow_json.py nsys_diamond --aggregation stream_dag --gpu-clock-mhz 3105
 
 echo "Running Nsight Compute (ncu) for SM/L2/DRAM metrics..."
 # Use a small iter count — ncu is slow (replays each kernel multiple times)
@@ -77,7 +83,9 @@ echo "Done."
 echo "Generated reports:"
 echo "  nsys_dummy_per_iter.nsys-rep"
 echo "  nsys_fft_per_iter.nsys-rep"
-echo "  nsys_dummy_per_iter_flow.json        (nsys only)"
-echo "  nsys_dummy_per_iter_ncu_flow.json    (nsys + ncu SM metrics)"
-echo "  nsys_fft_per_iter_flow.json          (nsys only)"
-echo "  nsys_fft_per_iter_ncu_flow.json      (nsys + ncu SM metrics)"
+echo "  nsys_diamond.nsys-rep"
+echo "  nsys_dummy_per_iter_flow.json          (nsys only, linear)"
+echo "  nsys_dummy_per_iter_ncu_flow.json      (nsys + ncu SM metrics)"
+echo "  nsys_fft_per_iter_flow.json            (nsys only, linear)"
+echo "  nsys_fft_per_iter_ncu_flow.json        (nsys + ncu SM metrics)"
+echo "  nsys_diamond_stream_dag_flow.json      (diamond DAG topology)"

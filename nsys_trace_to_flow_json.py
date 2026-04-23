@@ -4,6 +4,7 @@ import json
 import re
 import sys
 import argparse
+from collections import defaultdict
 from pathlib import Path
 
 def pick_col(cols, candidates, required=True):
@@ -188,6 +189,78 @@ def compute_transfer_totals(nodes):
     )
     return totals
 
+def build_stream_dag_edges(nodes, gap_threshold_ns=100_000):
+    """
+    Build DAG edges for a multi-stream trace.
+
+    Rule 1 — within each stream, consecutive ops are sequential.
+    Rule 2 — cross-stream: add edge u→v when u is the last op that finished
+              on a *different* stream before v started, and the gap is within
+              gap_threshold_ns (i.e. v's stream was waiting on u via an event).
+
+    After collecting all candidate edges a transitive reduction removes edges
+    that are implied by a longer path, leaving only the true dependencies.
+    """
+    # Group node indices by stream (nodes are already sorted by start_ns).
+    stream_ops = defaultdict(list)
+    for idx, n in enumerate(nodes):
+        stream_ops[n.get("stream_id", -1)].append(idx)
+
+    edge_set = set()
+
+    # Rule 1: within-stream sequential edges.
+    for ops in stream_ops.values():
+        for j in range(1, len(ops)):
+            edge_set.add((ops[j - 1], ops[j]))
+
+    # Rule 2: cross-stream dependency edges.
+    for stream_i, ops_i in stream_ops.items():
+        for idx_v in ops_i:
+            start_v = nodes[idx_v].get("start_ns", 0)
+            for stream_j, ops_j in stream_ops.items():
+                if stream_j == stream_i:
+                    continue
+                # Walk backwards through stream_j to find the last op that
+                # ended at or before start_v.
+                for idx_u in reversed(ops_j):
+                    end_u = (nodes[idx_u].get("start_ns", 0) +
+                             nodes[idx_u].get("duration_ns", 0))
+                    if end_u <= start_v:
+                        if (start_v - end_u) <= gap_threshold_ns:
+                            edge_set.add((idx_u, idx_v))
+                        break  # only the most-recent op on this stream
+
+    # Transitive reduction: drop edge (u, v) when v is already reachable
+    # from u via another path.
+    adj = defaultdict(set)
+    for u, v in edge_set:
+        adj[u].add(v)
+
+    def reachable_without(src, target, skip_edge):
+        """DFS: is target reachable from src ignoring the direct skip_edge?"""
+        visited = set()
+        stack = [src]
+        while stack:
+            node = stack.pop()
+            if node in visited:
+                continue
+            visited.add(node)
+            for nb in adj[node]:
+                if (node, nb) == skip_edge:
+                    continue
+                if nb == target:
+                    return True
+                stack.append(nb)
+        return False
+
+    reduced = {
+        (u, v) for u, v in edge_set
+        if not reachable_without(u, v, skip_edge=(u, v))
+    }
+
+    return [{"source": u, "target": v} for u, v in sorted(reduced)]
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Convert Nsight CUDA trace CSV to flow JSON."
@@ -195,9 +268,14 @@ def main():
     parser.add_argument("prefix", help="File prefix, e.g. nsys_dummy_per_iter")
     parser.add_argument(
         "--aggregation",
-        choices=["raw", "semantic"],
+        choices=["raw", "semantic", "stream_dag"],
         default="raw",
-        help="raw = one node per trace event, semantic = collapsed stage nodes.",
+        help=(
+            "raw = one node per trace event, linear chain edges. "
+            "semantic = collapsed stage nodes, linear chain edges. "
+            "stream_dag = one node per trace event, DAG edges inferred from "
+            "stream IDs and timing (use for multi-stream workloads)."
+        ),
     )
     parser.add_argument(
         "--min-transfer-bytes",
@@ -227,7 +305,11 @@ def main():
     if args.out:
         out_json = Path(args.out)
     else:
-        suffix = "_flow.json" if args.aggregation == "raw" else "_semantic_flow.json"
+        suffix = {
+            "raw": "_flow.json",
+            "semantic": "_semantic_flow.json",
+            "stream_dag": "_stream_dag_flow.json",
+        }.get(args.aggregation, "_flow.json")
         out_json = Path(f"{prefix}{suffix}")
 
     if not trace_csv.exists():
@@ -295,6 +377,7 @@ def main():
             "op_type": op_type,
             "subtype": subtype,
             "op_name": op,
+            "start_ns": start_ns,
             "duration_ns": duration_ns,
             "stream_id": stream_id,
         }
@@ -324,6 +407,8 @@ def main():
 
     if args.aggregation == "semantic":
         nodes, edges = aggregate_semantic(nodes)
+    elif args.aggregation == "stream_dag":
+        edges = build_stream_dag_edges(nodes)
 
     transfer_totals = compute_transfer_totals(nodes)
 
