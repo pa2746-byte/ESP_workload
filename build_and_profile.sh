@@ -34,14 +34,18 @@ nsys profile --trace=cuda,nvtx,osrt --sample=none --force-overwrite true \
   -o nsys_fft_once ./fft_batched "${FFT_SIZE}" "${BATCH}" "${FFT_ITERS}" 0
 
 nsys profile --trace=cuda,nvtx,osrt --sample=none --force-overwrite true \
+  --export sqlite \
   -o nsys_diamond ./diamond_pipeline "${N}" "${DIAMOND_ITERS}"
 
 echo "Extracting nsys trace CSVs..."
-for PREFIX in nsys_dummy_per_iter nsys_fft_per_iter nsys_diamond; do
+for PREFIX in nsys_dummy_per_iter nsys_fft_per_iter; do
   nsys stats --report cuda_gpu_trace -o . --format csv "${PREFIX}.nsys-rep" 2>/dev/null || \
   nsys stats --report gpukernsum    -o . --format csv "${PREFIX}.nsys-rep" 2>/dev/null || \
   echo "  [warn] nsys stats failed for ${PREFIX} — trace CSV may be stale"
 done
+# Diamond uses --export sqlite so stats reads from .sqlite directly
+nsys stats --report cuda_gpu_trace -o . --format csv nsys_diamond.sqlite 2>/dev/null || \
+  echo "  [warn] nsys stats failed for nsys_diamond"
 
 echo "Building flow JSONs from nsys traces..."
 # Boost clock from: nvidia-smi --query-gpu=clocks.max.sm --format=csv,noheader
