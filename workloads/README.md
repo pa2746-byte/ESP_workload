@@ -6,7 +6,8 @@ and export those relationships as a directed graph that can later be consumed by
 
 The project starts with small CUDA workloads whose dependency structure is easy to verify manually, including:
 
-**Vector addition — a simple input-to-compute-to-output flow\
+**
+Vector addition — a simple input-to-compute-to-output flow\
 Two-stage pipeline — a linear producer-consumer dependency\
 Fork-join workload — independent branches that later synchronize\
 Reduction — hierarchical many-to-one dependencies
