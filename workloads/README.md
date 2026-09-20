@@ -1,4 +1,4 @@
-This project aims to automatically generate data-dependency graphs from program workloads using profiling and program-analysis techniques.
+This part of the project aims to automatically generate data-dependency graphs from program workloads using profiling and program-analysis techniques.
 
 The immediate focus is on the graph-generation stage. 
 Given a workload, the goal is to identify important computation and data-movement events, determine the dependencies between them, 
