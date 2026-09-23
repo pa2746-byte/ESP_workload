@@ -31,6 +31,35 @@ The target format follows the existing JSON examples supplied as simulator input
 Logical dependencies must preserve independent branches. An observed ordering
 on a CUDA stream is not, by itself, proof that one operation needs another's data.
 
+## Generate simulator inputs on the remote server
+
+The repository includes a generator for all four workloads. No files need to
+be generated on the Mac or transferred from it. On the remote server:
+
+```bash
+cd ~/ESP_workload
+git switch pa2746-byte-sampleworkloads
+git pull --ff-only origin pa2746-byte-sampleworkloads
+python3 export_workload_transfers.py
+```
+
+This writes four `*_simulator.json` files and separate explanatory metadata
+under `results/logical_transfers/`. Only the simulator JSON files are intended
+as simulator inputs. Generation requires Python 3, but no GPU or Nsight run.
+
+To also generate PNGs using the previously configured virtual environment:
+
+```bash
+source .venv/bin/activate
+python export_workload_transfers.py --render
+```
+
+PNGs are written under `results/logical_transfers/graphs/`. Select a single
+workload with `--workload fork_join`, or choose another destination with
+`--out-dir`. Re-running replaces outputs with the same names.
+See [transfer model documentation](workloads/TRANSFER_MODELS.md) for assumptions
+and component naming options.
+
 ## Why these four workloads?
 
 These small, deterministic programs provide progressively different dependency
@@ -111,14 +140,15 @@ to the remote run; the artifacts have not been confirmed published to GitHub.
 - Installing matplotlib and NetworkX in a remote virtual environment enabled
   PNG rendering. Layout warnings did not prevent image generation.
 
-### Logical transfer graphs prepared locally
+### Logical transfer graph generation
 
-A separate exporter and four logical graphs have been developed and tested
-locally. At the time of this README update, those additions have **not yet been
-committed or pushed**; the trace converter already in this repository does not
-automatically produce these simulator-format logical models.
+A separate [exporter](export_workload_transfers.py), its
+[tests](tests/test_workload_transfers.py), and documentation are included in this
+repository. It directly generates the simulator-format logical graphs on the
+machine where it runs. The Nsight trace converter continues to serve the
+separate purpose of exporting observed execution.
 
-The local models contain:
+The generated models contain:
 
 - Vector addition: 6 transfer nodes, 5 dependency edges.
 - Pipeline: 8 transfer nodes, 7 dependency edges.
@@ -129,8 +159,10 @@ They explicitly represent host uploads (`cpu → mem`), kernel input reads
 (`mem → acc`), kernel output writes (`acc → mem`), and host downloads
 (`mem → cpu`). Each read waits for its buffer producer; each kernel output
 write waits for that kernel's input reads. Dependencies operate at whole-buffer
-granularity. The four logical-model tests passed, including checks for reference
-schema, reduction sizes, component mapping, and fork-join independence.
+granularity. Five logical-model tests passed locally, including checks for
+reference schema, reduction sizes, component mapping, fork-join independence,
+and command-line generation from a different working directory. Remote use of
+this generator and PNG rendering of its outputs remain to be verified.
 
 These models are manually specified from the current CUDA buffer accesses and
 sizes. They are not a general CUDA parser or automatic dependency-recovery tool.
@@ -158,8 +190,8 @@ execution or resulting performance metrics have been validated.
 
 ## Current focus and remaining work
 
-1. Publish the local logical exporter, its tests, documentation, and selected
-   small graph artifacts.
+1. Run the published logical exporter on the remote server to generate the
+   four simulator inputs and optional PNGs.
 2. Inspect the rendered logical graphs and verify component mappings against
    the intended simulator architecture.
 3. Run the graphs through the simulator when access becomes available and check
