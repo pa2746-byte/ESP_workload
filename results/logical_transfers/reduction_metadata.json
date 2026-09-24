@@ -1,0 +1,46 @@
+{
+  "workload": "reduction",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/home/pa2746/ESP_workload/workloads/reduction.cu",
+  "source_sha256": "7f181019ab6d5f32854cb0b59903c73164f976be20b8a6ff21b7489e7881a82f",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "d_input",
+      "stage": "upload"
+    },
+    {
+      "id": 1,
+      "buffer": "d_input",
+      "stage": "reduceStage1:read"
+    },
+    {
+      "id": 2,
+      "buffer": "d_partialSums",
+      "stage": "reduceStage1:write"
+    },
+    {
+      "id": 3,
+      "buffer": "d_partialSums",
+      "stage": "reduceStage2:read"
+    },
+    {
+      "id": 4,
+      "buffer": "d_result",
+      "stage": "reduceStage2:write"
+    },
+    {
+      "id": 5,
+      "buffer": "d_result",
+      "stage": "download"
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique contiguous buffer footprints per kernel; repeated element accesses are not instruction traffic.",
+    "Edges express whole-buffer readiness, not observed default-stream order.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies."
+  ]
+}
