@@ -48,7 +48,7 @@ under `results/logical_transfers/`. Only the simulator JSON files are intended
 as simulator inputs. Generation requires Python 3 and `clang++`, but no GPU,
 CUDA toolkit, or Nsight run. On Ubuntu, install Clang if needed with
 `sudo apt install clang`. The analyzer was tested locally with Apple Clang 17;
-the remote Clang installation still needs verification.
+remote generation has also succeeded after compatibility fixes described below.
 
 To also generate PNGs using the previously configured virtual environment:
 
@@ -72,6 +72,101 @@ workload with `--workload fork_join`, or choose another destination with
 `--out-dir`. Re-running replaces outputs with the same names.
 See [transfer model documentation](workloads/TRANSFER_MODELS.md) for assumptions
 and component naming options.
+
+## How we use Clang
+
+Clang reads the CUDA source and produces an **abstract syntax tree (AST)**:
+a structured representation of declarations, expressions, and calls. Our
+Python analyzer interprets that tree to generate transfer nodes and dependency
+edges. Clang itself does not produce our simulator graph.
+
+The implementation is split between
+[`export_workload_transfers.py`](export_workload_transfers.py), the command-line
+entry point, and [`cuda_source_model.py`](cuda_source_model.py), the analyzer.
+It invokes `clang++` with `--cuda-host-only`, `-fsyntax-only`, and
+`-Xclang -ast-dump=json`. This parses source without executing the workload or
+collecting GPU measurements. `-nocudainc` / `-nocudalib` and a bundled
+[analysis-only header](source_analysis/include/cuda_runtime.h) let it parse
+the supported CUDA APIs without requiring the CUDA toolkit. That header is
+not a CUDA runtime and must not be used for actual workload compilation.
+
+The analyzer performs these steps:
+
+1. Evaluate supported source expressions for sizes and launch dimensions.
+2. Track device allocations and host/device copy calls.
+3. Match each kernel launch to its definition and actual buffer arguments.
+4. Identify supported global array reads/writes and their byte footprints.
+5. Connect producers to consumers and add dependencies for buffer overwrites,
+   while preserving independent reads and branches.
+6. Write simulator JSON, explanatory metadata, and optional PNGs.
+
+The original exporter contained manually specified models for the four
+workloads. Those models have been replaced by source analysis. Supported
+changes to sizes, accesses, or kernel arguments now change the output on the
+next run without editing a workload-specific Python template. Test cases
+modify source code to verify this behavior.
+
+Clang AST output varies across versions. We fixed two differences encountered
+on the remote server: the newer `__cudaPushCallConfiguration` launch helper,
+and default arguments omitted from call-site AST nodes. The latter are resolved
+from constructor parameter declarations rather than guessed. Both cases have
+regression tests. The remotely generated graphs have been pulled back and
+checked against fresh local analysis; their source hashes match the current
+four CUDA files.
+
+### Scope and portability
+
+Clang is not limited to CUDA, but **our current analyzer is CUDA-specific**.
+OpenCL, HIP, and SYCL inputs would need additional handling for their allocation,
+copy, launch, and access conventions. The intended output remains the same
+simulator JSON schema across supported front ends.
+
+The present implementation supports a restricted source subset, not arbitrary
+real-world applications. Runtime sizes, complex control flow, multiple-file
+analysis, library calls, aliases, and irregular accesses need further work.
+Unsupported constructs produce errors rather than guessed graphs. See
+[supported patterns and limitations](workloads/TRANSFER_MODELS.md).
+
+Nsight is optional for this source-to-graph workflow. It remains useful for
+checking actual execution, copy sizes, and timing. Hardware traffic counters
+are a separate validation path, not a prerequisite for logical graph generation.
+
+## Future benchmarks to investigate
+
+The next step is to analyze existing application sources, preserving their
+computation rather than rewriting them into our own task framework. The
+following are candidates, **not workloads already supported or validated**.
+The order below is a proposed progression; exact implementation requirements
+must be confirmed by inspecting each selected source version.
+
+1. **Rodinia HotSpot — first target.** A processor thermal simulation with
+   temperature and power inputs and repeated temperature updates. It extends
+   our examples toward neighboring-cell accesses, boundary conditions, and
+   iteration-to-iteration dependencies. Start with a small input for its
+   existing CUDA implementation. Expect to extend multidimensional indexing,
+   host launch loops, and runtime-size handling.
+   [Application description](https://rodinia.cs.virginia.edu/hotspot.html).
+2. **Rodinia SRAD — image processing.** A candidate for exploring a larger
+   multi-stage application and intermediate-buffer dependencies. Inspect its
+   CUDA implementation to determine the additional control-flow, reduction,
+   and indexing support needed.
+3. **Rodinia K-means — data mining.** A candidate for iterative computation
+   whose access patterns and convergence behavior depend on input data. It
+   can help establish where source-only analysis needs user-supplied runtime
+   parameters or conservative dependency handling.
+4. **Rodinia BFS — later stress test.** Graph traversal introduces irregular,
+   data-dependent accesses. Use it to evaluate the limits of static analysis,
+   not as an immediate promise of exact graph recovery.
+
+Rodinia lists CUDA, OpenCL, and OpenMP implementations for these candidates.
+These are separate implementations: availability across programming models
+does not make our CUDA analyzer portable automatically or guarantee execution
+on every accelerator. [Rodinia benchmark catalog](https://rodinia.cs.virginia.edu/).
+
+For each benchmark, record the source version and input sizes, identify analyzer
+gaps, extend and test generic analysis rules, and validate transfer sizes and
+dependencies before treating its output as a simulator input. Do not silently
+fall back to a hardcoded graph when source analysis fails.
 
 ## Why these four workloads?
 
@@ -174,8 +269,9 @@ They explicitly represent host uploads (`cpu → mem`), kernel input reads
 write waits for that kernel's input reads. Dependencies operate at whole-buffer
 granularity. Local tests cover schema, sizes, component mapping, fork-join
 independence, command-line generation, changed source sizes and inputs,
-changed dependencies, and rejection of unsupported patterns. Remote use of
-this source analyzer and PNG rendering of its outputs remain to be verified.
+changed dependencies, and rejection of unsupported patterns. Remote JSON and
+PNG generation succeeded for all four workloads. The pulled JSONs match fresh
+local source-analysis output and the recorded source hashes match current files.
 
 The generator now uses Clang's syntax tree to derive these models from source,
 replacing the initial hardcoded Python models. It supports a restricted CUDA
@@ -206,10 +302,10 @@ execution or resulting performance metrics have been validated.
 
 ## Current focus and remaining work
 
-1. Run the published logical exporter on the remote server to generate the
-   four simulator inputs and optional PNGs.
-2. Inspect the rendered logical graphs and verify component mappings against
-   the intended simulator architecture.
+1. Begin source inspection of Rodinia HotSpot and identify the generic analyzer
+   extensions needed for its existing CUDA implementation.
+2. Verify component mappings against the intended simulator architecture;
+   the four example graphs have already been generated and visually inspected.
 3. Run the graphs through the simulator when access becomes available and check
    its interpretation of transfer dependencies and resource constraints.
 4. Extend beyond these four examples once the end-to-end input contract is
