@@ -4,7 +4,7 @@ import unittest
 from unittest.mock import patch
 import subprocess
 
-from cuda_source_model import analyze, UnsupportedSource, parse_source, walk, children, ref
+from cuda_source_model import analyze, UnsupportedSource, parse_source, walk, children, ref, affine, unwrap
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -12,6 +12,37 @@ VECTOR = (ROOT / "workloads/vector_add.cu").read_text()
 
 
 class SourceAnalysisTest(unittest.TestCase):
+    def test_defaults_omitted_at_call_sites(self):
+        for name in ("vector_add", "pipeline", "fork_join", "reduction"):
+            source = ROOT / "workloads" / (name + ".cu")
+            expected = analyze(source)
+            ast = parse_source(source)
+            defaults = [n for n in walk(ast) if n["kind"] == "CXXDefaultArgExpr"]
+            self.assertTrue(defaults)
+            for node in defaults:
+                node.pop("inner", None)
+            with patch("cuda_source_model.parse_source", return_value=ast):
+                self.assertEqual(analyze(source), expected)
+
+    def test_unresolvable_defaults_fail_clearly(self):
+        source = ROOT / "workloads/vector_add.cu"
+        ast = parse_source(source)
+        for node in list(walk(ast)):
+            if node["kind"] == "CXXDefaultArgExpr":
+                node.pop("inner", None)
+            if node["kind"] == "CXXConstructorDecl" and node.get("name") == "dim3":
+                for param in children(node):
+                    if param["kind"] == "ParmVarDecl":
+                        param.pop("inner", None)
+        with patch("cuda_source_model.parse_source", return_value=ast):
+            with self.assertRaisesRegex(UnsupportedSource, "resolve dim3 default"):
+                analyze(source)
+        empty = {"kind": "CXXDefaultArgExpr"}
+        with self.assertRaises(UnsupportedSource):
+            affine(empty, {})
+        with self.assertRaises(UnsupportedSource):
+            unwrap(empty)
+
     def test_modern_cuda_launch_helper(self):
         real_run = subprocess.run
 

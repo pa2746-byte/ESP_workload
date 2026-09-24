@@ -25,8 +25,46 @@ def walk(n):
 
 def unwrap(n):
     while n["kind"] in {"ImplicitCastExpr", "CStyleCastExpr", "ParenExpr", "CXXDefaultArgExpr"}:
-        n = children(n)[0]
+        n = wrapped_expression(n)
     return n
+
+
+def wrapped_expression(n):
+    cs = children(n)
+    if len(cs) != 1:
+        raise UnsupportedSource(f"Missing or ambiguous expression in Clang {n['kind']} node")
+    return cs[0]
+
+
+def constructor_arguments(expr, ast):
+    """Resolve defaults from declarations when Clang omits them at call sites."""
+    args = children(expr)
+    if not any(a["kind"] == "CXXDefaultArgExpr" and not children(a) for a in args):
+        return args
+    if expr.get("type", {}).get("qualType") != "dim3":
+        raise UnsupportedSource("Default argument resolution is only supported for dim3")
+    signature = expr.get("ctorType", {}).get("qualType")
+    matches = [n for n in walk(ast) if n["kind"] == "CXXConstructorDecl"
+               and n.get("name") == "dim3" and signature
+               and n.get("type", {}).get("qualType") == signature]
+    candidates = []
+    for declaration in matches:
+        params = [n for n in children(declaration) if n["kind"] == "ParmVarDecl"]
+        if len(params) != len(args):
+            continue
+        resolved = []
+        for arg, param in zip(args, params):
+            if arg["kind"] == "CXXDefaultArgExpr" and not children(arg):
+                if not param.get("init") or len(children(param)) != 1:
+                    break
+                resolved.append(children(param)[0])
+            else:
+                resolved.append(arg)
+        if len(resolved) == len(args):
+            candidates.append(resolved)
+    if len(candidates) != 1:
+        raise UnsupportedSource("Cannot uniquely resolve dim3 default arguments from constructor declaration")
+    return candidates[0]
 
 
 def ref(n):
@@ -44,7 +82,7 @@ SIZES = {"float": 4, "double": 8, "int": 4, "unsigned int": 4, "char": 1}
 def affine(n, env):
     """Return coefficients (blockIdx.x, threadIdx.x, constant)."""
     while n["kind"] in {"ImplicitCastExpr", "ParenExpr", "CXXDefaultArgExpr"}:
-        n = children(n)[0]
+        n = wrapped_expression(n)
     if n["kind"] == "CStyleCastExpr":
         raise UnsupportedSource("Explicit scalar/index casts are unsupported")
     k, cs = n["kind"], children(n)
@@ -281,7 +319,7 @@ def analyze(path, cpu="cpu", mem="mem", acc="acc", clang=None):
             for dim in config[:2]:
                 expr = unwrap(dim)
                 if expr["kind"] != "CXXConstructExpr": raise UnsupportedSource("Unsupported launch geometry")
-                xyz = [scalar(c, env) for c in children(expr)]
+                xyz = [scalar(c, env) for c in constructor_arguments(expr, ast)]
                 if len(xyz) != 3 or xyz[1:] != [1, 1] or xyz[0] <= 0:
                     raise UnsupportedSource("Only positive 1-D launches are supported")
                 dims.append(xyz[0])
