@@ -1,0 +1,76 @@
+{
+  "workload": "fork_join",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/fork_join.cu",
+  "source_sha256": "b502d652a6bfadf1326558bf51ef06d1d31e41d9096011fa6148b402557e1fa9",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "d_A",
+      "stage": "upload"
+    },
+    {
+      "id": 1,
+      "buffer": "d_B",
+      "stage": "upload"
+    },
+    {
+      "id": 2,
+      "buffer": "d_A",
+      "stage": "vectorAdd:read"
+    },
+    {
+      "id": 3,
+      "buffer": "d_B",
+      "stage": "vectorAdd:read"
+    },
+    {
+      "id": 4,
+      "buffer": "d_C",
+      "stage": "vectorAdd:write"
+    },
+    {
+      "id": 5,
+      "buffer": "d_A",
+      "stage": "vectorSub:read"
+    },
+    {
+      "id": 6,
+      "buffer": "d_B",
+      "stage": "vectorSub:read"
+    },
+    {
+      "id": 7,
+      "buffer": "d_D",
+      "stage": "vectorSub:write"
+    },
+    {
+      "id": 8,
+      "buffer": "d_C",
+      "stage": "vectorMul:read"
+    },
+    {
+      "id": 9,
+      "buffer": "d_D",
+      "stage": "vectorMul:read"
+    },
+    {
+      "id": 10,
+      "buffer": "d_E",
+      "stage": "vectorMul:write"
+    },
+    {
+      "id": 11,
+      "buffer": "d_E",
+      "stage": "download"
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique contiguous buffer footprints per kernel; repeated element accesses are not instruction traffic.",
+    "Edges express whole-buffer readiness, not observed default-stream order.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies."
+  ]
+}

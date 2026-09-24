@@ -45,7 +45,10 @@ python3 export_workload_transfers.py
 
 This writes four `*_simulator.json` files and separate explanatory metadata
 under `results/logical_transfers/`. Only the simulator JSON files are intended
-as simulator inputs. Generation requires Python 3, but no GPU or Nsight run.
+as simulator inputs. Generation requires Python 3 and `clang++`, but no GPU,
+CUDA toolkit, or Nsight run. On Ubuntu, install Clang if needed with
+`sudo apt install clang`. The analyzer was tested locally with Apple Clang 17;
+the remote Clang installation still needs verification.
 
 To also generate PNGs using the previously configured virtual environment:
 
@@ -53,6 +56,16 @@ To also generate PNGs using the previously configured virtual environment:
 source .venv/bin/activate
 python export_workload_transfers.py --render
 ```
+
+Analyze another CUDA file directly:
+
+```bash
+python export_workload_transfers.py --source workloads/my_workload.cu --render
+```
+
+The generator reads current source on every run. Supported changes to sizes,
+kernel arguments, copies, and global array accesses change the output without
+editing Python models. Unsupported syntax or access patterns cause an error.
 
 PNGs are written under `results/logical_transfers/graphs/`. Select a single
 workload with `--workload fork_join`, or choose another destination with
@@ -159,14 +172,17 @@ They explicitly represent host uploads (`cpu → mem`), kernel input reads
 (`mem → acc`), kernel output writes (`acc → mem`), and host downloads
 (`mem → cpu`). Each read waits for its buffer producer; each kernel output
 write waits for that kernel's input reads. Dependencies operate at whole-buffer
-granularity. Five logical-model tests passed locally, including checks for
-reference schema, reduction sizes, component mapping, fork-join independence,
-and command-line generation from a different working directory. Remote use of
-this generator and PNG rendering of its outputs remain to be verified.
+granularity. Local tests cover schema, sizes, component mapping, fork-join
+independence, command-line generation, changed source sizes and inputs,
+changed dependencies, and rejection of unsupported patterns. Remote use of
+this source analyzer and PNG rendering of its outputs remain to be verified.
 
-These models are manually specified from the current CUDA buffer accesses and
-sizes. They are not a general CUDA parser or automatic dependency-recovery tool.
-They need updating if the workloads change.
+The generator now uses Clang's syntax tree to derive these models from source,
+replacing the initial hardcoded Python models. It supports a restricted CUDA
+subset: straight-line host device operations, statically known sizes, 1-D
+launches, and simple contiguous global array access patterns. It is not a
+general analyzer for arbitrary CUDA programs. See the documented supported
+subset and error conditions before adding a workload.
 
 ## Trace graphs versus simulator transfer graphs
 

@@ -1,0 +1,56 @@
+{
+  "workload": "pipeline",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/pipeline.cu",
+  "source_sha256": "8a4565095ec0954798d8181e030fb14c80b12b55d25f3bba545eea319039bc06",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "d_A",
+      "stage": "upload"
+    },
+    {
+      "id": 1,
+      "buffer": "d_B",
+      "stage": "upload"
+    },
+    {
+      "id": 2,
+      "buffer": "d_A",
+      "stage": "vectorAdd:read"
+    },
+    {
+      "id": 3,
+      "buffer": "d_B",
+      "stage": "vectorAdd:read"
+    },
+    {
+      "id": 4,
+      "buffer": "d_C",
+      "stage": "vectorAdd:write"
+    },
+    {
+      "id": 5,
+      "buffer": "d_C",
+      "stage": "scaleVector:read"
+    },
+    {
+      "id": 6,
+      "buffer": "d_D",
+      "stage": "scaleVector:write"
+    },
+    {
+      "id": 7,
+      "buffer": "d_D",
+      "stage": "download"
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique contiguous buffer footprints per kernel; repeated element accesses are not instruction traffic.",
+    "Edges express whole-buffer readiness, not observed default-stream order.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies."
+  ]
+}
