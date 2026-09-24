@@ -16,6 +16,12 @@ metrics include computation time depends on the simulator's compute model.
 
 ## Graph representation
 
+Historical February–April 2026 results are collected in
+[past graphs from nsight](<past graphs from nsight/>), including reports,
+graph JSONs, rendered images, and related synthetic examples. Current Clang
+outputs remain in [results/logical_transfers](results/logical_transfers/);
+September Nsight run directories remain under `results/`.
+
 The target format follows the existing JSON examples supplied as simulator inputs:
 
 - Top-level fields: `directed`, `multigraph`, `graph`, `nodes`, and `edges`.
