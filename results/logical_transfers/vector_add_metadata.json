@@ -2,7 +2,7 @@
   "workload": "vector_add",
   "model": "Clang AST-derived logical global-buffer footprints",
   "volume_unit": "bytes",
-  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/vector_add.cu",
+  "source": "/home/pa2746/ESP_workload/workloads/vector_add.cu",
   "source_sha256": "4fa4795e6476040689dd72df3edfd826f8c609ba3ede17cf19c557485471c6be",
   "nodes": [
     {

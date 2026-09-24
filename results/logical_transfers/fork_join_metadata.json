@@ -2,7 +2,7 @@
   "workload": "fork_join",
   "model": "Clang AST-derived logical global-buffer footprints",
   "volume_unit": "bytes",
-  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/fork_join.cu",
+  "source": "/home/pa2746/ESP_workload/workloads/fork_join.cu",
   "source_sha256": "b502d652a6bfadf1326558bf51ef06d1d31e41d9096011fa6148b402557e1fa9",
   "nodes": [
     {

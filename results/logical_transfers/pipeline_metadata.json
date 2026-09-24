@@ -2,7 +2,7 @@
   "workload": "pipeline",
   "model": "Clang AST-derived logical global-buffer footprints",
   "volume_unit": "bytes",
-  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/pipeline.cu",
+  "source": "/home/pa2746/ESP_workload/workloads/pipeline.cu",
   "source_sha256": "8a4565095ec0954798d8181e030fb14c80b12b55d25f3bba545eea319039bc06",
   "nodes": [
     {

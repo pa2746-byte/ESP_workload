@@ -2,7 +2,7 @@
   "workload": "reduction",
   "model": "Clang AST-derived logical global-buffer footprints",
   "volume_unit": "bytes",
-  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/reduction.cu",
+  "source": "/home/pa2746/ESP_workload/workloads/reduction.cu",
   "source_sha256": "7f181019ab6d5f32854cb0b59903c73164f976be20b8a6ff21b7489e7881a82f",
   "nodes": [
     {
