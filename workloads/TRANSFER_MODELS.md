@@ -34,6 +34,14 @@ reports failures. JSON files already written remain available if rendering
 fails. Re-running replaces files with the same names; choose another
 `--out-dir` to keep a separate set.
 
+Images use left-to-right dependency levels (`L0`, `L1`, ...), memory lanes,
+and rounded boxes labeled with transfer ID, endpoints, and byte volume.
+Orange denotes accelerator writes; purple denotes accelerator reads. Host
+uploads and downloads use separate colors, identified in the legend. Units
+are exact bytes or binary units (KiB, MiB, GiB), not rounded decimal MB.
+Levels indicate dependencies, not elapsed time. Rendering does not add edges
+or change simulator inputs. This layout requires a nonempty DAG.
+
 Outputs are in `results/logical_transfers`. Use only `*_simulator.json` as
 simulator inputs. The files match the reference shape: `directed`,
 `multigraph`, empty `graph`, `nodes`, and `edges`. Nodes contain only `id`,
