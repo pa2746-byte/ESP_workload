@@ -11,4 +11,6 @@ enum cudaMemcpyKind {cudaMemcpyHostToDevice,cudaMemcpyDeviceToHost,cudaMemcpyDev
 template<class T> int cudaMalloc(T**,size_t);
 int cudaFree(void*); int cudaMemcpy(void*,const void*,size_t,cudaMemcpyKind); int cudaDeviceSynchronize();
 int cudaConfigureCall(dim3,dim3,size_t=0,void* =nullptr); int cudaSetupArgument(const void*,size_t,size_t); int cudaLaunch(const void*);
+// Clang selects this helper for the newer CUDA launch ABI.
+unsigned __cudaPushCallConfiguration(dim3, dim3, size_t = 0, void* = nullptr);
 __attribute__((device)) void __syncthreads();

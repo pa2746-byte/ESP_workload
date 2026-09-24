@@ -1,8 +1,10 @@
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
+import subprocess
 
-from cuda_source_model import analyze, UnsupportedSource
+from cuda_source_model import analyze, UnsupportedSource, parse_source, walk, children, ref
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -10,6 +12,21 @@ VECTOR = (ROOT / "workloads/vector_add.cu").read_text()
 
 
 class SourceAnalysisTest(unittest.TestCase):
+    def test_modern_cuda_launch_helper(self):
+        real_run = subprocess.run
+
+        def modern_sdk(command, **kwargs):
+            return real_run(command[:-1] + ["-Xclang", "-target-sdk-version=12.0", command[-1]], **kwargs)
+
+        with patch("cuda_source_model.subprocess.run", side_effect=modern_sdk):
+            source = ROOT / "workloads/vector_add.cu"
+            ast = parse_source(source)
+            calls = [n for n in walk(ast) if n["kind"] == "CUDAKernelCallExpr"]
+            self.assertEqual(ref(children(children(calls[0])[1])[0]), "__cudaPushCallConfiguration")
+            for name in ("vector_add", "pipeline", "fork_join", "reduction"):
+                graph, _ = analyze(ROOT / "workloads" / (name + ".cu"))
+                self.assertTrue(graph["nodes"])
+
     def analyze_text(self, text):
         with tempfile.TemporaryDirectory() as directory:
             source = Path(directory) / "unrelated_filename.cu"
