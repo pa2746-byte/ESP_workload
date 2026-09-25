@@ -48,9 +48,17 @@ Independent streams allow overlap; actual overlap depends on GPU resources
 and scheduling. Use Nsight Systems if you want to inspect the execution timeline.
 See [NVIDIA's stream/event documentation](https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html).
 
-This new workload is **not yet supported by the source graph exporter**:
-streams/events, checked API wrappers, and C++ host containers require analyzer
-extensions. It is intentionally excluded from the four-workload default export.
-Do not use an old fork-join JSON as if it were generated from this file.
-Local syntax validation is not GPU execution; remote compilation and numerical
-validation remain to be performed.
+Generate its transfer graph directly from source, without a GPU or Nsight:
+
+```bash
+python3 export_workload_transfers.py --workload fork_join_streams --render
+```
+
+Outputs: `results/logical_transfers/fork_join_streams_simulator.json`,
+`fork_join_streams_metadata.json`, and `graphs/fork_join_streams_simulator.png`.
+The default export still selects the original four examples. The stream example
+produces 12 transfers and 13 dependencies, each transfer containing 4,194,372
+bytes. Both branches remain independent; the join consumes both outputs.
+The analyzer checks explicit stream/event synchronization and rejects missing
+ordering of conflicting buffer accesses. No GPU execution is needed for this
+analysis. Optional remote compilation and numerical validation remain separate.

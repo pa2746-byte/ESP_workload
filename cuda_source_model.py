@@ -5,6 +5,7 @@ traffic. No GPU code is executed. See workloads/TRANSFER_MODELS.md for scope.
 """
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 
@@ -85,6 +86,12 @@ def affine(n, env):
         n = wrapped_expression(n)
     if n["kind"] == "CStyleCastExpr":
         raise UnsupportedSource("Explicit scalar/index casts are unsupported")
+    if n["kind"] == "CXXStaticCastExpr":
+        target = n.get("type", {}).get("qualType")
+        value = scalar(wrapped_expression(n), env)
+        if target not in {"size_t", "unsigned long", "unsigned long long"} or not 0 <= value < 2**64:
+            raise UnsupportedSource("Only nonnegative integer-to-size_t static casts are supported")
+        return (0, 0, value)
     k, cs = n["kind"], children(n)
     if k in {"IntegerLiteral", "FloatingLiteral"}:
         value = float(n["value"]) if k == "FloatingLiteral" else int(n["value"])
@@ -127,6 +134,82 @@ def scalar(n, env):
     if b or t or not isinstance(v, int):
         raise UnsupportedSource("Expected a statically known integer")
     return v
+
+
+class StreamOrder:
+    """Prove ordering of conflicting accesses; keep it separate from logical edges."""
+    def __init__(self):
+        self.streams = {"default": set()}
+        self.events = {}
+        self.completed = set()
+        self.last_write = {}
+        self.reads = {}
+        self.operations = []
+
+    def stream(self, name):
+        if name not in self.streams:
+            raise UnsupportedSource(f"Unknown or destroyed stream: {name}")
+        return self.streams[name]
+
+    def schedule(self, accesses, stream, blocking=False):
+        ordered = self.stream(stream) | self.completed
+        for buf, mode in accesses:
+            prior = set()
+            if buf in self.last_write: prior.add(self.last_write[buf])
+            if mode == "write": prior |= self.reads.get(buf, set())
+            if not prior <= ordered:
+                raise UnsupportedSource(f"Missing stream/event synchronization for {mode} of {buf} on {stream}")
+        op = len(self.operations)
+        self.operations.append(dict(id=op, stream=stream, ordered_after=sorted(ordered)))
+        for buf, mode in accesses:
+            if mode == "read": self.reads.setdefault(buf, set()).add(op)
+        for buf, mode in accesses:
+            if mode == "write":
+                self.last_write[buf] = op
+                self.reads[buf] = set()
+        self.streams[stream] = ordered | {op}
+        if blocking: self.completed |= self.streams[stream]
+        return self.operations[-1]
+
+    def synchronize(self, stream=None):
+        if stream is None:
+            for history in self.streams.values(): self.completed |= history
+        else:
+            self.completed |= self.stream(stream)
+
+
+def checked_call(stmt, funcs):
+    """Unwrap only a proven error-check-only function, never arbitrary helpers."""
+    if stmt["kind"] != "CallExpr": return stmt
+    cs = children(stmt)
+    name = ref(cs[0])
+    if name.startswith("cuda") or name not in funcs: return stmt
+    params = [p for p in children(funcs[name]) if p["kind"] == "ParmVarDecl"]
+    if not params or params[0]["type"]["qualType"] != "cudaError_t": return stmt
+    body = next(c for c in children(funcs[name]) if c["kind"] == "CompoundStmt")
+    statements = children(body)
+    if len(statements) != 1 or statements[0]["kind"] != "IfStmt":
+        raise UnsupportedSource("CUDA error wrapper must contain only an error-status check")
+    branch = children(statements[0])
+    condition = unwrap(branch[0])
+    if (len(branch) != 2 or condition["kind"] != "BinaryOperator" or
+            condition.get("opcode") != "!=" or
+            ref(children(condition)[0]) != params[0]["name"] or
+            ref(children(condition)[1]) != "cudaSuccess"):
+        raise UnsupportedSource("Unsupported CUDA error wrapper condition")
+    for node in walk(branch[1]):
+        if node["kind"] == "CallExpr":
+            if ref(children(node)[0]) not in {"fprintf", "printf", "exit", "cudaGetErrorString"}:
+                raise UnsupportedSource("CUDA wrapper contains non-diagnostic calls")
+        elif node["kind"] in {"CompoundAssignOperator", "UnaryOperator", "CUDAKernelCallExpr", "CXXMemberCallExpr"} or (node["kind"] == "BinaryOperator" and node.get("opcode") == "="):
+            raise UnsupportedSource("CUDA wrapper contains unsupported side effects")
+    actual = unwrap(cs[1])
+    if actual["kind"] != "CallExpr" or not ref(children(actual)[0]).startswith("cuda"):
+        raise UnsupportedSource("CUDA error wrapper must wrap one CUDA API call")
+    for extra in cs[2:]:
+        if any(n["kind"].endswith("CallExpr") or n["kind"] in {"UnaryOperator", "BinaryOperator"} for n in walk(extra)):
+            raise UnsupportedSource("Side effects in CUDA wrapper arguments")
+    return actual
 
 
 def parse_source(path, clang=None):
@@ -266,6 +349,7 @@ def analyze(path, cpu="cpu", mem="mem", acc="acc", clang=None):
         raise UnsupportedSource("Component names must be nonempty and distinct")
     ast = parse_source(path, clang)
     definitions = [n for n in children(ast) if n["kind"] == "FunctionDecl"
+                   and "includedFrom" not in n.get("loc", {})
                    and any(c["kind"] == "CompoundStmt" for c in children(n))]
     funcs = {n.get("name"): n for n in definitions}
     if len(funcs) != len(definitions):
@@ -274,12 +358,42 @@ def analyze(path, cpu="cpu", mem="mem", acc="acc", clang=None):
         raise UnsupportedSource("Source must define main")
     env, allocations, writers, readers, initialized = {}, {}, {}, {}, {}
     nodes, edges, descriptions = [], set(), []
+    order = StreamOrder()
+    active_operation = None
+    vectors = {}
+    handles = {}
+
+    def host_buffer(n, size):
+        n = unwrap(n)
+        if n["kind"] == "CXXMemberCallExpr":
+            member = children(n)[0]
+            if len(children(n)) != 1 or member.get("name") != "data":
+                raise UnsupportedSource("Only vector.data() host pointers are supported")
+            name = ref(children(member)[0])
+            if name not in vectors or size > vectors[name]:
+                raise UnsupportedSource("Unknown or undersized host vector")
+            return name
+        return ref(n)
+
+    def flag(n, expected):
+        if ref(n) != expected:
+            raise UnsupportedSource(f"Only {expected} is supported here")
+
+    def handle(n, kind):
+        name = ref(n)
+        if handles.get(name) != kind:
+            raise UnsupportedSource(f"Expected a declared {kind} handle: {name}")
+        return name
 
     def transfer(buf, size, src, dst, stage, parents=()):
         if size <= 0: raise UnsupportedSource("Transfer size must be positive")
         i = len(nodes)
         nodes.append(dict(id=i, vol=size, src_comp=src, dest_comp=dst))
         descriptions.append(dict(id=i, buffer=buf, stage=stage))
+        if active_operation is not None:
+            descriptions[-1].update(operation_id=active_operation["id"],
+                                    stream=active_operation["stream"],
+                                    ordered_after_operations=active_operation["ordered_after"])
         edges.update((p, i) for p in parents)
         return i
 
@@ -299,10 +413,27 @@ def analyze(path, cpu="cpu", mem="mem", acc="acc", clang=None):
 
     body = next(c for c in children(funcs["main"]) if c["kind"] == "CompoundStmt")
     for stmt in children(body):
+        stmt = checked_call(stmt, funcs)
         k, cs = stmt["kind"], children(stmt)
         if k == "DeclStmt":
             for var in cs:
                 typ = var["type"]["qualType"]
+                if typ in {"cudaStream_t", "cudaEvent_t"}:
+                    if children(var): raise UnsupportedSource("Initialized/aliased CUDA handles are unsupported")
+                    handles[var["name"]] = typ
+                    continue
+                match = re.fullmatch(r"std::vector<(float|double|int|unsigned int|char)>", typ)
+                if match:
+                    init = unwrap(children(var)[0])
+                    if init["kind"] != "CXXConstructExpr":
+                        raise UnsupportedSource("Unsupported vector initialization")
+                    args = children(init)
+                    if not args or any(a["kind"] != "CXXDefaultArgExpr" for a in args[1:]):
+                        raise UnsupportedSource("Only size-initialized host vectors are supported")
+                    size = scalar(args[0], env) * SIZES[match[1]]
+                    if size <= 0: raise UnsupportedSource("Invalid host vector size")
+                    vectors[var["name"]] = size
+                    continue
                 if "*" in typ:
                     if children(var):
                         init = unwrap(children(var)[0])
@@ -323,9 +454,13 @@ def analyze(path, cpu="cpu", mem="mem", acc="acc", clang=None):
                 if len(xyz) != 3 or xyz[1:] != [1, 1] or xyz[0] <= 0:
                     raise UnsupportedSource("Only positive 1-D launches are supported")
                 dims.append(xyz[0])
-            if any(c["kind"] != "CXXDefaultArgExpr" for c in config[2:]):
-                raise UnsupportedSource("Explicit streams/dynamic shared memory are unsupported")
+            if len(config) != 4: raise UnsupportedSource("Unsupported launch configuration")
+            if config[2]["kind"] != "CXXDefaultArgExpr" and scalar(config[2], env) != 0:
+                raise UnsupportedSource("Dynamic shared memory is unsupported")
+            stream = "default" if config[3]["kind"] == "CXXDefaultArgExpr" else handle(config[3], "cudaStream_t")
             accesses = kernel_accesses(funcs[name], cs[2:], env, allocations, *dims)
+            active_operation = order.schedule([(buf, mode) for buf, access in accesses
+                                                for mode in ("read", "write") if mode in access], stream)
             inputs = [read(buf, a["read"], acc, name + ":read") for buf, a in accesses if "read" in a]
             for buf, a in accesses:
                 if "write" in a: write(buf, a["write"], acc, name + ":write", inputs)
@@ -336,34 +471,86 @@ def analyze(path, cpu="cpu", mem="mem", acc="acc", clang=None):
                 if buf in allocations or size <= 0: raise UnsupportedSource("Allocation reuse or invalid size")
                 allocations[buf] = size
             elif name == "cudaMemcpy":
-                dst, src, size, direction = ref(args[0]), ref(args[1]), scalar(args[2], env), ref(args[3])
+                size, direction = scalar(args[2], env), ref(args[3])
                 if direction == "cudaMemcpyHostToDevice":
+                    dst, src = ref(args[0]), host_buffer(args[1], size)
                     if src in allocations: raise UnsupportedSource("Invalid host source")
+                    active_operation = order.schedule([(dst, "write")], "default")
                     write(dst, size, cpu, "upload")
                 elif direction == "cudaMemcpyDeviceToHost":
+                    dst, src = host_buffer(args[0], size), ref(args[1])
                     if dst in allocations: raise UnsupportedSource("Invalid host destination")
+                    active_operation = order.schedule([(src, "read")], "default", blocking=True)
                     read(src, size, cpu, "download")
                 else: raise UnsupportedSource("Only host/device copies are supported")
+            elif name == "cudaStreamCreateWithFlags":
+                stream = handle(args[0], "cudaStream_t")
+                flag(args[1], "cudaStreamNonBlocking")
+                if stream in order.streams: raise UnsupportedSource("Stream handle reuse")
+                order.streams[stream] = set()
+            elif name == "cudaEventCreateWithFlags":
+                event = handle(args[0], "cudaEvent_t")
+                flag(args[1], "cudaEventDisableTiming")
+                if event in order.events: raise UnsupportedSource("Event handle reuse")
+                order.events[event] = None
+            elif name == "cudaEventRecord":
+                event, stream = handle(args[0], "cudaEvent_t"), handle(args[1], "cudaStream_t")
+                if event not in order.events: raise UnsupportedSource("Record on uncreated event")
+                order.events[event] = set(order.stream(stream)) | order.completed
+            elif name == "cudaStreamWaitEvent":
+                stream, event = handle(args[0], "cudaStream_t"), handle(args[1], "cudaEvent_t")
+                order.stream(stream)
+                if scalar(args[2], env) != 0: raise UnsupportedSource("Unsupported wait flags")
+                if order.events.get(event) is None:
+                    raise UnsupportedSource("Wait on unrecorded or destroyed event")
+                # Snapshot at the wait call: later re-recording does not modify this wait.
+                order.streams[stream] |= order.events[event]
+            elif name == "cudaDeviceSynchronize":
+                order.synchronize()
+            elif name == "cudaStreamSynchronize":
+                order.synchronize(handle(args[0], "cudaStream_t"))
+            elif name == "cudaEventDestroy":
+                event = handle(args[0], "cudaEvent_t")
+                if event not in order.events: raise UnsupportedSource("Destroy of unknown event")
+                del order.events[event]
+            elif name == "cudaStreamDestroy":
+                stream = handle(args[0], "cudaStream_t")
+                if not order.stream(stream) <= order.completed:
+                    raise UnsupportedSource("Synchronize streams before destroying them")
+                del order.streams[stream]
             elif name == "cudaFree":
                 buf = ref(args[0])
                 if buf not in allocations:
                     raise UnsupportedSource(f"Free of unknown allocation: {buf}")
+                pending = order.reads.get(buf, set()) | ({order.last_write[buf]} if buf in order.last_write else set())
+                if not pending <= order.completed:
+                    raise UnsupportedSource("Synchronize buffer users before cudaFree")
                 allocations.pop(buf)
                 initialized.pop(buf, None)
                 writers.pop(buf, None)
                 readers.pop(buf, None)
-            elif name not in {"printf", "free", "cudaDeviceSynchronize"}:
+                order.reads.pop(buf, None)
+                order.last_write.pop(buf, None)
+            elif name not in {"printf", "fprintf", "free", "cudaGetLastError"}:
                 raise UnsupportedSource(f"Unsupported host call: {name}")
         elif k == "ForStmt":
             # Permit host initialization only, never hidden launches/device calls.
-            if any(n["kind"] in {"CallExpr", "CUDAKernelCallExpr"} or
-                   (n["kind"] == "DeclRefExpr" and ref(n) in allocations) for n in walk(stmt)):
-                raise UnsupportedSource("Host loops involving device operations are unsupported")
+            for n in walk(stmt):
+                if n["kind"] == "CUDAKernelCallExpr" or (n["kind"] == "DeclRefExpr" and ref(n) in set(allocations) | set(handles)):
+                    raise UnsupportedSource("Host loops involving device operations are unsupported")
+                if n["kind"] == "CallExpr" and ref(children(n)[0]) not in {"printf", "fprintf"}:
+                    raise UnsupportedSource("Unsupported call inside host loop")
+                if n["kind"] == "CXXOperatorCallExpr":
+                    if ref(children(n)[0]) != "operator[]" or ref(children(n)[1]) not in vectors:
+                        raise UnsupportedSource("Only vector element access is supported in host loops")
+                if n["kind"] == "CXXMemberCallExpr":
+                    raise UnsupportedSource("Vector mutation/member calls inside host loops are unsupported")
             for node in walk(stmt):
                 if node["kind"] in {"BinaryOperator", "CompoundAssignOperator", "UnaryOperator"} and node.get("opcode") in {"=", "+=", "-=", "*=", "/=", "++", "--"}:
                     lhs = unwrap(children(node)[0])
                     if lhs["kind"] == "DeclRefExpr" and ref(lhs) in env:
-                        raise UnsupportedSource("Host initialization loop mutates a graph parameter")
+                        # Host validation counters may change; they cannot later be used as static parameters.
+                        env.pop(ref(lhs))
         elif k == "ReturnStmt":
             break
         else:

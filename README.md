@@ -120,6 +120,28 @@ regression tests. The remotely generated graphs have been pulled back and
 checked against fresh local analysis; their source hashes match the current
 four CUDA files.
 
+### Explicit streams and event joins
+
+The analyzer also supports [fork_join_streams.cu](workloads/fork_join_streams.cu):
+two independent nonblocking worker streams followed by a third stream that
+waits for both completion events. Generate it without running CUDA on a GPU:
+
+```bash
+python3 export_workload_transfers.py --workload fork_join_streams --render
+```
+
+The generated JSON and metadata are in `results/logical_transfers/`; the PNG is
+[graphs/fork_join_streams_simulator.png](results/logical_transfers/graphs/fork_join_streams_simulator.png).
+It has 12 transfers and 13 dependencies, with 4,194,372 bytes per transfer.
+The analyzer checks stream/event ordering and rejects missing synchronization
+for conflicting buffer accesses. It also supports this example's primitive host
+vectors and diagnostic-only CUDA error wrapper. Names and sizes come from the
+source. The original four-example default remains unchanged.
+
+Logical edges describe buffer dependencies; full operation ordering is recorded
+separately in metadata. These outputs do not measure GPU overlap or execution
+time. See [supported scope](workloads/TRANSFER_MODELS.md) for restrictions.
+
 ### Scope and portability
 
 Clang is not limited to CUDA, but **our current analyzer is CUDA-specific**.

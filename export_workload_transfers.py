@@ -24,7 +24,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, help="Analyze a CUDA source file instead of bundled workloads")
     parser.add_argument("--clang", help="Clang C++ executable (default: CLANGXX or clang++)")
-    parser.add_argument("--workload", choices=("all",) + WORKLOADS, default="all")
+    parser.add_argument("--workload", choices=("all",) + WORKLOADS + ("fork_join_streams",), default="all",
+                        help="all selects the original four examples; select fork_join_streams explicitly")
     parser.add_argument("--out-dir", type=Path, default=Path("results/logical_transfers"))
     parser.add_argument("--cpu", default="cpu")
     parser.add_argument("--mem", default="mem")
@@ -57,6 +58,7 @@ def main():
                 "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
                 "Unique contiguous buffer footprints per kernel; repeated element accesses are not instruction traffic.",
                 "Edges express whole-buffer readiness, not observed default-stream order.",
+                "Stream/event ordering is checked for conflicting buffer accesses; metadata records operation ordering, not timing.",
                 "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
                 "Re-run after source changes; unsupported constructs are errors, not guessed dependencies.",
             ],

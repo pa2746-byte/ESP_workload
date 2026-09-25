@@ -69,6 +69,11 @@ Supported scope:
 - Straight-line `cudaMalloc`, host/device `cudaMemcpy`, and kernel launches
   in `main`. Host initialization loops cannot contain device operations or
   mutate parameters used to build the graph.
+- Explicit nonblocking streams, timing-disabled events, record/wait snapshots,
+  and device/stream synchronization. Conflicting accesses must be ordered by
+  the same stream, an event wait, or host synchronization; missing ordering fails.
+- Size-initialized primitive `std::vector` host buffers with `.data()` copies,
+  and checked CUDA calls through a validated diagnostic-only error wrapper.
 - Positive 1-D launch dimensions and direct, non-aliased buffer arguments.
 - Zero-based contiguous accesses using the linear thread index, thread index,
   block index, or scalar index zero, with simple `<` or `==` bounds. This
@@ -79,7 +84,7 @@ Supported scope:
 Unsupported examples include dynamic host control flow around launches,
 runtime input sizes, pointer aliases/offsets, partial writes, strided or
 data-dependent indexing, global accesses inside loops, kernel helper calls,
-atomics, explicit streams, dynamic shared memory, multidimensional launches,
+atomics, implicit blocking-stream synchronization, dynamic shared memory, multidimensional launches,
 and device-to-device copies. They require additional analysis and currently
 fail rather than producing a guessed graph. This is a deliberately restricted
 analyzer, not a verifier of general CUDA correctness or a replacement for nvcc.
@@ -130,3 +135,26 @@ Run validation:
 python3 -B -m unittest discover -s tests -p 'test_*source*.py' -v
 python3 -B -m unittest discover -s tests -p test_workload_transfers.py -v
 ```
+
+## Explicit stream fork and join
+
+```bash
+python3 export_workload_transfers.py --workload fork_join_streams --render
+```
+
+This additional example is selected explicitly (`all` retains the original four).
+No GPU or Nsight run is required. Stream/event handling is derived from API
+calls, not stream names or workload-specific templates. Host-to-device uploads
+must be synchronized before use on nonblocking streams; the join waits for
+both branch events, and the host synchronizes before downloading its output.
+Event waits capture the recorded work at the wait call, not future recordings.
+This conservative subset requires users to synchronize before freeing buffers
+or destroying streams; it does not infer every implicit CUDA synchronization.
+
+Simulator edges remain logical buffer dependencies. They do not encode all
+scheduling restrictions between unrelated buffers. Metadata records each
+transfer's operation ID, stream, and ordered predecessor operations; these IDs
+are distinct from transfer node IDs. This validates the supported source ordering
+but does not measure overlap, runtime, or bandwidth. The graph alone cannot
+reproduce an execution timeline. A read shared by both branches is represented
+separately for each kernel, as in the original fork-join model.
