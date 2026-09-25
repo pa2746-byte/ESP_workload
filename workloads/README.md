@@ -16,3 +16,41 @@ such as static code analysis, dynamic instrumentation, and profiling tools.
 
 The longer-term goal is to scale the same methodology to more realistic workloads such as matrix multiplication, 
 attention, and transformer models, while preserving enough information about dependencies and data movement to support later hardware-independent performance analysis.
+
+## Two independent GPU streams followed by a join
+
+`fork_join_streams.cu` adds a concurrency example without changing the original
+four workloads. Two nonblocking worker streams compute `C = A + B` and
+`D = A - B`. Each records a completion event. A third stream waits for both
+events before computing `E = C * D`.
+
+Input copies finish before the branches start. The host waits for the join
+before downloading and checking every output element. Each kernel uses 256
+threads per block and 1,048,593 elements, including a partially populated final
+block. CUDA errors and numerical mismatches cause a nonzero exit status.
+
+Build and run from the repository root on the NVIDIA machine:
+
+```bash
+mkdir -p build
+nvcc -O3 -std=c++17 -lineinfo workloads/fork_join_streams.cu -o build/fork_join_streams
+./build/fork_join_streams
+```
+
+Expected output:
+
+```text
+E[0] = 8.000000 (expected 8.000000)
+Validation: PASS (0 mismatches across 1048593 elements)
+```
+
+Independent streams allow overlap; actual overlap depends on GPU resources
+and scheduling. Use Nsight Systems if you want to inspect the execution timeline.
+See [NVIDIA's stream/event documentation](https://docs.nvidia.com/cuda/cuda-programming-guide/02-basics/asynchronous-execution.html).
+
+This new workload is **not yet supported by the source graph exporter**:
+streams/events, checked API wrappers, and C++ host containers require analyzer
+extensions. It is intentionally excluded from the four-workload default export.
+Do not use an old fork-join JSON as if it were generated from this file.
+Local syntax validation is not GPU execution; remote compilation and numerical
+validation remain to be performed.
