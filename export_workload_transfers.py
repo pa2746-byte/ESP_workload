@@ -24,6 +24,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, help="Analyze a CUDA source file instead of bundled workloads")
     parser.add_argument("--clang", help="Clang C++ executable (default: CLANGXX or clang++)")
+    parser.add_argument("--analysis-config", type=Path,
+                        help="Explicit host-input contracts and device parameters for bounded AST analysis (requires --source)")
+    parser.add_argument("--parameter", action="append", default=[], metavar="NAME=INTEGER",
+                        help="Override a named parameter in --analysis-config")
     parser.add_argument("--workload", choices=("all",) + WORKLOADS + ("fork_join_streams",), default="all",
                         help="all selects the original four examples; select fork_join_streams explicitly")
     parser.add_argument("--out-dir", type=Path, default=Path("results/logical_transfers"))
@@ -33,6 +37,20 @@ def main():
     parser.add_argument("--render", action="store_true",
                         help="Also render PNGs using matplotlib and NetworkX")
     args = parser.parse_args()
+    configuration = None
+    if args.analysis_config:
+        if not args.source: parser.error("--analysis-config requires --source")
+        try:
+            configuration = json.loads(args.analysis_config.read_text())
+            for item in args.parameter:
+                key, value = item.split("=", 1)
+                if key not in configuration.get("parameters", {}):
+                    parser.error(f"Unknown analysis parameter: {key}")
+                configuration["parameters"][key] = int(value)
+        except (OSError, ValueError) as exc:
+            parser.error(f"Invalid analysis configuration: {exc}")
+    elif args.parameter:
+        parser.error("--parameter requires --analysis-config")
     args.out_dir.mkdir(parents=True, exist_ok=True)
     sources = [args.source] if args.source else [
         Path(__file__).resolve().parent / "workloads" / (name + ".cu")
@@ -41,11 +59,17 @@ def main():
     models = []
     for source in sources:
         try:
-            graph, descriptions = analyze(source, args.cpu, args.mem, args.acc, args.clang)
+            details = None
+            if configuration is not None:
+                from cuda_configured_model import analyze_configured
+                graph, descriptions, details = analyze_configured(
+                    source, configuration, args.cpu, args.mem, args.acc, args.clang)
+            else:
+                graph, descriptions = analyze(source, args.cpu, args.mem, args.acc, args.clang)
         except UnsupportedSource as exc:
             parser.error(f"{source}: {exc}")
-        models.append((source, graph, descriptions))
-    for source, graph, descriptions in models:
+        models.append((source, graph, descriptions, details))
+    for source, graph, descriptions, details in models:
         name = source.stem
         metadata = dict(
             workload=name,
@@ -63,6 +87,13 @@ def main():
                 "Re-run after source changes; unsupported constructs are errors, not guessed dependencies.",
             ],
         )
+        if details is not None:
+            metadata["configured_analysis"] = details
+            metadata["assumptions"].extend([
+                "Host input parsing/loading and CPU result selection use explicit, source-hash-checked summaries; they are not executed.",
+                "Device properties are configured assumptions, not measurements; bounded kernel address evaluation requires no GPU.",
+                "Device values remain unknown; data-dependent control/indexing and non-contiguous footprints are rejected.",
+            ])
         path = args.out_dir / (name + "_simulator.json")
         path.write_text(json.dumps(graph, indent=2) + "\n")
         (args.out_dir / (name + "_metadata.json")).write_text(json.dumps(metadata, indent=2) + "\n")

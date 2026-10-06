@@ -159,6 +159,29 @@ Nsight is optional for this source-to-graph workflow. It remains useful for
 checking actual execution, copy sizes, and timing. Hardware traffic counters
 are a separate validation path, not a prerequisite for logical graph generation.
 
+## First Rodinia workload: Nearest Neighbor
+
+The original Rodinia CUDA Nearest Neighbor source is now included unchanged,
+with a bounded Clang analysis mode for small configured inputs. Run:
+
+```bash
+python3 export_workload_transfers.py \
+  --source workloads/rodinia/nn/nn_cuda.cu \
+  --analysis-config workloads/rodinia/nn/analysis.json \
+  --out-dir results/rodinia_nn --render
+```
+
+For the configured 513 records, the graph has four transfers and three edges:
+4,104-byte coordinate upload/read and 2,052-byte distance write/download.
+The kernel's struct accesses, pointer offsets, launch geometry, and bounds guard
+are analyzed from source. Input loading and CPU result selection use explicit
+reviewed host contracts; device limits are configuration assumptions. No dataset
+was loaded and no GPU or simulator execution was performed.
+
+See [the Rodinia guide](workloads/rodinia/README.md) for provenance, parameter
+changes, tests, output locations, and limits. This mode is an additional bounded
+analysis path, not unrestricted support for the whole Rodinia suite.
+
 ## Future benchmarks to investigate
 
 The next step is to analyze existing application sources, preserving their
@@ -167,7 +190,7 @@ following are candidates, **not workloads already supported or validated**.
 The order below is a proposed progression; exact implementation requirements
 must be confirmed by inspecting each selected source version.
 
-1. **Rodinia HotSpot — first target.** A processor thermal simulation with
+1. **Rodinia HotSpot — next target after Nearest Neighbor.** A processor thermal simulation with
    temperature and power inputs and repeated temperature updates. It extends
    our examples toward neighboring-cell accesses, boundary conditions, and
    iteration-to-iteration dependencies. Start with a small input for its

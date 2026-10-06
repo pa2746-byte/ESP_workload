@@ -215,7 +215,8 @@ def checked_call(stmt, funcs):
 def parse_source(path, clang=None):
     include = Path(__file__).parent / "source_analysis" / "include"
     command = [clang or os.environ.get("CLANGXX", "clang++"), "-x", "cuda", "--cuda-host-only",
-               "-nocudainc", "-nocudalib", "-I" + str(include), "-std=c++17", "-fsyntax-only",
+               "-nocudainc", "-nocudalib", "-I" + str(include),
+               "-include", str(include / "cuda_runtime.h"), "-std=c++17", "-fsyntax-only",
                "-Xclang", "-ast-dump=json", str(path)]
     try:
         result = subprocess.run(command, capture_output=True, text=True)

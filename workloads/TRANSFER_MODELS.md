@@ -158,3 +158,15 @@ are distinct from transfer node IDs. This validates the supported source orderin
 but does not measure overlap, runtime, or bandwidth. The graph alone cannot
 reproduce an execution timeline. A read shared by both branches is represented
 separately for each kernel, as in the original fork-join model.
+
+## Configured Rodinia analysis
+
+For the original Nearest Neighbor source, use `--source` together with
+`--analysis-config workloads/rodinia/nn/analysis.json`. This selects an additional
+bounded AST evaluator; the default affine analyzer and four-example batch are
+unchanged. Use `--parameter records=1025` to override its named input count.
+The configuration explicitly summarizes input helpers and supplies device limits.
+The kernel and CUDA host operations are analyzed from source without execution.
+See [Rodinia instructions and limitations](rodinia/README.md). Graph metadata
+records the resolved configuration and launch dimensions; simulator JSON retains
+the existing four-field node schema.
