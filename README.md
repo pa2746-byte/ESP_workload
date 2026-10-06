@@ -182,6 +182,26 @@ See [the Rodinia guide](workloads/rodinia/README.md) for provenance, parameter
 changes, tests, output locations, and limits. This mode is an additional bounded
 analysis path, not unrestricted support for the whole Rodinia suite.
 
+## Second Rodinia workload: HotSpot3D
+
+The unchanged Rodinia HotSpot3D source is also supported for small configured
+inputs. It adds stencil accesses, bounded host/kernel loops, included CUDA
+source, and alternating temperature buffers across iterations.
+
+```bash
+python3 export_workload_transfers.py \
+  --source workloads/rodinia/hotspot3d/3D.cu \
+  --analysis-config workloads/rodinia/hotspot3d/analysis.json \
+  --out-dir results/rodinia_hotspot3d --render
+```
+
+The default 64 x 64 x 3 grid and two iterations produce nine transfers and eleven
+dependencies, each transfer containing 49,152 bytes. The original implementation
+downloads the **previous iteration's buffer** after swapping pointers; the graph
+preserves this source behavior. See the [HotSpot3D guide](workloads/rodinia/hotspot3d/README.md)
+for details, tests, configuration assumptions, and restrictions. No dataset, GPU,
+or simulator execution is performed.
+
 ## Future benchmarks to investigate
 
 The next step is to analyze existing application sources, preserving their
@@ -190,7 +210,7 @@ following are candidates, **not workloads already supported or validated**.
 The order below is a proposed progression; exact implementation requirements
 must be confirmed by inspecting each selected source version.
 
-1. **Rodinia HotSpot — next target after Nearest Neighbor.** A processor thermal simulation with
+1. **Rodinia HotSpot (2D) — separate from the supported HotSpot3D variant.** A processor thermal simulation with
    temperature and power inputs and repeated temperature updates. It extends
    our examples toward neighboring-cell accesses, boundary conditions, and
    iteration-to-iteration dependencies. Start with a small input for its

@@ -2,6 +2,7 @@
 // Analysis-only declarations for Clang's host-side CUDA AST parser.
 // Never put this include directory on the nvcc build path: this is not a CUDA runtime.
 #include <stdlib.h>
+#include <string.h>
 #define __global__ __attribute__((global))
 #define __shared__ __attribute__((shared))
 #define __host__ __attribute__((host))
@@ -30,3 +31,5 @@ cudaError_t cudaStreamWaitEvent(cudaStream_t, cudaEvent_t, unsigned);
 cudaError_t cudaEventCreateWithFlags(cudaEvent_t*, unsigned);
 cudaError_t cudaEventRecord(cudaEvent_t, cudaStream_t);
 cudaError_t cudaEventDestroy(cudaEvent_t);
+enum cudaFuncCache { cudaFuncCachePreferL1 };
+template<class T> cudaError_t cudaFuncSetCacheConfig(T, cudaFuncCache);

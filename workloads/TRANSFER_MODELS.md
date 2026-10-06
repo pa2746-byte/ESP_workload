@@ -170,3 +170,10 @@ The kernel and CUDA host operations are analyzed from source without execution.
 See [Rodinia instructions and limitations](rodinia/README.md). Graph metadata
 records the resolved configuration and launch dimensions; simulator JSON retains
 the existing four-field node schema.
+
+The configured mode also supports the unchanged Rodinia HotSpot3D implementation
+using `workloads/rodinia/hotspot3d/analysis.json`. It evaluates selected host helper
+bodies, included source units, bounded loops, and repeated default-stream
+launches with pointer swaps. The total thread budget spans all launches.
+See [HotSpot3D instructions](rodinia/hotspot3d/README.md), including the upstream
+previous-buffer download behavior and explicit CPU/IO assumptions.

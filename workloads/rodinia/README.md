@@ -1,4 +1,13 @@
-# Rodinia source-analysis experiment
+# Rodinia source-analysis experiments
+
+Two examples are now available:
+
+- **Nearest Neighbor**, described below: struct fields, pointer offsets, and
+  configured input size.
+- **[HotSpot3D](hotspot3d/README.md)**: stencil accesses, included CUDA source,
+  bounded loops, repeated launches, and temperature-buffer swaps. Its upstream
+  download selects the previous result; the linked guide explains how the graph
+  preserves that behavior.
 
 `nn/nn_cuda.cu` is an **unchanged upstream CUDA Nearest Neighbor implementation**
 from [yuhc/gpu-rodinia](https://github.com/yuhc/gpu-rodinia), commit
@@ -101,7 +110,7 @@ threads, out-of-bounds accesses, non-contiguous footprints, and partial-buffer
 writes. Integer overflow/narrowing, arbitrary C++ object lifetimes, general
 scope resolution, and full host-program behavior are outside its model.
 
-Thread enumeration defaults to a configured limit of 65,536 and has an absolute
+Thread enumeration across all launches defaults to a configured limit of 65,536 and has an absolute
 cap of 262,144. This is a correctness experiment for small inputs; it is not yet
 a scalable analysis of million-record runs. Increasing input size may require
 symbolic range analysis rather than increasing the cap.

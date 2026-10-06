@@ -8,6 +8,7 @@ import hashlib
 import itertools
 import math
 import re
+from pathlib import Path
 
 from cuda_source_model import (UnsupportedSource, children, walk, ref,
                                parse_source, constructor_arguments, StreamOrder)
@@ -17,6 +18,28 @@ class Unknown:
     pass
 
 UNKNOWN = Unknown()
+
+
+class FunctionReturn(Exception):
+    def __init__(self, value):
+        self.value = value
+
+
+def source_declarations(ast, path, additional_sources=()):
+    """Resolve Clang's elided top-level file locations for explicit source units."""
+    files = {path.resolve(): path.read_bytes()}
+    for relative in additional_sources:
+        extra = (path.parent / relative).resolve()
+        if extra.parent != path.parent.resolve():
+            raise UnsupportedSource('Additional sources must be in the entry source directory')
+        files[extra] = extra.read_bytes()
+    current = None
+    selected = []
+    for node in children(ast):
+        location = node.get('loc', {})
+        if 'file' in location: current = Path(location['file']).resolve()
+        if current in files: selected.append((node, files[current]))
+    return selected, files
 
 @dataclass
 class Reference:
@@ -60,9 +83,11 @@ class Evaluator:
     def __init__(self, path, config, cpu, mem, acc, clang):
         self.ast = parse_source(path, clang)
         self.source = path.read_bytes()
-        definitions = [n for n in children(self.ast) if n['kind'] == 'FunctionDecl'
-                       and 'includedFrom' not in n.get('loc', {})
+        declarations, self.source_files = source_declarations(self.ast, path, config.get('additional_sources', []))
+        definitions = [n for n, _ in declarations if n['kind'] == 'FunctionDecl'
                        and any(c['kind'] == 'CompoundStmt' for c in children(n))]
+        function_sources = {n['name']: contents for n, contents in declarations
+                            if n['kind'] == 'FunctionDecl' and any(c['kind'] == 'CompoundStmt' for c in children(n))}
         self.functions = {n['name']: n for n in definitions}
         if len(self.functions) != len(definitions) or 'main' not in self.functions:
             raise UnsupportedSource('Configured analysis requires unique functions and main')
@@ -85,8 +110,18 @@ class Evaluator:
         if config.get('preprocessor_sha256') != directives_hash(self.source):
             raise UnsupportedSource('Preprocessor directives changed; review host contracts')
         for name, summary in self.summaries.items():
-            if name not in self.functions or body_hash(self.functions[name], self.source) != summary['body_sha256']:
+            if name not in self.functions or body_hash(self.functions[name], function_sources[name]) != summary['body_sha256']:
                 raise UnsupportedSource(f'Host summary source changed: {name}; review its contract')
+        for file, contents in self.source_files.items():
+            if file != path.resolve() and config.get('additional_preprocessor_sha256', {}).get(file.name) != directives_hash(contents):
+                raise UnsupportedSource('Included source directives changed; review host contracts')
+        self.analyzed_functions = set(config.get('analyzed_functions', []))
+        if self.analyzed_functions & self.summaries.keys():
+            raise UnsupportedSource('A function cannot be both analyzed and summarized')
+        self.loop_limit = self.positive(config.get('max_loop_iterations', 1024))
+        if self.loop_limit > 10000: raise UnsupportedSource('Loop iteration limit exceeds 10000')
+        self.total_loop_iterations = 0
+        self.total_threads = 0
         for fn in self.functions.values():
             names = [n.get('name') for n in walk(body_of(fn)) if n['kind'] == 'VarDecl']
             if len(names) != len(set(names)):
@@ -120,7 +155,15 @@ class Evaluator:
                 target = self.clean(node.get('type', {}).get('desugaredQualType', ''))
                 if target in self.types: self.types[node['name']] = self.types[target]
         self.env = {'argc': UNKNOWN, 'argv': UNKNOWN}
+        if 'arguments' in config:
+            arguments = [str(self.configured(v)) if isinstance(v, dict) else v for v in config['arguments']]
+            if not all(isinstance(v, str) for v in arguments): raise UnsupportedSource('Arguments must be strings or named parameters')
+            self.env.update(argc=len(arguments)+1, argv=[str(path)] + arguments)
+        self.current_function = 'main'
+        self.call_stack = ['main']
         self.allocations, self.host_sizes = {}, {}
+        self.allocated_names = set()
+        self.host_allocation_count = 0
         self.nodes, self.edges, self.metadata = [], set(), []
         self.writers, self.readers, self.initialized = {}, {}, {}
         self.order = StreamOrder()
@@ -132,6 +175,10 @@ class Evaluator:
         self.cpu, self.mem, self.acc = cpu, mem, acc
         self.launches = []
         self.used_summaries = set()
+        self.globals = {}
+        for node, _ in declarations:
+            if node['kind'] == 'VarDecl' and children(node):
+                self.globals[node['name']] = self.eval(children(node)[-1])
 
     @staticmethod
     def clean(typ):
@@ -168,7 +215,9 @@ class Evaluator:
         raise UnsupportedSource('Unsupported lvalue read')
 
     def store(self, location, value):
-        if isinstance(location, Reference): location.owner[location.key] = value
+        if isinstance(location, Reference):
+            if location.owner is self.globals: raise UnsupportedSource('Global mutation is unsupported')
+            location.owner[location.key] = value
         elif isinstance(location, Pointer) and location.device:
             self.access(location, 'write')
         else: raise UnsupportedSource('Unsupported memory write')
@@ -189,6 +238,7 @@ class Evaluator:
         if k in {'ParenExpr', 'ImplicitCastExpr'}: return self.location(cs[0])
         if k == 'DeclRefExpr':
             name = n['referencedDecl']['name']
+            if name in self.globals and name not in self.env: return Reference(self.globals, name)
             if name not in self.env: raise UnsupportedSource(f'Unmodeled global/reference: {name}')
             return Reference(self.env, name)
         if k == 'UnaryOperator' and n['opcode'] == '*':
@@ -253,7 +303,8 @@ class Evaluator:
         if k == 'CXXNullPtrLiteralExpr': return None
         if k == 'DeclRefExpr':
             name = n['referencedDecl']['name']
-            if name in {'cudaMemcpyHostToDevice', 'cudaMemcpyDeviceToHost'}: return name
+            if name in {'cudaMemcpyHostToDevice', 'cudaMemcpyDeviceToHost', 'cudaFuncCachePreferL1'}: return name
+            if n['referencedDecl']['kind'] == 'FunctionDecl': return name
             if not self.kernel and name in {'stderr', 'stdout', '__stderrp', '__stdoutp'}: return UNKNOWN
             return self.read(self.location(n))
         if k in {'MemberExpr', 'ArraySubscriptExpr', 'CXXOperatorCallExpr'}:
@@ -268,8 +319,21 @@ class Evaluator:
             if op == '!': return not self.truth(value)
             if op == '-': return UNKNOWN if isinstance(value, Unknown) else -value
             if op == '+': return value
+            if op in {'++', '--'}:
+                if type(value) is not int: raise UnsupportedSource('Increment requires a known integer')
+                updated = value + (1 if op == '++' else -1)
+                self.store(self.location(cs[0]), updated)
+                return value if n.get('isPostfix') else updated
             raise UnsupportedSource(f'Unsupported unary operation: {op}')
         if k == 'ConditionalOperator': return self.eval(cs[1] if self.truth(self.eval(cs[0])) else cs[2])
+        if k == 'CompoundAssignOperator':
+            op = n['opcode']
+            if op not in {'+=', '-='}: raise UnsupportedSource('Unsupported compound assignment')
+            location = self.location(cs[0])
+            a, b = self.read(location), self.eval(cs[1])
+            value = UNKNOWN if isinstance(a, Unknown) or isinstance(b, Unknown) else a + (b if op == '+=' else -b)
+            self.store(location, value)
+            return value
         if k == 'BinaryOperator':
             op = n['opcode']
             if op == '=':
@@ -328,6 +392,22 @@ class Evaluator:
             if self.truth(self.eval(cs[0])): self.statement(cs[1])
             elif len(cs) == 3: self.statement(cs[2])
         elif k == 'NullStmt': pass
+        elif k == 'ReturnStmt':
+            raise FunctionReturn(self.eval(cs[0]) if cs else None)
+        elif k == 'ForStmt':
+            # Clang preserves an empty slot for a condition-variable declaration.
+            raw = n.get('inner', [])
+            if len(raw) != 5 or raw[1].get('kind') or not all(raw[i].get('kind') for i in (0,2,3,4)):
+                raise UnsupportedSource('Unsupported for-loop structure')
+            self.statement(raw[0])
+            iterations = 0
+            while self.truth(self.eval(raw[2])):
+                iterations += 1
+                self.total_loop_iterations += 1
+                if iterations > self.loop_limit or self.total_loop_iterations > 1000000:
+                    raise UnsupportedSource('Loop iteration budget exceeded')
+                self.statement(raw[4])
+                self.eval(raw[3])
         else: self.eval(n)
 
     def call(self, name, expressions):
@@ -348,7 +428,25 @@ class Evaluator:
                 if not isinstance(vector, Vector): raise UnsupportedSource('Summary expects a host vector')
                 vector.count = self.positive(self.configured(count))
                 self.host_sizes[vector.name] = vector.count * self.layout(vector.base)[0]
-            return self.configured(summary.get('return', 0))
+            return UNKNOWN if summary.get('return_unknown') else self.configured(summary.get('return', 0))
+        if name in self.analyzed_functions:
+            if name in self.call_stack or len(self.call_stack) >= 16:
+                raise UnsupportedSource('Recursive or excessively nested host calls are unsupported')
+            fn = self.functions[name]
+            params = [p for p in children(fn) if p['kind'] == 'ParmVarDecl']
+            if len(args) != len(params): raise UnsupportedSource('Host argument count mismatch')
+            saved, saved_fn = self.env, self.current_function
+            self.env = {p['name']: a for p, a in zip(params, args)}
+            self.current_function = name
+            self.call_stack.append(name)
+            try:
+                self.statement(body_of(fn))
+            except FunctionReturn as result:
+                return result.value
+            finally:
+                self.call_stack.pop()
+                self.env, self.current_function = saved, saved_fn
+            return None
         if name == 'cudaGetDeviceProperties':
             if args[1] != self.device.get('ordinal', 0): raise UnsupportedSource('Device ordinal not configured')
             self.store(args[0], {'maxGridSize': self.device['max_grid_size'], 'maxThreadsPerBlock': self.device['max_threads_per_block']})
@@ -358,18 +456,34 @@ class Evaluator:
         elif name == 'cudaMalloc':
             target, size = args
             if not isinstance(target, Reference): raise UnsupportedSource('Allocation needs a direct pointer')
-            if target.key in self.allocations: raise UnsupportedSource('Allocation reuse is unsupported')
+            if target.key in self.allocated_names: raise UnsupportedSource('Allocation reuse is unsupported')
+            self.allocated_names.add(target.key)
             self.allocations[target.key] = self.positive(size)
             # Type comes from the pointer declaration, not the void** cast at the API.
-            declarations = [n for n in walk(body_of(self.functions['main'])) if n['kind'] == 'VarDecl' and n.get('name') == target.key]
+            declarations = [n for n in walk(body_of(self.functions[self.current_function])) if n['kind'] == 'VarDecl' and n.get('name') == target.key]
             if len(declarations) != 1: raise UnsupportedSource('Ambiguous allocation pointer declaration')
             base = self.clean(declarations[0]['type']['qualType']).rstrip('*').strip()
             self.layout(base)
             self.store(target, Pointer(target.key, 0, base, True))
-        elif name == 'malloc':
-            key = 'host_alloc_' + str(len(self.host_sizes))
-            self.host_sizes[key] = self.positive(args[0])
+        elif name in {'malloc', 'calloc'}:
+            key = 'host_alloc_' + str(self.host_allocation_count)
+            self.host_allocation_count += 1
+            self.host_sizes[key] = self.positive(args[0] * args[1] if name == 'calloc' else args[0])
             return Pointer(key, 0, 'char')
+        elif name == 'atoi':
+            if len(args) != 1 or not isinstance(args[0], str) or not re.fullmatch(r'[+-]?\d+', args[0]):
+                raise UnsupportedSource('atoi requires a configured integer string')
+            return int(args[0])
+        elif name == 'memcpy':
+            dst, src, size = args
+            self.positive(size)
+            for ptr in (dst, src):
+                if not isinstance(ptr, Pointer) or ptr.device or ptr.offset < 0 or ptr.offset + size > self.host_sizes.get(ptr.buffer, 0):
+                    raise UnsupportedSource('Invalid host memcpy')
+            return dst
+        elif name == 'cudaFuncSetCacheConfig':
+            if len(args) != 2 or args[0] not in self.functions or args[1] != 'cudaFuncCachePreferL1':
+                raise UnsupportedSource('Unsupported cache configuration')
         elif name == 'cudaMemcpy':
             dst, src, size, direction = args
             self.positive(size)
@@ -414,7 +528,8 @@ class Evaluator:
         if not isinstance(grid, dict) or not isinstance(block, dict): raise UnsupportedSource('Invalid launch dimensions')
         dims = [self.positive(grid[k]) for k in ('x', 'y', 'z')] + [self.positive(block[k]) for k in ('x', 'y', 'z')]
         count = math.prod(dims)
-        if count > self.limit: raise UnsupportedSource('Launch exceeds max_enumerated_threads; use a smaller input')
+        self.total_threads += count
+        if self.total_threads > self.limit: raise UnsupportedSource('Launches exceed max_enumerated_threads; use a smaller input')
         if math.prod(dims[3:]) > self.device['max_threads_per_block'] or any(a > b for a, b in zip(dims[:3], self.device['max_grid_size'])):
             raise UnsupportedSource('Launch exceeds configured device limits')
         params = [p for p in children(fn) if p['kind'] == 'ParmVarDecl']
@@ -431,7 +546,10 @@ class Evaluator:
                                 blockIdx=dict(zip(('x','y','z'), indices[:3])),
                                 threadIdx=dict(zip(('x','y','z'), indices[3:])))
                 self.thread_writes = set()
-                self.statement(body_of(fn))
+                try:
+                    self.statement(body_of(fn))
+                except FunctionReturn:
+                    pass
                 if self.all_writes & self.thread_writes: raise UnsupportedSource('Multiple threads write the same bytes')
                 self.all_writes |= self.thread_writes
         finally:
@@ -471,12 +589,16 @@ class Evaluator:
         self.writers[buffer], self.readers[buffer], self.initialized[buffer] = {i}, set(), size
 
     def run(self):
-        self.statement(body_of(self.functions['main']))
+        try:
+            self.statement(body_of(self.functions['main']))
+        except FunctionReturn as result:
+            if result.value not in (0, None): raise UnsupportedSource('Main returns failure for the configured input')
         if not self.nodes: raise UnsupportedSource('No transfers generated')
         if self.allocations: raise UnsupportedSource('Configured analysis requires all device buffers to be freed')
         return (dict(directed=True, multigraph=False, graph={}, nodes=self.nodes,
                      edges=[dict(source=s, target=t) for s, t in sorted(self.edges)]),
                 self.metadata, dict(configuration=self.config, launches=self.launches,
+                                    source_units={file.name: hashlib.sha256(data).hexdigest() for file, data in self.source_files.items()},
                                     used_host_summaries=sorted(self.used_summaries)))
 
 

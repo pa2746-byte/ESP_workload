@@ -6,6 +6,7 @@ import os
 import matplotlib.pyplot as plt
 import networkx as nx
 from matplotlib.patches import FancyArrowPatch, FancyBboxPatch, Patch
+from matplotlib.path import Path as DrawingPath
 
 
 def print_to_terminal(g: nx.DiGraph) -> None:
@@ -83,10 +84,13 @@ def generate_figure(g: nx.DiGraph, filename: str, out_dir: str = "graph_img") ->
     layers, pos, lanes = transfer_layout(g)
     ymin = min(y for x, y in pos.values())
     ymax = max(y for x, y in pos.values())
+    long_edges = {(src, dst): i for i, (src, dst) in enumerate(
+        (edge for edge in g.edges() if pos[edge[1]][0] - pos[edge[0]][0] > 3.1))}
+    routing_space = 0.3 * len(long_edges)
     fig, ax = plt.subplots(figsize=(max(8, len(layers) * 2.1 + 1.8),
-                                    max(4.5, (ymax - ymin) * 0.9 + 3)))
+                                    max(4.5, (ymax - ymin + routing_space) * 0.9 + 3)))
     ax.set_xlim(-3.3, (len(layers) - 1) * 3 + 1.4)
-    ax.set_ylim(ymin - 1, ymax + 1.15)
+    ax.set_ylim(ymin - 1 - routing_space, ymax + 1.15)
     ax.set_aspect("equal", adjustable="box")
     ax.axis("off")
     boxes = {}
@@ -100,13 +104,23 @@ def generate_figure(g: nx.DiGraph, filename: str, out_dir: str = "graph_img") ->
     for src, dst in g.edges():
         x1, y1 = pos[src]
         x2, y2 = pos[dst]
-        # Route edges that skip generations around intervening boxes.
-        curve = 0.16 if x2 - x1 > 3.1 else 0
+        # Put edges that skip levels below all boxes. A shallow arc can pass
+        # behind an unrelated node and incorrectly appear to start from it.
+        if (src, dst) in long_edges:
+            route_y = ymin - 0.85 - 0.3 * long_edges[src, dst]
+            path = DrawingPath([(x1 + 1.2, y1), (x1 + 1.35, y1),
+                                (x1 + 1.35, route_y), (x2 - 1.35, route_y),
+                                (x2 - 1.35, y2), (x2 - 1.2, y2)],
+                               [DrawingPath.MOVETO] + [DrawingPath.LINETO] * 5)
+            ax.add_patch(FancyArrowPatch(path=path, arrowstyle="-|>",
+                                        mutation_scale=10, linewidth=0.9,
+                                        color="#b7b7b7", zorder=1))
+            continue
         ax.add_patch(FancyArrowPatch((x1, y1), (x2, y2), patchA=boxes[src],
                                     patchB=boxes[dst], arrowstyle="-|>",
                                     mutation_scale=10, linewidth=0.9,
                                     color="#b7b7b7", shrinkA=3, shrinkB=3,
-                                    connectionstyle=f"arc3,rad={curve}", zorder=1))
+                                    connectionstyle="arc3,rad=0", zorder=1))
     for node, (x, y) in pos.items():
         data = g.nodes[node]
         src, dst = endpoints(data)
