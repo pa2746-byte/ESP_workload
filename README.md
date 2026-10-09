@@ -75,6 +75,43 @@ The target format follows the existing JSON examples supplied as simulator input
 Logical dependencies must preserve independent branches. An observed ordering
 on a CUDA stream is not, by itself, proof that one operation needs another's data.
 
+### When two kernels access the same memory
+
+Clang parses the CUDA source; **our analyzer determines the supported memory
+accesses and dependencies** from its AST. It tracks device allocations, maps
+kernel parameters to the actual buffers passed at each launch, and examines
+reads and writes. Supported pointer swaps are followed by allocation identity,
+so changing a pointer variable's name or value does not create a new buffer.
+This is source analysis, not observation of live GPU memory.
+
+If two kernels access the same buffer, the rules are:
+
+- **Read then read:** no dependency between the reads solely because they share
+  the buffer. Both still depend on the buffer's producer.
+- **Write then read:** the later read waits for the earlier write to produce
+  its input.
+- **Read then write:** the later overwrite waits for the earlier read to finish.
+- **Write then write:** preserve the ordering of the writes.
+
+These dependencies connect transfer nodes, not separate compute-only kernel
+nodes. For example, both branches in `fork_join.cu` read A and B but write
+different outputs. Their shared input reads remain independent; the join's
+reads depend on the branches' output writes. Independence in the logical graph
+does not promise simultaneous execution on the physical GPU.
+
+In the supported explicit-stream analysis, conflicting accesses on different
+streams require provable ordering, such as an event wait or host synchronization.
+Missing ordering is rejected rather than silently repaired by inventing a safe
+execution order. The configured Rodinia analysis currently supports default-stream
+launches only.
+
+Dependency tracking is conservative at **whole-buffer granularity**. The
+analyzers calculate supported access footprints, but do not generally treat
+disjoint regions of one allocation as independent. Unsupported aliasing or
+data-dependent addresses require further analysis and are rejected rather than
+guessed. Graph volumes describe the configured scenario; values discovered only
+during execution are not automatically available to the analyzer.
+
 ## Generate simulator inputs on the remote server
 
 The default generator command selects the original four workloads. The stream
