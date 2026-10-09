@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "parameters": {
+    "rows": 64,
+    "layers": 3,
+    "iterations": 2
+  },
+  "arguments": [
+    {
+      "parameter": "rows"
+    },
+    {
+      "parameter": "layers"
+    },
+    {
+      "parameter": "iterations"
+    },
+    "power.txt",
+    "temperature.txt",
+    "output.txt"
+  ],
+  "additional_sources": [
+    "opt1.cu"
+  ],
+  "additional_preprocessor_sha256": {
+    "opt1.cu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "analyzed_functions": [
+    "hotspot_opt1"
+  ],
+  "device": {
+    "ordinal": 0,
+    "max_grid_size": [
+      65535,
+      65535,
+      65535
+    ],
+    "max_threads_per_block": 1024,
+    "free_memory_bytes": 1073741824,
+    "total_memory_bytes": 2147483648
+  },
+  "max_enumerated_threads": 65536,
+  "max_loop_iterations": 1024,
+  "host_summaries": {
+    "get_time": {
+      "body_sha256": "32d2c5df44932f24527074ff92cdfc86437bf2bb43d3f752479adc9e196e63f6",
+      "return_unknown": true
+    },
+    "readinput": {
+      "body_sha256": "72e61d7f0c1842d11fc1c1e2472cabf0be26490a611c6a525052dd1b23ffcde8"
+    },
+    "writeoutput": {
+      "body_sha256": "90c3c98acd044e5d6f2d62724ec4a6e5fca06c6fae653fcac6e2796534ea2de1"
+    },
+    "computeTempCPU": {
+      "body_sha256": "efa230a5eefaea903bcc39bab0db8d6ec3de20184b7a46f18c7dd6201c8c7f96"
+    },
+    "accuracy": {
+      "body_sha256": "d32c27d04ac255c7ff169a006fac16937f6be2bbc867799481ab9717c57b50bc",
+      "return_unknown": true
+    }
+  },
+  "preprocessor_sha256": "a404c01999559fe2286b1bb0aaa2da4ccb6527469470b78179cb27d9c22313a9"
+}

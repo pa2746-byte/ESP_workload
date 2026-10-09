@@ -64,9 +64,11 @@ def parse_volume(row: dict, bytes_col: str):
     if not bytes_col:
         return 0
     raw = row.get(bytes_col, "")
-    if raw is None or raw == "":
+    text = "" if raw is None else str(raw).strip()
+    # Missing trace sizes do not describe a kernel's memory traffic.
+    if text.lower() in {"", "none", "nan", "n/a"}:
         return 0
-    val = float(str(raw).replace(",", ""))
+    val = float(text.replace(",", ""))
     col_lower = bytes_col.lower()
     if "(mb)" in col_lower:
         return int(val * 1024 * 1024)

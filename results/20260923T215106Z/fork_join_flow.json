@@ -1,0 +1,159 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {
+        "aggregation": "raw",
+        "min_transfer_bytes": 0,
+        "transfer_totals": {
+            "h2d_bytes": 8795454,
+            "d2h_bytes": 4397727,
+            "d2d_bytes": 0,
+            "h2h_bytes": 0,
+            "total_transfer_bytes": 13193181
+        }
+    },
+    "nodes": [
+        {
+            "id": 0,
+            "vol": 4397727,
+            "vol_bytes": 4397727,
+            "vol_mb": 4.193999,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy HtoD]",
+            "start_ns": 183234344,
+            "duration_ns": 224130,
+            "stream_id": 7
+        },
+        {
+            "id": 1,
+            "vol": 4397727,
+            "vol_bytes": 4397727,
+            "vol_mb": 4.193999,
+            "source_id": "cpu",
+            "dest_id": "acc",
+            "direction": "h2d",
+            "op_type": "memcpy",
+            "subtype": "h2d_copy",
+            "op_name": "[CUDA memcpy HtoD]",
+            "start_ns": 183520010,
+            "duration_ns": 211489,
+            "stream_id": 7
+        },
+        {
+            "id": 2,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vectorAdd(const float *, const float *, float *, int)",
+            "start_ns": 189010510,
+            "duration_ns": 8000,
+            "stream_id": 7,
+            "grid": {
+                "x": 4096,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
+        },
+        {
+            "id": 3,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vectorSub(const float *, const float *, float *, int)",
+            "start_ns": 189026702,
+            "duration_ns": 5216,
+            "stream_id": 7,
+            "grid": {
+                "x": 4096,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
+        },
+        {
+            "id": 4,
+            "vol": 0,
+            "vol_bytes": 0,
+            "vol_mb": 0.0,
+            "source_id": "acc",
+            "dest_id": "acc",
+            "direction": "compute",
+            "op_type": "kernel",
+            "subtype": "compute_kernel",
+            "op_name": "vectorMul(const float *, const float *, float *, int)",
+            "start_ns": 189034574,
+            "duration_ns": 5120,
+            "stream_id": 7,
+            "grid": {
+                "x": 4096,
+                "y": 1,
+                "z": 1
+            },
+            "block": {
+                "x": 256,
+                "y": 1,
+                "z": 1
+            }
+        },
+        {
+            "id": 5,
+            "vol": 4397727,
+            "vol_bytes": 4397727,
+            "vol_mb": 4.193999,
+            "source_id": "acc",
+            "dest_id": "cpu",
+            "direction": "d2h",
+            "op_type": "memcpy",
+            "subtype": "d2h_copy",
+            "op_name": "[CUDA memcpy DtoH]",
+            "start_ns": 189052334,
+            "duration_ns": 438531,
+            "stream_id": 7
+        }
+    ],
+    "edges": [
+        {
+            "source": 0,
+            "target": 1
+        },
+        {
+            "source": 1,
+            "target": 2
+        },
+        {
+            "source": 2,
+            "target": 3
+        },
+        {
+            "source": 3,
+            "target": 4
+        },
+        {
+            "source": 4,
+            "target": 5
+        }
+    ]
+}

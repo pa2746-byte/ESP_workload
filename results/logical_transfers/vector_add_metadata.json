@@ -1,0 +1,46 @@
+{
+  "workload": "vector_add",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/home/pa2746/ESP_workload/workloads/vector_add.cu",
+  "source_sha256": "4fa4795e6476040689dd72df3edfd826f8c609ba3ede17cf19c557485471c6be",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "d_A",
+      "stage": "upload"
+    },
+    {
+      "id": 1,
+      "buffer": "d_B",
+      "stage": "upload"
+    },
+    {
+      "id": 2,
+      "buffer": "d_A",
+      "stage": "vectorAdd:read"
+    },
+    {
+      "id": 3,
+      "buffer": "d_B",
+      "stage": "vectorAdd:read"
+    },
+    {
+      "id": 4,
+      "buffer": "d_C",
+      "stage": "vectorAdd:write"
+    },
+    {
+      "id": 5,
+      "buffer": "d_C",
+      "stage": "download"
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique contiguous buffer footprints per kernel; repeated element accesses are not instruction traffic.",
+    "Edges express whole-buffer readiness, not observed default-stream order.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies."
+  ]
+}

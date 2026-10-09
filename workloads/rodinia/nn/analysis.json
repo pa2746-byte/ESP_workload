@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "parameters": {
+    "records": 513
+  },
+  "device": {
+    "ordinal": 0,
+    "max_grid_size": [
+      65535,
+      65535,
+      65535
+    ],
+    "max_threads_per_block": 256,
+    "free_memory_bytes": 1073741824,
+    "total_memory_bytes": 2147483648
+  },
+  "max_enumerated_threads": 65536,
+  "host_summaries": {
+    "parseCommandline": {
+      "return": 0,
+      "writes": {
+        "3": 5,
+        "4": 30.0,
+        "5": 90.0,
+        "6": 1,
+        "7": 0,
+        "8": 0,
+        "9": 0
+      },
+      "body_sha256": "43512996084019b3d161153c02974ac3c22653cce9fa3b334d62aa9de375917a"
+    },
+    "loadData": {
+      "return": {
+        "parameter": "records"
+      },
+      "vectors": {
+        "1": {
+          "parameter": "records"
+        },
+        "2": {
+          "parameter": "records"
+        }
+      },
+      "body_sha256": "382d82d8ccee3f7311f4abafd81b6dadd445ac801d96c0bbfa417890d3be7237"
+    },
+    "findLowest": {
+      "return": 0,
+      "body_sha256": "ebbc96f21ac4530c2975fae7ac32ef0a87e675600cafafc1e743fa3feb004279"
+    }
+  },
+  "preprocessor_sha256": "e20e92ea984399c03e9d53f1a0aae97302c3922dc6f32cf0f4b168eb8bdd9284"
+}
