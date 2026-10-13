@@ -15,6 +15,9 @@ from [yuhc/gpu-rodinia](https://github.com/yuhc/gpu-rodinia), commit
 The source was compared byte-for-byte with that revision. Upstream licensing is
 preserved in [LICENSE](LICENSE). No dataset or CUDA binary is bundled here.
 
+See [source-to-graph validation](VALIDATION.md) for independent checks of both
+Rodinia graphs, the exact expected dependencies, and the scope of the results.
+
 ## Generate the graph without a GPU
 
 From the repository root, in a Python environment with Clang available:

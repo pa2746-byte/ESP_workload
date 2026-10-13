@@ -31,7 +31,7 @@ PNGs, and documentation are committed on `pa2746-byte-sampleworkloads`.
   grid and two iterations (9 / 11); adds stencil accesses, included source,
   bounded loops, repeated launches, and buffer swaps.
 
-The latest implementation validation passed **33 relevant tests**. The original
+The latest implementation validation passed **38 relevant tests**. The original
 four samples also have remote CUDA/Nsight run evidence. The two Rodinia examples
 have been analyzed and tested locally with Apple Clang 17; they have **not** been
 numerically validated on a GPU or run through the simulator. Their file loading,
@@ -457,12 +457,19 @@ These are restricted source-analysis paths, not a general CUDA verifier.
 - Archived February–April outputs in `past graphs from nsight/` and kept current
   source-analysis outputs separate from historical trace graphs.
 
-Reproduce the 33-test validation without a GPU:
+Reproduce the 38-test validation without a GPU:
 
 ```bash
 python3 -B -m unittest discover -s tests -p '*source_model.py' -v
 python3 -B -m unittest discover -s tests -p test_workload_transfers.py -v
+python3 -B -m unittest discover -s tests -p test_rodinia_graph_contract.py -v
 ```
+
+The [independent Rodinia validation](workloads/rodinia/VALIDATION.md) documents
+source-derived expectations for every node and edge. Five additional contract
+tests compare both committed artifacts and fresh analysis against those
+expectations, verify reviewed source hashes, and check address coverage without
+a GPU. These expectations are test fixtures, not graph-generation templates.
 
 The tests establish behavior for the supported examples and rejection cases.
 They do not establish arbitrary CUDA correctness or simulator compatibility.
