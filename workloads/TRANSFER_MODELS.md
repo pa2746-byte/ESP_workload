@@ -177,3 +177,15 @@ bodies, included source units, bounded loops, and repeated default-stream
 launches with pointer swaps. The total thread budget spans all launches.
 See [HotSpot3D instructions](rodinia/hotspot3d/README.md), including the upstream
 previous-buffer download behavior and explicit CPU/IO assumptions.
+
+
+Gaussian adds an explicit parameterless host entry (`entry_function`), with
+configured scalar globals and distinct host-buffer shapes (`entry_globals`).
+This is a declared function boundary, not an analysis of its caller. The
+optional `dependency_granularity: byte_regions` tracks last writers and pending
+readers per byte, allowing partial/strided footprints and in-place accesses
+with cross-thread race checks. Volumes are unique footprint sizes; metadata
+`byte_ranges` are half-open intervals. Graph schema is unchanged. Region
+tracking is limited by `max_tracked_bytes` (default/maximum 1 MiB of live device
+allocations), in addition to the aggregate thread budget. Existing configurations
+retain whole-buffer semantics. See [Gaussian scope and validation](rodinia/gaussian/README.md).

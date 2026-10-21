@@ -92,9 +92,19 @@ class Evaluator:
         if len(self.functions) != len(definitions) or 'main' not in self.functions:
             raise UnsupportedSource('Configured analysis requires unique functions and main')
         self.config = config
+        self.entry = config.get('entry_function', 'main')
+        if self.entry not in self.functions or (self.entry != 'main' and any(
+                c['kind'] in {'ParmVarDecl', 'CUDAGlobalAttr'} for c in children(self.functions[self.entry]))):
+            raise UnsupportedSource('Entry must be main or a parameterless host function')
+        self.regions = config.get('dependency_granularity', 'whole_buffer') == 'byte_regions'
+        if config.get('dependency_granularity', 'whole_buffer') not in {'whole_buffer', 'byte_regions'}:
+            raise UnsupportedSource('Unknown dependency granularity')
         if config.get('version') != 1:
             raise UnsupportedSource('Unsupported analysis configuration version')
         self.parameters = config.get('parameters', {})
+        self.region_limit = self.positive(config.get('max_tracked_bytes', 1048576))
+        if self.region_limit > 1048576:
+            raise UnsupportedSource('Region tracking is limited to 1048576 device bytes')
         self.device = config['device']
         for key in ('max_threads_per_block', 'free_memory_bytes', 'total_memory_bytes'):
             self.positive(self.device[key])
@@ -159,13 +169,14 @@ class Evaluator:
             arguments = [str(self.configured(v)) if isinstance(v, dict) else v for v in config['arguments']]
             if not all(isinstance(v, str) for v in arguments): raise UnsupportedSource('Arguments must be strings or named parameters')
             self.env.update(argc=len(arguments)+1, argv=[str(path)] + arguments)
-        self.current_function = 'main'
-        self.call_stack = ['main']
+        self.current_function = self.entry
+        self.call_stack = [self.entry]
         self.allocations, self.host_sizes = {}, {}
         self.allocated_names = set()
         self.host_allocation_count = 0
         self.nodes, self.edges, self.metadata = [], set(), []
         self.writers, self.readers, self.initialized = {}, {}, {}
+        self.region_writers, self.region_readers = {}, {}
         self.order = StreamOrder()
         self.operation = None
         self.kernel = False
@@ -179,6 +190,26 @@ class Evaluator:
         for node, _ in declarations:
             if node['kind'] == 'VarDecl' and children(node):
                 self.globals[node['name']] = self.eval(children(node)[-1])
+        global_types = {n['name']: self.clean(n['type']['qualType'])
+                        for n, _ in declarations if n['kind'] == 'VarDecl'}
+        boundary = config.get('entry_globals', {})
+        if boundary and self.entry == 'main':
+            raise UnsupportedSource('Entry globals require an explicit function boundary')
+        for name, value in boundary.items():
+            typ = global_types.get(name)
+            if isinstance(value, dict) and 'shape' in value:
+                if not typ or not typ.endswith('*') or set(value) != {'shape'} or not value['shape']:
+                    raise UnsupportedSource('Entry buffers require a declared primitive pointer and shape')
+                base = typ[:-1].strip()
+                size = self.layout(base)[0] * math.prod(self.positive(self.configured(d)) for d in value['shape'])
+                self.host_sizes['entry:' + name] = size
+                self.globals[name] = Pointer('entry:' + name, 0, base)
+            else:
+                if typ != 'int': raise UnsupportedSource('Entry scalar globals must be int')
+                self.globals[name] = self.positive(self.configured(value))
+        self.mutable_globals = set(config.get('mutable_scalar_globals', []))
+        if any(global_types.get(n) not in {'int', 'unsigned int', 'float', 'double'} for n in self.mutable_globals):
+            raise UnsupportedSource('Mutable globals must be declared scalars')
 
     @staticmethod
     def clean(typ):
@@ -216,7 +247,9 @@ class Evaluator:
 
     def store(self, location, value):
         if isinstance(location, Reference):
-            if location.owner is self.globals: raise UnsupportedSource('Global mutation is unsupported')
+            if location.owner is self.globals and (self.kernel or location.key not in self.mutable_globals
+                    or not isinstance(value, (int, float, Unknown))):
+                raise UnsupportedSource('Global mutation is unsupported')
             location.owner[location.key] = value
         elif isinstance(location, Pointer) and location.device:
             self.access(location, 'write')
@@ -232,6 +265,11 @@ class Evaluator:
         self.accesses.setdefault((ptr.buffer, mode), set()).update(keys)
         if mode == 'write':
             self.thread_writes.update((ptr.buffer, i) for i in keys)
+        elif self.regions:
+            accesses = {(ptr.buffer, i) for i in keys}
+            if accesses & self.thread_writes:
+                raise UnsupportedSource('Read after write within one thread is unsupported')
+            self.thread_reads.update(accesses)
 
     def location(self, n):
         k, cs = n['kind'], children(n)
@@ -300,7 +338,7 @@ class Evaluator:
         if k == 'FloatingLiteral': return float(n['value'])
         if k == 'CXXBoolLiteralExpr': return n['value']
         if k == 'StringLiteral': return n['value']
-        if k == 'CXXNullPtrLiteralExpr': return None
+        if k in {'CXXNullPtrLiteralExpr', 'GNUNullExpr'}: return None
         if k == 'DeclRefExpr':
             name = n['referencedDecl']['name']
             if name in {'cudaMemcpyHostToDevice', 'cudaMemcpyDeviceToHost', 'cudaFuncCachePreferL1'}: return name
@@ -349,6 +387,10 @@ class Evaluator:
             if op == '+': return a + b
             if op == '-': return a - b
             if op == '*': return a * b
+            if op == '%':
+                if type(a) is not int or type(b) is not int or b == 0:
+                    raise UnsupportedSource('Remainder requires integers and a nonzero divisor')
+                return a - (abs(a) // abs(b) * (-1 if (a < 0) != (b < 0) else 1)) * b
             if op == '/':
                 if b == 0: raise UnsupportedSource('Division by zero')
                 return (abs(a) // abs(b) * (-1 if (a < 0) != (b < 0) else 1)) if type(a) is int and type(b) is int else a / b
@@ -356,7 +398,7 @@ class Evaluator:
                 return {'<': a < b, '<=': a <= b, '>': a > b, '>=': a >= b, '==': a == b, '!=': a != b}[op]
             raise UnsupportedSource(f'Unsupported binary operation: {op}')
         if k == 'CXXConstructExpr':
-            typ = n['type']['qualType']
+            typ = self.clean(n['type']['qualType'])
             if typ == 'dim3':
                 values = [self.eval(a) for a in constructor_arguments(n, self.ast)]
                 if len(values) == 1 and isinstance(values[0], dict): return dict(values[0])
@@ -364,7 +406,7 @@ class Evaluator:
                 return dict(zip(('x', 'y', 'z'), values))
             if typ.startswith('std::vector<') and all(c['kind'] == 'CXXDefaultArgExpr' for c in cs):
                 return None
-            if typ == 'cudaDeviceProp' and not cs: return {}
+            if typ in {'cudaDeviceProp', 'timeval'} and not cs: return {}
             raise UnsupportedSource(f'Unsupported constructor: {typ}')
         if k == 'CUDAKernelCallExpr': return self.launch(n)
         if k == 'CallExpr': return self.call(ref(cs[0]), cs[1:])
@@ -384,7 +426,7 @@ class Evaluator:
                     if children(var): self.eval(children(var)[-1])
                     self.env[name] = Vector(vector[1], name)
                 elif children(var): self.env[name] = self.eval(children(var)[-1])
-                elif typ == 'cudaDeviceProp': self.env[name] = {}
+                elif typ in {'cudaDeviceProp', 'timeval'}: self.env[name] = {}
                 else: self.env[name] = UNKNOWN
         elif k == 'IfStmt':
             if n.get('hasInit') or n.get('hasVar') or len(cs) not in (2, 3):
@@ -447,6 +489,11 @@ class Evaluator:
                 self.call_stack.pop()
                 self.env, self.current_function = saved, saved_fn
             return None
+        if name == 'gettimeofday':
+            if len(args) != 2 or not isinstance(args[0], Reference) or args[1] not in (None, 0):
+                raise UnsupportedSource('Unsupported gettimeofday arguments')
+            self.store(args[0], {'tv_sec': UNKNOWN, 'tv_usec': UNKNOWN})
+            return UNKNOWN
         if name == 'cudaGetDeviceProperties':
             if args[1] != self.device.get('ordinal', 0): raise UnsupportedSource('Device ordinal not configured')
             self.store(args[0], {'maxGridSize': self.device['max_grid_size'], 'maxThreadsPerBlock': self.device['max_threads_per_block']})
@@ -459,6 +506,8 @@ class Evaluator:
             if target.key in self.allocated_names: raise UnsupportedSource('Allocation reuse is unsupported')
             self.allocated_names.add(target.key)
             self.allocations[target.key] = self.positive(size)
+            if self.regions and sum(self.allocations.values()) > self.region_limit:
+                raise UnsupportedSource('Allocations exceed max_tracked_bytes; use a smaller input')
             # Type comes from the pointer declaration, not the void** cast at the API.
             declarations = [n for n in walk(body_of(self.functions[self.current_function])) if n['kind'] == 'VarDecl' and n.get('name') == target.key]
             if len(declarations) != 1: raise UnsupportedSource('Ambiguous allocation pointer declaration')
@@ -539,6 +588,7 @@ class Evaluator:
             raise UnsupportedSource('Aliased kernel arguments are unsupported')
         host = self.env
         self.kernel, self.accesses, self.all_writes = True, {}, set()
+        all_reads = set()
         try:
             for indices in itertools.product(*(range(d) for d in dims)):
                 self.env = {p['name']: v for p, v in zip(params, args)}
@@ -546,25 +596,31 @@ class Evaluator:
                                 blockIdx=dict(zip(('x','y','z'), indices[:3])),
                                 threadIdx=dict(zip(('x','y','z'), indices[3:])))
                 self.thread_writes = set()
+                self.thread_reads = set()
                 try:
                     self.statement(body_of(fn))
                 except FunctionReturn:
                     pass
                 if self.all_writes & self.thread_writes: raise UnsupportedSource('Multiple threads write the same bytes')
+                if self.regions and (self.thread_reads & self.all_writes or self.thread_writes & all_reads):
+                    raise UnsupportedSource('Cross-thread read/write overlap requires synchronization analysis')
                 self.all_writes |= self.thread_writes
+                all_reads |= self.thread_reads
         finally:
             self.env, self.kernel = host, False
         reads = {b for b, mode in self.accesses if mode == 'read'}
         writes = {b for b, mode in self.accesses if mode == 'write'}
-        if reads & writes: raise UnsupportedSource('In-place kernels require additional race/dependency analysis')
+        if reads & writes and not self.regions: raise UnsupportedSource('In-place kernels require additional race/dependency analysis')
         self.operation = self.order.schedule(list(self.accesses), 'default')
         sizes = {}
         for key, offsets in self.accesses.items():
-            if offsets != set(range(len(offsets))): raise UnsupportedSource('Non-contiguous or nonzero-offset footprint')
+            if not self.regions and offsets != set(range(len(offsets))): raise UnsupportedSource('Non-contiguous or nonzero-offset footprint')
             sizes[key] = len(offsets)
-        parents = [self.read_buffer(b, sizes[b, 'read'], self.acc, name + ':read') for b in self.allocations if b in reads]
+        parents = [self.read_buffer(b, sizes[b, 'read'], self.acc, name + ':read',
+                                   self.accesses[b, 'read'] if self.regions else None) for b in self.allocations if b in reads]
         for b in self.allocations:
-            if b in writes: self.write_buffer(b, sizes[b, 'write'], self.acc, name + ':write', parents)
+            if b in writes: self.write_buffer(b, sizes[b, 'write'], self.acc, name + ':write', parents,
+                                             self.accesses[b, 'write'] if self.regions else None)
         self.launches.append(dict(kernel=name, grid=list(dims[:3]), block=list(dims[3:]), enumerated_threads=count))
         return 0
 
@@ -576,13 +632,39 @@ class Evaluator:
         self.edges.update((p, i) for p in parents)
         return i
 
-    def read_buffer(self, buffer, size, dst, stage):
+    def region_transfer(self, buffer, size, src, dst, stage, parents, offsets, writing):
+        offsets = set(range(size)) if offsets is None else set(offsets)
+        if len(offsets) != size or not offsets or min(offsets) < 0 or max(offsets) >= self.allocations.get(buffer, 0):
+            raise UnsupportedSource('Transfer region exceeds allocation')
+        writers = self.region_writers.setdefault(buffer, {})
+        readers = self.region_readers.setdefault(buffer, {})
+        if not writing and any(o not in writers for o in offsets):
+            raise UnsupportedSource('Read of uninitialized device region')
+        dependencies = set(parents) | {writers[o] for o in offsets if o in writers}
+        if writing:
+            for o in offsets: dependencies.update(readers.get(o, ()))
+        i = self.transfer(buffer, size, src, dst, stage, dependencies)
+        ranges = []
+        for o in sorted(offsets):
+            if ranges and ranges[-1][1] == o: ranges[-1][1] = o + 1
+            else: ranges.append([o, o + 1])
+        self.metadata[-1]['byte_ranges'] = ranges  # half-open intervals
+        for o in offsets:
+            if writing: writers[o], readers[o] = i, set()
+            else: readers.setdefault(o, set()).add(i)
+        return i
+
+    def read_buffer(self, buffer, size, dst, stage, offsets=None):
+        if self.regions:
+            return self.region_transfer(buffer, size, self.mem, dst, stage, (), offsets, False)
         if self.initialized.get(buffer, 0) < size: raise UnsupportedSource('Read of uninitialized device buffer')
         i = self.transfer(buffer, size, self.mem, dst, stage, self.writers.get(buffer, set()))
         self.readers.setdefault(buffer, set()).add(i)
         return i
 
-    def write_buffer(self, buffer, size, src, stage, parents=()):
+    def write_buffer(self, buffer, size, src, stage, parents=(), offsets=None):
+        if self.regions:
+            return self.region_transfer(buffer, size, src, self.mem, stage, parents, offsets, True)
         if size != self.allocations.get(buffer): raise UnsupportedSource('Writes must cover the whole allocation')
         i = self.transfer(buffer, size, src, self.mem, stage,
                           set(parents) | self.writers.get(buffer, set()) | self.readers.get(buffer, set()))
@@ -590,7 +672,7 @@ class Evaluator:
 
     def run(self):
         try:
-            self.statement(body_of(self.functions['main']))
+            self.statement(body_of(self.functions[self.entry]))
         except FunctionReturn as result:
             if result.value not in (0, None): raise UnsupportedSource('Main returns failure for the configured input')
         if not self.nodes: raise UnsupportedSource('No transfers generated')

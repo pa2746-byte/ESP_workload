@@ -16,8 +16,8 @@ metrics include computation time depends on the simulator's compute model.
 
 ## Current status
 
-Source-derived graph generation now covers **seven workload examples**: four
-original CUDA samples, the additional stream fork-join sample, and two original
+Source-derived graph generation now covers **eight workload examples**: four
+original CUDA samples, the additional stream fork-join sample, and three original
 Rodinia applications. The analyzer extensions, tests, configurations, JSONs,
 PNGs, and documentation are committed on `pa2746-byte-sampleworkloads`.
 
@@ -30,9 +30,12 @@ PNGs, and documentation are committed on `pa2746-byte-sampleworkloads`.
 - **Rodinia HotSpot3D:** unchanged upstream sources, configured for a 64 x 64 x 3
   grid and two iterations (9 / 11); adds stencil accesses, included source,
   bounded loops, repeated launches, and buffer swaps.
+- **Rodinia Gaussian elimination:** unchanged upstream source, with a configured
+  3 x 3 input at `ForwardSub` (20 / 39); adds partial, strided buffer regions
+  and safe in-place updates. CPU preparation/back-substitution are outside this graph.
 
-The latest implementation validation passed **38 relevant tests**. The original
-four samples also have remote CUDA/Nsight run evidence. The two Rodinia examples
+The latest implementation validation passed **47 relevant tests**. The original
+four samples also have remote CUDA/Nsight run evidence. The three Rodinia examples
 have been analyzed and tested locally with Apple Clang 17; they have **not** been
 numerically validated on a GPU or run through the simulator. Their file loading,
 CPU processing, and device parameters use explicit documented assumptions.
@@ -105,9 +108,10 @@ Missing ordering is rejected rather than silently repaired by inventing a safe
 execution order. The configured Rodinia analysis currently supports default-stream
 launches only.
 
-Dependency tracking is conservative at **whole-buffer granularity**. The
-analyzers calculate supported access footprints, but do not generally treat
-disjoint regions of one allocation as independent. Unsupported aliasing or
+Dependency tracking defaults to conservative **whole-buffer granularity**.
+Gaussian opts into **byte-region tracking**, distinguishing disjoint regions
+and preserving dependencies on overlapping reads/writes. Other configurations
+retain their existing whole-buffer behavior. Unsupported aliasing or
 data-dependent addresses require further analysis and are rejected rather than
 guessed. Graph volumes describe the configured scenario; values discovered only
 during execution are not automatically available to the analyzer.
@@ -291,9 +295,29 @@ preserves this source behavior. See the [HotSpot3D guide](workloads/rodinia/hots
 for details, tests, configuration assumptions, and restrictions. No dataset, GPU,
 or simulator execution is performed.
 
+## Third Rodinia workload: Gaussian elimination
+
+The unchanged source is analyzed from `ForwardSub` using a configured matrix
+size and host-buffer shapes. Its two kernels perform partial, strided writes
+and in-place updates across iterations. The 3 x 3 case produces 20 nodes and
+39 edges. CPU initialization and back-substitution are outside this graph.
+
+```bash
+python3 export_workload_transfers.py \
+  --source workloads/rodinia/gaussian/gaussian.cu \
+  --analysis-config workloads/rodinia/gaussian/analysis.json \
+  --out-dir results/rodinia_gaussian --render
+```
+
+See the [Gaussian guide](workloads/rodinia/gaussian/README.md) for assumptions,
+independent source validation, and limits. Results are in
+[results/rodinia_gaussian](results/rodinia_gaussian/), with the
+[DAG image](results/rodinia_gaussian/graphs/gaussian_simulator.png) in `graphs/`.
+No GPU, CUDA execution, or simulator is needed to generate and validate it.
+
 ## Future benchmarks to investigate
 
-After consolidating the two supported Rodinia cases, expand to other existing
+After consolidating the three supported Rodinia cases, expand to other existing
 application sources while preserving their computation. The following are
 candidates, **not workloads already supported or validated**.
 The order below is a proposed progression; exact implementation requirements
@@ -437,7 +461,7 @@ local source-analysis output and the recorded source hashes match current files.
 
 The generator replaced its initial hardcoded Python models with Clang AST
 analysis. The original affine path was extended for stream/event ordering;
-the configured path now supports the two Rodinia applications described above.
+the configured path now supports the three Rodinia applications described above.
 These are restricted source-analysis paths, not a general CUDA verifier.
 
 ### Later analyzer and repository work
@@ -450,6 +474,8 @@ These are restricted source-analysis paths, not a general CUDA verifier.
   bounded host/kernel loops, neighboring-cell reads, and alternating buffers.
   Metadata records both source hashes. Tests preserve the actual previous-buffer
   download and verify that a test-only source correction changes the dependency.
+- Added unchanged Gaussian source with an explicit `ForwardSub` boundary,
+  byte-region tracking, and independent source contracts for sizes 2–5.
 - Added regression tests for changed sizes, names, launch geometry, dependencies,
   unsafe accesses, iteration budgets, and stale host-helper contracts.
 - Matched the requested image style with dependency levels, colored transfer
@@ -457,7 +483,7 @@ These are restricted source-analysis paths, not a general CUDA verifier.
 - Archived February–April outputs in `past graphs from nsight/` and kept current
   source-analysis outputs separate from historical trace graphs.
 
-Reproduce the 38-test validation without a GPU:
+Reproduce the 47-test validation without a GPU:
 
 ```bash
 python3 -B -m unittest discover -s tests -p '*source_model.py' -v
@@ -496,8 +522,9 @@ execution or resulting performance metrics have been validated.
 
 ## Next steps, in priority order
 
-1. **Reproduce the Rodinia exports on the remote Linux environment.** Pull the
-   branch, run both documented commands and the test suite, and compare source
+1. **Optionally check compiler portability on remote Linux.** Source validation
+   already runs locally without a GPU. Pull the branch, run the three Rodinia
+   commands and the test suite, and compare source
    hashes, configurations, transfer volumes, and edges with the committed
    artifacts. Record the Clang version. This validates compiler portability
    without requiring GPU execution.
@@ -515,7 +542,8 @@ execution or resulting performance metrics have been validated.
    thread/address enumeration with symbolic range analysis for regular patterns.
    Preserve byte footprints and dependencies against the bounded evaluator as a
    reference, including boundary cells, buffer swaps, and overwrites. Extend
-   region tracking and shared-memory/barrier handling before workloads need them.
+   region tracking beyond bounded byte enumeration and add shared-memory/barrier
+   handling before workloads need it.
 5. **Validate the simulator contract when access is available.** Confirm component
    instance names, byte units, dependency semantics, compute costs, and resource
    contention. Decide explicitly whether logical dependencies alone are the

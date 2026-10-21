@@ -94,6 +94,15 @@ def main():
                 "Device properties are configured assumptions, not measurements; bounded kernel address evaluation requires no GPU.",
                 "Device values remain unknown; data-dependent control/indexing and non-contiguous footprints are rejected.",
             ])
+            if configuration.get('dependency_granularity') == 'byte_regions':
+                metadata['assumptions'][1] = "Unique byte footprints per kernel; byte_ranges in metadata are half-open intervals, not measured memory traffic."
+                metadata['assumptions'][2] = "Edges express overlapping-region RAW/WAR/WAW dependencies and conservative kernel input-to-output readiness, not stream execution order."
+                metadata['assumptions'][-1] = "Device values remain unknown; data-dependent control/indexing and cross-thread read/write races are rejected."
+            if configuration.get('entry_function', 'main') != 'main':
+                metadata['assumptions'].append(
+                    "Analysis starts at " + configuration['entry_function'] +
+                    " with configured entry globals and host-buffer shapes; callers and subsequent CPU work are outside this graph."
+                )
         path = args.out_dir / (name + "_simulator.json")
         path.write_text(json.dumps(graph, indent=2) + "\n")
         (args.out_dir / (name + "_metadata.json")).write_text(json.dumps(metadata, indent=2) + "\n")

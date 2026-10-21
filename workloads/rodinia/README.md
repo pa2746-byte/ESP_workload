@@ -1,6 +1,6 @@
 # Rodinia source-analysis experiments
 
-Two examples are now available:
+Three examples are now available:
 
 - **Nearest Neighbor**, described below: struct fields, pointer offsets, and
   configured input size.
@@ -8,6 +8,8 @@ Two examples are now available:
   bounded loops, repeated launches, and temperature-buffer swaps. Its upstream
   download selects the previous result; the linked guide explains how the graph
   preserves that behavior.
+- **[Gaussian elimination](gaussian/README.md)**: the original `ForwardSub` GPU
+  phase, partial/strided regions, safe in-place updates, and iterative dependencies.
 
 `nn/nn_cuda.cu` is an **unchanged upstream CUDA Nearest Neighbor implementation**
 from [yuhc/gpu-rodinia](https://github.com/yuhc/gpu-rodinia), commit
@@ -15,7 +17,7 @@ from [yuhc/gpu-rodinia](https://github.com/yuhc/gpu-rodinia), commit
 The source was compared byte-for-byte with that revision. Upstream licensing is
 preserved in [LICENSE](LICENSE). No dataset or CUDA binary is bundled here.
 
-See [source-to-graph validation](VALIDATION.md) for independent checks of both
+See [source-to-graph validation](VALIDATION.md) for independent checks of the
 Rodinia graphs, the exact expected dependencies, and the scope of the results.
 
 ## Generate the graph without a GPU
@@ -108,9 +110,10 @@ This configured mode is separate from the original affine analyzer. It supports
 this default-stream, single-file example and a restricted subset of scalar
 expressions, plain primitive-field structs, and direct pointer arithmetic.
 It rejects data-dependent control/indexing, unsupported calls/loops, pointer
-aliases between kernel arguments, in-place kernels, overlapping writes by
-threads, out-of-bounds accesses, non-contiguous footprints, and partial-buffer
-writes. Integer overflow/narrowing, arbitrary C++ object lifetimes, general
+aliases between kernel arguments, overlapping writes by threads, and
+out-of-bounds accesses. In the default whole-buffer mode, in-place kernels,
+non-contiguous footprints, and partial writes are also rejected. Gaussian
+explicitly enables byte-region tracking with additional race checks; see its guide. Integer overflow/narrowing, arbitrary C++ object lifetimes, general
 scope resolution, and full host-program behavior are outside its model.
 
 Thread enumeration across all launches defaults to a configured limit of 65,536 and has an absolute

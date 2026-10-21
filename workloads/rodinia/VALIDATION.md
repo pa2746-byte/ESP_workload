@@ -1,6 +1,6 @@
 # Source-to-graph validation
 
-Scope: the committed Nearest Neighbor and HotSpot3D configurations, using the
+Scope: the committed Nearest Neighbor, HotSpot3D, and Gaussian configurations, using the
 unchanged sources in this repository. This validation needs Python and Clang,
 not CUDA execution, a GPU, or hardware profiling.
 
@@ -25,7 +25,7 @@ Run the independent contracts:
 python3 -B -m unittest discover -s tests -p test_rodinia_graph_contract.py -v
 ```
 
-Run the full relevant suite (38 tests: 33 existing plus 5 new contract tests):
+Run the full relevant suite (47 tests, including 9 Gaussian checks):
 
 ```bash
 python3 -B -m unittest discover -s tests -p '*source_model.py' -v
@@ -90,11 +90,27 @@ launch, but the download uses `tOut_d`, which now refers to the previous result.
 The original source is preserved. A separate test changes only that download
 pointer in a temporary copy and checks that the dependency moves to `t7`.
 
+## Gaussian: independent region contracts
+
+See [the Gaussian guide](gaussian/README.md) for the configured `ForwardSub`
+boundary and row/column formulas. `tests/test_gaussian_source_model.py` builds
+expected cell sets directly from those formulas, without using Clang or the
+production dependency builder. For each pair of transfers it checks whether
+overlapping cells have an intervening overwrite; it also adds the documented
+kernel input-to-output dependencies. It compares all nodes, edges, and byte
+ranges for sizes 2, 3, 4, and 5. The default has **20 nodes and 39 edges**.
+
+The committed artifacts must match fresh analysis and that independent oracle.
+A test-only change to Fan1's guard is checked against a separately adjusted
+coordinate formula. Tests reject cross-thread read/write races, uninitialized
+regions, out-of-bounds accesses, missing entry parameters, and oversized region
+tracking. The original source is hash-pinned. No numerical solver run occurs.
+
 ## Interpretation and limits
 
 These results validate the **configured logical buffer footprints and dependency
 policy**. They do not prove arbitrary source-analysis correctness or numerical
-correctness of either algorithm. A wrong arithmetic expression or wrong neighbor
+correctness of these algorithms. A wrong arithmetic expression or wrong neighbor
 selection can leave the same whole-buffer footprint and therefore the same graph.
 
 The configuration assumes successful input loading and supplies sizes/device
