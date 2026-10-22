@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "entry_function": "ForwardSub",
+  "parameters": {
+    "size": 3
+  },
+  "entry_globals": {
+    "Size": {
+      "parameter": "size"
+    },
+    "m": {
+      "shape": [
+        {
+          "parameter": "size"
+        },
+        {
+          "parameter": "size"
+        }
+      ]
+    },
+    "a": {
+      "shape": [
+        {
+          "parameter": "size"
+        },
+        {
+          "parameter": "size"
+        }
+      ]
+    },
+    "b": {
+      "shape": [
+        {
+          "parameter": "size"
+        }
+      ]
+    }
+  },
+  "mutable_scalar_globals": [
+    "totalKernelTime"
+  ],
+  "dependency_granularity": "byte_regions",
+  "device": {
+    "ordinal": 0,
+    "max_grid_size": [
+      65535,
+      65535,
+      65535
+    ],
+    "max_threads_per_block": 1024,
+    "free_memory_bytes": 1073741824,
+    "total_memory_bytes": 2147483648
+  },
+  "max_enumerated_threads": 65536,
+  "host_summaries": {
+    "checkCUDAError": {
+      "body_sha256": "8b6045b2ad698b29faaa33d0df9b10f54cda58771d576fd7279c99d4fb01a4a9"
+    }
+  },
+  "preprocessor_sha256": "63f03e3a73873c9433dda1f564e4ec91e4d73a0f455a3f46f4583b8a6438d103"
+}
