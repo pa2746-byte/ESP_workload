@@ -65,7 +65,7 @@ The four-thread blocks are deliberately tiny. They do not imply that a CUDA warp
 
 Both teaching sources were analyzed with our Clang-based exporter. **Both produce exactly the same simulator JSON: 12 nodes, 13 edges, and 32 bytes per node.** The source metadata differs.
 
-Each box is a logical transfer. Each arrow is a prerequisite. Horizontal position is dependency depth, **not elapsed time**. This is our simulator-input DAG, not a CUDA Graph API execution graph.
+Each box represents either an explicit host/device copy or a kernel logical read/write footprint. Each arrow is a prerequisite. Repeated kernel reads do not imply repeated uploads or measured DRAM transfers. Horizontal position is dependency depth, **not elapsed time**. This is our simulator-input DAG, not a CUDA Graph API execution graph.
 
 **cpu → mem** is an upload; **mem → acc** is a kernel input footprint; **acc → mem** is a kernel output footprint; **mem → cpu** is a download. `mem` and `acc` are abstract simulator components, not claims about a specific cache or bus.
 
@@ -85,7 +85,33 @@ There are **96 logical host/device copy bytes**: 64 uploaded + 32 downloaded. Th
 
 > Say: “A is uploaded once, but two kernels consume it. Therefore the graph contains one upload of A and two separate logical reads of A. Cache reuse could change physical traffic without changing this graph.”
 
-## 6. A fork is not necessarily a partition
+## 6. A producer–consumer dependency: C = A + B, then D = C + 5
+
+The new runnable source is [dependent_chain.cu](examples/dependent_chain.cu). Each array contains eight float32 elements (32 bytes).
+
+```cpp
+// Kernel 1, vectorAdd: one element per thread
+if (i < N) C[i] = A[i] + B[i];
+// Kernel 2, addFive: one element per thread
+if (i < N) D[i] = C[i] + 5.0f;
+// Host launches both in the same stream:
+vectorAdd<<<blocks, threads>>>(d_A, d_B, d_C, N);
+addFive<<<blocks, threads>>>(d_C, d_D, N);
+```
+
+<!-- CHAIN -->
+
+![Dependent chain](figures/chain.svg)
+
+**t4 → t5 is the key dependency:** vectorAdd produces C; addFive consumes C. This is a read-after-write dependency. The kernels cannot run independently on these complete buffers. Threads still process independent indices within each kernel.
+
+**C stays on the GPU.** Its write and read nodes describe logical accesses, not another upload, a host round trip, or measured DRAM transactions. A and B are uploaded once; D is downloaded once. The literal **5 is an arithmetic constant**, so it creates no input-buffer transfer node.
+
+With A[i] = 3 and B[i] = 1, the expected C[i] is 4 and D[i] is 9. Source analysis produced **8 nodes and 7 edges**, all 32 bytes. The bare JSON preserves the dependency and footprints; it does not encode the +5 operation or its compute time. No GPU execution was performed.
+
+> Say: “The first kernel creates the data the second kernel needs. The C write-to-read edge is a prerequisite, not an extra copy operation. Unlike the earlier add/subtract fork, these two computations depend on each other.”
+
+## 7. A fork is not necessarily a partition
 
 <!-- SPLIT -->
 
@@ -103,7 +129,7 @@ A stencil partition may need overlapping neighbor regions, or “halos.” Then 
 
 > Say: “Look at the addresses each branch uses. Two arrows leaving a node do not prove that the array has been cut into two pieces.”
 
-## 7. What does it mean for data to come together?
+## 8. What does it mean for data to come together?
 
 <!-- JOIN -->
 
@@ -119,7 +145,7 @@ Call these a **join**, **concatenation**, or **reduction**. “Memory coalescing
 
 > Say: “An incoming pair of edges tells us that both inputs must be ready. The operation name and source tell us whether values are multiplied, concatenated, or reduced; the bare simulator schema does not.”
 
-## 8. Potential parallelism versus CUDA scheduling
+## 9. Potential parallelism versus CUDA scheduling
 
 <!-- STREAMS -->
 
@@ -135,7 +161,7 @@ The matched examples have **identical transfer JSONs**. Explicit-stream metadata
 
 > Say: “No dependency means data independence in this model. It does not mean the GPU actually executed the two branches simultaneously.”
 
-## 9. Memory coalescing is about addresses within a warp
+## 10. Memory coalescing is about addresses within a warp
 
 <!-- COALESCING -->
 
@@ -157,7 +183,7 @@ Our graph retains unique buffer footprints, not lane-to-address mappings or tran
 
 > Say: “A logical footprint tells us which bytes are needed in total. Coalescing depends on which lanes ask for which bytes together. That information is lost when we aggregate.”
 
-## 10. What is present, and what is missing?
+## 11. What is present, and what is missing?
 
 **In the simulator JSON:** transfer IDs; logical byte volumes; abstract source/destination components; directed prerequisite edges. For supported source/configuration cases these capture input/output flow, joins, and modeled memory hazards.
 
@@ -171,7 +197,7 @@ The graph is not a proof of numerical correctness or simulator compatibility. Th
 
 > Say: “Some details are in metadata but are absent from the simulator input. Others, such as cache behavior and execution latency, have not been modeled at all.”
 
-## 11. What can the simulator conclude?
+## 12. What can the simulator conclude?
 
 The DAG gives a **partial order of modeled transfers**. It identifies prerequisites and candidates for independent work. A fan-in identifies a wait for multiple inputs. A graph level is not a time unit, and an edge may enforce a memory-reuse hazard rather than carry data itself.
 
@@ -183,7 +209,7 @@ For validation, compare the supported source's logical accesses against the grap
 
 > Say: “This graph is an input to a performance model. It is not itself a performance measurement or a complete model of a GPU.”
 
-## 12. Closing explanation and questions
+## 13. Closing explanation and questions
 
 **Suggested closing:** “We start with CUDA source and aggregate supported accesses into logical transfers. The graph preserves bytes and prerequisites: what needs to be available before another transfer proceeds. It can expose independent branches and joins. It does not, by itself, tell us how CUDA schedules those branches or how efficiently the GPU moves those bytes.”
 
@@ -207,9 +233,13 @@ python3 export_workload_transfers.py \
 python3 export_workload_transfers.py \
   --source docs/cuda-graph-walkthrough/examples/explicit_streams.cu \
   --out-dir docs/cuda-graph-walkthrough/generated
+python3 export_workload_transfers.py \
+  --source docs/cuda-graph-walkthrough/examples/dependent_chain.cu \
+  --out-dir docs/cuda-graph-walkthrough/generated
 python3 -B docs/cuda-graph-walkthrough/verify.py
+python3 -B docs/cuda-graph-walkthrough/build_presentation.py
 ```
 
-The presentation's detailed DAG is drawn directly from the generated single-stream JSON and metadata. Thread, partition, join, scheduling, and coalescing illustrations are labeled conceptual; they are not measured timelines or additional exporter results. No CUDA executable, GPU profiler, or simulator was run for this walkthrough.
+The presentation's two detailed DAGs are drawn directly from the generated single-stream and dependent-chain JSONs and metadata. Thread, partition, join, scheduling, and coalescing illustrations are labeled conceptual; they are not measured timelines or additional exporter results. No CUDA executable, GPU profiler, or simulator was run for this walkthrough.
 
 The two teaching files change only input size/block size and, for the stream example, use matching constant inputs. Their parent examples are [fork_join.cu](../../workloads/fork_join.cu) and [fork_join_streams.cu](../../workloads/fork_join_streams.cu).

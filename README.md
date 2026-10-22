@@ -16,8 +16,8 @@ metrics include computation time depends on the simulator's compute model.
 
 ## Explaining a generated graph
 
-The [CUDA graph walkthrough](docs/cuda-graph-walkthrough/README.md) is a 12-part
-teaching guide with a browser presentation, speaker notes, diagrams, two small
+The [CUDA graph walkthrough](docs/cuda-graph-walkthrough/README.md) is a 13-part
+teaching guide with a browser presentation, speaker notes, diagrams, three small
 CUDA sources, and reproducible exports. It explains thread/task parallelism,
 partitioning, joins, memory coalescing, and what the simulator DAG omits. The
 matched single-stream and explicit-stream examples produce identical transfer
