@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "parameters": {
+    "size": 16,
+    "pyramid": 2,
+    "iterations": 4
+  },
+  "arguments": [
+    {
+      "parameter": "size"
+    },
+    {
+      "parameter": "pyramid"
+    },
+    {
+      "parameter": "iterations"
+    },
+    "temperature.txt",
+    "power.txt",
+    "output.txt"
+  ],
+  "analyzed_functions": [
+    "run",
+    "compute_tran_temp"
+  ],
+  "dependency_granularity": "byte_regions",
+  "shared_memory": "opaque_values",
+  "device": {
+    "ordinal": 0,
+    "max_grid_size": [
+      65535,
+      65535,
+      65535
+    ],
+    "max_threads_per_block": 1024,
+    "free_memory_bytes": 1073741824,
+    "total_memory_bytes": 2147483648,
+    "device_count": 1
+  },
+  "max_enumerated_threads": 65536,
+  "max_loop_iterations": 1024,
+  "host_summaries": {
+    "readinput": {
+      "body_sha256": "24f732f44d529a955710d460c97160177b7b70cb161610377c122b55f1286362"
+    },
+    "writeoutput": {
+      "body_sha256": "2117a99c7f6cdfa37f9a4eba7b569a1170d9248d161c6378fb34726c07d14a56"
+    }
+  },
+  "preprocessor_sha256": "a573a87727cdeaf5fdbb31f227639fcee520dc4761089030f1b7f32ed5147ddd"
+}

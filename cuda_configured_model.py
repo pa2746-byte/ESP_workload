@@ -25,6 +25,10 @@ class FunctionReturn(Exception):
         self.value = value
 
 
+class LoopBreak(Exception):
+    pass
+
+
 def source_declarations(ast, path, additional_sources=()):
     """Resolve Clang's elided top-level file locations for explicit source units."""
     files = {path.resolve(): path.read_bytes()}
@@ -44,7 +48,22 @@ def source_declarations(ast, path, additional_sources=()):
 @dataclass
 class Reference:
     owner: dict
-    key: str
+    key: str | int
+    label: str = None
+    pointer_base: str = None
+
+
+@dataclass
+class PointerArray:
+    name: str
+    base: str
+    values: dict
+
+
+@dataclass(frozen=True)
+class SharedView:
+    """Only shape/bounds are modeled; contents ALWAYS remain unknown."""
+    shape: tuple
 
 @dataclass(frozen=True)
 class Pointer:
@@ -92,6 +111,9 @@ class Evaluator:
         if len(self.functions) != len(definitions) or 'main' not in self.functions:
             raise UnsupportedSource('Configured analysis requires unique functions and main')
         self.config = config
+        self.opaque_shared = config.get('shared_memory', 'reject') == 'opaque_values'
+        if config.get('shared_memory', 'reject') not in {'reject', 'opaque_values'}:
+            raise UnsupportedSource('Unknown shared-memory model')
         self.entry = config.get('entry_function', 'main')
         if self.entry not in self.functions or (self.entry != 'main' and any(
                 c['kind'] in {'ParmVarDecl', 'CUDAGlobalAttr'} for c in children(self.functions[self.entry]))):
@@ -190,13 +212,21 @@ class Evaluator:
         for node, _ in declarations:
             if node['kind'] == 'VarDecl' and children(node):
                 self.globals[node['name']] = self.eval(children(node)[-1])
-        global_types = {n['name']: self.clean(n['type']['qualType'])
+        self.global_types = {n['name']: self.clean(n['type']['qualType'])
                         for n, _ in declarations if n['kind'] == 'VarDecl'}
         boundary = config.get('entry_globals', {})
         if boundary and self.entry == 'main':
             raise UnsupportedSource('Entry globals require an explicit function boundary')
+        self.configure_globals(boundary)
+        self.mutable_globals = set(config.get('mutable_scalar_globals', []))
+        if any(self.global_types.get(n) not in {'int', 'unsigned int', 'float', 'double'} for n in self.mutable_globals):
+            raise UnsupportedSource('Mutable globals must be declared scalars')
+
+    def configure_globals(self, boundary):
         for name, value in boundary.items():
-            typ = global_types.get(name)
+            typ = self.global_types.get(name)
+            if name in self.globals:
+                raise UnsupportedSource('Global input contract cannot overwrite existing state')
             if isinstance(value, dict) and 'shape' in value:
                 if not typ or not typ.endswith('*') or set(value) != {'shape'} or not value['shape']:
                     raise UnsupportedSource('Entry buffers require a declared primitive pointer and shape')
@@ -204,12 +234,15 @@ class Evaluator:
                 size = self.layout(base)[0] * math.prod(self.positive(self.configured(d)) for d in value['shape'])
                 self.host_sizes['entry:' + name] = size
                 self.globals[name] = Pointer('entry:' + name, 0, base)
+            elif value == {'opaque_host_pointer': True}:
+                if not typ or not typ.endswith('*'):
+                    raise UnsupportedSource('Opaque host input must be a pointer')
+                # A cleanup-only handle: zero capacity forbids copying any bytes.
+                self.host_sizes['entry:' + name] = 0
+                self.globals[name] = Pointer('entry:' + name, 0, typ[:-1].strip())
             else:
                 if typ != 'int': raise UnsupportedSource('Entry scalar globals must be int')
                 self.globals[name] = self.positive(self.configured(value))
-        self.mutable_globals = set(config.get('mutable_scalar_globals', []))
-        if any(global_types.get(n) not in {'int', 'unsigned int', 'float', 'double'} for n in self.mutable_globals):
-            raise UnsupportedSource('Mutable globals must be declared scalars')
 
     @staticmethod
     def clean(typ):
@@ -238,6 +271,7 @@ class Evaluator:
         return value
 
     def read(self, location):
+        if isinstance(location, SharedView): return location if location.shape else UNKNOWN
         if isinstance(location, Reference): return location.owner.get(location.key, UNKNOWN)
         if isinstance(location, Pointer):
             if not location.device: return UNKNOWN
@@ -246,7 +280,11 @@ class Evaluator:
         raise UnsupportedSource('Unsupported lvalue read')
 
     def store(self, location, value):
-        if isinstance(location, Reference):
+        if isinstance(location, SharedView):
+            if location.shape or not isinstance(value, (int, float, Unknown)):
+                raise UnsupportedSource('Shared storage only supports scalar numeric values')
+            # Do not propagate even known values: other threads may overwrite them.
+        elif isinstance(location, Reference):
             if location.owner is self.globals and (self.kernel or location.key not in self.mutable_globals
                     or not isinstance(value, (int, float, Unknown))):
                 raise UnsupportedSource('Global mutation is unsupported')
@@ -294,6 +332,13 @@ class Evaluator:
         if k == 'ArraySubscriptExpr':
             value, index = self.eval(cs[0]), self.eval(cs[1])
             if type(index) is not int: raise UnsupportedSource('Data-dependent array index')
+            if isinstance(value, SharedView):
+                if not value.shape or not 0 <= index < value.shape[0]:
+                    raise UnsupportedSource('Shared array index out of bounds')
+                return SharedView(value.shape[1:])
+            if isinstance(value, PointerArray):
+                if index not in value.values: raise UnsupportedSource('Pointer array index out of bounds')
+                return Reference(value.values, index, f'{value.name}[{index}]', value.base)
             if isinstance(value, list):
                 if not 0 <= index < len(value): raise UnsupportedSource('Host array index out of bounds')
                 return Reference(dict(enumerate(value)), index)
@@ -310,6 +355,7 @@ class Evaluator:
         return Pointer(pointer.buffer, pointer.offset + index * self.layout(pointer.base)[0], pointer.base, pointer.device)
 
     def truth(self, value):
+        if isinstance(value, Pointer) and not value.device: return True  # modeled successful host allocation
         if type(value) not in (int, float, bool):
             raise UnsupportedSource('Data-dependent or unresolved condition')
         return bool(value)
@@ -318,7 +364,11 @@ class Evaluator:
         k, cs = n['kind'], children(n)
         if k in {'ImplicitCastExpr', 'ParenExpr', 'ExprWithCleanups', 'CXXBindTemporaryExpr', 'MaterializeTemporaryExpr'}:
             if len(cs) != 1: raise UnsupportedSource('Ambiguous wrapped expression')
-            return self.eval(cs[0])
+            value = self.eval(cs[0])
+            numeric_casts = {'IntegralToFloating', 'FloatingToIntegral', 'IntegralCast', 'FloatingCast'}
+            if k == 'ImplicitCastExpr' and n.get('castKind') in numeric_casts and not isinstance(value, Unknown):
+                return float(value) if self.clean(n['type']['qualType']) in {'float','double'} else int(value)
+            return value
         if k == 'CXXDefaultArgExpr': return self.eval(cs[0]) if cs else None
         if k in {'CStyleCastExpr', 'CXXStaticCastExpr'}:
             value = self.eval(cs[0])
@@ -363,7 +413,24 @@ class Evaluator:
                 self.store(self.location(cs[0]), updated)
                 return value if n.get('isPostfix') else updated
             raise UnsupportedSource(f'Unsupported unary operation: {op}')
-        if k == 'ConditionalOperator': return self.eval(cs[1] if self.truth(self.eval(cs[0])) else cs[2])
+        if k == 'ConditionalOperator':
+            condition = self.eval(cs[0])
+            if isinstance(condition, Unknown) and self.kernel and self.opaque_shared:
+                # Permit MIN-like value selection only. No memory accesses, calls,
+                # mutations or pointer selection can be hidden in either arm.
+                allowed = {'DeclRefExpr','ImplicitCastExpr','ParenExpr','IntegerLiteral',
+                           'FloatingLiteral','CXXBoolLiteralExpr','BinaryOperator','UnaryOperator'}
+                for arm in cs[1:]:
+                    for part in walk(arm):
+                        binary = {'+','-','*','/','%','<','<=','>','>=','==','!='}
+                        if (part['kind'] not in allowed
+                                or (part['kind']=='BinaryOperator' and part['opcode'] not in binary)
+                                or (part['kind']=='UnaryOperator' and part['opcode'] not in {'+','-'})):
+                            raise UnsupportedSource('Unknown conditional arms must be pure scalar expressions')
+                    if not isinstance(self.eval(arm), (int,float,Unknown)):
+                        raise UnsupportedSource('Unknown conditional cannot select pointers')
+                return UNKNOWN
+            return self.eval(cs[1] if self.truth(condition) else cs[2])
         if k == 'CompoundAssignOperator':
             op = n['opcode']
             if op not in {'+=', '-='}: raise UnsupportedSource('Unsupported compound assignment')
@@ -409,6 +476,10 @@ class Evaluator:
             if typ in {'cudaDeviceProp', 'timeval'} and not cs: return {}
             raise UnsupportedSource(f'Unsupported constructor: {typ}')
         if k == 'CUDAKernelCallExpr': return self.launch(n)
+        if k == 'CXXDeleteExpr':
+            if self.kernel or not n.get('isArray'): raise UnsupportedSource('Only host delete[] is supported')
+            self.free_host(self.eval(cs[0]))
+            return None
         if k == 'CallExpr': return self.call(ref(cs[0]), cs[1:])
         raise UnsupportedSource(f'Unsupported expression: {k}')
 
@@ -419,6 +490,19 @@ class Evaluator:
         elif k == 'DeclStmt':
             for var in cs:
                 name, typ = var['name'], self.clean(var['type']['qualType'])
+                if any(c['kind'] == 'CUDASharedAttr' for c in children(var)):
+                    match = re.fullmatch(r'(float|double|int)\s*((?:\[\d+\])+)', typ)
+                    if not self.kernel or not self.opaque_shared or not match or any(c['kind'] != 'CUDASharedAttr' for c in children(var)):
+                        raise UnsupportedSource('Only explicitly enabled fixed shared numeric arrays are supported')
+                    self.env[name] = SharedView(tuple(int(d) for d in re.findall(r'\d+', match[2])))
+                    continue
+                pointer_array = re.fullmatch(r'(float|double|int)\s*\*\[(\d+)\]', typ)
+                if pointer_array and not self.kernel:
+                    if children(var): raise UnsupportedSource('Pointer array initializers are unsupported')
+                    count = int(pointer_array[2])
+                    if not 0 < count <= 1024: raise UnsupportedSource('Pointer array size exceeds limit')
+                    self.env[name] = PointerArray(name,pointer_array[1],dict.fromkeys(range(count),UNKNOWN))
+                    continue
                 if self.kernel and '*' not in typ and '[' in typ:
                     raise UnsupportedSource('Kernel local arrays are unsupported in configured mode')
                 vector = re.fullmatch(r'std::vector<(.+)>', typ)
@@ -434,6 +518,7 @@ class Evaluator:
             if self.truth(self.eval(cs[0])): self.statement(cs[1])
             elif len(cs) == 3: self.statement(cs[2])
         elif k == 'NullStmt': pass
+        elif k == 'BreakStmt': raise LoopBreak()
         elif k == 'ReturnStmt':
             raise FunctionReturn(self.eval(cs[0]) if cs else None)
         elif k == 'ForStmt':
@@ -448,21 +533,27 @@ class Evaluator:
                 self.total_loop_iterations += 1
                 if iterations > self.loop_limit or self.total_loop_iterations > 1000000:
                     raise UnsupportedSource('Loop iteration budget exceeded')
-                self.statement(raw[4])
+                try: self.statement(raw[4])
+                except LoopBreak: break
                 self.eval(raw[3])
         else: self.eval(n)
 
     def call(self, name, expressions):
         args = [self.eval(n) for n in expressions]
         if self.kernel:
+            if name == '__syncthreads' and not args and self.opaque_shared:
+                # Footprint-only abstraction. Shared values stay unknown across
+                # barriers; barrier correctness/communication is not simulated.
+                return None
             if name == 'sqrt' and len(args) == 1:
                 return UNKNOWN if isinstance(args[0], Unknown) else math.sqrt(args[0])
             raise UnsupportedSource(f'Unsupported kernel call: {name}')
         if name in self.summaries:
-            if any(isinstance(a, Pointer) and a.device for a in args):
+            if any(self.contains_device_pointer(a) for a in args):
                 raise UnsupportedSource('Host summaries cannot receive device pointers')
             summary = self.summaries[name]
             self.used_summaries.add(name)
+            self.configure_globals(summary.get('globals', {}))
             for key, value in summary.get('writes', {}).items():
                 self.store(args[int(key)], self.configured(value))
             for key, count in summary.get('vectors', {}).items():
@@ -494,7 +585,11 @@ class Evaluator:
                 raise UnsupportedSource('Unsupported gettimeofday arguments')
             self.store(args[0], {'tv_sec': UNKNOWN, 'tv_usec': UNKNOWN})
             return UNKNOWN
-        if name == 'cudaGetDeviceProperties':
+        if name == 'cudaGetDeviceCount':
+            self.store(args[0], self.positive(self.device['device_count']))
+        elif name == 'cudaSetDevice':
+            if args != [self.device.get('ordinal', 0)]: raise UnsupportedSource('Unconfigured device selection')
+        elif name == 'cudaGetDeviceProperties':
             if args[1] != self.device.get('ordinal', 0): raise UnsupportedSource('Device ordinal not configured')
             self.store(args[0], {'maxGridSize': self.device['max_grid_size'], 'maxThreadsPerBlock': self.device['max_threads_per_block']})
         elif name == 'cudaMemGetInfo':
@@ -503,17 +598,20 @@ class Evaluator:
         elif name == 'cudaMalloc':
             target, size = args
             if not isinstance(target, Reference): raise UnsupportedSource('Allocation needs a direct pointer')
-            if target.key in self.allocated_names: raise UnsupportedSource('Allocation reuse is unsupported')
-            self.allocated_names.add(target.key)
-            self.allocations[target.key] = self.positive(size)
+            label = target.label or target.key
+            if label in self.allocated_names: raise UnsupportedSource('Allocation reuse is unsupported')
+            self.allocated_names.add(label)
+            self.allocations[label] = self.positive(size)
             if self.regions and sum(self.allocations.values()) > self.region_limit:
                 raise UnsupportedSource('Allocations exceed max_tracked_bytes; use a smaller input')
             # Type comes from the pointer declaration, not the void** cast at the API.
-            declarations = [n for n in walk(body_of(self.functions[self.current_function])) if n['kind'] == 'VarDecl' and n.get('name') == target.key]
-            if len(declarations) != 1: raise UnsupportedSource('Ambiguous allocation pointer declaration')
-            base = self.clean(declarations[0]['type']['qualType']).rstrip('*').strip()
+            base = target.pointer_base
+            if base is None:
+                declarations = [n for n in walk(body_of(self.functions[self.current_function])) if n['kind'] == 'VarDecl' and n.get('name') == target.key]
+                if len(declarations) != 1: raise UnsupportedSource('Ambiguous allocation pointer declaration')
+                base = self.clean(declarations[0]['type']['qualType']).rstrip('*').strip()
             self.layout(base)
-            self.store(target, Pointer(target.key, 0, base, True))
+            self.store(target, Pointer(label, 0, base, True))
         elif name in {'malloc', 'calloc'}:
             key = 'host_alloc_' + str(self.host_allocation_count)
             self.host_allocation_count += 1
@@ -538,9 +636,9 @@ class Evaluator:
             self.positive(size)
             if not isinstance(dst, Pointer) or not isinstance(src, Pointer): raise UnsupportedSource('Unsupported copy pointer')
             device, host = (dst, src) if direction == 'cudaMemcpyHostToDevice' else (src, dst)
-            if not device.device or host.device or device.offset or host.offset:
-                raise UnsupportedSource('Only whole-buffer host/device copies are supported')
-            if size > self.host_sizes.get(host.buffer, 0): raise UnsupportedSource('Host copy exceeds configured buffer')
+            if not device.device or host.device or device.offset:
+                raise UnsupportedSource('Only zero-offset device copies are supported')
+            if host.offset < 0 or host.offset + size > self.host_sizes.get(host.buffer, 0): raise UnsupportedSource('Host copy exceeds configured buffer')
             if direction == 'cudaMemcpyHostToDevice':
                 self.operation = self.order.schedule([(device.buffer, 'write')], 'default')
                 self.write_buffer(device.buffer, size, self.cpu, 'upload')
@@ -555,14 +653,25 @@ class Evaluator:
             self.order.synchronize()
             del self.allocations[ptr.buffer]
         elif name == 'free':
-            ptr = args[0]
-            if not isinstance(ptr, Pointer) or ptr.device or ptr.offset or ptr.buffer not in self.host_sizes:
-                raise UnsupportedSource('Invalid host free')
-            del self.host_sizes[ptr.buffer]
+            self.free_host(args[0])
         elif name in {'printf', 'fprintf'}: pass
         elif name == 'exit': raise UnsupportedSource('Configured input takes an exit/error path')
         else: raise UnsupportedSource(f'Unsupported host call (requires a reviewed contract): {name}')
         return 0
+
+    def free_host(self, ptr):
+        if not isinstance(ptr, Pointer) or ptr.device or ptr.offset or ptr.buffer not in self.host_sizes:
+            raise UnsupportedSource('Invalid host free')
+        del self.host_sizes[ptr.buffer]
+
+    @staticmethod
+    def contains_device_pointer(value):
+        if isinstance(value, Pointer): return value.device
+        if isinstance(value, Reference):
+            return Evaluator.contains_device_pointer(value.owner.get(value.key, UNKNOWN))
+        if isinstance(value, PointerArray):
+            return any(Evaluator.contains_device_pointer(v) for v in value.values.values())
+        return False
 
     def launch(self, n):
         cs = children(n)

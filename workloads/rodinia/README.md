@@ -1,6 +1,6 @@
 # Rodinia source-analysis experiments
 
-Three examples are now available:
+Five examples are now available:
 
 - **Nearest Neighbor**, described below: struct fields, pointer offsets, and
   configured input size.
@@ -10,6 +10,10 @@ Three examples are now available:
   preserves that behavior.
 - **[Gaussian elimination](gaussian/README.md)**: the original `ForwardSub` GPU
   phase, partial/strided regions, safe in-place updates, and iterative dependencies.
+- **[HotSpot 2D](hotspot2d/README.md)**: tiled temperature updates with opaque
+  shared values, global footprints, pointer arrays, and alternating outputs.
+- **[Pathfinder](pathfinder/README.md)**: integer path costs, row-window reads,
+  host-copy offsets, and tiled iterations. Shared values remain unknown.
 
 `nn/nn_cuda.cu` is an **unchanged upstream CUDA Nearest Neighbor implementation**
 from [yuhc/gpu-rodinia](https://github.com/yuhc/gpu-rodinia), commit
@@ -113,7 +117,9 @@ It rejects data-dependent control/indexing, unsupported calls/loops, pointer
 aliases between kernel arguments, overlapping writes by threads, and
 out-of-bounds accesses. In the default whole-buffer mode, in-place kernels,
 non-contiguous footprints, and partial writes are also rejected. Gaussian
-explicitly enables byte-region tracking with additional race checks; see its guide. Integer overflow/narrowing, arbitrary C++ object lifetimes, general
+explicitly enables byte-region tracking with additional race checks; see its guide.
+HotSpot 2D and Pathfinder additionally enable opaque shared arrays for global
+footprints. This does not validate internal shared-memory/barrier correctness. Integer overflow/narrowing, arbitrary C++ object lifetimes, general
 scope resolution, and full host-program behavior are outside its model.
 
 Thread enumeration across all launches defaults to a configured limit of 65,536 and has an absolute

@@ -1,6 +1,6 @@
 # Source-to-graph validation
 
-Scope: the committed Nearest Neighbor, HotSpot3D, and Gaussian configurations, using the
+Scope: the committed Nearest Neighbor, HotSpot3D, Gaussian, HotSpot 2D, and Pathfinder configurations, using the
 unchanged sources in this repository. This validation needs Python and Clang,
 not CUDA execution, a GPU, or hardware profiling.
 
@@ -25,7 +25,7 @@ Run the independent contracts:
 python3 -B -m unittest discover -s tests -p test_rodinia_graph_contract.py -v
 ```
 
-Run the full relevant suite (47 tests, including 9 Gaussian checks):
+Run the full relevant suite (63 tests, including 9 Gaussian and 16 tiled-workload checks):
 
 ```bash
 python3 -B -m unittest discover -s tests -p '*source_model.py' -v
@@ -105,6 +105,29 @@ A test-only change to Fan1's guard is checked against a separately adjusted
 coordinate formula. Tests reject cross-thread read/write races, uninitialized
 regions, out-of-bounds accesses, missing entry parameters, and oversized region
 tracking. The original source is hash-pinned. No numerical solver run occurs.
+
+## HotSpot 2D and Pathfinder: independent tiled contracts
+
+`tests/test_tiled_rodinia_source_model.py` independently constructs a schedule
+of whole temperature/cost buffers and (for Pathfinder) distinct wall-row
+windows. Historical region overlap determines expected memory hazards;
+kernel inputs precede outputs. Separate interval geometry checks tile coverage
+and launch dimensions. These are test-only formulas, not generation templates.
+
+Both defaults have **9 nodes and 11 edges**. Each HotSpot 2D transfer is 1,024
+bytes. Pathfinder uses 64-byte cost rows, a 256-byte wall upload, and two
+128-byte wall reads. See the [HotSpot 2D](hotspot2d/README.md) and
+[Pathfinder](pathfinder/README.md) guides for all roles/edges and assumptions.
+
+Checks include fresh/committed graphs and metadata, pinned upstream bytes,
+multiple sizes and pyramid heights, partial final launches, renamed source,
+and changed downloads. Invalid global/shared bounds, pointer-array indices,
+host-copy offsets, hidden device pointers in summaries, data-dependent
+control/indexing, stale summaries, and invalid geometry/budgets must fail.
+
+Shared contents stay unknown and shared transfers are excluded. These checks
+validate global footprints assuming valid internal synchronization. They do
+not prove shared-memory initialization/race freedom or barrier correctness.
 
 ## Interpretation and limits
 

@@ -16,8 +16,8 @@ metrics include computation time depends on the simulator's compute model.
 
 ## Current status
 
-Source-derived graph generation now covers **eight workload examples**: four
-original CUDA samples, the additional stream fork-join sample, and three original
+Source-derived graph generation now covers **ten workload examples**: four
+original CUDA samples, the additional stream fork-join sample, and five original
 Rodinia applications. The analyzer extensions, tests, configurations, JSONs,
 PNGs, and documentation are committed on `pa2746-byte-sampleworkloads`.
 
@@ -33,9 +33,17 @@ PNGs, and documentation are committed on `pa2746-byte-sampleworkloads`.
 - **Rodinia Gaussian elimination:** unchanged upstream source, with a configured
   3 x 3 input at `ForwardSub` (20 / 39); adds partial, strided buffer regions
   and safe in-place updates. CPU preparation/back-substitution are outside this graph.
+- **Rodinia HotSpot 2D:** unchanged tiled thermal simulation, 16 x 16 grid,
+  four steps grouped into two launches (9 / 11).
+- **Rodinia Pathfinder:** unchanged tiled path-cost propagation, 5 x 16 grid,
+  two launches advancing two rows each (9 / 11).
 
-The latest implementation validation passed **47 relevant tests**. The original
-four samples also have remote CUDA/Nsight run evidence. The three Rodinia examples
+The two tiled cases track global-buffer footprints while keeping shared-memory
+values unknown. They do not add internal GPU transfers or validate shared-memory
+initialization, races, or barrier correctness.
+
+The latest implementation validation passed **63 relevant tests**. The original
+four samples also have remote CUDA/Nsight run evidence. The five Rodinia examples
 have been analyzed and tested locally with Apple Clang 17; they have **not** been
 numerically validated on a GPU or run through the simulator. Their file loading,
 CPU processing, and device parameters use explicit documented assumptions.
@@ -50,6 +58,12 @@ Current output locations:
   [image](results/rodinia_nn/graphs/nn_cuda_simulator.png).
 - [HotSpot3D](results/rodinia_hotspot3d/), including its
   [image](results/rodinia_hotspot3d/graphs/3D_simulator.png).
+- [Gaussian](results/rodinia_gaussian/), including its
+  [image](results/rodinia_gaussian/graphs/gaussian_simulator.png).
+- [HotSpot 2D](results/rodinia_hotspot2d/), including its
+  [image](results/rodinia_hotspot2d/graphs/hotspot_simulator.png).
+- [Pathfinder](results/rodinia_pathfinder/), including its
+  [image](results/rodinia_pathfinder/graphs/pathfinder_simulator.png).
 
 Use `*_simulator.json` as the intended simulator input. `*_metadata.json` records
 source hashes, node descriptions, and analysis assumptions; Rodinia metadata
@@ -109,7 +123,7 @@ execution order. The configured Rodinia analysis currently supports default-stre
 launches only.
 
 Dependency tracking defaults to conservative **whole-buffer granularity**.
-Gaussian opts into **byte-region tracking**, distinguishing disjoint regions
+Gaussian, HotSpot 2D, and Pathfinder opt into **byte-region tracking**, distinguishing disjoint regions
 and preserving dependencies on overlapping reads/writes. Other configurations
 retain their existing whole-buffer behavior. Unsupported aliasing or
 data-dependent addresses require further analysis and are rejected rather than
@@ -315,31 +329,50 @@ independent source validation, and limits. Results are in
 [DAG image](results/rodinia_gaussian/graphs/gaussian_simulator.png) in `graphs/`.
 No GPU, CUDA execution, or simulator is needed to generate and validate it.
 
+## More Rodinia workloads: HotSpot 2D and Pathfinder
+
+Both preserve the original source and analyze allocations, copies, tile
+geometry, pointer-array buffer swaps, launches, and final downloads. Their host
+input helpers use explicit source-hash-checked summaries. Shared-array values
+remain unknown; the graphs describe global memory only. Bounds and global
+footprints are checked; shared communication/barrier correctness is assumed.
+
+```bash
+python3 export_workload_transfers.py \
+  --source workloads/rodinia/hotspot2d/hotspot.cu \
+  --analysis-config workloads/rodinia/hotspot2d/analysis.json \
+  --out-dir results/rodinia_hotspot2d --render
+
+python3 export_workload_transfers.py \
+  --source workloads/rodinia/pathfinder/pathfinder.cu \
+  --analysis-config workloads/rodinia/pathfinder/analysis.json \
+  --out-dir results/rodinia_pathfinder --render
+```
+
+The default graphs each have 9 nodes and 11 edges. HotSpot 2D transfers contain
+1,024 bytes each. Pathfinder has 64-byte cost rows, a 256-byte wall upload, and
+two distinct 128-byte wall reads. Independent tile/row formulas validate
+multiple sizes, boundary tiles, buffer swaps, and partial final launches.
+See the [HotSpot 2D guide](workloads/rodinia/hotspot2d/README.md) and
+[Pathfinder guide](workloads/rodinia/pathfinder/README.md) for parameters and limits.
+
 ## Future benchmarks to investigate
 
-After consolidating the three supported Rodinia cases, expand to other existing
+After consolidating the five supported Rodinia cases, expand to other existing
 application sources while preserving their computation. The following are
 candidates, **not workloads already supported or validated**.
 The order below is a proposed progression; exact implementation requirements
 must be confirmed by inspecting each selected source version.
 
-1. **Rodinia HotSpot (2D) — separate from the supported HotSpot3D variant.** A processor thermal simulation with
-   temperature and power inputs and repeated temperature updates. It extends
-   our examples toward neighboring-cell accesses, boundary conditions, and
-   iteration-to-iteration dependencies. Start with a small input for its
-   existing CUDA implementation. Multidimensional indexing and bounded host
-   loops now have a foundation; the 2D variant still needs analysis of its
-   shared-memory stencil, barriers, and boundary conditions.
-   [Application description](https://rodinia.cs.virginia.edu/hotspot.html).
-2. **Rodinia SRAD — image processing.** A candidate for exploring a larger
+1. **Rodinia SRAD — image processing.** A candidate for exploring a larger
    multi-stage application and intermediate-buffer dependencies. Inspect its
    CUDA implementation to determine the additional control-flow, reduction,
    and indexing support needed.
-3. **Rodinia K-means — data mining.** A candidate for iterative computation
+2. **Rodinia K-means — data mining.** A candidate for iterative computation
    whose access patterns and convergence behavior depend on input data. It
    can help establish where source-only analysis needs user-supplied runtime
    parameters or conservative dependency handling.
-4. **Rodinia BFS — later stress test.** Graph traversal introduces irregular,
+3. **Rodinia BFS — later stress test.** Graph traversal introduces irregular,
    data-dependent accesses. Use it to evaluate the limits of static analysis,
    not as an immediate promise of exact graph recovery.
 
@@ -461,7 +494,7 @@ local source-analysis output and the recorded source hashes match current files.
 
 The generator replaced its initial hardcoded Python models with Clang AST
 analysis. The original affine path was extended for stream/event ordering;
-the configured path now supports the three Rodinia applications described above.
+the configured path now supports the five Rodinia applications described above.
 These are restricted source-analysis paths, not a general CUDA verifier.
 
 ### Later analyzer and repository work
@@ -476,6 +509,9 @@ These are restricted source-analysis paths, not a general CUDA verifier.
   download and verify that a test-only source correction changes the dependency.
 - Added unchanged Gaussian source with an explicit `ForwardSub` boundary,
   byte-region tracking, and independent source contracts for sizes 2–5.
+- Added unchanged HotSpot 2D and Pathfinder sources, host pointer arrays,
+  bounded tiled loops, and explicit opaque shared-memory values. Sixteen new
+  tests check independent global footprints/dependencies and rejection cases.
 - Added regression tests for changed sizes, names, launch geometry, dependencies,
   unsafe accesses, iteration budgets, and stale host-helper contracts.
 - Matched the requested image style with dependency levels, colored transfer
@@ -483,7 +519,7 @@ These are restricted source-analysis paths, not a general CUDA verifier.
 - Archived February–April outputs in `past graphs from nsight/` and kept current
   source-analysis outputs separate from historical trace graphs.
 
-Reproduce the 47-test validation without a GPU:
+Reproduce the 63-test validation without a GPU:
 
 ```bash
 python3 -B -m unittest discover -s tests -p '*source_model.py' -v
@@ -523,7 +559,7 @@ execution or resulting performance metrics have been validated.
 ## Next steps, in priority order
 
 1. **Optionally check compiler portability on remote Linux.** Source validation
-   already runs locally without a GPU. Pull the branch, run the three Rodinia
+   already runs locally without a GPU. Pull the branch, run the five Rodinia
    commands and the test suite, and compare source
    hashes, configurations, transfer volumes, and edges with the committed
    artifacts. Record the Clang version. This validates compiler portability
@@ -542,16 +578,17 @@ execution or resulting performance metrics have been validated.
    thread/address enumeration with symbolic range analysis for regular patterns.
    Preserve byte footprints and dependencies against the bounded evaluator as a
    reference, including boundary cells, buffer swaps, and overwrites. Extend
-   region tracking beyond bounded byte enumeration and add shared-memory/barrier
-   handling before workloads need it.
+   region tracking beyond bounded byte enumeration. Add shared-memory/barrier
+   verification if correctness claims need to cover internal communication;
+   the new tiled graphs currently assume valid internal synchronization.
 5. **Validate the simulator contract when access is available.** Confirm component
    instance names, byte units, dependency semantics, compute costs, and resource
    contention. Decide explicitly whether logical dependencies alone are the
    desired input or whether CUDA stream scheduling also needs representation.
    Run a small known graph before interpreting any performance metrics. This
    step remains unvalidated while simulator access is unavailable.
-6. **Expand benchmarks after those checks.** Inspect the 2D HotSpot variant or
-   SRAD next, selecting a concrete source version and documenting its analysis
+6. **Expand benchmarks after those checks.** Inspect SRAD next, selecting a
+   concrete source version and documenting its analysis
    gaps. Keep K-means/BFS for later data-dependent access work. HIP, OpenCL, or
    SYCL support will require additional front ends; CUDA support does not provide
    cross-accelerator portability by itself.

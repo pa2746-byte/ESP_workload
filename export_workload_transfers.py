@@ -103,6 +103,10 @@ def main():
                     "Analysis starts at " + configuration['entry_function'] +
                     " with configured entry globals and host-buffer shapes; callers and subsequent CPU work are outside this graph."
                 )
+            if configuration.get('shared_memory') == 'opaque_values':
+                metadata['assumptions'].append(
+                    "Shared-array bounds are checked but contents remain unknown; shared transfers, initialization, races, and barrier correctness are not modeled. Global footprints assume valid kernel synchronization."
+                )
         path = args.out_dir / (name + "_simulator.json")
         path.write_text(json.dumps(graph, indent=2) + "\n")
         (args.out_dir / (name + "_metadata.json")).write_text(json.dumps(metadata, indent=2) + "\n")

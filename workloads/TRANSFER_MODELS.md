@@ -189,3 +189,24 @@ with cross-thread race checks. Volumes are unique footprint sizes; metadata
 tracking is limited by `max_tracked_bytes` (default/maximum 1 MiB of live device
 allocations), in addition to the aggregate thread budget. Existing configurations
 retain whole-buffer semantics. See [Gaussian scope and validation](rodinia/gaussian/README.md).
+
+
+HotSpot 2D and Pathfinder explicitly select `shared_memory: opaque_values`.
+Fixed numeric shared arrays are tracked for shape and bounds only; every read
+returns unknown, including after writes and barriers. Shared transfers,
+initialization, races, and barrier correctness are not modeled. Global
+footprints assume valid kernel synchronization. Scalar-only MIN-like conditional
+expressions may return unknown; unknown values still cannot select memory
+addresses or control statements. Expressions hiding conditional memory accesses,
+side effects, or pointer selections are rejected.
+
+The configured evaluator now handles fixed host pointer arrays, allocations
+through their elements, host copy offsets with bounds checks, bounded `break`,
+selected numeric casts, and host `delete[]`. Source-hash-checked host summaries
+may supply previously uninitialized globals with configured scalar values or
+host-buffer shapes. A cleanup-only opaque host pointer has zero transferable
+capacity. These assumptions are recorded in configuration; host summaries cannot
+receive device pointers directly or through pointer arrays. No arbitrary host
+or shared-memory execution is implied. See the
+[HotSpot 2D](rodinia/hotspot2d/README.md) and
+[Pathfinder](rodinia/pathfinder/README.md) scope guides.
