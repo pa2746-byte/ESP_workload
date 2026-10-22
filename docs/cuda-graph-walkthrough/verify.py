@@ -39,3 +39,17 @@ assert [(n['buffer'],n['stage']) for n in nodes]==[
     ('d_C','addFive:read'),('d_D','addFive:write'),('d_D','download')]
 assert sum(n['vol'] for n in stored['nodes'] if 'cpu' in (n['src_comp'],n['dest_comp']))==96
 print('PASS: dependent chain matches source; 8 nodes / 7 edges; C producer-consumer edge; no intermediate host copy or constant buffer.')
+source=HERE/'examples/fused_chain.cu'
+stored=json.loads((HERE/'generated/fused_chain_simulator.json').read_text())
+meta=json.loads((HERE/'generated/fused_chain_metadata.json').read_text())
+fresh,nodes=analyze(source)
+assert stored==fresh and nodes==meta['nodes']
+assert meta['source_sha256']==hashlib.sha256(source.read_bytes()).hexdigest()
+assert len(stored['nodes'])==6
+assert {n['vol'] for n in stored['nodes']}=={32}
+assert {(e['source'],e['target']) for e in stored['edges']}=={(0,2),(1,3),(2,4),(3,4),(4,5)}
+assert [(n['buffer'],n['stage']) for n in nodes]==[
+    ('d_A','upload'),('d_B','upload'),('d_A','fusedAdd:read'),
+    ('d_B','fusedAdd:read'),('d_D','fusedAdd:write'),('d_D','download')]
+assert sum(n['vol'] for n in stored['nodes'] if 'cpu' in (n['src_comp'],n['dest_comp']))==96
+print('PASS: fused source matches saved 6-node / 5-edge graph; no C buffer; unchanged 96 host-copy bytes.')

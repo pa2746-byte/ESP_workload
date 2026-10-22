@@ -47,6 +47,23 @@ def generated_chain():
         body+=box(x,y,170,label,detail,n['id'] in (4,5))
     return svg(body,1200,220,'Generated dependency chain · 8 copy/access nodes / 7 prerequisites · highlighted: C producer → consumer')
 
+def generated_fused():
+    g=json.loads((ROOT/'generated/fused_chain_simulator.json').read_text())
+    meta=json.loads((ROOT/'generated/fused_chain_metadata.json').read_text())
+    positions={0:(10,20),1:(10,130),2:(260,20),3:(260,130),4:(510,75),5:(760,75)}
+    body=''
+    for e in g['edges']:
+        x,y=positions[e['source']];xx,yy=positions[e['target']]
+        body+=arrow(x+170,y+33,xx-4,yy+33)
+    for n,m in zip(g['nodes'],meta['nodes']):
+        assert n['id']==m['id']
+        mode=m['stage'].split(':')[-1]
+        label=f"t{n['id']} · {mode} {m['buffer'].removeprefix('d_')}"
+        detail=('logical ' + mode if ':' in m['stage'] else 'explicit copy')+f" · {n['vol']} B"
+        x,y=positions[n['id']]
+        body+=box(x,y,170,label,detail,n['id']==4)
+    return svg(body,950,220,'Generated fused graph · 6 copy/access nodes / 5 prerequisites · no global C buffer')
+
 def illustrations():
     thread=''
     for i in range(8):
@@ -64,7 +81,7 @@ def illustrations():
     for y,title,step in [(55,'Consecutive',1),(140,'Strided',32)]:
         coal+=f'<text x="10" y="{y+35}" font-size="16">{title}</text>'
         for lane in range(8):coal+=box(160+lane*103,y,96,f'lane {lane}',f'in[{lane*step}]',step==1)
-    return {'CHAIN':generated_chain(),'THREADS':svg(thread,label='Conceptual thread mapping · teaching launch: 2 blocks × 4 threads'), 'DAG':generated_dag(),'SPLIT':svg(split,label='Shared-input fork versus true partition · conceptual comparison'),'JOIN':svg(join,label='Actual elementwise operation versus illustrative concatenation and reduction'),'STREAMS':svg(streams,h=345,label='Scheduling constraints only · lengths do not indicate durations or measured overlap'),'COALESCING':svg(coal,h=225,label='Illustrative address mapping · same aggregate footprint, different per-warp access patterns')}
+    return {'FUSED':generated_fused(),'CHAIN':generated_chain(),'THREADS':svg(thread,label='Conceptual thread mapping · teaching launch: 2 blocks × 4 threads'), 'DAG':generated_dag(),'SPLIT':svg(split,label='Shared-input fork versus true partition · conceptual comparison'),'JOIN':svg(join,label='Actual elementwise operation versus illustrative concatenation and reduction'),'STREAMS':svg(streams,h=345,label='Scheduling constraints only · lengths do not indicate durations or measured overlap'),'COALESCING':svg(coal,h=225,label='Illustrative address mapping · same aggregate footprint, different per-warp access patterns')}
 
 
 def inline(s):
@@ -106,7 +123,7 @@ for n in range(1,len(parts),2):
     slides.append(f'<section class="slide" id="s{index}" aria-label="{html.escape(title)}"><div class="eyebrow">CUDA → LOGICAL TRANSFERS · {index+1:02d}</div><h1>{html.escape(title)}</h1>'+render(parts[n+1],figures)+'</section>')
     nav.append(f'<option value="{index}">{html.escape(title)}</option>')
 css='''
-:root{font-family:Inter,Arial,sans-serif;color:#203336;background:#eef1f0;font-size:17px;line-height:1.5}*{box-sizing:border-box}body{margin:0}header{display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding:13px 26px;background:#203336;color:white;position:sticky;top:0;z-index:3}header strong{font-size:16px;margin-right:auto;flex:1 1 240px}select{max-width:min(480px,80vw)}button,select{font:inherit;font-size:14px;padding:8px 12px;border:1px solid #94aaa7;border-radius:5px;background:white;color:#203336;cursor:pointer}button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid #b36b29}main{max-width:1280px;margin:24px auto}.slide{background:#fff;padding:30px 42px;min-height:730px;margin-bottom:24px}.eyebrow{font-size:12px;letter-spacing:.12em;color:#50756d;font-weight:700}h1{font-size:29px;line-height:1.2;margin:12px 0 22px;max-width:1000px}p{margin:11px 0}ul{padding-left:23px;margin:14px 0}li{margin:9px 0}strong{font-weight:700}a{color:#216c60;text-underline-offset:3px}pre{font-size:13px;line-height:1.38;padding:16px 20px;background:#f1f4f3;border-left:3px solid #527c73;overflow:auto}code{font-family:ui-monospace,Consolas,monospace;font-size:.88em}figure{margin:15px 0}svg{width:100%;max-height:250px;display:block;fill:#203336}#s3 svg{max-height:330px}#s8 svg{max-height:240px}figcaption{font-size:12px;color:#647476;margin-top:6px}.notes{display:none;margin-top:20px;padding:15px 19px;border-top:1px solid #bdcfca;color:#3a655d;font-size:15px}.show-notes .notes{display:block}.presenting .slide{display:none}.presenting .slide.active{display:block}.transfer:focus rect,.transfer:hover rect{stroke:#216c60;stroke-width:3}footer{padding:0 42px 20px;text-align:center;font-size:13px;color:#647476}@media(max-width:800px){header{flex-wrap:wrap;padding:10px}header strong{width:100%}.slide{padding:22px;min-height:0}h1{font-size:24px}select{max-width:70vw}}@media print{@page{size:A4 landscape;margin:12mm}body{background:white;font-size:12px;line-height:1.4}header,footer{display:none!important}main{margin:0;max-width:none}.slide,.presenting .slide{display:block!important;padding:0;min-height:0;margin:0;break-after:page}.slide:last-child{break-after:auto}h1{font-size:23px;margin:8px 0 12px}pre{font-size:10px;padding:10px}p{margin:8px 0}li{margin:5px 0}svg{max-height:170px}#s3 svg{max-height:235px}#s8 svg{max-height:200px}.notes{display:none!important}a{color:inherit}figure{break-inside:avoid}}
+:root{font-family:Inter,Arial,sans-serif;color:#203336;background:#eef1f0;font-size:17px;line-height:1.5}*{box-sizing:border-box}body{margin:0}header{display:flex;flex-wrap:wrap;align-items:center;gap:14px;padding:13px 26px;background:#203336;color:white;position:sticky;top:0;z-index:3}header strong{font-size:16px;margin-right:auto;flex:1 1 240px}select{max-width:min(480px,80vw)}button,select{font:inherit;font-size:14px;padding:8px 12px;border:1px solid #94aaa7;border-radius:5px;background:white;color:#203336;cursor:pointer}button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid #b36b29}main{max-width:1280px;margin:24px auto}.slide{background:#fff;padding:30px 42px;min-height:730px;margin-bottom:24px}.eyebrow{font-size:12px;letter-spacing:.12em;color:#50756d;font-weight:700}h1{font-size:29px;line-height:1.2;margin:12px 0 22px;max-width:1000px}p{margin:11px 0}ul{padding-left:23px;margin:14px 0}li{margin:9px 0}strong{font-weight:700}a{color:#216c60;text-underline-offset:3px}pre{font-size:13px;line-height:1.38;padding:16px 20px;background:#f1f4f3;border-left:3px solid #527c73;overflow:auto}code{font-family:ui-monospace,Consolas,monospace;font-size:.88em}figure{margin:15px 0}svg{width:100%;max-height:250px;display:block;fill:#203336}#s3 svg{max-height:330px}#s9 svg{max-height:240px}figcaption{font-size:12px;color:#647476;margin-top:6px}.notes{display:none;margin-top:20px;padding:15px 19px;border-top:1px solid #bdcfca;color:#3a655d;font-size:15px}.show-notes .notes{display:block}.presenting .slide{display:none}.presenting .slide.active{display:block}.transfer:focus rect,.transfer:hover rect{stroke:#216c60;stroke-width:3}footer{padding:0 42px 20px;text-align:center;font-size:13px;color:#647476}@media(max-width:800px){header{flex-wrap:wrap;padding:10px}header strong{width:100%}.slide{padding:22px;min-height:0}h1{font-size:24px}select{max-width:70vw}}@media print{@page{size:A4 landscape;margin:12mm}body{background:white;font-size:12px;line-height:1.4}header,footer{display:none!important}main{margin:0;max-width:none}.slide,.presenting .slide{display:block!important;padding:0;min-height:0;margin:0;break-after:page}.slide:last-child{break-after:auto}h1{font-size:23px;margin:8px 0 12px}pre{font-size:10px;padding:10px}p{margin:8px 0}li{margin:5px 0}svg{max-height:170px}#s3 svg{max-height:235px}#s9 svg{max-height:200px}.notes{display:none!important}a{color:inherit}figure{break-inside:avoid}}
 '''
 script='''
 const slides=[...document.querySelectorAll('.slide')];let current=0;
