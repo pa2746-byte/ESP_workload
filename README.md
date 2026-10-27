@@ -182,6 +182,20 @@ workload with `--workload fork_join`, or choose another destination with
 See [transfer model documentation](workloads/TRANSFER_MODELS.md) for assumptions
 and component naming options.
 
+## Collect GPU traces in Google Colab
+
+Open [the Rodinia capture notebook](https://colab.research.google.com/github/pa2746-byte/ESP_workload/blob/pa2746-byte-sampleworkloads/notebooks/rodinia_colab_traces.ipynb), select a GPU runtime, and run its cells in order.
+It collects Nearest Neighbor and HotSpot3D Nsight Systems reports and SQLite
+exports using deterministic synthetic inputs matching our small Clang scenarios.
+The notebook pins workload sources, checks CUDA tracing with a smoke test,
+checks kernel counts/copy volumes, and downloads reports plus provenance in a ZIP.
+Open `.nsys-rep` files in a compatible laptop Nsight Systems GUI; retain SQLite
+for subsequent DAG comparison. Capture happens on Colab, not retrospectively on
+the laptop. Colab profiling availability must be tested in the allocated runtime.
+The notebook has been syntax-checked locally; GPU execution has not been validated
+here. It preserves the documented upstream HotSpot3D download behavior and does
+not certify numerical correctness or build execution DAGs yet.
+
 ## How we use Clang
 
 Clang reads the CUDA source and produces an **abstract syntax tree (AST)**:
