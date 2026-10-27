@@ -182,6 +182,15 @@ workload with `--workload fork_join`, or choose another destination with
 See [transfer model documentation](workloads/TRANSFER_MODELS.md) for assumptions
 and component naming options.
 
+## GPU trace comparison results
+
+The [Rodinia capture comparison](results/rodinia_trace_comparison/README.md) includes
+execution DAGs, grouped and original Clang DAGs, measured event durations, and a
+[self-contained visual report](results/rodinia_trace_comparison/report.html).
+Both captured scenarios match kernel launches and explicit copy sizes/directions.
+Stream ordering and source buffer dependencies remain distinct; the traces do
+not independently validate kernel memory footprints or numerical correctness.
+
 ## Collect GPU traces in Google Colab
 
 Open [the Rodinia capture notebook](https://colab.research.google.com/github/pa2746-byte/ESP_workload/blob/pa2746-byte-sampleworkloads/notebooks/rodinia_colab_traces.ipynb), select a GPU runtime, and run its cells in order.
