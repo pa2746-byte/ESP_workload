@@ -1,0 +1,105 @@
+{
+  "workload": "dependent_chain",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/Users/priyalagarwal/Desktop/ESP_workload/docs/cuda-graph-walkthrough/examples/dependent_chain.cu",
+  "source_sha256": "9ef6b6cd404eb5e216aff5866dc22de079bffc74afd02e30db734f554479fc0e",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "d_A",
+      "stage": "upload",
+      "operation_id": 0,
+      "stream": "default",
+      "ordered_after_operations": []
+    },
+    {
+      "id": 1,
+      "buffer": "d_B",
+      "stage": "upload",
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "buffer": "d_A",
+      "stage": "vectorAdd:read",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "buffer": "d_B",
+      "stage": "vectorAdd:read",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "buffer": "d_C",
+      "stage": "vectorAdd:write",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 5,
+      "buffer": "d_C",
+      "stage": "addFive:read",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": 6,
+      "buffer": "d_D",
+      "stage": "addFive:write",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": 7,
+      "buffer": "d_D",
+      "stage": "download",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ]
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique contiguous buffer footprints per kernel; repeated element accesses are not instruction traffic.",
+    "Edges express whole-buffer readiness, not observed default-stream order.",
+    "Stream/event ordering is checked for conflicting buffer accesses; metadata records operation ordering, not timing.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies."
+  ]
+}

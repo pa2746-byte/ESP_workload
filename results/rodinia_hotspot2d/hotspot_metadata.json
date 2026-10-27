@@ -1,0 +1,265 @@
+{
+  "workload": "hotspot",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/rodinia/hotspot2d/hotspot.cu",
+  "source_sha256": "0f679be008be285d26ebd7d71eba47b164914dd52873c26ee63beecda2f68cc0",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "MatrixTemp[0]",
+      "stage": "upload",
+      "operation_id": 0,
+      "stream": "default",
+      "ordered_after_operations": [],
+      "byte_ranges": [
+        [
+          0,
+          1024
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "buffer": "MatrixPower",
+      "stage": "upload",
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1024
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "buffer": "MatrixTemp[0]",
+      "stage": "calculate_temp:read",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1024
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "buffer": "MatrixPower",
+      "stage": "calculate_temp:read",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1024
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "buffer": "MatrixTemp[1]",
+      "stage": "calculate_temp:write",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1024
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "buffer": "MatrixTemp[1]",
+      "stage": "calculate_temp:read",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1024
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "buffer": "MatrixPower",
+      "stage": "calculate_temp:read",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1024
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "buffer": "MatrixTemp[0]",
+      "stage": "calculate_temp:write",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1024
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "buffer": "MatrixTemp[0]",
+      "stage": "download",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1024
+        ]
+      ]
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique byte footprints per kernel; byte_ranges in metadata are half-open intervals, not measured memory traffic.",
+    "Edges express overlapping-region RAW/WAR/WAW dependencies and conservative kernel input-to-output readiness, not stream execution order.",
+    "Stream/event ordering is checked for conflicting buffer accesses; metadata records operation ordering, not timing.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies.",
+    "Host input parsing/loading and CPU result selection use explicit, source-hash-checked summaries; they are not executed.",
+    "Device properties are configured assumptions, not measurements; bounded kernel address evaluation requires no GPU.",
+    "Device values remain unknown; data-dependent control/indexing and cross-thread read/write races are rejected.",
+    "Shared-array bounds are checked but contents remain unknown; shared transfers, initialization, races, and barrier correctness are not modeled. Global footprints assume valid kernel synchronization."
+  ],
+  "configured_analysis": {
+    "configuration": {
+      "version": 1,
+      "parameters": {
+        "size": 16,
+        "pyramid": 2,
+        "iterations": 4
+      },
+      "arguments": [
+        {
+          "parameter": "size"
+        },
+        {
+          "parameter": "pyramid"
+        },
+        {
+          "parameter": "iterations"
+        },
+        "temperature.txt",
+        "power.txt",
+        "output.txt"
+      ],
+      "analyzed_functions": [
+        "run",
+        "compute_tran_temp"
+      ],
+      "dependency_granularity": "byte_regions",
+      "shared_memory": "opaque_values",
+      "device": {
+        "ordinal": 0,
+        "max_grid_size": [
+          65535,
+          65535,
+          65535
+        ],
+        "max_threads_per_block": 1024,
+        "free_memory_bytes": 1073741824,
+        "total_memory_bytes": 2147483648,
+        "device_count": 1
+      },
+      "max_enumerated_threads": 65536,
+      "max_loop_iterations": 1024,
+      "host_summaries": {
+        "readinput": {
+          "body_sha256": "24f732f44d529a955710d460c97160177b7b70cb161610377c122b55f1286362"
+        },
+        "writeoutput": {
+          "body_sha256": "2117a99c7f6cdfa37f9a4eba7b569a1170d9248d161c6378fb34726c07d14a56"
+        }
+      },
+      "preprocessor_sha256": "a573a87727cdeaf5fdbb31f227639fcee520dc4761089030f1b7f32ed5147ddd"
+    },
+    "launches": [
+      {
+        "kernel": "calculate_temp",
+        "grid": [
+          2,
+          2,
+          1
+        ],
+        "block": [
+          16,
+          16,
+          1
+        ],
+        "enumerated_threads": 1024
+      },
+      {
+        "kernel": "calculate_temp",
+        "grid": [
+          2,
+          2,
+          1
+        ],
+        "block": [
+          16,
+          16,
+          1
+        ],
+        "enumerated_threads": 1024
+      }
+    ],
+    "source_units": {
+      "hotspot.cu": "0f679be008be285d26ebd7d71eba47b164914dd52873c26ee63beecda2f68cc0"
+    },
+    "used_host_summaries": [
+      "readinput",
+      "writeoutput"
+    ]
+  }
+}

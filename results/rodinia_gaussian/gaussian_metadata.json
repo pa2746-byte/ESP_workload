@@ -1,0 +1,564 @@
+{
+  "workload": "gaussian",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/rodinia/gaussian/gaussian.cu",
+  "source_sha256": "814fca1b71505b177062a44f87f35680d0aa3a86311ef5ff6bf4b6a4e462540b",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "m_cuda",
+      "stage": "upload",
+      "operation_id": 0,
+      "stream": "default",
+      "ordered_after_operations": [],
+      "byte_ranges": [
+        [
+          0,
+          36
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "buffer": "a_cuda",
+      "stage": "upload",
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ],
+      "byte_ranges": [
+        [
+          0,
+          36
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "buffer": "b_cuda",
+      "stage": "upload",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "buffer": "a_cuda",
+      "stage": "Fan1:read",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ],
+        [
+          12,
+          16
+        ],
+        [
+          24,
+          28
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "buffer": "m_cuda",
+      "stage": "Fan1:write",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          12,
+          16
+        ],
+        [
+          24,
+          28
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "buffer": "m_cuda",
+      "stage": "Fan2:read",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          12,
+          16
+        ],
+        [
+          24,
+          28
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "buffer": "a_cuda",
+      "stage": "Fan2:read",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          0,
+          36
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "buffer": "b_cuda",
+      "stage": "Fan2:read",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "buffer": "a_cuda",
+      "stage": "Fan2:write",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          12,
+          36
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "buffer": "b_cuda",
+      "stage": "Fan2:write",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          4,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "buffer": "a_cuda",
+      "stage": "Fan1:read",
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "byte_ranges": [
+        [
+          16,
+          20
+        ],
+        [
+          28,
+          32
+        ]
+      ]
+    },
+    {
+      "id": 11,
+      "buffer": "m_cuda",
+      "stage": "Fan1:write",
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "byte_ranges": [
+        [
+          28,
+          32
+        ]
+      ]
+    },
+    {
+      "id": 12,
+      "buffer": "m_cuda",
+      "stage": "Fan2:read",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          28,
+          32
+        ]
+      ]
+    },
+    {
+      "id": 13,
+      "buffer": "a_cuda",
+      "stage": "Fan2:read",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          16,
+          24
+        ],
+        [
+          28,
+          36
+        ]
+      ]
+    },
+    {
+      "id": 14,
+      "buffer": "b_cuda",
+      "stage": "Fan2:read",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          4,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 15,
+      "buffer": "a_cuda",
+      "stage": "Fan2:write",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          28,
+          36
+        ]
+      ]
+    },
+    {
+      "id": 16,
+      "buffer": "b_cuda",
+      "stage": "Fan2:write",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          8,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 17,
+      "buffer": "m_cuda",
+      "stage": "download",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          0,
+          36
+        ]
+      ]
+    },
+    {
+      "id": 18,
+      "buffer": "a_cuda",
+      "stage": "download",
+      "operation_id": 8,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "byte_ranges": [
+        [
+          0,
+          36
+        ]
+      ]
+    },
+    {
+      "id": 19,
+      "buffer": "b_cuda",
+      "stage": "download",
+      "operation_id": 9,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique byte footprints per kernel; byte_ranges in metadata are half-open intervals, not measured memory traffic.",
+    "Edges express overlapping-region RAW/WAR/WAW dependencies and conservative kernel input-to-output readiness, not stream execution order.",
+    "Stream/event ordering is checked for conflicting buffer accesses; metadata records operation ordering, not timing.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies.",
+    "Host input parsing/loading and CPU result selection use explicit, source-hash-checked summaries; they are not executed.",
+    "Device properties are configured assumptions, not measurements; bounded kernel address evaluation requires no GPU.",
+    "Device values remain unknown; data-dependent control/indexing and cross-thread read/write races are rejected.",
+    "Analysis starts at ForwardSub with configured entry globals and host-buffer shapes; callers and subsequent CPU work are outside this graph."
+  ],
+  "configured_analysis": {
+    "configuration": {
+      "version": 1,
+      "entry_function": "ForwardSub",
+      "parameters": {
+        "size": 3
+      },
+      "entry_globals": {
+        "Size": {
+          "parameter": "size"
+        },
+        "m": {
+          "shape": [
+            {
+              "parameter": "size"
+            },
+            {
+              "parameter": "size"
+            }
+          ]
+        },
+        "a": {
+          "shape": [
+            {
+              "parameter": "size"
+            },
+            {
+              "parameter": "size"
+            }
+          ]
+        },
+        "b": {
+          "shape": [
+            {
+              "parameter": "size"
+            }
+          ]
+        }
+      },
+      "mutable_scalar_globals": [
+        "totalKernelTime"
+      ],
+      "dependency_granularity": "byte_regions",
+      "device": {
+        "ordinal": 0,
+        "max_grid_size": [
+          65535,
+          65535,
+          65535
+        ],
+        "max_threads_per_block": 1024,
+        "free_memory_bytes": 1073741824,
+        "total_memory_bytes": 2147483648
+      },
+      "max_enumerated_threads": 65536,
+      "host_summaries": {
+        "checkCUDAError": {
+          "body_sha256": "8b6045b2ad698b29faaa33d0df9b10f54cda58771d576fd7279c99d4fb01a4a9"
+        }
+      },
+      "preprocessor_sha256": "63f03e3a73873c9433dda1f564e4ec91e4d73a0f455a3f46f4583b8a6438d103"
+    },
+    "launches": [
+      {
+        "kernel": "Fan1",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          512,
+          1,
+          1
+        ],
+        "enumerated_threads": 512
+      },
+      {
+        "kernel": "Fan2",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          4,
+          1
+        ],
+        "enumerated_threads": 16
+      },
+      {
+        "kernel": "Fan1",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          512,
+          1,
+          1
+        ],
+        "enumerated_threads": 512
+      },
+      {
+        "kernel": "Fan2",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          4,
+          1
+        ],
+        "enumerated_threads": 16
+      }
+    ],
+    "source_units": {
+      "gaussian.cu": "814fca1b71505b177062a44f87f35680d0aa3a86311ef5ff6bf4b6a4e462540b"
+    },
+    "used_host_summaries": [
+      "checkCUDAError"
+    ]
+  }
+}
