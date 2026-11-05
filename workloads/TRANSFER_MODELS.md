@@ -210,3 +210,29 @@ receive device pointers directly or through pointer arrays. No arbitrary host
 or shared-memory execution is implied. See the
 [HotSpot 2D](rodinia/hotspot2d/README.md) and
 [Pathfinder](rodinia/pathfinder/README.md) scope guides.
+
+## Additional configured-analysis features
+
+NW and LUD opt into `lexical_scopes: true`, restoring block and loop-local
+variables on exit. Bounded `while` loops and integer switches follow known
+scalar conditions; unknown decisions still fail. The original LU driver's
+separate short `getopt_long` options are modeled; long/combined/optional-value
+forms are rejected rather than guessed.
+
+`host_memory: "opaque_values"` permits numeric host initialization without
+propagating array contents. Known host pointer accesses are bounds-checked.
+Unknown indices into fixed host arrays retain only shape and unknown contents;
+they cannot become device pointers or resolve launch controls. This abstraction
+does not validate host numerical correctness. Simple default-constructed host
+POD records remain opaque and cannot be used as modeled device buffers.
+
+`scalar_device_functions` names helpers whose complete AST bodies must contain
+only numeric local/parameter operations, conditionals, and returns. Calls,
+pointer arguments, memory accesses, and global references are rejected. Unknown
+arguments yield unknown scalar results; no memory effect is inferred or hidden.
+
+Hash-pinned host summaries may declare `requires` scalar-argument checks and
+`buffers` for numeric output-pointer allocations with explicit shapes. They
+cannot receive device pointers. LU uses this for CPU matrix preparation, while
+analyzing the original application's CUDA flow. These facilities do not add
+GPU execution, timing, physical-traffic measurements, or simulator validation.

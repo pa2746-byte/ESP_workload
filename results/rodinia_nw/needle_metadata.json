@@ -1,0 +1,1078 @@
+{
+  "workload": "needle",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/rodinia/nw/needle.cu",
+  "source_sha256": "ff37b5e6969b6f8a3fe812b5d0bb65c0958b6c51b89f41f38fb05ec420a385f1",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "referrence_cuda",
+      "stage": "upload",
+      "operation_id": 0,
+      "stream": "default",
+      "ordered_after_operations": [],
+      "byte_ranges": [
+        [
+          0,
+          4356
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "buffer": "matrix_cuda",
+      "stage": "upload",
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4356
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "buffer": "referrence_cuda",
+      "stage": "needle_cuda_shared_1:read",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          136,
+          200
+        ],
+        [
+          268,
+          332
+        ],
+        [
+          400,
+          464
+        ],
+        [
+          532,
+          596
+        ],
+        [
+          664,
+          728
+        ],
+        [
+          796,
+          860
+        ],
+        [
+          928,
+          992
+        ],
+        [
+          1060,
+          1124
+        ],
+        [
+          1192,
+          1256
+        ],
+        [
+          1324,
+          1388
+        ],
+        [
+          1456,
+          1520
+        ],
+        [
+          1588,
+          1652
+        ],
+        [
+          1720,
+          1784
+        ],
+        [
+          1852,
+          1916
+        ],
+        [
+          1984,
+          2048
+        ],
+        [
+          2116,
+          2180
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "buffer": "matrix_cuda",
+      "stage": "needle_cuda_shared_1:read",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          0,
+          68
+        ],
+        [
+          132,
+          136
+        ],
+        [
+          264,
+          268
+        ],
+        [
+          396,
+          400
+        ],
+        [
+          528,
+          532
+        ],
+        [
+          660,
+          664
+        ],
+        [
+          792,
+          796
+        ],
+        [
+          924,
+          928
+        ],
+        [
+          1056,
+          1060
+        ],
+        [
+          1188,
+          1192
+        ],
+        [
+          1320,
+          1324
+        ],
+        [
+          1452,
+          1456
+        ],
+        [
+          1584,
+          1588
+        ],
+        [
+          1716,
+          1720
+        ],
+        [
+          1848,
+          1852
+        ],
+        [
+          1980,
+          1984
+        ],
+        [
+          2112,
+          2116
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "buffer": "matrix_cuda",
+      "stage": "needle_cuda_shared_1:write",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          136,
+          200
+        ],
+        [
+          268,
+          332
+        ],
+        [
+          400,
+          464
+        ],
+        [
+          532,
+          596
+        ],
+        [
+          664,
+          728
+        ],
+        [
+          796,
+          860
+        ],
+        [
+          928,
+          992
+        ],
+        [
+          1060,
+          1124
+        ],
+        [
+          1192,
+          1256
+        ],
+        [
+          1324,
+          1388
+        ],
+        [
+          1456,
+          1520
+        ],
+        [
+          1588,
+          1652
+        ],
+        [
+          1720,
+          1784
+        ],
+        [
+          1852,
+          1916
+        ],
+        [
+          1984,
+          2048
+        ],
+        [
+          2116,
+          2180
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "buffer": "referrence_cuda",
+      "stage": "needle_cuda_shared_1:read",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          200,
+          264
+        ],
+        [
+          332,
+          396
+        ],
+        [
+          464,
+          528
+        ],
+        [
+          596,
+          660
+        ],
+        [
+          728,
+          792
+        ],
+        [
+          860,
+          924
+        ],
+        [
+          992,
+          1056
+        ],
+        [
+          1124,
+          1188
+        ],
+        [
+          1256,
+          1320
+        ],
+        [
+          1388,
+          1452
+        ],
+        [
+          1520,
+          1584
+        ],
+        [
+          1652,
+          1716
+        ],
+        [
+          1784,
+          1848
+        ],
+        [
+          1916,
+          1980
+        ],
+        [
+          2048,
+          2112
+        ],
+        [
+          2180,
+          2244
+        ],
+        [
+          2248,
+          2312
+        ],
+        [
+          2380,
+          2444
+        ],
+        [
+          2512,
+          2576
+        ],
+        [
+          2644,
+          2708
+        ],
+        [
+          2776,
+          2840
+        ],
+        [
+          2908,
+          2972
+        ],
+        [
+          3040,
+          3104
+        ],
+        [
+          3172,
+          3236
+        ],
+        [
+          3304,
+          3368
+        ],
+        [
+          3436,
+          3500
+        ],
+        [
+          3568,
+          3632
+        ],
+        [
+          3700,
+          3764
+        ],
+        [
+          3832,
+          3896
+        ],
+        [
+          3964,
+          4028
+        ],
+        [
+          4096,
+          4160
+        ],
+        [
+          4228,
+          4292
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "buffer": "matrix_cuda",
+      "stage": "needle_cuda_shared_1:read",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          64,
+          132
+        ],
+        [
+          196,
+          200
+        ],
+        [
+          328,
+          332
+        ],
+        [
+          460,
+          464
+        ],
+        [
+          592,
+          596
+        ],
+        [
+          724,
+          728
+        ],
+        [
+          856,
+          860
+        ],
+        [
+          988,
+          992
+        ],
+        [
+          1120,
+          1124
+        ],
+        [
+          1252,
+          1256
+        ],
+        [
+          1384,
+          1388
+        ],
+        [
+          1516,
+          1520
+        ],
+        [
+          1648,
+          1652
+        ],
+        [
+          1780,
+          1784
+        ],
+        [
+          1912,
+          1916
+        ],
+        [
+          2044,
+          2048
+        ],
+        [
+          2112,
+          2180
+        ],
+        [
+          2244,
+          2248
+        ],
+        [
+          2376,
+          2380
+        ],
+        [
+          2508,
+          2512
+        ],
+        [
+          2640,
+          2644
+        ],
+        [
+          2772,
+          2776
+        ],
+        [
+          2904,
+          2908
+        ],
+        [
+          3036,
+          3040
+        ],
+        [
+          3168,
+          3172
+        ],
+        [
+          3300,
+          3304
+        ],
+        [
+          3432,
+          3436
+        ],
+        [
+          3564,
+          3568
+        ],
+        [
+          3696,
+          3700
+        ],
+        [
+          3828,
+          3832
+        ],
+        [
+          3960,
+          3964
+        ],
+        [
+          4092,
+          4096
+        ],
+        [
+          4224,
+          4228
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "buffer": "matrix_cuda",
+      "stage": "needle_cuda_shared_1:write",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          200,
+          264
+        ],
+        [
+          332,
+          396
+        ],
+        [
+          464,
+          528
+        ],
+        [
+          596,
+          660
+        ],
+        [
+          728,
+          792
+        ],
+        [
+          860,
+          924
+        ],
+        [
+          992,
+          1056
+        ],
+        [
+          1124,
+          1188
+        ],
+        [
+          1256,
+          1320
+        ],
+        [
+          1388,
+          1452
+        ],
+        [
+          1520,
+          1584
+        ],
+        [
+          1652,
+          1716
+        ],
+        [
+          1784,
+          1848
+        ],
+        [
+          1916,
+          1980
+        ],
+        [
+          2048,
+          2112
+        ],
+        [
+          2180,
+          2244
+        ],
+        [
+          2248,
+          2312
+        ],
+        [
+          2380,
+          2444
+        ],
+        [
+          2512,
+          2576
+        ],
+        [
+          2644,
+          2708
+        ],
+        [
+          2776,
+          2840
+        ],
+        [
+          2908,
+          2972
+        ],
+        [
+          3040,
+          3104
+        ],
+        [
+          3172,
+          3236
+        ],
+        [
+          3304,
+          3368
+        ],
+        [
+          3436,
+          3500
+        ],
+        [
+          3568,
+          3632
+        ],
+        [
+          3700,
+          3764
+        ],
+        [
+          3832,
+          3896
+        ],
+        [
+          3964,
+          4028
+        ],
+        [
+          4096,
+          4160
+        ],
+        [
+          4228,
+          4292
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "buffer": "referrence_cuda",
+      "stage": "needle_cuda_shared_2:read",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          2312,
+          2376
+        ],
+        [
+          2444,
+          2508
+        ],
+        [
+          2576,
+          2640
+        ],
+        [
+          2708,
+          2772
+        ],
+        [
+          2840,
+          2904
+        ],
+        [
+          2972,
+          3036
+        ],
+        [
+          3104,
+          3168
+        ],
+        [
+          3236,
+          3300
+        ],
+        [
+          3368,
+          3432
+        ],
+        [
+          3500,
+          3564
+        ],
+        [
+          3632,
+          3696
+        ],
+        [
+          3764,
+          3828
+        ],
+        [
+          3896,
+          3960
+        ],
+        [
+          4028,
+          4092
+        ],
+        [
+          4160,
+          4224
+        ],
+        [
+          4292,
+          4356
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "buffer": "matrix_cuda",
+      "stage": "needle_cuda_shared_2:read",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          2176,
+          2244
+        ],
+        [
+          2308,
+          2312
+        ],
+        [
+          2440,
+          2444
+        ],
+        [
+          2572,
+          2576
+        ],
+        [
+          2704,
+          2708
+        ],
+        [
+          2836,
+          2840
+        ],
+        [
+          2968,
+          2972
+        ],
+        [
+          3100,
+          3104
+        ],
+        [
+          3232,
+          3236
+        ],
+        [
+          3364,
+          3368
+        ],
+        [
+          3496,
+          3500
+        ],
+        [
+          3628,
+          3632
+        ],
+        [
+          3760,
+          3764
+        ],
+        [
+          3892,
+          3896
+        ],
+        [
+          4024,
+          4028
+        ],
+        [
+          4156,
+          4160
+        ],
+        [
+          4288,
+          4292
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "buffer": "matrix_cuda",
+      "stage": "needle_cuda_shared_2:write",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          2312,
+          2376
+        ],
+        [
+          2444,
+          2508
+        ],
+        [
+          2576,
+          2640
+        ],
+        [
+          2708,
+          2772
+        ],
+        [
+          2840,
+          2904
+        ],
+        [
+          2972,
+          3036
+        ],
+        [
+          3104,
+          3168
+        ],
+        [
+          3236,
+          3300
+        ],
+        [
+          3368,
+          3432
+        ],
+        [
+          3500,
+          3564
+        ],
+        [
+          3632,
+          3696
+        ],
+        [
+          3764,
+          3828
+        ],
+        [
+          3896,
+          3960
+        ],
+        [
+          4028,
+          4092
+        ],
+        [
+          4160,
+          4224
+        ],
+        [
+          4292,
+          4356
+        ]
+      ]
+    },
+    {
+      "id": 11,
+      "buffer": "matrix_cuda",
+      "stage": "download",
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4356
+        ]
+      ]
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique byte footprints per kernel; byte_ranges in metadata are half-open intervals, not measured memory traffic.",
+    "Edges express overlapping-region RAW/WAR/WAW dependencies and conservative kernel input-to-output readiness, not stream execution order.",
+    "Stream/event ordering is checked for conflicting buffer accesses; metadata records operation ordering, not timing.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies.",
+    "Host input parsing/loading and CPU result selection use explicit, source-hash-checked summaries; they are not executed.",
+    "Device properties are configured assumptions, not measurements; bounded kernel address evaluation requires no GPU.",
+    "Device values remain unknown; data-dependent control/indexing and cross-thread read/write races are rejected.",
+    "Host numeric array contents and random initialization remain unknown. Host allocation sizes and scalar control flow are evaluated; CPU numerical correctness is not validated.",
+    "Configured scalar device helpers are checked for memory-free, local-only bodies. Unknown arguments produce unknown results; these results cannot determine addresses or launch/control decisions.",
+    "Shared-array bounds are checked but contents remain unknown; shared transfers, initialization, races, and barrier correctness are not modeled. Global footprints assume valid kernel synchronization."
+  ],
+  "configured_analysis": {
+    "configuration": {
+      "version": 1,
+      "parameters": {
+        "dimension": 32,
+        "penalty": 10
+      },
+      "arguments": [
+        {
+          "parameter": "dimension"
+        },
+        {
+          "parameter": "penalty"
+        }
+      ],
+      "analyzed_functions": [
+        "runTest"
+      ],
+      "additional_sources": [
+        "needle_kernel.cu",
+        "needle.h"
+      ],
+      "scalar_device_functions": [
+        "maximum"
+      ],
+      "lexical_scopes": true,
+      "host_memory": "opaque_values",
+      "shared_memory": "opaque_values",
+      "dependency_granularity": "byte_regions",
+      "device": {
+        "ordinal": 0,
+        "max_grid_size": [
+          65535,
+          65535,
+          65535
+        ],
+        "max_threads_per_block": 1024,
+        "free_memory_bytes": 1073741824,
+        "total_memory_bytes": 2147483648
+      },
+      "max_enumerated_threads": 65536,
+      "max_loop_iterations": 1024,
+      "preprocessor_sha256": "0359c47cf7c9f9e8832c5857a965fcd7c183f0415482c9fcc2d3a25acadf8185",
+      "additional_preprocessor_sha256": {
+        "needle_kernel.cu": "7b29607b74de25e4c40b2491842078a6e43f499ca7848f07346d4594c3b1948c",
+        "needle.h": "0981985a755a47bc0e9ca05f5ea2b85e84b9c6f3d167793e858ee01fb2b9261e"
+      }
+    },
+    "launches": [
+      {
+        "kernel": "needle_cuda_shared_1",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          16,
+          1,
+          1
+        ],
+        "enumerated_threads": 16
+      },
+      {
+        "kernel": "needle_cuda_shared_1",
+        "grid": [
+          2,
+          1,
+          1
+        ],
+        "block": [
+          16,
+          1,
+          1
+        ],
+        "enumerated_threads": 32
+      },
+      {
+        "kernel": "needle_cuda_shared_2",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          16,
+          1,
+          1
+        ],
+        "enumerated_threads": 16
+      }
+    ],
+    "source_units": {
+      "needle.cu": "ff37b5e6969b6f8a3fe812b5d0bb65c0958b6c51b89f41f38fb05ec420a385f1",
+      "needle_kernel.cu": "5d1e9448b2ce90b7f0acbbde1289a95108e3480ea6772fba768a985a01914f0c",
+      "needle.h": "38ffaf31b59432e204dff8b22e10ada572c18eae27abfd0a82ea3f08b178b180"
+    },
+    "used_host_summaries": []
+  }
+}

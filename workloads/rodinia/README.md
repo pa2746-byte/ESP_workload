@@ -1,6 +1,6 @@
 # Rodinia source-analysis experiments
 
-Five examples are now available:
+Seven analysis cases are now available:
 
 - **Nearest Neighbor**, described below: struct fields, pointer offsets, and
   configured input size.
@@ -14,6 +14,14 @@ Five examples are now available:
   shared values, global footprints, pointer arrays, and alternating outputs.
 - **[Pathfinder](pathfinder/README.md)**: integer path costs, row-window reads,
   host-copy offsets, and tiled iterations. Shared values remain unknown.
+
+- **[Needleman–Wunsch](nw/README.md)**: complete configured application flow,
+  both wavefront loops, lexical scopes, and a pure scalar device helper.
+- **[LU decomposition](lud/README.md)**: complete configured application flow,
+  original command-line driver and tiled in-place matrix updates.
+
+These are the first two of the requested five additions. The remaining three
+are not implemented; see [expansion status](EXPANSION.md).
 
 `nn/nn_cuda.cu` is an **unchanged upstream CUDA Nearest Neighbor implementation**
 from [yuhc/gpu-rodinia](https://github.com/yuhc/gpu-rodinia), commit

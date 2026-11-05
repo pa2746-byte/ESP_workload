@@ -4,6 +4,7 @@ No CUDA/C++ code is executed. Device values are unknown; data-dependent control
 flow is rejected. Intended for small, reproducible source-analysis experiments.
 """
 from dataclasses import dataclass
+from contextlib import contextmanager
 import hashlib
 import itertools
 import math
@@ -58,6 +59,12 @@ class PointerArray:
     name: str
     base: str
     values: dict
+
+
+@dataclass(frozen=True)
+class HostView:
+    """Opaque host array values; never usable as a device address or copy pointer."""
+    shape: tuple
 
 
 @dataclass(frozen=True)
@@ -154,9 +161,16 @@ class Evaluator:
         if self.loop_limit > 10000: raise UnsupportedSource('Loop iteration limit exceeds 10000')
         self.total_loop_iterations = 0
         self.total_threads = 0
+        self.lexical_scopes = config.get('lexical_scopes', False)
+        if type(self.lexical_scopes) is not bool:
+            raise UnsupportedSource('lexical_scopes must be a boolean')
+        self.scope_frames = []
+        self.opaque_host = config.get('host_memory', 'reject') == 'opaque_values'
+        if config.get('host_memory', 'reject') not in {'reject', 'opaque_values'}:
+            raise UnsupportedSource('Unknown host-memory model')
         for fn in self.functions.values():
             names = [n.get('name') for n in walk(body_of(fn)) if n['kind'] == 'VarDecl']
-            if len(names) != len(set(names)):
+            if not self.lexical_scopes and len(names) != len(set(names)):
                 raise UnsupportedSource('Shadowed/redeclared variables require scope analysis')
         self.types = {'float': (4, 4, {}), 'double': (8, 8, {}), 'int': (4, 4, {}),
                       'unsigned int': (4, 4, {}), 'char': (1, 1, {})}
@@ -186,6 +200,7 @@ class Evaluator:
             if node['kind'] == 'TypedefDecl':
                 target = self.clean(node.get('type', {}).get('desugaredQualType', ''))
                 if target in self.types: self.types[node['name']] = self.types[target]
+        self.pod_records = {n.get('name') for n in walk(self.ast) if n.get('kind') == 'CXXRecordDecl' and n.get('definitionData', {}).get('isPOD')}
         self.env = {'argc': UNKNOWN, 'argv': UNKNOWN}
         if 'arguments' in config:
             arguments = [str(self.configured(v)) if isinstance(v, dict) else v for v in config['arguments']]
@@ -208,10 +223,32 @@ class Evaluator:
         self.cpu, self.mem, self.acc = cpu, mem, acc
         self.launches = []
         self.used_summaries = set()
+        self.cli_state = {'optind': 1, 'optarg': None}
+        self.enum_values = {}
+        for enum in walk(self.ast):
+            if enum['kind'] != 'EnumDecl': continue
+            value = -1
+            for member in children(enum):
+                if member['kind'] != 'EnumConstantDecl': continue
+                constants = [c for c in walk(member) if c.get('kind') == 'ConstantExpr' and 'value' in c]
+                value = int(constants[0]['value']) if constants else value + 1
+                self.enum_values[member['id']] = value
         self.globals = {}
         for node, _ in declarations:
             if node['kind'] == 'VarDecl' and children(node):
-                self.globals[node['name']] = self.eval(children(node)[-1])
+                typ = self.clean(node['type']['qualType'])
+                if self.opaque_host and re.fullmatch(r'(int|float|double)(?:\[\d+\])+', typ):
+                    allowed = {'InitListExpr', 'IntegerLiteral', 'FloatingLiteral',
+                               'UnaryOperator', 'ImplicitCastExpr', 'ConstantExpr',
+                               'ParenExpr', 'ImplicitValueInitExpr', 'BinaryOperator'}
+                    for part in walk(children(node)[-1]):
+                        if (part['kind'] not in allowed
+                                or (part['kind'] == 'UnaryOperator' and part['opcode'] not in {'+', '-'})
+                                or (part['kind'] == 'BinaryOperator' and part['opcode'] not in {'+', '-', '*', '/', '%'})):
+                            raise UnsupportedSource('Opaque host array initializer must be pure numeric constants')
+                    self.globals[node['name']] = HostView(tuple(map(int, re.findall(r'\[(\d+)\]', typ))))
+                else:
+                    self.globals[node['name']] = self.eval(children(node)[-1])
         self.global_types = {n['name']: self.clean(n['type']['qualType'])
                         for n, _ in declarations if n['kind'] == 'VarDecl'}
         boundary = config.get('entry_globals', {})
@@ -271,10 +308,15 @@ class Evaluator:
         return value
 
     def read(self, location):
-        if isinstance(location, SharedView): return location if location.shape else UNKNOWN
+        if isinstance(location, (SharedView, HostView)): return location if location.shape else UNKNOWN
         if isinstance(location, Reference): return location.owner.get(location.key, UNKNOWN)
         if isinstance(location, Pointer):
-            if not location.device: return UNKNOWN
+            if not location.device:
+                if self.kernel:
+                    raise UnsupportedSource('Kernel cannot access an ordinary host pointer')
+                if self.opaque_host and (location.offset < 0 or location.offset + self.layout(location.base)[0] > self.host_sizes.get(location.buffer, 0)):
+                    raise UnsupportedSource('Host read exceeds allocation')
+                return UNKNOWN
             self.access(location, 'read')
             return UNKNOWN
         raise UnsupportedSource('Unsupported lvalue read')
@@ -291,6 +333,13 @@ class Evaluator:
             location.owner[location.key] = value
         elif isinstance(location, Pointer) and location.device:
             self.access(location, 'write')
+        elif isinstance(location, Pointer) and self.opaque_host and not self.kernel:
+            if not isinstance(value, (int, float, Unknown)):
+                raise UnsupportedSource('Opaque host storage accepts only numeric values')
+            if location.offset < 0 or location.offset + self.layout(location.base)[0] > self.host_sizes.get(location.buffer, 0):
+                raise UnsupportedSource('Host write exceeds allocation')
+            # Contents are intentionally unknown, including known writes. Never
+            # infer control flow or device addresses from this abstraction.
         else: raise UnsupportedSource('Unsupported memory write')
 
     def access(self, ptr, mode):
@@ -314,9 +363,12 @@ class Evaluator:
         if k in {'ParenExpr', 'ImplicitCastExpr'}: return self.location(cs[0])
         if k == 'DeclRefExpr':
             name = n['referencedDecl']['name']
+            if self.opaque_host and name in self.cli_state and name not in self.env:
+                return Reference(self.cli_state, name)
             if name in self.globals and name not in self.env: return Reference(self.globals, name)
             if name not in self.env: raise UnsupportedSource(f'Unmodeled global/reference: {name}')
-            return Reference(self.env, name)
+            typ = self.clean(n['referencedDecl'].get('type', {}).get('qualType', ''))
+            return Reference(self.env, name, pointer_base=typ[:-1].strip() if typ.endswith('*') else None)
         if k == 'UnaryOperator' and n['opcode'] == '*':
             value = self.eval(cs[0])
             if not isinstance(value, Pointer): raise UnsupportedSource('Dereference of non-pointer')
@@ -331,6 +383,12 @@ class Evaluator:
                 return Pointer(value.buffer, value.offset + offset, typ, value.device)
         if k == 'ArraySubscriptExpr':
             value, index = self.eval(cs[0]), self.eval(cs[1])
+            if isinstance(value, HostView) and not self.kernel:
+                if not value.shape or (type(index) is int and not 0 <= index < value.shape[0]):
+                    raise UnsupportedSource('Host array index out of bounds')
+                if not isinstance(index, (int, Unknown)):
+                    raise UnsupportedSource('Unsupported host array index')
+                return HostView(value.shape[1:])
             if type(index) is not int: raise UnsupportedSource('Data-dependent array index')
             if isinstance(value, SharedView):
                 if not value.shape or not 0 <= index < value.shape[0]:
@@ -355,6 +413,7 @@ class Evaluator:
         return Pointer(pointer.buffer, pointer.offset + index * self.layout(pointer.base)[0], pointer.base, pointer.device)
 
     def truth(self, value):
+        if value is None: return False
         if isinstance(value, Pointer) and not value.device: return True  # modeled successful host allocation
         if type(value) not in (int, float, bool):
             raise UnsupportedSource('Data-dependent or unresolved condition')
@@ -362,7 +421,7 @@ class Evaluator:
 
     def eval(self, n):
         k, cs = n['kind'], children(n)
-        if k in {'ImplicitCastExpr', 'ParenExpr', 'ExprWithCleanups', 'CXXBindTemporaryExpr', 'MaterializeTemporaryExpr'}:
+        if k in {'ImplicitCastExpr', 'ParenExpr', 'ConstantExpr', 'ExprWithCleanups', 'CXXBindTemporaryExpr', 'MaterializeTemporaryExpr'}:
             if len(cs) != 1: raise UnsupportedSource('Ambiguous wrapped expression')
             value = self.eval(cs[0])
             numeric_casts = {'IntegralToFloating', 'FloatingToIntegral', 'IntegralCast', 'FloatingCast'}
@@ -384,7 +443,9 @@ class Evaluator:
                 if typ != 'int' and value < 0: raise UnsupportedSource('Negative unsigned cast')
                 return int(value)
             raise UnsupportedSource(f'Unsupported explicit cast: {typ}')
-        if k == 'IntegerLiteral': return int(n['value'])
+        if k in {'IntegerLiteral', 'CharacterLiteral'}: return int(n['value'])
+        if k == 'InitListExpr' and not self.kernel and self.opaque_host:
+            return [self.eval(c) for c in cs]
         if k == 'FloatingLiteral': return float(n['value'])
         if k == 'CXXBoolLiteralExpr': return n['value']
         if k == 'StringLiteral': return n['value']
@@ -392,6 +453,8 @@ class Evaluator:
         if k == 'DeclRefExpr':
             name = n['referencedDecl']['name']
             if name in {'cudaMemcpyHostToDevice', 'cudaMemcpyDeviceToHost', 'cudaFuncCachePreferL1'}: return name
+            if n['referencedDecl'].get('id') in self.enum_values:
+                return self.enum_values[n['referencedDecl']['id']]
             if n['referencedDecl']['kind'] == 'FunctionDecl': return name
             if not self.kernel and name in {'stderr', 'stdout', '__stderrp', '__stdoutp'}: return UNKNOWN
             return self.read(self.location(n))
@@ -433,10 +496,16 @@ class Evaluator:
             return self.eval(cs[1] if self.truth(condition) else cs[2])
         if k == 'CompoundAssignOperator':
             op = n['opcode']
-            if op not in {'+=', '-='}: raise UnsupportedSource('Unsupported compound assignment')
+            if op not in {'+=', '-=', '*=', '/='}: raise UnsupportedSource('Unsupported compound assignment')
             location = self.location(cs[0])
             a, b = self.read(location), self.eval(cs[1])
-            value = UNKNOWN if isinstance(a, Unknown) or isinstance(b, Unknown) else a + (b if op == '+=' else -b)
+            if isinstance(a, Unknown) or isinstance(b, Unknown): value = UNKNOWN
+            elif op == '+=': value = a + b
+            elif op == '-=': value = a - b
+            elif op == '*=': value = a * b
+            else:
+                if b == 0: raise UnsupportedSource('Division by zero')
+                value = (abs(a) // abs(b) * (-1 if (a < 0) != (b < 0) else 1)) if type(a) is int and type(b) is int else a / b
             self.store(location, value)
             return value
         if k == 'BinaryOperator':
@@ -449,6 +518,8 @@ class Evaluator:
             b = self.eval(cs[1])
             if isinstance(a, Pointer) and op in {'+', '-'}: return self.offset(a, b if op == '+' else -b)
             if isinstance(a, Unknown) or isinstance(b, Unknown): return UNKNOWN
+            if op in {'==', '!='} and (isinstance(a, Pointer) or isinstance(b, Pointer)) and (a is None or b is None or a == 0 or b == 0):
+                return op == '!='
             if type(a) not in (int, float, bool) or type(b) not in (int, float, bool):
                 raise UnsupportedSource('Unsupported binary operands')
             if op == '+': return a + b
@@ -474,6 +545,9 @@ class Evaluator:
             if typ.startswith('std::vector<') and all(c['kind'] == 'CXXDefaultArgExpr' for c in cs):
                 return None
             if typ in {'cudaDeviceProp', 'timeval'} and not cs: return {}
+            record = self.clean(n.get('type', {}).get('desugaredQualType', typ))
+            if self.opaque_host and not self.kernel and not cs and record in self.pod_records:
+                return UNKNOWN  # Host-only opaque POD, not a modeled device buffer.
             raise UnsupportedSource(f'Unsupported constructor: {typ}')
         if k == 'CUDAKernelCallExpr': return self.launch(n)
         if k == 'CXXDeleteExpr':
@@ -483,13 +557,38 @@ class Evaluator:
         if k == 'CallExpr': return self.call(ref(cs[0]), cs[1:])
         raise UnsupportedSource(f'Unsupported expression: {k}')
 
+    @contextmanager
+    def local_scope(self, declarations):
+        if not self.lexical_scopes:
+            yield
+            return
+        frame, absent = {}, object()
+        self.scope_frames.append((frame, absent))
+        try:
+            yield
+        finally:
+            self.scope_frames.pop()
+            for name, value in frame.items():
+                if value is absent: self.env.pop(name, None)
+                else: self.env[name] = value
+
+    def declare_local(self, name):
+        if self.lexical_scopes:
+            frame, absent = self.scope_frames[-1]
+            # Capture at the declaration, not block entry: earlier statements
+            # in this block may legitimately modify the outer binding.
+            if name not in frame: frame[name] = self.env.get(name, absent)
+            self.env[name] = UNKNOWN
+
     def statement(self, n):
         k, cs = n['kind'], children(n)
         if k == 'CompoundStmt':
-            for c in cs: self.statement(c)
+            with self.local_scope(cs):
+                for c in cs: self.statement(c)
         elif k == 'DeclStmt':
             for var in cs:
                 name, typ = var['name'], self.clean(var['type']['qualType'])
+                self.declare_local(name)
                 if any(c['kind'] == 'CUDASharedAttr' for c in children(var)):
                     match = re.fullmatch(r'(float|double|int)\s*((?:\[\d+\])+)', typ)
                     if not self.kernel or not self.opaque_shared or not match or any(c['kind'] != 'CUDASharedAttr' for c in children(var)):
@@ -515,8 +614,46 @@ class Evaluator:
         elif k == 'IfStmt':
             if n.get('hasInit') or n.get('hasVar') or len(cs) not in (2, 3):
                 raise UnsupportedSource('Unsupported conditional declaration')
-            if self.truth(self.eval(cs[0])): self.statement(cs[1])
-            elif len(cs) == 3: self.statement(cs[2])
+            branch = cs[1] if self.truth(self.eval(cs[0])) else cs[2] if len(cs) == 3 else None
+            if branch is not None:
+                with self.local_scope([branch]):
+                    self.statement(branch)
+        elif k == 'WhileStmt':
+            if len(cs) != 2: raise UnsupportedSource('Unsupported while structure')
+            iterations = 0
+            while self.truth(self.eval(cs[0])):
+                iterations += 1
+                self.total_loop_iterations += 1
+                if iterations > self.loop_limit or self.total_loop_iterations > 1000000:
+                    raise UnsupportedSource('Loop iteration budget exceeded')
+                try:
+                    with self.local_scope([cs[1]]): self.statement(cs[1])
+                except LoopBreak: break
+        elif k == 'SwitchStmt':
+            if len(cs) != 2 or cs[1]['kind'] != 'CompoundStmt':
+                raise UnsupportedSource('Unsupported switch structure')
+            value = self.eval(cs[0])
+            if type(value) is not int: raise UnsupportedSource('Unresolved switch condition')
+            sequence, labels, default = [], {}, None
+            for part in children(cs[1]):
+                while part['kind'] in {'CaseStmt', 'DefaultStmt'}:
+                    parts = children(part)
+                    if part['kind'] == 'CaseStmt':
+                        if len(parts) != 2: raise UnsupportedSource('Unsupported case range')
+                        label = self.eval(parts[0])
+                        if type(label) is not int: raise UnsupportedSource('Unknown case value')
+                        labels[label] = len(sequence)
+                    else: default = len(sequence)
+                    part = parts[-1]
+                sequence.append(part)
+            if any(part['kind'] == 'DeclStmt' for part in sequence):
+                raise UnsupportedSource('Switch-local declarations require an explicit nested block')
+            start = labels.get(value, default)
+            if start is not None:
+                with self.local_scope(sequence):
+                    try:
+                        for part in sequence[start:]: self.statement(part)
+                    except LoopBreak: pass
         elif k == 'NullStmt': pass
         elif k == 'BreakStmt': raise LoopBreak()
         elif k == 'ReturnStmt':
@@ -526,16 +663,19 @@ class Evaluator:
             raw = n.get('inner', [])
             if len(raw) != 5 or raw[1].get('kind') or not all(raw[i].get('kind') for i in (0,2,3,4)):
                 raise UnsupportedSource('Unsupported for-loop structure')
-            self.statement(raw[0])
-            iterations = 0
-            while self.truth(self.eval(raw[2])):
-                iterations += 1
-                self.total_loop_iterations += 1
-                if iterations > self.loop_limit or self.total_loop_iterations > 1000000:
-                    raise UnsupportedSource('Loop iteration budget exceeded')
-                try: self.statement(raw[4])
-                except LoopBreak: break
-                self.eval(raw[3])
+            with self.local_scope([raw[0]]):
+                self.statement(raw[0])
+                iterations = 0
+                while self.truth(self.eval(raw[2])):
+                    iterations += 1
+                    self.total_loop_iterations += 1
+                    if iterations > self.loop_limit or self.total_loop_iterations > 1000000:
+                        raise UnsupportedSource('Loop iteration budget exceeded')
+                    try:
+                        with self.local_scope([raw[4]]):
+                            self.statement(raw[4])
+                    except LoopBreak: break
+                    self.eval(raw[3])
         else: self.eval(n)
 
     def call(self, name, expressions):
@@ -545,6 +685,8 @@ class Evaluator:
                 # Footprint-only abstraction. Shared values stay unknown across
                 # barriers; barrier correctness/communication is not simulated.
                 return None
+            if name in self.config.get('scalar_device_functions', []):
+                return self.scalar_device_call(name, args)
             if name == 'sqrt' and len(args) == 1:
                 return UNKNOWN if isinstance(args[0], Unknown) else math.sqrt(args[0])
             raise UnsupportedSource(f'Unsupported kernel call: {name}')
@@ -553,6 +695,21 @@ class Evaluator:
                 raise UnsupportedSource('Host summaries cannot receive device pointers')
             summary = self.summaries[name]
             self.used_summaries.add(name)
+            for key, value in summary.get('requires', {}).items():
+                if args[int(key)] != self.configured(value):
+                    raise UnsupportedSource('Host summary argument does not match its contract')
+            for key, spec in summary.get('buffers', {}).items():
+                target = args[int(key)]
+                if not isinstance(target, Reference) or set(spec) != {'base', 'shape'} or target.pointer_base != spec['base']:
+                    raise UnsupportedSource('Host buffer contract requires an output pointer')
+                base = spec['base']
+                if base not in {'int', 'float', 'double'}:
+                    raise UnsupportedSource('Host buffer contract requires a numeric element type')
+                size = self.layout(base)[0] * math.prod(self.positive(self.configured(d)) for d in spec['shape'])
+                buffer = 'host_contract_' + str(self.host_allocation_count)
+                self.host_allocation_count += 1
+                self.host_sizes[buffer] = self.positive(size)
+                self.store(target, Pointer(buffer, 0, base))
             self.configure_globals(summary.get('globals', {}))
             for key, value in summary.get('writes', {}).items():
                 self.store(args[int(key)], self.configured(value))
@@ -580,6 +737,32 @@ class Evaluator:
                 self.call_stack.pop()
                 self.env, self.current_function = saved, saved_fn
             return None
+        if self.opaque_host and name in {'getopt_long', 'rand', 'srand'} and name in self.functions:
+            raise UnsupportedSource('Host library model cannot replace a source-defined function')
+        if self.opaque_host and name == 'getopt_long':
+            if len(args) != 5 or type(args[0]) is not int or not isinstance(args[1], list) or len(args[1]) != args[0] or not isinstance(args[2], str):
+                raise UnsupportedSource('Unsupported getopt_long arguments')
+            index = self.cli_state['optind']
+            if index >= args[0] or not args[1][index].startswith('-'): return -1
+            option = args[1][index]
+            if len(option) != 2 or option[1] == '-':
+                raise UnsupportedSource('Only separate short options are supported')
+            options = args[2].strip('"').lstrip(':')
+            letter = option[1]
+            if letter not in options or letter == ':':
+                raise UnsupportedSource('Unknown command-line option')
+            position = options.index(letter)
+            if options[position + 1:position + 3] == '::':
+                raise UnsupportedSource('Optional short-option arguments are unsupported')
+            takes_value = options[position + 1:position + 2] == ':'
+            if takes_value and index + 1 >= args[0]: raise UnsupportedSource('Missing option value')
+            self.cli_state['optarg'] = args[1][index + 1] if takes_value else None
+            self.cli_state['optind'] += 2 if takes_value else 1
+            return ord(letter)
+        if self.opaque_host and name in {'rand', 'srand'}:
+            if (name == 'rand' and args) or (name == 'srand' and (len(args) != 1 or type(args[0]) is not int)):
+                raise UnsupportedSource('Unsupported random initialization call')
+            return UNKNOWN if name == 'rand' else None
         if name == 'gettimeofday':
             if len(args) != 2 or not isinstance(args[0], Reference) or args[1] not in (None, 0):
                 raise UnsupportedSource('Unsupported gettimeofday arguments')
@@ -659,6 +842,42 @@ class Evaluator:
         else: raise UnsupportedSource(f'Unsupported host call (requires a reviewed contract): {name}')
         return 0
 
+    def scalar_device_call(self, name, args):
+        """Prove a helper has no memory effects before abstracting its result."""
+        fn = self.functions.get(name)
+        if not fn or not any(c['kind'] == 'CUDADeviceAttr' for c in children(fn)):
+            raise UnsupportedSource('Scalar helper must be a defined device function')
+        params = [c for c in children(fn) if c['kind'] == 'ParmVarDecl']
+        locals_ = [c for c in walk(body_of(fn)) if c['kind'] == 'VarDecl']
+        local_ids = {c['id'] for c in params + locals_}
+        numeric = {'int', 'unsigned int', 'float', 'double'}
+        allowed = {'CompoundStmt', 'IfStmt', 'ReturnStmt', 'DeclStmt', 'VarDecl',
+                   'DeclRefExpr', 'ImplicitCastExpr', 'ParenExpr', 'IntegerLiteral',
+                   'FloatingLiteral', 'BinaryOperator', 'UnaryOperator'}
+        if len(params) != len(args) or any(self.clean(c['type']['qualType']) not in numeric for c in params + locals_):
+            raise UnsupportedSource('Scalar helper requires numeric arguments/locals')
+        for c in walk(body_of(fn)):
+            if c['kind'] not in allowed:
+                raise UnsupportedSource('Scalar helper has unsupported effects')
+            if c['kind'] == 'DeclRefExpr' and c['referencedDecl']['id'] not in local_ids:
+                raise UnsupportedSource('Scalar helper references nonlocal state')
+            if c['kind'] == 'BinaryOperator' and c['opcode'] not in {'=', '+', '-', '*', '/', '%', '<', '<=', '>', '>=', '==', '!='}:
+                raise UnsupportedSource('Unsupported scalar helper operation')
+            if c['kind'] == 'UnaryOperator' and c['opcode'] not in {'+', '-'}:
+                raise UnsupportedSource('Unsupported scalar helper unary operation')
+        if any(not isinstance(a, (int, float, Unknown)) for a in args):
+            raise UnsupportedSource('Scalar helper received a nonnumeric argument')
+        if any(isinstance(a, Unknown) for a in args): return UNKNOWN
+        saved = self.env
+        self.env = {p['name']: a for p, a in zip(params, args)}
+        try:
+            self.statement(body_of(fn))
+        except FunctionReturn as result:
+            return result.value
+        finally:
+            self.env = saved
+        raise UnsupportedSource('Scalar helper did not return a value')
+
     def free_host(self, ptr):
         if not isinstance(ptr, Pointer) or ptr.device or ptr.offset or ptr.buffer not in self.host_sizes:
             raise UnsupportedSource('Invalid host free')
@@ -671,6 +890,10 @@ class Evaluator:
             return Evaluator.contains_device_pointer(value.owner.get(value.key, UNKNOWN))
         if isinstance(value, PointerArray):
             return any(Evaluator.contains_device_pointer(v) for v in value.values.values())
+        if isinstance(value, dict):
+            return any(Evaluator.contains_device_pointer(v) for v in value.values())
+        if isinstance(value, (list, tuple)):
+            return any(Evaluator.contains_device_pointer(v) for v in value)
         return False
 
     def launch(self, n):

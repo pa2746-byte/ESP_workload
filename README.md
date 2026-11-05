@@ -25,10 +25,10 @@ JSONs despite different CUDA scheduling constraints.
 
 ## Current status
 
-Source-derived graph generation now covers **ten workload examples**: four
-original CUDA samples, the additional stream fork-join sample, and five original
-Rodinia applications. The analyzer extensions, tests, configurations, JSONs,
-PNGs, and documentation are committed on `pa2746-byte-sampleworkloads`.
+Source-derived graph generation now covers **twelve workload examples**: four
+original CUDA samples, the additional stream fork-join sample, and seven Rodinia analysis cases. The working branch is
+`pa2746-byte-sampleworkloads`. See the [five-application expansion status](workloads/rodinia/EXPANSION.md):
+two additions are implemented; the remaining three are not yet supported.
 
 - **Original samples:** vector addition (6 nodes / 5 edges), pipeline (8 / 7),
   fork-join (12 / 13), and reduction (6 / 5).
@@ -47,15 +47,22 @@ PNGs, and documentation are committed on `pa2746-byte-sampleworkloads`.
 - **Rodinia Pathfinder:** unchanged tiled path-cost propagation, 5 x 16 grid,
   two launches advancing two rows each (9 / 11).
 
-The two tiled cases track global-buffer footprints while keeping shared-memory
+- **Rodinia Needleman–Wunsch:** original application flow, dimension 32 and
+  penalty 10; three wavefront launches (12 / 21).
+- **Rodinia LU decomposition:** original application flow with `-s 32`; four
+  diagonal/perimeter/interior launches (10 / 19).
+
+The tiled cases track global-buffer footprints while keeping shared-memory
 values unknown. They do not add internal GPU transfers or validate shared-memory
 initialization, races, or barrier correctness.
 
-The latest implementation validation passed **63 relevant tests**. The original
-four samples also have remote CUDA/Nsight run evidence. The five Rodinia examples
-have been analyzed and tested locally with Apple Clang 17; they have **not** been
-numerically validated on a GPU or run through the simulator. Their file loading,
-CPU processing, and device parameters use explicit documented assumptions.
+Independent source-to-graph tests cover the configured inputs, byte regions,
+and dependency policy; see [validation details](workloads/rodinia/VALIDATION.md).
+The original four samples have remote CUDA/Nsight evidence. Nearest Neighbor
+and HotSpot3D also have a [captured GPU comparison](results/rodinia_trace_comparison/README.md).
+The other Rodinia cases, including the new NW and LUD additions, have not been
+run on a GPU here. None has been validated in the simulator. Host numerical
+work and device parameters have the documented abstraction/configuration limits.
 Clang itself was not modified; our Python analyzers that consume its AST were
 extended. Unsupported cases still require additional analysis work.
 
@@ -73,6 +80,10 @@ Current output locations:
   [image](results/rodinia_hotspot2d/graphs/hotspot_simulator.png).
 - [Pathfinder](results/rodinia_pathfinder/), including its
   [image](results/rodinia_pathfinder/graphs/pathfinder_simulator.png).
+- [Needleman–Wunsch](results/rodinia_nw/), including its
+  [image](results/rodinia_nw/graphs/needle_simulator.png).
+- [LU decomposition](results/rodinia_lud/), including its
+  [image](results/rodinia_lud/graphs/analysis_unit_simulator.png).
 
 Use `*_simulator.json` as the intended simulator input. `*_metadata.json` records
 source hashes, node descriptions, and analysis assumptions; Rodinia metadata
@@ -652,3 +663,18 @@ for logical buffer volumes.
 - [`ncu_attach_metrics.py`](ncu_attach_metrics.py): existing Nsight Compute
   metric attachment utility; it has not been validated for the new logical
   transfer graphs.
+
+## Additional original applications: Needleman–Wunsch and LU decomposition
+
+The [NW guide](workloads/rodinia/nw/README.md) and
+[LUD guide](workloads/rodinia/lud/README.md) provide generation commands,
+node-by-node explanations, unchanged-source provenance, and the exact
+configured application paths. Both start at the original `main`.
+
+The analyzer now supports opt-in lexical variable scopes, bounded `while`
+loops and integer `switch` statements, opaque host numerical arrays, and
+structurally checked scalar device helpers. LU's host input summary checks
+its size argument before allocating the modeled input buffer. These extensions
+preserve unknown values; they do not infer runtime-dependent addresses or
+simulate kernel arithmetic. There are still three pending additions in the
+[five-application expansion](workloads/rodinia/EXPANSION.md).

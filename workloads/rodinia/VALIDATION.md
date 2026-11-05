@@ -150,3 +150,20 @@ if required, separately model CUDA scheduling constraints recorded in metadata.
 Compute time, instruction counts, physical DRAM/cache traffic, and measured
 performance are outside this validation. A GPU run is not required to perform
 these logical-graph checks. It would be a separate numerical/timing validation.
+
+## Needleman–Wunsch and LU decomposition
+
+`tests/test_nw_source_model.py` computes wavefront diagonals and tile
+interiors/boundaries independently of Clang thread enumeration.
+`tests/test_lud_source_model.py` independently constructs diagonal, perimeter,
+and trailing-square sets. Both compare complete byte footprints and historical
+RAW/WAR/WAW dependencies for dimensions 16, 32, and 48. The defaults produce
+12 nodes / 21 edges (NW) and 10 nodes / 19 edges (LUD).
+
+Additional checks cover original source hashes, lexical scope restoration,
+unknown host data affecting launches, hidden calls in scalar helpers,
+out-of-bounds accesses, invalid dimensions/options, and mismatched host input
+contracts. The original application entry points and all CUDA stages on the
+configured paths are included. CPU numerical correctness, other argument/build
+paths, shared-memory synchronization correctness, hardware traffic, and GPU
+performance are not validated. See each workload's guide for host abstractions.

@@ -103,6 +103,14 @@ def main():
                     "Analysis starts at " + configuration['entry_function'] +
                     " with configured entry globals and host-buffer shapes; callers and subsequent CPU work are outside this graph."
                 )
+            if configuration.get('host_memory') == 'opaque_values':
+                metadata['assumptions'].append(
+                    "Host numeric array contents and random initialization remain unknown. Host allocation sizes and scalar control flow are evaluated; CPU numerical correctness is not validated."
+                )
+            if configuration.get('scalar_device_functions'):
+                metadata['assumptions'].append(
+                    "Configured scalar device helpers are checked for memory-free, local-only bodies. Unknown arguments produce unknown results; these results cannot determine addresses or launch/control decisions."
+                )
             if configuration.get('shared_memory') == 'opaque_values':
                 metadata['assumptions'].append(
                     "Shared-array bounds are checked but contents remain unknown; shared transfers, initialization, races, and barrier correctness are not modeled. Global footprints assume valid kernel synchronization."
