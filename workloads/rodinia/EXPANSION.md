@@ -1,31 +1,13 @@
 # Five-application expansion status
 
-The requested scope is original application flow for explicit small inputs,
-including the host-controlled CUDA launches and copies. Isolated replacement
-kernel harnesses do not satisfy this scope. Host-only numerical preparation may
-use documented, source-checked contracts; this is not CPU/GPU numerical execution.
+All five additions have original application control flow for explicit small inputs, independent footprint/dependency tests, JSON artifacts, and rendered graphs:
 
-Implemented and independently checked:
+1. [Needleman–Wunsch](nw/README.md)
+2. [LU decomposition](lud/README.md)
+3. [Backpropagation](backprop/README.md)
+4. [SRAD v1](srad/README.md)
+5. [CFD](cfd/README.md)
 
-1. [Needleman–Wunsch](nw/README.md): original `main` and both wavefront loops.
-2. [LU decomposition](lud/README.md): original `main` and the complete tiled
-   factorization launch sequence for the `-s` input path.
+These are not replacement kernel harnesses. Source-checked host contracts abstract numerical preparation and CPU processing; they do not execute or validate that arithmetic. CFD has a documented iteration-macro guard and a synthetic mesh. Support is bounded to resolvable configured inputs, not arbitrary runtime datasets. Unknown decisions affecting addresses or launches must fail analysis.
 
-The other three additions are **not implemented or validated**. Candidates
-inspected in the same upstream revision are:
-
-3. Backpropagation: retain the full driver and the CPU work between the two
-   GPU phases. Needs host record/pointer handling and explicit accounting for
-   the intermediate download and later uploads.
-4. SRAD: retain all iteration, reduction, and update stages. The v1 code needs
-   uploaded index-array handling and scalar downloads. The inspected v2 code
-   contains unconditional out-of-range boundary loads before replacement;
-   do not silently suppress these to obtain a graph.
-5. CFD: retain initialization, step-factor, flux, and time-update phases.
-   Needs vector/record device operations and data-dependent neighbor addressing.
-
-These are engineering candidates, not a claim that arbitrary inputs can be
-statically resolved. Unknown runtime decisions must remain explicit or fail
-analysis. Each addition needs original-source provenance, an explicit scenario,
-independent footprint/dependency tests, artifacts, and documented limits before
-it is counted as supported. GPU timing and simulator runs remain separate work.
+Next: capture matched GPU runs for these scenarios, compare copy volumes and launch sequences, and validate simulator interpretation. GPU timing, numerical correctness, shared-memory behavior and simulator performance are not established by these source graphs.

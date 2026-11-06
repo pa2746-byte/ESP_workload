@@ -212,12 +212,16 @@ def checked_call(stmt, funcs):
     return actual
 
 
-def parse_source(path, clang=None):
+def parse_source(path, clang=None, defines=None):
     include = Path(__file__).parent / "source_analysis" / "include"
     command = [clang or os.environ.get("CLANGXX", "clang++"), "-x", "cuda", "--cuda-host-only",
                "-nocudainc", "-nocudalib", "-I" + str(include),
                "-include", str(include / "cuda_runtime.h"), "-std=c++17", "-fsyntax-only",
                "-Xclang", "-ast-dump=json", str(path)]
+    for name, value in (defines or {}).items():
+        if not re.fullmatch(r'[A-Za-z_][A-Za-z_0-9]*', name) or type(value) is not int:
+            raise UnsupportedSource('Compile definitions must be named integer constants')
+        command.insert(-1, f'-D{name}={value}')
     try:
         result = subprocess.run(command, capture_output=True, text=True)
     except FileNotFoundError as exc:

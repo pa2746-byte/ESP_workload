@@ -146,7 +146,10 @@ def generate_figure(g: nx.DiGraph, filename: str, out_dir: str = "graph_img") ->
     fig.subplots_adjust(left=0.025, right=0.985, bottom=0.19, top=0.98)
 
     out_path = os.path.join(out_dir, f"{filename}.png")
-    fig.savefig(out_path, dpi=200, facecolor="white")
+    # Bound raster dimensions for large application DAGs while retaining all nodes.
+    width, height = fig.get_size_inches()
+    dpi = min(200, 12000 / max(width, height), (40000000 / (width * height)) ** 0.5)
+    fig.savefig(out_path, dpi=dpi, facecolor="white")
     plt.close(fig)
     return out_path
 

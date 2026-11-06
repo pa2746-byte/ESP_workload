@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "parameters": {},
+  "arguments": [
+    "mesh4.dat"
+  ],
+  "analyzed_functions": [
+    "alloc<float>",
+    "alloc<int>",
+    "dealloc<float>",
+    "dealloc<int>",
+    "upload<float>",
+    "upload<int>",
+    "download<float>",
+    "copy<float>",
+    "dump",
+    "initialize_variables",
+    "compute_step_factor",
+    "compute_flux",
+    "time_step",
+    "compute_flux_contribution",
+    "compute_velocity",
+    "compute_speed_sqd",
+    "compute_pressure",
+    "compute_speed_of_sound"
+  ],
+  "additional_sources": [],
+  "scalar_device_functions": [],
+  "lexical_scopes": true,
+  "host_memory": "opaque_values",
+  "shared_memory": "opaque_values",
+  "dependency_granularity": "byte_regions",
+  "device": {
+    "ordinal": 0,
+    "max_grid_size": [
+      65535,
+      65535,
+      65535
+    ],
+    "max_threads_per_block": 1024,
+    "free_memory_bytes": 1073741824,
+    "total_memory_bytes": 2147483648
+  },
+  "max_enumerated_threads": 65536,
+  "max_loop_iterations": 1024,
+  "preprocessor_sha256": "2314b0911c208dccdd90dd80c06e8a3dd26c501d3202b18ba0ecd6f0513f53c2",
+  "additional_preprocessor_sha256": {},
+  "known_integer_inputs": true,
+  "host_dependencies": true,
+  "qualified_allocations": true,
+  "compile_defines": {
+    "iterations": 2,
+    "RD_WG_SIZE": 4
+  },
+  "input_files": {
+    "mesh4.dat": "6310d2194fb01058328b225be6959bc9a7e9280b5783cd49fe9ae7d06597f4bb"
+  }
+}

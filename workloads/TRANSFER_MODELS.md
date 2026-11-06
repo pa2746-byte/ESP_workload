@@ -236,3 +236,12 @@ Hash-pinned host summaries may declare `requires` scalar-argument checks and
 cannot receive device pointers. LU uses this for CPU matrix preparation, while
 analyzing the original application's CUDA flow. These facilities do not add
 GPU execution, timing, physical-traffic measurements, or simulator validation.
+
+
+## Complete Backpropagation, SRAD v1 and CFD scenarios
+
+`tests/test_additional_rodinia.py` independently constructs byte footprints and overlap dependencies for the original application paths. It covers Backpropagation at 16/32 inputs, SRAD at multiple grid sizes including a two-stage reduction, and CFD at one/two iterations. Negative cases reject stale host contracts, invalid dimensions, unknown index tables, missing/nonuniform block barriers, memory accesses hidden by unknown branches, modified mesh hashes and out-of-range neighbors.
+
+The evaluator now reads selected C translation units, binds device helper references, tracks float3 fields and constant-memory arrays, and models a device-to-device copy as one transfer. Explicit integer initialization and hash-pinned input fixtures can resolve index tables through uploads. Other numerical device values remain unknown. CPU-mediated dependencies propagate conservatively through host buffers and declared CPU summaries; CPU time is omitted. Unknown scalar branches can merge only local scalar operations without memory accesses. Block barrier phase checks constrain global-memory conflicts; they do not prove shared-memory numerical correctness.
+
+These graphs describe unique logical byte footprints and dependencies, not physical DRAM traffic, cache transactions, measured execution order or performance. The configured small scenarios have no new GPU-run or simulator validation.

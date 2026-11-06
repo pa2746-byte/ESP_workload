@@ -1,0 +1,3767 @@
+{
+  "workload": "euler3d",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/rodinia/cfd/euler3d.cu",
+  "source_sha256": "2497f2dad6fa5c21773be216abfea4f6f92f370953ea3a000a54b24ab412d9f1",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "ff_variable",
+      "stage": "upload_constant",
+      "operation_id": 0,
+      "stream": "default",
+      "ordered_after_operations": [],
+      "byte_ranges": [
+        [
+          0,
+          20
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "buffer": "ff_flux_contribution_momentum_x",
+      "stage": "upload_constant",
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "buffer": "ff_flux_contribution_momentum_y",
+      "stage": "upload_constant",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "buffer": "ff_flux_contribution_momentum_z",
+      "stage": "upload_constant",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "buffer": "ff_flux_contribution_density_energy",
+      "stage": "upload_constant",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "buffer": "alloc<float>:t:5",
+      "stage": "upload",
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "buffer": "alloc<int>:t:6",
+      "stage": "upload",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ],
+      "known_integer_values": [
+        [
+          0,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          16,
+          3
+        ],
+        [
+          20,
+          0
+        ],
+        [
+          24,
+          1
+        ],
+        [
+          28,
+          2
+        ],
+        [
+          32,
+          -1
+        ],
+        [
+          36,
+          -1
+        ],
+        [
+          40,
+          -1
+        ],
+        [
+          44,
+          -1
+        ],
+        [
+          48,
+          -2
+        ],
+        [
+          52,
+          -2
+        ],
+        [
+          56,
+          -2
+        ],
+        [
+          60,
+          -2
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "buffer": "alloc<float>:t:7",
+      "stage": "upload",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          0,
+          192
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "buffer": "ff_variable",
+      "stage": "cuda_initialize_variables:read",
+      "operation_id": 8,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "byte_ranges": [
+        [
+          0,
+          20
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "buffer": "alloc<float>:t:8",
+      "stage": "cuda_initialize_variables:write",
+      "operation_id": 8,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "buffer": "ff_variable",
+      "stage": "cuda_initialize_variables:read",
+      "operation_id": 9,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "byte_ranges": [
+        [
+          0,
+          20
+        ]
+      ]
+    },
+    {
+      "id": 11,
+      "buffer": "alloc<float>:t:9",
+      "stage": "cuda_initialize_variables:write",
+      "operation_id": 9,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 12,
+      "buffer": "ff_variable",
+      "stage": "cuda_initialize_variables:read",
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          20
+        ]
+      ]
+    },
+    {
+      "id": 13,
+      "buffer": "alloc<float>:t:10",
+      "stage": "cuda_initialize_variables:write",
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 14,
+      "buffer": "alloc<float>:t:11",
+      "stage": "memset",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 15,
+      "buffer": "alloc<float>:t:9",
+      "stage": "device_copy",
+      "operation_id": 12,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ],
+      "source_buffer": "alloc<float>:t:8"
+    },
+    {
+      "id": 16,
+      "buffer": "alloc<float>:t:5",
+      "stage": "cuda_compute_step_factor:read",
+      "operation_id": 13,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 17,
+      "buffer": "alloc<float>:t:8",
+      "stage": "cuda_compute_step_factor:read",
+      "operation_id": 13,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 18,
+      "buffer": "alloc<float>:t:11",
+      "stage": "cuda_compute_step_factor:write",
+      "operation_id": 13,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 19,
+      "buffer": "ff_variable",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 14,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "byte_ranges": [
+        [
+          4,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 20,
+      "buffer": "ff_flux_contribution_momentum_x",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 14,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 21,
+      "buffer": "ff_flux_contribution_momentum_y",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 14,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 22,
+      "buffer": "ff_flux_contribution_momentum_z",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 14,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 23,
+      "buffer": "ff_flux_contribution_density_energy",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 14,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 24,
+      "buffer": "alloc<int>:t:6",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 14,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 25,
+      "buffer": "alloc<float>:t:7",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 14,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "byte_ranges": [
+        [
+          0,
+          192
+        ]
+      ]
+    },
+    {
+      "id": 26,
+      "buffer": "alloc<float>:t:8",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 14,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 27,
+      "buffer": "alloc<float>:t:10",
+      "stage": "cuda_compute_flux:write",
+      "operation_id": 14,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 28,
+      "buffer": "alloc<float>:t:9",
+      "stage": "cuda_time_step:read",
+      "operation_id": 15,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 29,
+      "buffer": "alloc<float>:t:10",
+      "stage": "cuda_time_step:read",
+      "operation_id": 15,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 30,
+      "buffer": "alloc<float>:t:11",
+      "stage": "cuda_time_step:read",
+      "operation_id": 15,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 31,
+      "buffer": "alloc<float>:t:8",
+      "stage": "cuda_time_step:write",
+      "operation_id": 15,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 32,
+      "buffer": "ff_variable",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          4,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 33,
+      "buffer": "ff_flux_contribution_momentum_x",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 34,
+      "buffer": "ff_flux_contribution_momentum_y",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 35,
+      "buffer": "ff_flux_contribution_momentum_z",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 36,
+      "buffer": "ff_flux_contribution_density_energy",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 37,
+      "buffer": "alloc<int>:t:6",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 38,
+      "buffer": "alloc<float>:t:7",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          192
+        ]
+      ]
+    },
+    {
+      "id": 39,
+      "buffer": "alloc<float>:t:8",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 40,
+      "buffer": "alloc<float>:t:10",
+      "stage": "cuda_compute_flux:write",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 41,
+      "buffer": "alloc<float>:t:9",
+      "stage": "cuda_time_step:read",
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 42,
+      "buffer": "alloc<float>:t:10",
+      "stage": "cuda_time_step:read",
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 43,
+      "buffer": "alloc<float>:t:11",
+      "stage": "cuda_time_step:read",
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 44,
+      "buffer": "alloc<float>:t:8",
+      "stage": "cuda_time_step:write",
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 45,
+      "buffer": "ff_variable",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 18,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "byte_ranges": [
+        [
+          4,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 46,
+      "buffer": "ff_flux_contribution_momentum_x",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 18,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 47,
+      "buffer": "ff_flux_contribution_momentum_y",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 18,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 48,
+      "buffer": "ff_flux_contribution_momentum_z",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 18,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 49,
+      "buffer": "ff_flux_contribution_density_energy",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 18,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 50,
+      "buffer": "alloc<int>:t:6",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 18,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 51,
+      "buffer": "alloc<float>:t:7",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 18,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "byte_ranges": [
+        [
+          0,
+          192
+        ]
+      ]
+    },
+    {
+      "id": 52,
+      "buffer": "alloc<float>:t:8",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 18,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 53,
+      "buffer": "alloc<float>:t:10",
+      "stage": "cuda_compute_flux:write",
+      "operation_id": 18,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 54,
+      "buffer": "alloc<float>:t:9",
+      "stage": "cuda_time_step:read",
+      "operation_id": 19,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 55,
+      "buffer": "alloc<float>:t:10",
+      "stage": "cuda_time_step:read",
+      "operation_id": 19,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 56,
+      "buffer": "alloc<float>:t:11",
+      "stage": "cuda_time_step:read",
+      "operation_id": 19,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 57,
+      "buffer": "alloc<float>:t:8",
+      "stage": "cuda_time_step:write",
+      "operation_id": 19,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 58,
+      "buffer": "alloc<float>:t:9",
+      "stage": "device_copy",
+      "operation_id": 20,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ],
+      "source_buffer": "alloc<float>:t:8"
+    },
+    {
+      "id": 59,
+      "buffer": "alloc<float>:t:5",
+      "stage": "cuda_compute_step_factor:read",
+      "operation_id": 21,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 60,
+      "buffer": "alloc<float>:t:8",
+      "stage": "cuda_compute_step_factor:read",
+      "operation_id": 21,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 61,
+      "buffer": "alloc<float>:t:11",
+      "stage": "cuda_compute_step_factor:write",
+      "operation_id": 21,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 62,
+      "buffer": "ff_variable",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 22,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "byte_ranges": [
+        [
+          4,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 63,
+      "buffer": "ff_flux_contribution_momentum_x",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 22,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 64,
+      "buffer": "ff_flux_contribution_momentum_y",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 22,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 65,
+      "buffer": "ff_flux_contribution_momentum_z",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 22,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 66,
+      "buffer": "ff_flux_contribution_density_energy",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 22,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 67,
+      "buffer": "alloc<int>:t:6",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 22,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 68,
+      "buffer": "alloc<float>:t:7",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 22,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "byte_ranges": [
+        [
+          0,
+          192
+        ]
+      ]
+    },
+    {
+      "id": 69,
+      "buffer": "alloc<float>:t:8",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 22,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 70,
+      "buffer": "alloc<float>:t:10",
+      "stage": "cuda_compute_flux:write",
+      "operation_id": 22,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 71,
+      "buffer": "alloc<float>:t:9",
+      "stage": "cuda_time_step:read",
+      "operation_id": 23,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 72,
+      "buffer": "alloc<float>:t:10",
+      "stage": "cuda_time_step:read",
+      "operation_id": 23,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 73,
+      "buffer": "alloc<float>:t:11",
+      "stage": "cuda_time_step:read",
+      "operation_id": 23,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 74,
+      "buffer": "alloc<float>:t:8",
+      "stage": "cuda_time_step:write",
+      "operation_id": 23,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 75,
+      "buffer": "ff_variable",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 24,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "byte_ranges": [
+        [
+          4,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 76,
+      "buffer": "ff_flux_contribution_momentum_x",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 24,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 77,
+      "buffer": "ff_flux_contribution_momentum_y",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 24,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 78,
+      "buffer": "ff_flux_contribution_momentum_z",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 24,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 79,
+      "buffer": "ff_flux_contribution_density_energy",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 24,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 80,
+      "buffer": "alloc<int>:t:6",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 24,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 81,
+      "buffer": "alloc<float>:t:7",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 24,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "byte_ranges": [
+        [
+          0,
+          192
+        ]
+      ]
+    },
+    {
+      "id": 82,
+      "buffer": "alloc<float>:t:8",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 24,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 83,
+      "buffer": "alloc<float>:t:10",
+      "stage": "cuda_compute_flux:write",
+      "operation_id": 24,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 84,
+      "buffer": "alloc<float>:t:9",
+      "stage": "cuda_time_step:read",
+      "operation_id": 25,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 85,
+      "buffer": "alloc<float>:t:10",
+      "stage": "cuda_time_step:read",
+      "operation_id": 25,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 86,
+      "buffer": "alloc<float>:t:11",
+      "stage": "cuda_time_step:read",
+      "operation_id": 25,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 87,
+      "buffer": "alloc<float>:t:8",
+      "stage": "cuda_time_step:write",
+      "operation_id": 25,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 88,
+      "buffer": "ff_variable",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 26,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "byte_ranges": [
+        [
+          4,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 89,
+      "buffer": "ff_flux_contribution_momentum_x",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 26,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 90,
+      "buffer": "ff_flux_contribution_momentum_y",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 26,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 91,
+      "buffer": "ff_flux_contribution_momentum_z",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 26,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 92,
+      "buffer": "ff_flux_contribution_density_energy",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 26,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 93,
+      "buffer": "alloc<int>:t:6",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 26,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 94,
+      "buffer": "alloc<float>:t:7",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 26,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "byte_ranges": [
+        [
+          0,
+          192
+        ]
+      ]
+    },
+    {
+      "id": 95,
+      "buffer": "alloc<float>:t:8",
+      "stage": "cuda_compute_flux:read",
+      "operation_id": 26,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 96,
+      "buffer": "alloc<float>:t:10",
+      "stage": "cuda_compute_flux:write",
+      "operation_id": 26,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 97,
+      "buffer": "alloc<float>:t:9",
+      "stage": "cuda_time_step:read",
+      "operation_id": 27,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 98,
+      "buffer": "alloc<float>:t:10",
+      "stage": "cuda_time_step:read",
+      "operation_id": 27,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 99,
+      "buffer": "alloc<float>:t:11",
+      "stage": "cuda_time_step:read",
+      "operation_id": 27,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 100,
+      "buffer": "alloc<float>:t:8",
+      "stage": "cuda_time_step:write",
+      "operation_id": 27,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    },
+    {
+      "id": 101,
+      "buffer": "alloc<float>:t:8",
+      "stage": "download",
+      "operation_id": 28,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "byte_ranges": [
+        [
+          0,
+          80
+        ]
+      ]
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique byte footprints per kernel; byte_ranges in metadata are half-open intervals, not measured memory traffic.",
+    "Edges express overlapping-region RAW/WAR/WAW dependencies and conservative kernel input-to-output readiness, not stream execution order.",
+    "Stream/event ordering is checked for conflicting buffer accesses; metadata records operation ordering, not timing.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies.",
+    "Host input parsing/loading and CPU result selection use explicit, source-hash-checked summaries; they are not executed.",
+    "Device properties are configured assumptions, not measurements; bounded kernel address evaluation requires no GPU.",
+    "Device values remain unknown; data-dependent control/indexing and cross-thread read/write races are rejected.",
+    "Explicitly initialized or fixture-loaded integer index arrays are propagated through uploads; other device values remain unknown. This qualifies the unknown-index rejection above.",
+    "CPU-mediated dependencies are propagated conservatively per host buffer; CPU numerical values and latency are not simulated.",
+    "Host numeric array contents and random initialization remain unknown. Host allocation sizes and scalar control flow are evaluated; CPU numerical correctness is not validated.",
+    "Shared-array bounds are checked but contents remain unknown; shared transfers, initialization, races, and barrier correctness are not modeled. Global footprints assume valid kernel synchronization."
+  ],
+  "configured_analysis": {
+    "configuration": {
+      "version": 1,
+      "parameters": {},
+      "arguments": [
+        "mesh4.dat"
+      ],
+      "analyzed_functions": [
+        "alloc<float>",
+        "alloc<int>",
+        "dealloc<float>",
+        "dealloc<int>",
+        "upload<float>",
+        "upload<int>",
+        "download<float>",
+        "copy<float>",
+        "dump",
+        "initialize_variables",
+        "compute_step_factor",
+        "compute_flux",
+        "time_step",
+        "compute_flux_contribution",
+        "compute_velocity",
+        "compute_speed_sqd",
+        "compute_pressure",
+        "compute_speed_of_sound"
+      ],
+      "additional_sources": [],
+      "scalar_device_functions": [],
+      "lexical_scopes": true,
+      "host_memory": "opaque_values",
+      "shared_memory": "opaque_values",
+      "dependency_granularity": "byte_regions",
+      "device": {
+        "ordinal": 0,
+        "max_grid_size": [
+          65535,
+          65535,
+          65535
+        ],
+        "max_threads_per_block": 1024,
+        "free_memory_bytes": 1073741824,
+        "total_memory_bytes": 2147483648
+      },
+      "max_enumerated_threads": 65536,
+      "max_loop_iterations": 1024,
+      "preprocessor_sha256": "2314b0911c208dccdd90dd80c06e8a3dd26c501d3202b18ba0ecd6f0513f53c2",
+      "additional_preprocessor_sha256": {},
+      "known_integer_inputs": true,
+      "host_dependencies": true,
+      "qualified_allocations": true,
+      "compile_defines": {
+        "iterations": 2,
+        "RD_WG_SIZE": 4
+      },
+      "input_files": {
+        "mesh4.dat": "6310d2194fb01058328b225be6959bc9a7e9280b5783cd49fe9ae7d06597f4bb"
+      }
+    },
+    "launches": [
+      {
+        "kernel": "cuda_initialize_variables",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4
+      },
+      {
+        "kernel": "cuda_initialize_variables",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4
+      },
+      {
+        "kernel": "cuda_initialize_variables",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4
+      },
+      {
+        "kernel": "cuda_compute_step_factor",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4
+      },
+      {
+        "kernel": "cuda_compute_flux",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4
+      },
+      {
+        "kernel": "cuda_time_step",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4
+      },
+      {
+        "kernel": "cuda_compute_flux",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4
+      },
+      {
+        "kernel": "cuda_time_step",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4
+      },
+      {
+        "kernel": "cuda_compute_flux",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4
+      },
+      {
+        "kernel": "cuda_time_step",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4
+      },
+      {
+        "kernel": "cuda_compute_step_factor",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4
+      },
+      {
+        "kernel": "cuda_compute_flux",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4
+      },
+      {
+        "kernel": "cuda_time_step",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4
+      },
+      {
+        "kernel": "cuda_compute_flux",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4
+      },
+      {
+        "kernel": "cuda_time_step",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4
+      },
+      {
+        "kernel": "cuda_compute_flux",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4
+      },
+      {
+        "kernel": "cuda_time_step",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4
+      }
+    ],
+    "source_units": {
+      "euler3d.cu": "2497f2dad6fa5c21773be216abfea4f6f92f370953ea3a000a54b24ab412d9f1"
+    },
+    "used_host_summaries": [],
+    "input_files": {
+      "mesh4.dat": "6310d2194fb01058328b225be6959bc9a7e9280b5783cd49fe9ae7d06597f4bb"
+    }
+  }
+}

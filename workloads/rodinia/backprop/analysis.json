@@ -1,0 +1,237 @@
+{
+  "version": 1,
+  "parameters": {
+    "inputs": 32
+  },
+  "arguments": [
+    {
+      "parameter": "inputs"
+    }
+  ],
+  "analyzed_functions": [
+    "setup",
+    "backprop_face",
+    "bpnn_train_cuda"
+  ],
+  "additional_sources": [
+    "backprop_cuda_kernel.cu",
+    "backprop.h"
+  ],
+  "scalar_device_functions": [],
+  "lexical_scopes": true,
+  "host_memory": "opaque_values",
+  "shared_memory": "opaque_values",
+  "dependency_granularity": "byte_regions",
+  "device": {
+    "ordinal": 0,
+    "max_grid_size": [
+      65535,
+      65535,
+      65535
+    ],
+    "max_threads_per_block": 1024,
+    "free_memory_bytes": 1073741824,
+    "total_memory_bytes": 2147483648
+  },
+  "max_enumerated_threads": 65536,
+  "max_loop_iterations": 1024,
+  "preprocessor_sha256": "5e1e55b9375a1a6c63767c48ec0c1f576bc507f425c62727b590cb4966198320",
+  "additional_preprocessor_sha256": {
+    "backprop_cuda_kernel.cu": "f8b36a3a322a63f6711d679c33ec1be09299a21da6eb75b66cd56e1cb99fc4d6",
+    "backprop.h": "ef413fa02e5713103add69ba5e58364f86e2adf075fbfae0a6c5b85d6f13c062",
+    "facetrain.c": "25ced1e161db1eb26ab546450c1481502c324063da73c58493e26baf1a7f8f18",
+    "backprop.c": "583cfc1d21a7605d9bc717f26016dbf5d0d650f5b9f93ca745f77375b3f85f8d",
+    "imagenet.c": "e84dad76540b8c8294633d256ec2aa17351b20f8906edcb0e2658418c5d93d7d"
+  },
+  "host_translation_units": [
+    "facetrain.c",
+    "backprop.c",
+    "imagenet.c"
+  ],
+  "host_dependencies": true,
+  "allow_success_exit": true,
+  "mutable_scalar_globals": [
+    "layer_size",
+    "num_blocks"
+  ],
+  "host_summaries": {
+    "bpnn_create": {
+      "body_sha256": "ae5f769f1b4ded365e910b969fbaf3c9eaf9010123220ae2c9cba3649f7dc928",
+      "requires": {
+        "0": {
+          "parameter": "inputs"
+        },
+        "1": 16,
+        "2": 1
+      },
+      "returns_record": {
+        "input_n": {
+          "parameter": "inputs"
+        },
+        "hidden_n": 16,
+        "output_n": 1,
+        "input_units": {
+          "base": "float",
+          "shape": [
+            {
+              "add": [
+                {
+                  "parameter": "inputs"
+                },
+                1
+              ]
+            }
+          ]
+        },
+        "hidden_units": {
+          "base": "float",
+          "shape": [
+            17
+          ]
+        },
+        "output_units": {
+          "base": "float",
+          "shape": [
+            2
+          ]
+        },
+        "hidden_delta": {
+          "base": "float",
+          "shape": [
+            17
+          ]
+        },
+        "output_delta": {
+          "base": "float",
+          "shape": [
+            2
+          ]
+        },
+        "target": {
+          "base": "float",
+          "shape": [
+            2
+          ]
+        },
+        "input_weights": {
+          "base": "float",
+          "shape": [
+            {
+              "add": [
+                {
+                  "parameter": "inputs"
+                },
+                1
+              ]
+            },
+            17
+          ]
+        },
+        "hidden_weights": {
+          "base": "float",
+          "shape": [
+            17,
+            2
+          ]
+        },
+        "input_prev_weights": {
+          "base": "float",
+          "shape": [
+            {
+              "add": [
+                {
+                  "parameter": "inputs"
+                },
+                1
+              ]
+            },
+            17
+          ]
+        },
+        "hidden_prev_weights": {
+          "base": "float",
+          "shape": [
+            17,
+            2
+          ]
+        }
+      }
+    },
+    "bpnn_internal_create": {
+      "body_sha256": "75f6fbd1552638ad75afc823b1a82d76b4621fe12e216e92b300d15d14ffabd6"
+    },
+    "alloc_1d_dbl": {
+      "body_sha256": "2dfa777da38432a7eca8fd6db03c5b6fbbfb721db7930b34f3c1a6107361462b"
+    },
+    "alloc_2d_dbl": {
+      "body_sha256": "009f15de244bb3da12dfc9814aa611e9d5c64ce6d3b31cf840f6f2b57e1fd6f9"
+    },
+    "bpnn_randomize_weights": {
+      "body_sha256": "3349f9d6f71ed29298cf20ab3d80bcc4de114448fbfecb3fa5c0fa0a388ee98d"
+    },
+    "bpnn_randomize_row": {
+      "body_sha256": "9c872eced88652d778841a79b9f2fe75f607ce66b23323498aa7182bedfeacb7"
+    },
+    "bpnn_zero_weights": {
+      "body_sha256": "2bdb48dc404d2481f7a3d05307f10fede55a6f9f0fb6d13a0246e47a0e4253c9"
+    },
+    "load": {
+      "body_sha256": "8f1283130029f034dfaa5671f55cbbcfed469c4545ce0780e14b93b45aafa29d"
+    },
+    "bpnn_initialize": {
+      "body_sha256": "fe425e4b252f194313998e38cb80c64e2d64996fabcefee5757528038132bcc1"
+    },
+    "bpnn_free": {
+      "body_sha256": "be5a75e185a870d17e4188cbcb0c9cdd4d20971393b2c4c55c714a09ebd5f3f1"
+    },
+    "bpnn_layerforward": {
+      "body_sha256": "3323a9dac2723ad1d4e0aa26189f38b11f3c5a017bb82e0d20147a0db2600b4b",
+      "reads": [
+        0,
+        2
+      ],
+      "writes_unknown": [
+        1
+      ]
+    },
+    "bpnn_output_error": {
+      "body_sha256": "ae5b04209ca97747f4ff8a1db50b6717b5f6f43b9233f0f046da3d40e3275d46",
+      "reads": [
+        1,
+        2
+      ],
+      "writes_unknown": [
+        0,
+        4
+      ]
+    },
+    "bpnn_hidden_error": {
+      "body_sha256": "79ebc9fa516f8a8ff5a48d16a2b462e0dae332106247a8db2a95525c2d0b0368",
+      "reads": [
+        2,
+        4,
+        5
+      ],
+      "writes_unknown": [
+        0,
+        6
+      ]
+    },
+    "bpnn_adjust_weights": {
+      "body_sha256": "864da4d1a771ed1664dda7ac8bfe8392769adb5c793569545d41337584b6951f",
+      "reads": [
+        0,
+        2,
+        4,
+        5
+      ],
+      "writes_unknown": [
+        4,
+        5
+      ]
+    },
+    "squash": {
+      "body_sha256": "2872aeaac955ce1a07e6451f9288671ef0dcd78e1e52f9b5b4f7818d30ae8cbe"
+    }
+  }
+}

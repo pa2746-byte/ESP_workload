@@ -34,3 +34,8 @@ cudaError_t cudaEventRecord(cudaEvent_t, cudaStream_t);
 cudaError_t cudaEventDestroy(cudaEvent_t);
 enum cudaFuncCache { cudaFuncCachePreferL1 };
 template<class T> cudaError_t cudaFuncSetCacheConfig(T, cudaFuncCache);
+#define __constant__ __attribute__((constant))
+struct float3 { float x, y, z; };
+int cudaGetDevice(int*);
+int cudaMemset(void*, int, size_t);
+template<class T> int cudaMemcpyToSymbol(const T&, const void*, size_t, size_t = 0, cudaMemcpyKind = cudaMemcpyHostToDevice);

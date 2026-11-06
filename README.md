@@ -25,10 +25,10 @@ JSONs despite different CUDA scheduling constraints.
 
 ## Current status
 
-Source-derived graph generation now covers **twelve workload examples**: four
-original CUDA samples, the additional stream fork-join sample, and seven Rodinia analysis cases. The working branch is
+Source-derived graph generation now covers **fifteen workload examples**: four
+original CUDA samples, the additional stream fork-join sample, and ten Rodinia analysis cases. The working branch is
 `pa2746-byte-sampleworkloads`. See the [five-application expansion status](workloads/rodinia/EXPANSION.md):
-two additions are implemented; the remaining three are not yet supported.
+all five additions now have configured original application flows, independent tests, and rendered graphs.
 
 - **Original samples:** vector addition (6 nodes / 5 edges), pipeline (8 / 7),
   fork-join (12 / 13), and reduction (6 / 5).
@@ -52,6 +52,12 @@ two additions are implemented; the remaining three are not yet supported.
 - **Rodinia LU decomposition:** original application flow with `-s 32`; four
   diagonal/perimeter/interior launches (10 / 19).
 
+- **[Rodinia Backpropagation](workloads/rodinia/backprop/README.md):** 32 inputs, 16 hidden units and one output; 18 nodes / 28 edges; two kernel launches.
+
+- **[Rodinia SRAD v1](workloads/rodinia/srad/README.md):** 4 × 4 image and two iterations; 66 nodes / 169 edges; ten kernel launches.
+
+- **[Rodinia CFD](workloads/rodinia/cfd/README.md):** four-cell synthetic mesh and two iterations; 102 nodes / 186 edges; seventeen kernel launches.
+
 The tiled cases track global-buffer footprints while keeping shared-memory
 values unknown. They do not add internal GPU transfers or validate shared-memory
 initialization, races, or barrier correctness.
@@ -60,13 +66,15 @@ Independent source-to-graph tests cover the configured inputs, byte regions,
 and dependency policy; see [validation details](workloads/rodinia/VALIDATION.md).
 The original four samples have remote CUDA/Nsight evidence. Nearest Neighbor
 and HotSpot3D also have a [captured GPU comparison](results/rodinia_trace_comparison/README.md).
-The other Rodinia cases, including the new NW and LUD additions, have not been
+The other Rodinia cases, including all five new additions, have not been
 run on a GPU here. None has been validated in the simulator. Host numerical
 work and device parameters have the documented abstraction/configuration limits.
 Clang itself was not modified; our Python analyzers that consume its AST were
 extended. Unsupported cases still require additional analysis work.
 
 Current output locations:
+
+- [Backpropagation](results/rodinia_backprop/), [SRAD v1](results/rodinia_srad/), and [CFD](results/rodinia_cfd/): JSON, metadata and PNGs in each `graphs/` directory.
 
 - [Original samples and stream example](results/logical_transfers/), with images
   in [graphs](results/logical_transfers/graphs/).
@@ -401,13 +409,13 @@ See the [HotSpot 2D guide](workloads/rodinia/hotspot2d/README.md) and
 
 ## Future benchmarks to investigate
 
-After consolidating the five supported Rodinia cases, expand to other existing
+After consolidating the ten supported Rodinia cases, expand to other existing
 application sources while preserving their computation. The following are
 candidates, **not workloads already supported or validated**.
 The order below is a proposed progression; exact implementation requirements
 must be confirmed by inspecting each selected source version.
 
-1. **Rodinia SRAD — image processing.** A candidate for exploring a larger
+1. **Rodinia SRAD — image processing.** The small v1 case is now supported; larger inputs remain a candidate for exploring a larger
    multi-stage application and intermediate-buffer dependencies. Inspect its
    CUDA implementation to determine the additional control-flow, reduction,
    and indexing support needed.
@@ -537,7 +545,7 @@ local source-analysis output and the recorded source hashes match current files.
 
 The generator replaced its initial hardcoded Python models with Clang AST
 analysis. The original affine path was extended for stream/event ordering;
-the configured path now supports the five Rodinia applications described above.
+the configured path now supports the ten Rodinia cases described above.
 These are restricted source-analysis paths, not a general CUDA verifier.
 
 ### Later analyzer and repository work
@@ -602,7 +610,7 @@ execution or resulting performance metrics have been validated.
 ## Next steps, in priority order
 
 1. **Optionally check compiler portability on remote Linux.** Source validation
-   already runs locally without a GPU. Pull the branch, run the five Rodinia
+   already runs locally without a GPU. Pull the branch, run the ten Rodinia
    commands and the test suite, and compare source
    hashes, configurations, transfer volumes, and edges with the committed
    artifacts. Record the Clang version. This validates compiler portability

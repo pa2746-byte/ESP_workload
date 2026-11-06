@@ -98,6 +98,14 @@ def main():
                 metadata['assumptions'][1] = "Unique byte footprints per kernel; byte_ranges in metadata are half-open intervals, not measured memory traffic."
                 metadata['assumptions'][2] = "Edges express overlapping-region RAW/WAR/WAW dependencies and conservative kernel input-to-output readiness, not stream execution order."
                 metadata['assumptions'][-1] = "Device values remain unknown; data-dependent control/indexing and cross-thread read/write races are rejected."
+            if configuration.get('known_integer_inputs'):
+                metadata['assumptions'].append("Explicitly initialized or fixture-loaded integer index arrays are propagated through uploads; other device values remain unknown. This qualifies the unknown-index rejection above.")
+            if configuration.get('host_dependencies'):
+                metadata['assumptions'].append("CPU-mediated dependencies are propagated conservatively per host buffer; CPU numerical values and latency are not simulated.")
+            if configuration.get('checked_block_barriers'):
+                metadata['assumptions'].append("Block barrier participation and phases are checked for global-memory conflicts; shared-memory numerical correctness is not validated.")
+            if configuration.get('opaque_scalar_branches'):
+                metadata['assumptions'].append("Unknown conditions may merge scalar-only local branches; hidden memory accesses and unknown address decisions remain unsupported.")
             if configuration.get('entry_function', 'main') != 'main':
                 metadata['assumptions'].append(
                     "Analysis starts at " + configuration['entry_function'] +

@@ -1,6 +1,6 @@
 # Rodinia source-analysis experiments
 
-Seven analysis cases are now available:
+Ten analysis cases are now available:
 
 - **Nearest Neighbor**, described below: struct fields, pointer offsets, and
   configured input size.
@@ -20,8 +20,11 @@ Seven analysis cases are now available:
 - **[LU decomposition](lud/README.md)**: complete configured application flow,
   original command-line driver and tiled in-place matrix updates.
 
-These are the first two of the requested five additions. The remaining three
-are not implemented; see [expansion status](EXPANSION.md).
+All five requested additions are implemented for explicit bounded scenarios; see [expansion status](EXPANSION.md).
+
+- **[Backpropagation](backprop/README.md)**: 32 inputs, 16 hidden units and one output; 18 nodes / 28 edges; two kernel launches.
+- **[SRAD v1](srad/README.md)**: 4 × 4 image and two iterations; 66 nodes / 169 edges; ten kernel launches.
+- **[CFD](cfd/README.md)**: four-cell synthetic mesh and two iterations; 102 nodes / 186 edges; seventeen kernel launches.
 
 `nn/nn_cuda.cu` is an **unchanged upstream CUDA Nearest Neighbor implementation**
 from [yuhc/gpu-rodinia](https://github.com/yuhc/gpu-rodinia), commit

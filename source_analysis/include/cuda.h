@@ -13,3 +13,8 @@ int cudaGetDeviceProperties(cudaDeviceProp*, int);
 int cudaMemGetInfo(size_t*, size_t*);
 int cudaThreadSynchronize();
 __device__ double sqrt(double);
+__device__ float __log2f(float);
+__device__ float __powf(float, float);
+__device__ double exp(double);
+__device__ double log(double);
+__device__ float sqrtf(float);
