@@ -72,6 +72,41 @@ work and device parameters have the documented abstraction/configuration limits.
 Clang itself was not modified; our Python analyzers that consume its AST were
 extended. Unsupported cases still require additional analysis work.
 
+### Analyzer update: Backpropagation, SRAD and CFD
+
+Adding these three workloads required extending **our Python analyzer that reads
+Clang's abstract syntax tree (AST)**. Clang itself was not modified. The main
+implementation changes are in `cuda_configured_model.py`, with supporting parser
+and analysis-header changes.
+
+- **Backpropagation:** follow selected C and CUDA source files, handle host
+  structures and pointers, and preserve dependencies across a GPU download,
+  CPU processing, and a later upload. CPU processing uses source-hash-checked
+  summaries; dependencies are propagated conservatively per host buffer, without
+  executing the numerical computation or modeling CPU latency.
+- **SRAD:** resolve explicitly initialized integer index arrays through uploads,
+  track dependencies from downloaded scalars into later kernels, and check block
+  barrier participation and phases for global-memory conflicts. These checks do
+  not establish shared-memory numerical correctness.
+- **CFD:** handle device helper functions and references, `float3` fields,
+  constant-memory uploads, device-to-device copies, and neighbor indices from an
+  explicitly configured, hash-checked mesh file.
+
+These are reusable analyzer capabilities, not hardcoded output graphs. Each
+workload still requires an explicit configuration for its bounded input scenario
+and any summarized CPU operations. Unknown runtime decisions that determine
+memory addresses or kernel launches are rejected rather than guessed. The
+resulting graphs describe logical byte footprints and dependencies; they do not
+measure physical DRAM traffic or execution time.
+
+Independent tests check expected footprints and dependencies, alternate small
+inputs, rejection cases, and agreement between saved graphs and fresh analysis.
+GPU execution, numerical correctness and simulator performance validation remain
+separate work. See [validation details](workloads/rodinia/VALIDATION.md) and the
+[five-workload expansion status](workloads/rodinia/EXPANSION.md).
+
+### Generated outputs
+
 Current output locations:
 
 - [Backpropagation](results/rodinia_backprop/), [SRAD v1](results/rodinia_srad/), and [CFD](results/rodinia_cfd/): JSON, metadata and PNGs in each `graphs/` directory.
