@@ -121,6 +121,10 @@ Four focused test groups independently check expected byte footprints/dependenci
 
 [Open the five-workload GPU notebook in Colab](https://colab.research.google.com/github/pa2746-byte/ESP_workload/blob/pa2746-byte-sampleworkloads/notebooks/rodinia_five_cycles.ipynb). It collects **per-kernel elapsed and active SM cycles** using Nsight Compute and separate transfer/order traces using Nsight Systems. It does not convert time into claimed cycles. Counter permission failures are reported explicitly. Kernel cycles exclude CPU work and PCIe copies; they are not end-to-end application cycles. See [capture details and compatibility adaptations](workloads/rodinia/CYCLES_CAPTURE.md).
 
+### Captured GPU cycles
+
+The [successful five-workload Colab capture from 10 November 2026](results/rodinia_gpu_cycles/20261110T152704530565Z/README.md) includes the original trace archive, per-kernel cycle CSV, logs and matched Clang graphs. All five scenarios captured their expected kernel counts. These are single-run, kernel-only measurements, not end-to-end application cycles or simulator validation.
+
 ### Generated outputs
 
 Current output locations:
