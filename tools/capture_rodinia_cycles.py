@@ -193,7 +193,7 @@ def capture(out, cases, prepare_only=False):
             if ncu and not counter_access_denied:
                 csv_path=out/(case+'_ncu.csv')
                 code,text=run([ncu,'--metrics',','.join(METRICS),'--clock-control','none','--cache-control','none',
-                    '--replay-mode','kernel','--csv','--page','raw','--print-metric-name','name','--print-units','base',
+                    '--replay-mode','kernel','--csv','--page','details','--print-metric-name','name','--print-units','base',
                     '--log-file',csv_path,'--export',out/(case+'_cycles'),'--force-overwrite',*exe],case+'_ncu',cwd,stdin)
                 info['ncu_returncode']=code
                 rows=parse_cycles(csv_path,case) if csv_path.exists() else []
