@@ -25,10 +25,10 @@ JSONs despite different CUDA scheduling constraints.
 
 ## Current status
 
-Source-derived graph generation now covers **fifteen workload examples**: four
-original CUDA samples, the additional stream fork-join sample, and ten Rodinia analysis cases. The working branch is
-`pa2746-byte-sampleworkloads`. See the [five-application expansion status](workloads/rodinia/EXPANSION.md):
-all five additions now have configured original application flows, independent tests, and rendered graphs.
+Source-derived graph generation now covers **twenty workload examples**: four
+original CUDA samples, the additional stream fork-join sample, and fifteen Rodinia analysis cases. The working branch is
+`pa2746-byte-sampleworkloads`. See the [earlier five-application expansion](workloads/rodinia/EXPANSION.md) and the
+[new five-application batch](#source-based-expansion-five-additional-applications) below for configured flows, validation, and graphs.
 
 - **Original samples:** vector addition (6 nodes / 5 edges), pipeline (8 / 7),
   fork-join (12 / 13), and reduction (6 / 5).
@@ -105,9 +105,27 @@ GPU execution, numerical correctness and simulator performance validation remain
 separate work. See [validation details](workloads/rodinia/VALIDATION.md) and the
 [five-workload expansion status](workloads/rodinia/EXPANSION.md).
 
+### Source-based expansion: five additional applications
+
+Added **BFS, LavaMD, Particle Filter, K-means and B+tree** with original application drivers and explicit small input scenarios. Our Python evaluator now supports fixed integer state across copies and launches, selected C/CUDA translation units, nested records, legacy texture reads, and bounded exploration of unknown kernel branches. Clang itself is unchanged. CPU numerical preparation may use documented contracts; this is not general numerical execution or arbitrary-input support.
+
+The five scenarios and their specific limits are documented here:
+
+- [BFS](workloads/rodinia/bfs/README.md): Four-node directed chain, source vertex 0.
+- [LavaMD](workloads/rodinia/lavamd/README.md): Default one box with 100 particles.
+- [Particle Filter](workloads/rodinia/particlefilter/README.md): 16 × 16 synthetic video, two frames and one particle.
+- [K-means](workloads/rodinia/kmeans/README.md): One float32 point [2.0], one feature and one cluster, binary input.
+- [B+tree](workloads/rodinia/btree/README.md): One key (0), one lookup, order 4, explicit query random draw 0, and newline on stdin.
+
+Four focused test groups independently check expected byte footprints/dependencies, B+tree CPU serialization, rejection cases, and capture/notebook preparation. Prior CPU-visible downloads conservatively constrain later transfers in this optional analysis mode.
+
+[Open the five-workload GPU notebook in Colab](https://colab.research.google.com/github/pa2746-byte/ESP_workload/blob/pa2746-byte-sampleworkloads/notebooks/rodinia_five_cycles.ipynb). It collects **per-kernel elapsed and active SM cycles** using Nsight Compute and separate transfer/order traces using Nsight Systems. It does not convert time into claimed cycles. Counter permission failures are reported explicitly. Kernel cycles exclude CPU work and PCIe copies; they are not end-to-end application cycles. See [capture details and compatibility adaptations](workloads/rodinia/CYCLES_CAPTURE.md).
+
 ### Generated outputs
 
 Current output locations:
+
+- [BFS](results/rodinia_bfs/), [LavaMD](results/rodinia_lavamd/), [Particle Filter](results/rodinia_particlefilter/), [K-means](results/rodinia_kmeans/), and [B+tree](results/rodinia_btree/): JSON, metadata, and PNGs in each `graphs/` directory.
 
 - [Backpropagation](results/rodinia_backprop/), [SRAD v1](results/rodinia_srad/), and [CFD](results/rodinia_cfd/): JSON, metadata and PNGs in each `graphs/` directory.
 
@@ -444,9 +462,9 @@ See the [HotSpot 2D guide](workloads/rodinia/hotspot2d/README.md) and
 
 ## Future benchmarks to investigate
 
-After consolidating the ten supported Rodinia cases, expand to other existing
+After consolidating the fifteen supported Rodinia cases, expand to other existing
 application sources while preserving their computation. The following are
-candidates, **not workloads already supported or validated**.
+extensions beyond the small scenarios currently supported; those larger cases are **not yet validated**.
 The order below is a proposed progression; exact implementation requirements
 must be confirmed by inspecting each selected source version.
 
@@ -454,11 +472,11 @@ must be confirmed by inspecting each selected source version.
    multi-stage application and intermediate-buffer dependencies. Inspect its
    CUDA implementation to determine the additional control-flow, reduction,
    and indexing support needed.
-2. **Rodinia K-means — data mining.** A candidate for iterative computation
+2. **Rodinia K-means — data mining.** Extend beyond the single-point case to iterative computation
    whose access patterns and convergence behavior depend on input data. It
    can help establish where source-only analysis needs user-supplied runtime
    parameters or conservative dependency handling.
-3. **Rodinia BFS — later stress test.** Graph traversal introduces irregular,
+3. **Rodinia BFS — larger graph inputs.** Extend beyond the four-node chain. Graph traversal introduces irregular,
    data-dependent accesses. Use it to evaluate the limits of static analysis,
    not as an immediate promise of exact graph recovery.
 
@@ -580,7 +598,7 @@ local source-analysis output and the recorded source hashes match current files.
 
 The generator replaced its initial hardcoded Python models with Clang AST
 analysis. The original affine path was extended for stream/event ordering;
-the configured path now supports the ten Rodinia cases described above.
+the configured path now supports the fifteen Rodinia cases described above.
 These are restricted source-analysis paths, not a general CUDA verifier.
 
 ### Later analyzer and repository work
@@ -645,7 +663,7 @@ execution or resulting performance metrics have been validated.
 ## Next steps, in priority order
 
 1. **Optionally check compiler portability on remote Linux.** Source validation
-   already runs locally without a GPU. Pull the branch, run the ten Rodinia
+   already runs locally without a GPU. Pull the branch, run the configured Rodinia
    commands and the test suite, and compare source
    hashes, configurations, transfer volumes, and edges with the committed
    artifacts. Record the Clang version. This validates compiler portability

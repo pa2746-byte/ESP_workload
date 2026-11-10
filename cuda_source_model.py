@@ -15,7 +15,7 @@ class UnsupportedSource(ValueError):
 
 
 def children(n):
-    return [c for c in n.get("inner", []) if c.get("kind")]
+    return [c for c in n.get("inner", []) if c.get("kind") and c["kind"] != "FullComment"]
 
 
 def walk(n):

@@ -176,3 +176,10 @@ performance are not validated. See each workload's guide for host abstractions.
 The evaluator now reads selected C translation units, binds device helper references, tracks float3 fields and constant-memory arrays, and models a device-to-device copy as one transfer. Explicit integer initialization and hash-pinned input fixtures can resolve index tables through uploads. Other numerical device values remain unknown. CPU-mediated dependencies propagate conservatively through host buffers and declared CPU summaries; CPU time is omitted. Unknown scalar branches can merge only local scalar operations without memory accesses. Block barrier phase checks constrain global-memory conflicts; they do not prove shared-memory numerical correctness.
 
 These graphs describe unique logical byte footprints and dependencies, not physical DRAM traffic, cache transactions, measured execution order or performance. The configured small scenarios have no new GPU-run or simulator validation.
+
+
+## Five fixed-input application paths and optional value state
+
+The BFS, LavaMD, Particle Filter, K-means and B+tree guides describe their exact supported scenarios. `cuda_integer_model.py` extends bounded AST evaluation with known integer bytes, optional floating bytes for the small K-means fixture, pre-launch snapshots plus thread-local writes, and identical-footprint path exploration. Unknown paths that differ in memory footprint or barriers are rejected, as are conflicting threads. Opaque host addresses do not prove CPU memory safety. CPU-visible downloads add conservative control dependencies to later transfers.
+
+`tests/test_five_source_workloads.py` uses four focused test groups: independent schedules and saved-artifact comparisons for all five cases; execution of B+tree's original CPU preparation with GPU calls stubbed; selected unsupported-input checks; and notebook/capture/CSV preparation checks. The CPU preparation test compares only defined bytes, not uninitialized padding. K-means floating evaluation does not prove arbitrary floating-point convergence or GPU FMA equivalence. No new GPU run, cycle measurement or simulator result is claimed by these tests.

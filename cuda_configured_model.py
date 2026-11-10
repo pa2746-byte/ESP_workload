@@ -43,11 +43,14 @@ class ProgramExit(Exception):
     pass
 
 
-def parse_host_translation(path, clang=None):
+def parse_host_translation(path, clang=None, defines=None):
     include = Path(__file__).parent / 'source_analysis/include'
     command = [clang or os.environ.get('CLANGXX', 'clang++'), '-x', 'c', '-std=gnu89',
                '-Wno-error=implicit-function-declaration', '-Wno-error=implicit-int',
                '-I' + str(include), '-fsyntax-only', '-Xclang', '-ast-dump=json', str(path)]
+    for key,value in (defines or {}).items():
+        if not re.fullmatch(r'[A-Za-z_][A-Za-z_0-9]*',key) or type(value) is not int:raise UnsupportedSource('Invalid preprocessor definition')
+        command.insert(1,f'-D{key}={value}')
     result = subprocess.run(command, capture_output=True, text=True)
     if result.returncode:
         raise UnsupportedSource('Clang could not parse host translation unit:\n' + result.stderr)
@@ -71,7 +74,7 @@ def source_declarations(ast, path, additional_sources=()):
     files = {path.resolve(): path.read_bytes()}
     for relative in additional_sources:
         extra = (path.parent / relative).resolve()
-        if extra.parent != path.parent.resolve():
+        if not extra.is_relative_to(path.parent.resolve()):
             raise UnsupportedSource('Additional sources must be in the entry source directory')
         files[extra] = extra.read_bytes()
     current = None
@@ -116,6 +119,7 @@ class HostView:
 class SharedView:
     """Only shape/bounds are modeled; contents ALWAYS remain unknown."""
     shape: tuple
+    base: str = None
 
 @dataclass(frozen=True)
 class Pointer:
@@ -164,7 +168,7 @@ def directives_hash(source):
 
 class Evaluator:
     def __init__(self, path, config, cpu, mem, acc, clang):
-        self.ast = parse_source(path, clang, config.get('compile_defines'))
+        self.ast = parse_host_translation(path, clang, config.get('compile_defines')) if path.suffix == '.c' else parse_source(path, clang, config.get('compile_defines'))
         self.source_directory = path.parent.resolve()
         self.input_file_hashes = {}
         self.output_stream = HostStream([], True)
@@ -172,13 +176,28 @@ class Evaluator:
         declarations, self.source_files = source_declarations(self.ast, path, config.get('additional_sources', []))
         for relative in config.get('host_translation_units', []):
             host_path = (path.parent / relative).resolve()
-            if host_path.parent != path.parent.resolve() or host_path.suffix != '.c':
+            if not host_path.is_relative_to(path.parent.resolve()) or host_path.suffix != '.c':
                 raise UnsupportedSource('Host translation units must be sibling C sources')
-            host_ast = parse_host_translation(host_path, clang)
+            host_ast = parse_host_translation(host_path, clang, config.get('compile_defines'))
             host_declarations, files = source_declarations(host_ast, host_path)
             declarations.extend(host_declarations)
             self.source_files.update(files)
             self.ast['inner'].extend(children(host_ast))
+        for relative in config.get('cuda_translation_units', []):
+            extra = (path.parent / relative).resolve()
+            if not extra.is_relative_to(path.parent.resolve()) or extra.suffix != '.cu':
+                raise UnsupportedSource('CUDA translation units must be within the source directory')
+            extra_ast = parse_source(extra, clang, config.get('compile_defines'))
+            selected, files = source_declarations(extra_ast, extra,
+                [os.path.relpath(p, extra.parent) for p in self.source_files if p != extra and p.is_relative_to(extra.parent)])
+            # Namespace process-local AST identifiers before linking units.
+            for node in walk(extra_ast):
+                if 'id' in node: node['id'] = relative + ':' + node['id']
+                if 'referencedDecl' in node and 'id' in node['referencedDecl']:
+                    node['referencedDecl']['id'] = relative + ':' + node['referencedDecl']['id']
+            declarations.extend(selected)
+            self.source_files.update(files)
+            self.ast['inner'].extend(children(extra_ast))
         specializations = {}
         for node, _ in declarations:
             if node['kind'] != 'FunctionDecl': continue
@@ -251,15 +270,15 @@ class Evaluator:
             if not self.lexical_scopes and len(names) != len(set(names)):
                 raise UnsupportedSource('Shadowed/redeclared variables require scope analysis')
         self.types = {'float': (4, 4, {}), 'double': (8, 8, {}), 'int': (4, 4, {}),
-                      'unsigned int': (4, 4, {}), 'char': (1, 1, {}),
+                      'unsigned int': (4, 4, {}), 'char': (1, 1, {}), 'long': (8, 8, {}), 'long long': (8, 8, {}), 'bool': (1, 1, {}),
                       'float3': (12, 4, {axis: (4*i, 'float') for i, axis in enumerate('xyz')})}
         # Only plain standard-layout records of primitive fields/arrays. No ABI guessing
         # for inheritance, packing, pointers, unions, or user-provided constructors.
         for node in children(self.ast):
-            if node['kind'] != 'CXXRecordDecl' or not node.get('completeDefinition') or 'includedFrom' in node.get('loc', {}):
+            if node['kind'] not in {'CXXRecordDecl', 'RecordDecl'} or not node.get('completeDefinition'):
                 continue
             data = node.get('definitionData', {})
-            if not data.get('isPOD') or node.get('tagUsed') == 'union': continue
+            if (node['kind'] == 'CXXRecordDecl' and not data.get('isPOD')) or node.get('tagUsed') == 'union': continue
             fields, offset, alignment = {}, 0, 1
             members = [c for c in children(node) if not c.get('isImplicit')]
             if any(c['kind'].endswith('Attr') or c['kind'] not in {'FieldDecl', 'CXXRecordDecl'} for c in members): continue
@@ -274,7 +293,11 @@ class Evaluator:
                 offset += size
                 alignment = max(alignment, align)
             else:
-                self.types[node['name']] = ((offset + alignment - 1) // alignment * alignment, alignment, fields)
+                record_name = node.get('name')
+                if not record_name:
+                    record_name = next((d.get('name') for d in children(self.ast) if d['kind'] == 'TypedefDecl' and any(t.get('ownedTagDecl', {}).get('id') == node['id'] for t in walk(d))), None)
+                if not record_name: continue
+                self.types[record_name] = ((offset + alignment - 1) // alignment * alignment, alignment, fields)
         for node in children(self.ast):
             if node['kind'] == 'TypedefDecl':
                 target = self.clean(node.get('type', {}).get('desugaredQualType', ''))
@@ -353,7 +376,7 @@ class Evaluator:
             raise UnsupportedSource('Entry globals require an explicit function boundary')
         self.configure_globals(boundary)
         self.mutable_globals = set(config.get('mutable_scalar_globals', []))
-        if any(self.global_types.get(n) not in {'int', 'unsigned int', 'float', 'double'} for n in self.mutable_globals):
+        if any(self.global_types.get(n) not in {'int', 'unsigned int', 'float', 'double','long','bool'} for n in self.mutable_globals):
             raise UnsupportedSource('Mutable globals must be declared scalars')
 
     def configure_globals(self, boundary):
@@ -407,6 +430,7 @@ class Evaluator:
         return value
 
     def read(self, location):
+        if isinstance(location, SharedView) and not location.shape and location.base in self.types and self.types[location.base][2]: return dict.fromkeys(self.types[location.base][2], UNKNOWN)
         if isinstance(location, (SharedView, HostView)): return location if location.shape else UNKNOWN
         if isinstance(location, Reference):
             value = location.owner.get(location.key, UNKNOWN)
@@ -478,7 +502,7 @@ class Evaluator:
             self.thread_writes.update((ptr.buffer, i) for i in keys)
         elif self.regions:
             accesses = {(ptr.buffer, i) for i in keys}
-            if accesses & self.thread_writes:
+            if accesses & self.thread_writes and not self.config.get('integer_state'):
                 raise UnsupportedSource('Read after write within one thread is unsupported')
             self.thread_reads.update(accesses)
 
@@ -489,7 +513,9 @@ class Evaluator:
             name = n['referencedDecl']['name']
             if self.opaque_host and name in self.cli_state and name not in self.env:
                 return Reference(self.cli_state, name)
-            if name in self.globals and name not in self.env: return Reference(self.globals, name)
+            if name in self.globals and name not in self.env:
+                typ=self.clean(n['referencedDecl'].get('type',{}).get('qualType',''))
+                return Reference(self.globals,name,pointer_base=typ[:-1].strip() if typ.endswith('*') else None,scalar_type=typ if typ in self.types else None)
             if name not in self.env: raise UnsupportedSource(f'Unmodeled global/reference: {name}')
             if isinstance(self.env[name], Binding): return self.env[name].location
             typ = self.clean(n['referencedDecl'].get('type', {}).get('qualType', ''))
@@ -518,7 +544,7 @@ class Evaluator:
             if isinstance(value, SharedView):
                 if not value.shape or not 0 <= index < value.shape[0]:
                     raise UnsupportedSource('Shared array index out of bounds')
-                return SharedView(value.shape[1:])
+                return SharedView(value.shape[1:], value.base)
             if isinstance(value, PointerArray):
                 if index not in value.values: raise UnsupportedSource('Pointer array index out of bounds')
                 return Reference(value.values, index, f'{value.name}[{index}]', value.base)
@@ -564,6 +590,7 @@ class Evaluator:
             if isinstance(value, Reference): return value  # cudaMalloc's void** argument
             if isinstance(value, Unknown): return value
             typ = self.clean(n['type']['qualType'])
+            if typ.endswith('*') and value == 0: return None
             if typ in {'float', 'double'}: return float(value)
             if typ in {'int', 'unsigned int', 'unsigned long', 'size_t'}:
                 if typ != 'int' and value < 0: raise UnsupportedSource('Negative unsigned cast')
@@ -589,6 +616,10 @@ class Evaluator:
         if k == 'CXXNewExpr' and not self.kernel and n.get('isArray') and len(cs) == 1:
             base = self.clean(n['type']['qualType']).rstrip('*').strip()
             return self.contract_value({'base': base, 'shape': [self.eval(cs[0])]})
+        if k == 'CXXOperatorCallExpr' and ref(cs[0]) == 'operator=' and len(cs)==3:
+            target=self.location(cs[1])
+            if not isinstance(target,SharedView):raise UnsupportedSource('Only modeled shared-record copy assignment is supported')
+            value=self.eval(cs[2]); self.store(target,value); return value
         if k == 'CXXOperatorCallExpr' and ref(cs[0]) == 'operator>>' and not self.kernel:
             stream = self.eval(cs[1])
             if not isinstance(stream, HostStream) or stream.output or len(cs) != 3:
@@ -682,7 +713,7 @@ class Evaluator:
             b = self.eval(cs[1])
             if isinstance(a, Pointer) and op in {'+', '-'}: return self.offset(a, b if op == '+' else -b)
             if isinstance(a, Unknown) or isinstance(b, Unknown): return unknown_from(a, b)
-            if op in {'==', '!='} and (isinstance(a, Pointer) or isinstance(b, Pointer)) and (a is None or b is None or a == 0 or b == 0):
+            if op in {'==', '!='} and (isinstance(a, (Pointer, str, HostStream)) or isinstance(b, (Pointer, str, HostStream))) and (a is None or b is None or a == 0 or b == 0):
                 return op == '!='
             if type(a) not in (int, float, bool) or type(b) not in (int, float, bool):
                 raise UnsupportedSource('Unsupported binary operands')
@@ -701,7 +732,12 @@ class Evaluator:
             raise UnsupportedSource(f'Unsupported binary operation: {op}')
         if k == 'CXXConstructExpr':
             typ = self.clean(n['type']['qualType'])
-            if typ == 'float3' and not cs: return dict.fromkeys('xyz', UNKNOWN)
+            if typ in self.types and self.types[typ][2] and len(cs)==1:
+                import copy
+                value=self.eval(cs[0])
+                if isinstance(value,dict): return copy.deepcopy(value)
+                raise UnsupportedSource('Record copy requires a modeled record value')
+            if typ in self.types and self.types[typ][2] and not cs: return dict.fromkeys(self.types[typ][2], UNKNOWN)
             if not self.kernel and ('ifstream' in typ or 'basic_ifstream' in typ):
                 name = self.eval(cs[0])
                 if name not in self.config.get('input_files', {}): raise UnsupportedSource('Input file needs an explicit content hash')
@@ -727,7 +763,7 @@ class Evaluator:
             if typ in {'cudaDeviceProp', 'timeval'} and not cs: return {}
             record = self.clean(n.get('type', {}).get('desugaredQualType', typ))
             if self.opaque_host and not self.kernel and not cs and record in self.pod_records:
-                return UNKNOWN  # Host-only opaque POD, not a modeled device buffer.
+                return dict.fromkeys(self.types[record][2], UNKNOWN) if record in self.types else UNKNOWN
             raise UnsupportedSource(f'Unsupported constructor: {typ}')
         if k == 'CUDAKernelCallExpr': return self.launch(n)
         if k == 'CXXDeleteExpr':
@@ -773,11 +809,13 @@ class Evaluator:
             for var in cs:
                 name, typ = var['name'], self.clean(var['type']['qualType'])
                 self.declare_local(name)
+                if var.get('storageClass')=='extern' and name in self.cli_state:
+                    self.env[name]=Binding(Reference(self.cli_state,name)); continue
                 if any(c['kind'] == 'CUDASharedAttr' for c in children(var)):
-                    match = re.fullmatch(r'(float|double|int)\s*((?:\[\d+\])+)', typ)
-                    if not self.kernel or not self.opaque_shared or not match or any(c['kind'] != 'CUDASharedAttr' for c in children(var)):
+                    match = re.fullmatch(r'([A-Za-z_][A-Za-z_0-9]*)\s*((?:\[\d+\])+)', typ)
+                    if not self.kernel or not self.opaque_shared or not match or match[1] not in self.types or any(c['kind'] != 'CUDASharedAttr' and not (c['kind']=='CXXConstructExpr' and not children(c) and bool(self.types[match[1]][2])) for c in children(var)):
                         raise UnsupportedSource('Only explicitly enabled fixed shared numeric arrays are supported')
-                    self.env[name] = SharedView(tuple(int(d) for d in re.findall(r'\d+', match[2])))
+                    self.env[name] = SharedView(tuple(int(d) for d in re.findall(r'\d+', match[2])), match[1])
                     continue
                 local_array = re.fullmatch(r'(float|double|int)\s*\[(\d+)\]', typ)
                 if local_array and not self.kernel and self.opaque_host:
@@ -799,12 +837,13 @@ class Evaluator:
                     self.env[name] = Vector(vector[1], name)
                 elif children(var): self.env[name] = self.eval(children(var)[-1])
                 elif typ in {'cudaDeviceProp', 'timeval'}: self.env[name] = {}
+                elif typ in self.types and self.types[typ][2]: self.env[name] = dict.fromkeys(self.types[typ][2], UNKNOWN)
                 else: self.env[name] = UNKNOWN
         elif k == 'IfStmt':
             if n.get('hasInit') or n.get('hasVar') or len(cs) not in (2, 3):
                 raise UnsupportedSource('Unsupported conditional declaration')
             condition = self.eval(cs[0])
-            if isinstance(condition, Unknown) and self.kernel and self.config.get('opaque_scalar_branches'):
+            if isinstance(condition, Unknown) and self.kernel and self.config.get('opaque_scalar_branches') and not self.config.get('enumerate_unknown_paths'):
                 self.merge_scalar_branches(condition, cs[1:])
                 return
             branch = cs[1] if self.truth(condition) else cs[2] if len(cs) == 3 else None
@@ -1308,14 +1347,14 @@ class Evaluator:
                     if self.current_block in barrier_sequences and barrier_sequences[self.current_block] != sequence:
                         raise UnsupportedSource('Nonuniform block barrier participation')
                     barrier_sequences[self.current_block] = sequence
-                    for key, mode, block, phase in self.thread_access_events:
+                    for key, mode, event_block, phase in self.thread_access_events:
                         for prev_mode, prev_block, prev_phase in access_history.get(key, ()):
                             if mode == prev_mode: continue
                             read_phase, write_phase = (phase, prev_phase) if mode == 'read' else (prev_phase, phase)
-                            if block != prev_block or read_phase >= write_phase:
+                            if event_block != prev_block or read_phase >= write_phase:
                                 raise UnsupportedSource('Cross-thread read/write overlap lacks a block barrier')
-                    for key, mode, block, phase in self.thread_access_events:
-                        access_history.setdefault(key, set()).add((mode, block, phase))
+                    for key, mode, event_block, phase in self.thread_access_events:
+                        access_history.setdefault(key, set()).add((mode, event_block, phase))
                 if self.regions and not self.checked_barriers and (self.thread_reads & self.all_writes or self.thread_writes & all_reads):
                     raise UnsupportedSource('Cross-thread read/write overlap requires synchronization analysis')
                 self.all_writes |= self.thread_writes
@@ -1408,6 +1447,9 @@ def analyze_configured(path, config, cpu='cpu', mem='mem', acc='acc', clang=None
     if len({cpu, mem, acc}) != 3 or not all((cpu, mem, acc)):
         raise UnsupportedSource('Component names must be nonempty and distinct')
     try:
+        if config.get('integer_state'):
+            from cuda_integer_model import IntegerEvaluator
+            return IntegerEvaluator(path, config, cpu, mem, acc, clang).run()
         return Evaluator(path, config, cpu, mem, acc, clang).run()
     except (KeyError, TypeError, IndexError, StopIteration) as exc:
         raise UnsupportedSource(f'Invalid/unsupported configured source or configuration: {exc}') from exc

@@ -1,6 +1,6 @@
 # Rodinia source-analysis experiments
 
-Ten analysis cases are now available:
+Fifteen analysis cases are now available:
 
 - **Nearest Neighbor**, described below: struct fields, pointer offsets, and
   configured input size.
@@ -25,6 +25,14 @@ All five requested additions are implemented for explicit bounded scenarios; see
 - **[Backpropagation](backprop/README.md)**: 32 inputs, 16 hidden units and one output; 18 nodes / 28 edges; two kernel launches.
 - **[SRAD v1](srad/README.md)**: 4 × 4 image and two iterations; 66 nodes / 169 edges; ten kernel launches.
 - **[CFD](cfd/README.md)**: four-cell synthetic mesh and two iterations; 102 nodes / 186 edges; seventeen kernel launches.
+
+- **[BFS](bfs/README.md)**: Four-node directed chain, source vertex 0.
+- **[LavaMD](lavamd/README.md)**: Default one box with 100 particles.
+- **[Particle Filter](particlefilter/README.md)**: 16 × 16 synthetic video, two frames and one particle.
+- **[K-means](kmeans/README.md)**: One float32 point [2.0], one feature and one cluster, binary input.
+- **[B+tree](btree/README.md)**: One key (0), one lookup, order 4, explicit query random draw 0, and newline on stdin.
+
+[GPU cycles and traces notebook](CYCLES_CAPTURE.md) covers these five additions.
 
 `nn/nn_cuda.cu` is an **unchanged upstream CUDA Nearest Neighbor implementation**
 from [yuhc/gpu-rodinia](https://github.com/yuhc/gpu-rodinia), commit

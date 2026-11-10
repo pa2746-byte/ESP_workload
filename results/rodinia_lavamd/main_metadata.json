@@ -1,0 +1,322 @@
+{
+  "workload": "main",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/rodinia/lavamd/main.c",
+  "source_sha256": "9a3f73ab16fc40d8a27e926096cbb73013f570b01f1f5fc7b9cc6802185a12a7",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "d_box_gpu",
+      "stage": "upload",
+      "operation_id": 0,
+      "stream": "default",
+      "ordered_after_operations": [],
+      "byte_ranges": [
+        [
+          0,
+          656
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "buffer": "d_rv_gpu",
+      "stage": "upload",
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ],
+      "byte_ranges": [
+        [
+          0,
+          3200
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "buffer": "d_qv_gpu",
+      "stage": "upload",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          0,
+          800
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "buffer": "d_fv_gpu",
+      "stage": "upload",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          0,
+          3200
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "buffer": "d_box_gpu",
+      "stage": "kernel_gpu_cuda:read",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          16,
+          28
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "buffer": "d_rv_gpu",
+      "stage": "kernel_gpu_cuda:read",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          0,
+          3200
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "buffer": "d_qv_gpu",
+      "stage": "kernel_gpu_cuda:read",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          0,
+          800
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "buffer": "d_fv_gpu",
+      "stage": "kernel_gpu_cuda:read",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          0,
+          3200
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "buffer": "d_fv_gpu",
+      "stage": "kernel_gpu_cuda:write",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          0,
+          3200
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "buffer": "d_fv_gpu",
+      "stage": "download",
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "byte_ranges": [
+        [
+          0,
+          3200
+        ]
+      ]
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique byte footprints per kernel; byte_ranges in metadata are half-open intervals, not measured memory traffic.",
+    "Edges express overlapping-region RAW/WAR/WAW dependencies and conservative kernel input-to-output readiness, not stream execution order.",
+    "Stream/event ordering is checked for conflicting buffer accesses; metadata records operation ordering, not timing.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies.",
+    "Host input parsing/loading and CPU result selection use explicit, source-hash-checked summaries; they are not executed.",
+    "Device properties are configured assumptions, not measurements; bounded kernel address evaluation requires no GPU.",
+    "Unresolved device values remain unknown; address/control decisions must resolve from known state or pass explicitly enabled identical-footprint path exploration.",
+    "Fixed-input integer bytes are evaluated from source. Threads use pre-launch state plus their own writes; conflicting threads are rejected.",
+    "All later transfers conservatively depend on prior CPU-visible downloads; host_control_dependencies records these control barriers.",
+    "When enabled, unknown kernel branches are explored only within a bounded path budget and accepted only with identical access footprints and barrier sequences.",
+    "Explicit host-numerical contracts and opaque host addresses do not validate CPU numerical correctness or host memory safety.",
+    "CPU-mediated dependencies are propagated conservatively per host buffer; CPU numerical values and latency are not simulated.",
+    "Block barrier participation and phases are checked for global-memory conflicts; shared-memory numerical correctness is not validated.",
+    "Host numeric array contents and random initialization remain unknown. Host allocation sizes and scalar control flow are evaluated; CPU numerical correctness is not validated.",
+    "Shared-array bounds are checked but contents remain unknown; shared transfers, initialization, races, and barrier correctness are not modeled. Global footprints assume valid kernel synchronization."
+  ],
+  "configured_analysis": {
+    "configuration": {
+      "version": 1,
+      "parameters": {},
+      "arguments": [],
+      "analyzed_functions": [
+        "kernel_gpu_cuda_wrapper"
+      ],
+      "additional_sources": [
+        "main.h",
+        "kernel/kernel_gpu_cuda_wrapper.cu",
+        "kernel/kernel_gpu_cuda.cu",
+        "kernel/kernel_gpu_cuda_wrapper.h",
+        "util/timer/timer.c",
+        "util/timer/timer.h",
+        "util/num/num.h",
+        "util/num/num.c",
+        "util/device/device.cu",
+        "util/device/device.h"
+      ],
+      "scalar_device_functions": [],
+      "lexical_scopes": true,
+      "host_memory": "opaque_values",
+      "shared_memory": "opaque_values",
+      "dependency_granularity": "byte_regions",
+      "device": {
+        "ordinal": 0,
+        "max_grid_size": [
+          65535,
+          65535,
+          65535
+        ],
+        "max_threads_per_block": 1024,
+        "free_memory_bytes": 1073741824,
+        "total_memory_bytes": 2147483648
+      },
+      "max_enumerated_threads": 65536,
+      "max_loop_iterations": 1024,
+      "preprocessor_sha256": "a05502caaef6f40b0f1e58f941370bb42232f06362fd30fe4d6ebdb6a9e92d1a",
+      "additional_preprocessor_sha256": {
+        "main.h": "0b3eb4064739a0d4dbbaf30e0b43d9a004457e46a1f2b269668af6e5c5c97257",
+        "kernel_gpu_cuda_wrapper.cu": "5847018f6022132aa1a178b9f1cedbcf986e72c03288192dc3c6fc949d0f0a8a",
+        "kernel_gpu_cuda.cu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "kernel_gpu_cuda_wrapper.h": "1f443b11108b700dea91f37308d45e332f199761c003e0c214f7c9af6b72cf62",
+        "timer.c": "28d122a2e511816692c65819992a336fdcbe1bbb29c964e19db75b41a78d6a54",
+        "timer.h": "1f443b11108b700dea91f37308d45e332f199761c003e0c214f7c9af6b72cf62",
+        "num.h": "1f443b11108b700dea91f37308d45e332f199761c003e0c214f7c9af6b72cf62",
+        "num.c": "1f443b11108b700dea91f37308d45e332f199761c003e0c214f7c9af6b72cf62",
+        "device.cu": "116ee19ab02d858ec10a738489cee7b2665a284d553b1c0bfee976502e734051",
+        "device.h": "ef84f99753fd6f9b06f97e49126930aa9ca635b21073c32db03e874d63d148b5"
+      },
+      "known_integer_inputs": false,
+      "host_dependencies": true,
+      "host_summaries": {
+        "get_time": {
+          "body_sha256": "32d2c5df44932f24527074ff92cdfc86437bf2bb43d3f752479adc9e196e63f6",
+          "return_unknown": true
+        },
+        "isInteger": {
+          "body_sha256": "aa2a9492653121490fc1ff5970f588ec2babccb98188984c18ffeaa66669ec3c"
+        },
+        "checkCUDAError": {
+          "body_sha256": "abbc85abf410babd285ef4f9d86468c964f5b650ee2685516a992b380dd92800"
+        },
+        "setdevice": {
+          "body_sha256": "25dc195462bc48909f7c8e4f4cb5e57512df8acbf5680e195fcb66649dc9780d"
+        }
+      },
+      "integer_state": true,
+      "host_translation_units": [
+        "util/timer/timer.c",
+        "util/num/num.c"
+      ],
+      "cuda_translation_units": [
+        "kernel/kernel_gpu_cuda_wrapper.cu",
+        "util/device/device.cu"
+      ],
+      "checked_block_barriers": true
+    },
+    "launches": [
+      {
+        "kernel": "kernel_gpu_cuda",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          128,
+          1,
+          1
+        ],
+        "enumerated_threads": 128,
+        "integer_state_evaluated": true
+      }
+    ],
+    "source_units": {
+      "main.c": "9a3f73ab16fc40d8a27e926096cbb73013f570b01f1f5fc7b9cc6802185a12a7",
+      "main.h": "1242c89965144f3e1a9597731209f961840de659082e9c75376d2f72d6ad5ec1",
+      "kernel_gpu_cuda_wrapper.cu": "e30ad2fa7624cb7adfd8ad9a41b6e71a7ef2069395851db817c21e3b53c62cdb",
+      "kernel_gpu_cuda.cu": "4ef60591c16b61b60b1ca5ce10e8e3f31210172c05f0dc12605384d7c83347df",
+      "kernel_gpu_cuda_wrapper.h": "915682addb4e367a62ee255403cd67d8ece8c261c9f102706edb76ccacc4508d",
+      "timer.c": "e437daf303ba449ff7f097ef4dbfb1bdb2248e4347baecfc7e063f017a252620",
+      "timer.h": "9b767511c1e31cbcdbdcdc6c44e59e857d2e38e96dfc7b0010657f37518eb6de",
+      "num.h": "c3cc840f5446c0065ac3d59566b9acb1db6fb0252d5d1b26a01b597596841d3f",
+      "num.c": "5cabf5d35263b1d059d5b586bb995c02327e24d8f9ab4ae9eb45151badaf5c45",
+      "device.cu": "f1a37115424a55035b1681e424982d688e514e5b505736a919dbdfe77e169c2e",
+      "device.h": "7edba1318563df4f2d2a3c160eadf9c29103ea9edee13f1a8125bc7fd678fda8"
+    },
+    "used_host_summaries": [
+      "checkCUDAError",
+      "get_time"
+    ]
+  }
+}

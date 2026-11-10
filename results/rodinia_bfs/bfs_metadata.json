@@ -1,0 +1,1893 @@
+{
+  "workload": "bfs",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/rodinia/bfs/bfs.cu",
+  "source_sha256": "227e3eea46ffcbee603085ee4a6341d019d2afb32b6a59a4a25cd6a1652c8eb5",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "d_graph_nodes",
+      "stage": "upload",
+      "operation_id": 0,
+      "stream": "default",
+      "ordered_after_operations": [],
+      "byte_ranges": [
+        [
+          0,
+          32
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "buffer": "d_graph_edges",
+      "stage": "upload",
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "buffer": "d_graph_mask",
+      "stage": "upload",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "buffer": "d_updating_graph_mask",
+      "stage": "upload",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "buffer": "d_graph_visited",
+      "stage": "upload",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "buffer": "d_cost",
+      "stage": "upload",
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "buffer": "d_over",
+      "stage": "upload",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "buffer": "d_graph_nodes",
+      "stage": "Kernel:read",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          0,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "buffer": "d_graph_edges",
+      "stage": "Kernel:read",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "buffer": "d_graph_mask",
+      "stage": "Kernel:read",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "buffer": "d_graph_visited",
+      "stage": "Kernel:read",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 11,
+      "buffer": "d_cost",
+      "stage": "Kernel:read",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 12,
+      "buffer": "d_graph_mask",
+      "stage": "Kernel:write",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 13,
+      "buffer": "d_updating_graph_mask",
+      "stage": "Kernel:write",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 14,
+      "buffer": "d_cost",
+      "stage": "Kernel:write",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          4,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 15,
+      "buffer": "d_updating_graph_mask",
+      "stage": "Kernel2:read",
+      "operation_id": 8,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 16,
+      "buffer": "d_graph_mask",
+      "stage": "Kernel2:write",
+      "operation_id": 8,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "byte_ranges": [
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 17,
+      "buffer": "d_updating_graph_mask",
+      "stage": "Kernel2:write",
+      "operation_id": 8,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "byte_ranges": [
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 18,
+      "buffer": "d_graph_visited",
+      "stage": "Kernel2:write",
+      "operation_id": 8,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "byte_ranges": [
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 19,
+      "buffer": "d_over",
+      "stage": "Kernel2:write",
+      "operation_id": 8,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 20,
+      "buffer": "d_over",
+      "stage": "download",
+      "operation_id": 9,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 21,
+      "buffer": "d_over",
+      "stage": "upload",
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "host_control_dependencies": [
+        20
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 22,
+      "buffer": "d_graph_nodes",
+      "stage": "Kernel:read",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "host_control_dependencies": [
+        20
+      ],
+      "byte_ranges": [
+        [
+          8,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 23,
+      "buffer": "d_graph_edges",
+      "stage": "Kernel:read",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "host_control_dependencies": [
+        20
+      ],
+      "byte_ranges": [
+        [
+          4,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 24,
+      "buffer": "d_graph_mask",
+      "stage": "Kernel:read",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "host_control_dependencies": [
+        20
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 25,
+      "buffer": "d_graph_visited",
+      "stage": "Kernel:read",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "host_control_dependencies": [
+        20
+      ],
+      "byte_ranges": [
+        [
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 26,
+      "buffer": "d_cost",
+      "stage": "Kernel:read",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "host_control_dependencies": [
+        20
+      ],
+      "byte_ranges": [
+        [
+          4,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 27,
+      "buffer": "d_graph_mask",
+      "stage": "Kernel:write",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "host_control_dependencies": [
+        20
+      ],
+      "byte_ranges": [
+        [
+          1,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 28,
+      "buffer": "d_updating_graph_mask",
+      "stage": "Kernel:write",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "host_control_dependencies": [
+        20
+      ],
+      "byte_ranges": [
+        [
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 29,
+      "buffer": "d_cost",
+      "stage": "Kernel:write",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "host_control_dependencies": [
+        20
+      ],
+      "byte_ranges": [
+        [
+          8,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 30,
+      "buffer": "d_updating_graph_mask",
+      "stage": "Kernel2:read",
+      "operation_id": 12,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "host_control_dependencies": [
+        20
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 31,
+      "buffer": "d_graph_mask",
+      "stage": "Kernel2:write",
+      "operation_id": 12,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "host_control_dependencies": [
+        20
+      ],
+      "byte_ranges": [
+        [
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 32,
+      "buffer": "d_updating_graph_mask",
+      "stage": "Kernel2:write",
+      "operation_id": 12,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "host_control_dependencies": [
+        20
+      ],
+      "byte_ranges": [
+        [
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 33,
+      "buffer": "d_graph_visited",
+      "stage": "Kernel2:write",
+      "operation_id": 12,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "host_control_dependencies": [
+        20
+      ],
+      "byte_ranges": [
+        [
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 34,
+      "buffer": "d_over",
+      "stage": "Kernel2:write",
+      "operation_id": 12,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "host_control_dependencies": [
+        20
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 35,
+      "buffer": "d_over",
+      "stage": "download",
+      "operation_id": 13,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "host_control_dependencies": [
+        20
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 36,
+      "buffer": "d_over",
+      "stage": "upload",
+      "operation_id": 14,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "host_control_dependencies": [
+        20,
+        35
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 37,
+      "buffer": "d_graph_nodes",
+      "stage": "Kernel:read",
+      "operation_id": 15,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "host_control_dependencies": [
+        20,
+        35
+      ],
+      "byte_ranges": [
+        [
+          16,
+          24
+        ]
+      ]
+    },
+    {
+      "id": 38,
+      "buffer": "d_graph_edges",
+      "stage": "Kernel:read",
+      "operation_id": 15,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "host_control_dependencies": [
+        20,
+        35
+      ],
+      "byte_ranges": [
+        [
+          8,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 39,
+      "buffer": "d_graph_mask",
+      "stage": "Kernel:read",
+      "operation_id": 15,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "host_control_dependencies": [
+        20,
+        35
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 40,
+      "buffer": "d_graph_visited",
+      "stage": "Kernel:read",
+      "operation_id": 15,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "host_control_dependencies": [
+        20,
+        35
+      ],
+      "byte_ranges": [
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 41,
+      "buffer": "d_cost",
+      "stage": "Kernel:read",
+      "operation_id": 15,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "host_control_dependencies": [
+        20,
+        35
+      ],
+      "byte_ranges": [
+        [
+          8,
+          12
+        ]
+      ]
+    },
+    {
+      "id": 42,
+      "buffer": "d_graph_mask",
+      "stage": "Kernel:write",
+      "operation_id": 15,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "host_control_dependencies": [
+        20,
+        35
+      ],
+      "byte_ranges": [
+        [
+          2,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 43,
+      "buffer": "d_updating_graph_mask",
+      "stage": "Kernel:write",
+      "operation_id": 15,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "host_control_dependencies": [
+        20,
+        35
+      ],
+      "byte_ranges": [
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 44,
+      "buffer": "d_cost",
+      "stage": "Kernel:write",
+      "operation_id": 15,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "host_control_dependencies": [
+        20,
+        35
+      ],
+      "byte_ranges": [
+        [
+          12,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 45,
+      "buffer": "d_updating_graph_mask",
+      "stage": "Kernel2:read",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "host_control_dependencies": [
+        20,
+        35
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 46,
+      "buffer": "d_graph_mask",
+      "stage": "Kernel2:write",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "host_control_dependencies": [
+        20,
+        35
+      ],
+      "byte_ranges": [
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 47,
+      "buffer": "d_updating_graph_mask",
+      "stage": "Kernel2:write",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "host_control_dependencies": [
+        20,
+        35
+      ],
+      "byte_ranges": [
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 48,
+      "buffer": "d_graph_visited",
+      "stage": "Kernel2:write",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "host_control_dependencies": [
+        20,
+        35
+      ],
+      "byte_ranges": [
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 49,
+      "buffer": "d_over",
+      "stage": "Kernel2:write",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "host_control_dependencies": [
+        20,
+        35
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 50,
+      "buffer": "d_over",
+      "stage": "download",
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "host_control_dependencies": [
+        20,
+        35
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 51,
+      "buffer": "d_over",
+      "stage": "upload",
+      "operation_id": 18,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "host_control_dependencies": [
+        20,
+        35,
+        50
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 52,
+      "buffer": "d_graph_nodes",
+      "stage": "Kernel:read",
+      "operation_id": 19,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "host_control_dependencies": [
+        20,
+        35,
+        50
+      ],
+      "byte_ranges": [
+        [
+          24,
+          32
+        ]
+      ]
+    },
+    {
+      "id": 53,
+      "buffer": "d_graph_mask",
+      "stage": "Kernel:read",
+      "operation_id": 19,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "host_control_dependencies": [
+        20,
+        35,
+        50
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 54,
+      "buffer": "d_graph_mask",
+      "stage": "Kernel:write",
+      "operation_id": 19,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "host_control_dependencies": [
+        20,
+        35,
+        50
+      ],
+      "byte_ranges": [
+        [
+          3,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 55,
+      "buffer": "d_updating_graph_mask",
+      "stage": "Kernel2:read",
+      "operation_id": 20,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ],
+      "host_control_dependencies": [
+        20,
+        35,
+        50
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 56,
+      "buffer": "d_over",
+      "stage": "download",
+      "operation_id": 21,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "host_control_dependencies": [
+        20,
+        35,
+        50
+      ],
+      "byte_ranges": [
+        [
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "id": 57,
+      "buffer": "d_cost",
+      "stage": "download",
+      "operation_id": 22,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "host_control_dependencies": [
+        20,
+        35,
+        50,
+        56
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique byte footprints per kernel; byte_ranges in metadata are half-open intervals, not measured memory traffic.",
+    "Edges express overlapping-region RAW/WAR/WAW dependencies and conservative kernel input-to-output readiness, not stream execution order.",
+    "Stream/event ordering is checked for conflicting buffer accesses; metadata records operation ordering, not timing.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies.",
+    "Host input parsing/loading and CPU result selection use explicit, source-hash-checked summaries; they are not executed.",
+    "Device properties are configured assumptions, not measurements; bounded kernel address evaluation requires no GPU.",
+    "Unresolved device values remain unknown; address/control decisions must resolve from known state or pass explicitly enabled identical-footprint path exploration.",
+    "Fixed-input integer bytes are evaluated from source. Threads use pre-launch state plus their own writes; conflicting threads are rejected.",
+    "All later transfers conservatively depend on prior CPU-visible downloads; host_control_dependencies records these control barriers.",
+    "When enabled, unknown kernel branches are explored only within a bounded path budget and accepted only with identical access footprints and barrier sequences.",
+    "Explicit host-numerical contracts and opaque host addresses do not validate CPU numerical correctness or host memory safety.",
+    "CPU-mediated dependencies are propagated conservatively per host buffer; CPU numerical values and latency are not simulated.",
+    "Block barrier participation and phases are checked for global-memory conflicts; shared-memory numerical correctness is not validated.",
+    "Host numeric array contents and random initialization remain unknown. Host allocation sizes and scalar control flow are evaluated; CPU numerical correctness is not validated.",
+    "Shared-array bounds are checked but contents remain unknown; shared transfers, initialization, races, and barrier correctness are not modeled. Global footprints assume valid kernel synchronization."
+  ],
+  "configured_analysis": {
+    "configuration": {
+      "version": 1,
+      "parameters": {},
+      "arguments": [
+        "chain4.txt"
+      ],
+      "analyzed_functions": [
+        "BFSGraph"
+      ],
+      "additional_sources": [
+        "kernel.cu",
+        "kernel2.cu"
+      ],
+      "scalar_device_functions": [],
+      "lexical_scopes": true,
+      "host_memory": "opaque_values",
+      "shared_memory": "opaque_values",
+      "dependency_granularity": "byte_regions",
+      "device": {
+        "ordinal": 0,
+        "max_grid_size": [
+          65535,
+          65535,
+          65535
+        ],
+        "max_threads_per_block": 1024,
+        "free_memory_bytes": 1073741824,
+        "total_memory_bytes": 2147483648
+      },
+      "max_enumerated_threads": 65536,
+      "max_loop_iterations": 1024,
+      "preprocessor_sha256": "f5b5f2936884017a95e8c583ba6fa91053ca8906af5aafffecc5fbdee79f0e46",
+      "additional_preprocessor_sha256": {
+        "kernel.cu": "4267fa1a6423b9f43de003e5e93bab103cb567282a9892917a6ac180680e8768",
+        "kernel2.cu": "0780f6ca7e33d7ffa5bebfd5c4e97a1aa91f4ee8621c56065c54dc06c33e2149"
+      },
+      "known_integer_inputs": false,
+      "host_dependencies": true,
+      "host_summaries": {},
+      "integer_state": true,
+      "allow_process_exit_allocations": true,
+      "input_files": {
+        "chain4.txt": "810a65fca8116e7fba98ee05cd1dec7f854f720957277e3bb39d5a4a421620c9"
+      },
+      "mutable_scalar_globals": [
+        "no_of_nodes",
+        "edge_list_size"
+      ],
+      "mutable_file_globals": [
+        "fp"
+      ],
+      "checked_block_barriers": true
+    },
+    "launches": [
+      {
+        "kernel": "Kernel",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4,
+        "integer_state_evaluated": true
+      },
+      {
+        "kernel": "Kernel2",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4,
+        "integer_state_evaluated": true
+      },
+      {
+        "kernel": "Kernel",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4,
+        "integer_state_evaluated": true
+      },
+      {
+        "kernel": "Kernel2",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4,
+        "integer_state_evaluated": true
+      },
+      {
+        "kernel": "Kernel",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4,
+        "integer_state_evaluated": true
+      },
+      {
+        "kernel": "Kernel2",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4,
+        "integer_state_evaluated": true
+      },
+      {
+        "kernel": "Kernel",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4,
+        "integer_state_evaluated": true
+      },
+      {
+        "kernel": "Kernel2",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          4,
+          1,
+          1
+        ],
+        "enumerated_threads": 4,
+        "integer_state_evaluated": true
+      }
+    ],
+    "source_units": {
+      "bfs.cu": "227e3eea46ffcbee603085ee4a6341d019d2afb32b6a59a4a25cd6a1652c8eb5",
+      "kernel.cu": "0b404e06838030ec6b1d63ce4d625a49d8f1400f2ad386421b655f11d2b08a5e",
+      "kernel2.cu": "bca41f84cb02532b8675efcc538476ccfcde6d2e37277a0702b101b71079fcb7"
+    },
+    "used_host_summaries": [],
+    "input_files": {
+      "chain4.txt": "810a65fca8116e7fba98ee05cd1dec7f854f720957277e3bb39d5a4a421620c9"
+    },
+    "allocations_live_at_process_exit": {
+      "d_over": 1
+    }
+  }
+}

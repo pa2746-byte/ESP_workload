@@ -39,3 +39,21 @@ struct float3 { float x, y, z; };
 int cudaGetDevice(int*);
 int cudaMemset(void*, int, size_t);
 template<class T> int cudaMemcpyToSymbol(const T&, const void*, size_t, size_t = 0, cudaMemcpyKind = cudaMemcpyHostToDevice);
+
+// Legacy CUDA runtime entry point, retained for original Rodinia sources.
+int cudaThreadSynchronize();
+__device__ double exp(double);
+
+#include "cuda.h"
+
+typedef int cudaError;
+
+// Legacy texture declarations, analysis only.
+enum cudaTextureReadMode {cudaReadModeElementType};
+enum cudaTextureFilterMode {cudaFilterModePoint};
+struct cudaChannelFormatDesc {};
+template<class T,int D,cudaTextureReadMode R> struct texture { int filterMode; bool normalized; cudaChannelFormatDesc channelDesc; };
+template<class T> cudaChannelFormatDesc cudaCreateChannelDesc();
+template<class T,int D,cudaTextureReadMode R> int cudaBindTexture(size_t*,texture<T,D,R>*,const void*,const cudaChannelFormatDesc*,size_t);
+template<class T,int D,cudaTextureReadMode R> __device__ T tex1Dfetch(texture<T,D,R>,int);
+#define CUDA_SUCCESS 0

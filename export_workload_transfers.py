@@ -98,6 +98,18 @@ def main():
                 metadata['assumptions'][1] = "Unique byte footprints per kernel; byte_ranges in metadata are half-open intervals, not measured memory traffic."
                 metadata['assumptions'][2] = "Edges express overlapping-region RAW/WAR/WAW dependencies and conservative kernel input-to-output readiness, not stream execution order."
                 metadata['assumptions'][-1] = "Device values remain unknown; data-dependent control/indexing and cross-thread read/write races are rejected."
+            if configuration.get('integer_state'):
+                metadata['assumptions'] = [
+                    'Unresolved device values remain unknown; address/control decisions must resolve from known state or pass explicitly enabled identical-footprint path exploration.' if a.startswith('Device values remain unknown;') else a
+                    for a in metadata['assumptions']]
+                metadata['assumptions'].extend([
+                    "Fixed-input integer bytes are evaluated from source. Threads use pre-launch state plus their own writes; conflicting threads are rejected.",
+                    "All later transfers conservatively depend on prior CPU-visible downloads; host_control_dependencies records these control barriers.",
+                    "When enabled, unknown kernel branches are explored only within a bounded path budget and accepted only with identical access footprints and barrier sequences.",
+                    "Explicit host-numerical contracts and opaque host addresses do not validate CPU numerical correctness or host memory safety.",
+                ])
+                if configuration.get('known_floating_values'):
+                    metadata['assumptions'].append("Known floating bytes are evaluated for the small configured fixture, with float32 storage rounding. This does not establish general GPU floating-point equivalence or fused-operation behavior.")
             if configuration.get('known_integer_inputs'):
                 metadata['assumptions'].append("Explicitly initialized or fixture-loaded integer index arrays are propagated through uploads; other device values remain unknown. This qualifies the unknown-index rejection above.")
             if configuration.get('host_dependencies'):
