@@ -1,0 +1,29 @@
+workload,launch_id,kernel,metric,unit,value
+bfs,0,"Kernel(Node *, int *, bool *, bool *, bool *, int *, int)",sm__cycles_active.avg,cycle,64.67
+bfs,0,"Kernel(Node *, int *, bool *, bool *, bool *, int *, int)",sm__cycles_elapsed.avg,cycle,4255.6
+bfs,1,"Kernel2(bool *, bool *, bool *, bool *, int)",sm__cycles_active.avg,cycle,28.23
+bfs,1,"Kernel2(bool *, bool *, bool *, bool *, int)",sm__cycles_elapsed.avg,cycle,2630.2
+bfs,2,"Kernel(Node *, int *, bool *, bool *, bool *, int *, int)",sm__cycles_active.avg,cycle,49.48
+bfs,2,"Kernel(Node *, int *, bool *, bool *, bool *, int *, int)",sm__cycles_elapsed.avg,cycle,3459.0
+bfs,3,"Kernel2(bool *, bool *, bool *, bool *, int)",sm__cycles_active.avg,cycle,21.48
+bfs,3,"Kernel2(bool *, bool *, bool *, bool *, int)",sm__cycles_elapsed.avg,cycle,2398.8
+bfs,4,"Kernel(Node *, int *, bool *, bool *, bool *, int *, int)",sm__cycles_active.avg,cycle,48.12
+bfs,4,"Kernel(Node *, int *, bool *, bool *, bool *, int *, int)",sm__cycles_elapsed.avg,cycle,3413.4
+bfs,5,"Kernel2(bool *, bool *, bool *, bool *, int)",sm__cycles_active.avg,cycle,21.43
+bfs,5,"Kernel2(bool *, bool *, bool *, bool *, int)",sm__cycles_elapsed.avg,cycle,2954.0
+bfs,6,"Kernel(Node *, int *, bool *, bool *, bool *, int *, int)",sm__cycles_active.avg,cycle,27.07
+bfs,6,"Kernel(Node *, int *, bool *, bool *, bool *, int *, int)",sm__cycles_elapsed.avg,cycle,2584.6
+bfs,7,"Kernel2(bool *, bool *, bool *, bool *, int)",sm__cycles_active.avg,cycle,20.18
+bfs,7,"Kernel2(bool *, bool *, bool *, bool *, int)",sm__cycles_elapsed.avg,cycle,2607.4
+lavamd,0,"kernel_gpu_cuda(par_str, dim_str, box_str *, FOUR_VECTOR *, double *, FOUR_VECTOR *)",sm__cycles_active.avg,cycle,6192.05
+lavamd,0,"kernel_gpu_cuda(par_str, dim_str, box_str *, FOUR_VECTOR *, double *, FOUR_VECTOR *)",sm__cycles_elapsed.avg,cycle,249301.0
+particlefilter,0,"kernel(double *, double *, double *, double *, double *, double *, int)",sm__cycles_active.avg,cycle,53.27
+particlefilter,0,"kernel(double *, double *, double *, double *, double *, double *, int)",sm__cycles_elapsed.avg,cycle,3761.2
+kmeans,0,"invert_mapping(float *, float *, int, int)",sm__cycles_active.avg,cycle,39.35
+kmeans,0,"invert_mapping(float *, float *, int, int)",sm__cycles_elapsed.avg,cycle,3196.4
+kmeans,1,"kmeansPoint(float *, int, int, int, int *, float *, float *, int *)",sm__cycles_active.avg,cycle,36.5
+kmeans,1,"kmeansPoint(float *, int, int, int, int *, float *, float *, int *)",sm__cycles_elapsed.avg,cycle,2942.2
+kmeans,2,"kmeansPoint(float *, int, int, int, int *, float *, float *, int *)",sm__cycles_active.avg,cycle,25.32
+kmeans,2,"kmeansPoint(float *, int, int, int, int *, float *, float *, int *)",sm__cycles_elapsed.avg,cycle,2484.6
+btree,0,findK,sm__cycles_active.avg,cycle,50.2
+btree,0,findK,sm__cycles_elapsed.avg,cycle,3682.2

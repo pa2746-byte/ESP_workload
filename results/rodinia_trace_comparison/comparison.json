@@ -1,0 +1,39 @@
+{
+  "source_revision": "4106565d567f39851e0371ab07a4efdeaf3fd3d2",
+  "manifest_hashes_match": true,
+  "workloads": {
+    "nn": {
+      "trace_nodes": 3,
+      "trace_edges": 2,
+      "clang_nodes": 4,
+      "clang_edges": 3,
+      "grouped_clang_nodes": 3,
+      "grouped_clang_edges": 2,
+      "kernel_us": [
+        2.336
+      ],
+      "copy_bytes": 6156,
+      "gpu_active_us": 5.504,
+      "first_to_last_gpu_event_us": 136.159,
+      "checks": "source hashes, kernel names/counts, grid/block dimensions, copy directions/bytes and dependency-order consistency passed",
+      "sqlite_sha256": "9e71e38115fb54fa78e0ede933b21502c45a2cde4f6ab541393c8cf3a600c4a5"
+    },
+    "hotspot3d": {
+      "trace_nodes": 5,
+      "trace_edges": 4,
+      "clang_nodes": 9,
+      "clang_edges": 11,
+      "grouped_clang_nodes": 5,
+      "grouped_clang_edges": 6,
+      "kernel_us": [
+        3.104,
+        2.816
+      ],
+      "copy_bytes": 147456,
+      "gpu_active_us": 25.152,
+      "first_to_last_gpu_event_us": 238.429,
+      "checks": "source hashes, kernel names/counts, grid/block dimensions, copy directions/bytes and dependency-order consistency passed",
+      "sqlite_sha256": "15525f86e40550d548e4272d87724cb545131b7368afdfc404e494db99c38168"
+    }
+  }
+}

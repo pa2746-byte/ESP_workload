@@ -1,0 +1,289 @@
+{
+  "workload": "pathfinder",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/rodinia/pathfinder/pathfinder.cu",
+  "source_sha256": "b1084864b2efc0b487f97463b055b809690aa948bf0308d1574d00788f8b3cff",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "gpuResult[0]",
+      "stage": "upload",
+      "operation_id": 0,
+      "stream": "default",
+      "ordered_after_operations": [],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "buffer": "gpuWall",
+      "stage": "upload",
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ],
+      "byte_ranges": [
+        [
+          0,
+          256
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "buffer": "gpuResult[0]",
+      "stage": "dynproc_kernel:read",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "buffer": "gpuWall",
+      "stage": "dynproc_kernel:read",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          0,
+          128
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "buffer": "gpuResult[1]",
+      "stage": "dynproc_kernel:write",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "buffer": "gpuResult[1]",
+      "stage": "dynproc_kernel:read",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "buffer": "gpuWall",
+      "stage": "dynproc_kernel:read",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          128,
+          256
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "buffer": "gpuResult[0]",
+      "stage": "dynproc_kernel:write",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "buffer": "gpuResult[0]",
+      "stage": "download",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique byte footprints per kernel; byte_ranges in metadata are half-open intervals, not measured memory traffic.",
+    "Edges express overlapping-region RAW/WAR/WAW dependencies and conservative kernel input-to-output readiness, not stream execution order.",
+    "Stream/event ordering is checked for conflicting buffer accesses; metadata records operation ordering, not timing.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies.",
+    "Host input parsing/loading and CPU result selection use explicit, source-hash-checked summaries; they are not executed.",
+    "Device properties are configured assumptions, not measurements; bounded kernel address evaluation requires no GPU.",
+    "Device values remain unknown; data-dependent control/indexing and cross-thread read/write races are rejected.",
+    "Shared-array bounds are checked but contents remain unknown; shared transfers, initialization, races, and barrier correctness are not modeled. Global footprints assume valid kernel synchronization."
+  ],
+  "configured_analysis": {
+    "configuration": {
+      "version": 1,
+      "parameters": {
+        "rows": 5,
+        "cols": 16,
+        "pyramid": 2
+      },
+      "arguments": [
+        {
+          "parameter": "cols"
+        },
+        {
+          "parameter": "rows"
+        },
+        {
+          "parameter": "pyramid"
+        }
+      ],
+      "analyzed_functions": [
+        "run",
+        "calc_path"
+      ],
+      "dependency_granularity": "byte_regions",
+      "shared_memory": "opaque_values",
+      "device": {
+        "ordinal": 0,
+        "max_grid_size": [
+          65535,
+          65535,
+          65535
+        ],
+        "max_threads_per_block": 1024,
+        "free_memory_bytes": 1073741824,
+        "total_memory_bytes": 2147483648,
+        "device_count": 1
+      },
+      "max_enumerated_threads": 65536,
+      "max_loop_iterations": 1024,
+      "host_summaries": {
+        "init": {
+          "globals": {
+            "rows": {
+              "parameter": "rows"
+            },
+            "cols": {
+              "parameter": "cols"
+            },
+            "pyramid_height": {
+              "parameter": "pyramid"
+            },
+            "data": {
+              "shape": [
+                {
+                  "parameter": "rows"
+                },
+                {
+                  "parameter": "cols"
+                }
+              ]
+            },
+            "result": {
+              "shape": [
+                {
+                  "parameter": "cols"
+                }
+              ]
+            },
+            "wall": {
+              "opaque_host_pointer": true
+            }
+          },
+          "body_sha256": "69d8e05a77eec77f0b811ef4808af83cf9dbe2058218fe247b2ef7639800d119"
+        }
+      },
+      "preprocessor_sha256": "d693b294214c8c8b88b02db9d15d7626c9df0f4a0be28e81f2dd03e7a80b0010"
+    },
+    "launches": [
+      {
+        "kernel": "dynproc_kernel",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          256,
+          1,
+          1
+        ],
+        "enumerated_threads": 256
+      },
+      {
+        "kernel": "dynproc_kernel",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          256,
+          1,
+          1
+        ],
+        "enumerated_threads": 256
+      }
+    ],
+    "source_units": {
+      "pathfinder.cu": "b1084864b2efc0b487f97463b055b809690aa948bf0308d1574d00788f8b3cff"
+    },
+    "used_host_summaries": [
+      "init"
+    ]
+  }
+}

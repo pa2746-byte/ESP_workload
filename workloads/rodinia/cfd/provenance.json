@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/yuhc/gpu-rodinia",
+  "revision": "9c10d3ea16ddba2ba057cc3951a9efc4c2cc18a4",
+  "upstream_directory": "cuda/cfd",
+  "adaptation": "Guard iterations macro with #ifndef; original default 2000 retained.",
+  "sha256": {
+    "euler3d.cu": "2497f2dad6fa5c21773be216abfea4f6f92f370953ea3a000a54b24ab412d9f1"
+  }
+}

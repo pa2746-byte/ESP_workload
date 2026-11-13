@@ -1,0 +1,42 @@
+{
+  "model": "Clang graph grouped by operation; no timing inference",
+  "nodes": [
+    {
+      "id": 0,
+      "label": "upload d_locations",
+      "detail": "t0 \u00b7 4,104 B",
+      "logical_nodes": [
+        0
+      ]
+    },
+    {
+      "id": 1,
+      "label": "euclid",
+      "detail": "t1, t2",
+      "logical_nodes": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": 2,
+      "label": "download d_distances",
+      "detail": "t3 \u00b7 2,052 B",
+      "logical_nodes": [
+        3
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": 0,
+      "target": 1,
+      "kind": "source_buffer_dependency"
+    },
+    {
+      "source": 1,
+      "target": 2,
+      "kind": "source_buffer_dependency"
+    }
+  ]
+}

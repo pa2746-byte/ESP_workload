@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "parameters": {},
+  "arguments": [
+    "chain4.txt"
+  ],
+  "analyzed_functions": [
+    "BFSGraph"
+  ],
+  "additional_sources": [
+    "kernel.cu",
+    "kernel2.cu"
+  ],
+  "scalar_device_functions": [],
+  "lexical_scopes": true,
+  "host_memory": "opaque_values",
+  "shared_memory": "opaque_values",
+  "dependency_granularity": "byte_regions",
+  "device": {
+    "ordinal": 0,
+    "max_grid_size": [
+      65535,
+      65535,
+      65535
+    ],
+    "max_threads_per_block": 1024,
+    "free_memory_bytes": 1073741824,
+    "total_memory_bytes": 2147483648
+  },
+  "max_enumerated_threads": 65536,
+  "max_loop_iterations": 1024,
+  "preprocessor_sha256": "f5b5f2936884017a95e8c583ba6fa91053ca8906af5aafffecc5fbdee79f0e46",
+  "additional_preprocessor_sha256": {
+    "kernel.cu": "4267fa1a6423b9f43de003e5e93bab103cb567282a9892917a6ac180680e8768",
+    "kernel2.cu": "0780f6ca7e33d7ffa5bebfd5c4e97a1aa91f4ee8621c56065c54dc06c33e2149"
+  },
+  "known_integer_inputs": false,
+  "host_dependencies": true,
+  "host_summaries": {},
+  "integer_state": true,
+  "allow_process_exit_allocations": true,
+  "input_files": {
+    "chain4.txt": "810a65fca8116e7fba98ee05cd1dec7f854f720957277e3bb39d5a4a421620c9"
+  },
+  "mutable_scalar_globals": [
+    "no_of_nodes",
+    "edge_list_size"
+  ],
+  "mutable_file_globals": [
+    "fp"
+  ],
+  "checked_block_barriers": true
+}

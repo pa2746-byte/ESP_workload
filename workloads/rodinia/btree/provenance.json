@@ -1,0 +1,23 @@
+{
+  "repository": "https://github.com/yuhc/gpu-rodinia",
+  "revision": "9c10d3ea16ddba2ba057cc3951a9efc4c2cc18a4",
+  "upstream_directory": "cuda/b+tree",
+  "adaptation": "Dereference commandPointer in newline comparisons; see README.",
+  "sha256": {
+    "main.h": "dbb0827e3aba52d0e5f303e627945ae00fafb2fb19ba96d998086453a166a435",
+    "common.h": "e2b24b975dfe882021fcc762bec9145e210e1c15500ca3b0a99f2267624025d7",
+    "main.c": "7643208648408cb33703af27c0afa52d29223b5f2de13b1bf808676a1974736a",
+    "kernel/kernel_gpu_cuda_2.cu": "7b2da2312b0b7c38f6c83a5cb8a8ae5394be155f7d7dc6373a1d2b7b72267daa",
+    "kernel/kernel_gpu_cuda_wrapper_2.h": "32ada607570732865d1ea8d22d593fe1d3c293553250f1e0b2b7844f12ba2568",
+    "kernel/kernel_gpu_cuda_wrapper.cu": "2f0715c4bf8f2bfad9ba143e0fa550b4c5d0b7fa7256a88bf665806bd453193b",
+    "kernel/kernel_gpu_cuda.cu": "4c79bdc48cc5bc03612e703ac86f13e190f7f5f3b6b1f32616447a12113fefb7",
+    "kernel/kernel_gpu_cuda_wrapper.h": "1b892992d1da45c6db349c08d49500aea6931e801048f29509fa5deada7bf60e",
+    "kernel/kernel_gpu_cuda_wrapper_2.cu": "4b6706e7071a5ce5faaf9f4657e72cdbfe015093ac78574d5b787daaacc4e572",
+    "util/cuda/cuda.h": "6c0075b4bebd7f4b40fe1ab743527f6ec32ec9fe3e3e3cb8172a825828338c13",
+    "util/cuda/cuda.cu": "b07ee56dcf78ba69f874db067c0911f8ddf99437d33196295d43e4b85a452ea5",
+    "util/timer/timer.c": "e437daf303ba449ff7f097ef4dbfb1bdb2248e4347baecfc7e063f017a252620",
+    "util/timer/timer.h": "af63ed78358a92b7701d2a46bab3078f11ae47a561ae3216dab8253b2b0ed5f3",
+    "util/num/num.h": "c3cc840f5446c0065ac3d59566b9acb1db6fb0252d5d1b26a01b597596841d3f",
+    "util/num/num.c": "5cabf5d35263b1d059d5b586bb995c02327e24d8f9ab4ae9eb45151badaf5c45"
+  }
+}

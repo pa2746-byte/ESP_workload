@@ -1,0 +1,19 @@
+{
+  "repository": "https://github.com/yuhc/gpu-rodinia",
+  "revision": "9c10d3ea16ddba2ba057cc3951a9efc4c2cc18a4",
+  "upstream_directory": "cuda/lavaMD",
+  "adaptation": "None in vendored source; GPU-build compatibility changes are recorded separately.",
+  "sha256": {
+    "main.h": "1242c89965144f3e1a9597731209f961840de659082e9c75376d2f72d6ad5ec1",
+    "main.c": "9a3f73ab16fc40d8a27e926096cbb73013f570b01f1f5fc7b9cc6802185a12a7",
+    "kernel/kernel_gpu_cuda_wrapper.cu": "e30ad2fa7624cb7adfd8ad9a41b6e71a7ef2069395851db817c21e3b53c62cdb",
+    "kernel/kernel_gpu_cuda.cu": "4ef60591c16b61b60b1ca5ce10e8e3f31210172c05f0dc12605384d7c83347df",
+    "kernel/kernel_gpu_cuda_wrapper.h": "915682addb4e367a62ee255403cd67d8ece8c261c9f102706edb76ccacc4508d",
+    "util/timer/timer.c": "e437daf303ba449ff7f097ef4dbfb1bdb2248e4347baecfc7e063f017a252620",
+    "util/timer/timer.h": "9b767511c1e31cbcdbdcdc6c44e59e857d2e38e96dfc7b0010657f37518eb6de",
+    "util/num/num.h": "c3cc840f5446c0065ac3d59566b9acb1db6fb0252d5d1b26a01b597596841d3f",
+    "util/num/num.c": "5cabf5d35263b1d059d5b586bb995c02327e24d8f9ab4ae9eb45151badaf5c45",
+    "util/device/device.cu": "f1a37115424a55035b1681e424982d688e514e5b505736a919dbdfe77e169c2e",
+    "util/device/device.h": "7edba1318563df4f2d2a3c160eadf9c29103ea9edee13f1a8125bc7fd678fda8"
+  }
+}

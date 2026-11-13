@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "parameters": {
+    "dimension": 32,
+    "penalty": 10
+  },
+  "arguments": [
+    {
+      "parameter": "dimension"
+    },
+    {
+      "parameter": "penalty"
+    }
+  ],
+  "analyzed_functions": [
+    "runTest"
+  ],
+  "additional_sources": [
+    "needle_kernel.cu",
+    "needle.h"
+  ],
+  "scalar_device_functions": [
+    "maximum"
+  ],
+  "lexical_scopes": true,
+  "host_memory": "opaque_values",
+  "shared_memory": "opaque_values",
+  "dependency_granularity": "byte_regions",
+  "device": {
+    "ordinal": 0,
+    "max_grid_size": [
+      65535,
+      65535,
+      65535
+    ],
+    "max_threads_per_block": 1024,
+    "free_memory_bytes": 1073741824,
+    "total_memory_bytes": 2147483648
+  },
+  "max_enumerated_threads": 65536,
+  "max_loop_iterations": 1024,
+  "preprocessor_sha256": "0359c47cf7c9f9e8832c5857a965fcd7c183f0415482c9fcc2d3a25acadf8185",
+  "additional_preprocessor_sha256": {
+    "needle_kernel.cu": "7b29607b74de25e4c40b2491842078a6e43f499ca7848f07346d4594c3b1948c",
+    "needle.h": "0981985a755a47bc0e9ca05f5ea2b85e84b9c6f3d167793e858ee01fb2b9261e"
+  }
+}

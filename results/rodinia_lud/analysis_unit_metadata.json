@@ -1,0 +1,875 @@
+{
+  "workload": "analysis_unit",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/rodinia/lud/analysis_unit.cu",
+  "source_sha256": "4ac947fe6ef9141fb3169cd69e0e9d492040c30bd769219304c3c1ea75f13ef6",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "d_m",
+      "stage": "upload",
+      "operation_id": 0,
+      "stream": "default",
+      "ordered_after_operations": [],
+      "byte_ranges": [
+        [
+          0,
+          4096
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "buffer": "d_m",
+      "stage": "lud_diagonal:read",
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ],
+        [
+          128,
+          192
+        ],
+        [
+          256,
+          320
+        ],
+        [
+          384,
+          448
+        ],
+        [
+          512,
+          576
+        ],
+        [
+          640,
+          704
+        ],
+        [
+          768,
+          832
+        ],
+        [
+          896,
+          960
+        ],
+        [
+          1024,
+          1088
+        ],
+        [
+          1152,
+          1216
+        ],
+        [
+          1280,
+          1344
+        ],
+        [
+          1408,
+          1472
+        ],
+        [
+          1536,
+          1600
+        ],
+        [
+          1664,
+          1728
+        ],
+        [
+          1792,
+          1856
+        ],
+        [
+          1920,
+          1984
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "buffer": "d_m",
+      "stage": "lud_diagonal:write",
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ],
+      "byte_ranges": [
+        [
+          128,
+          192
+        ],
+        [
+          256,
+          320
+        ],
+        [
+          384,
+          448
+        ],
+        [
+          512,
+          576
+        ],
+        [
+          640,
+          704
+        ],
+        [
+          768,
+          832
+        ],
+        [
+          896,
+          960
+        ],
+        [
+          1024,
+          1088
+        ],
+        [
+          1152,
+          1216
+        ],
+        [
+          1280,
+          1344
+        ],
+        [
+          1408,
+          1472
+        ],
+        [
+          1536,
+          1600
+        ],
+        [
+          1664,
+          1728
+        ],
+        [
+          1792,
+          1856
+        ],
+        [
+          1920,
+          1984
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "buffer": "d_m",
+      "stage": "lud_perimeter:read",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          0,
+          2112
+        ],
+        [
+          2176,
+          2240
+        ],
+        [
+          2304,
+          2368
+        ],
+        [
+          2432,
+          2496
+        ],
+        [
+          2560,
+          2624
+        ],
+        [
+          2688,
+          2752
+        ],
+        [
+          2816,
+          2880
+        ],
+        [
+          2944,
+          3008
+        ],
+        [
+          3072,
+          3136
+        ],
+        [
+          3200,
+          3264
+        ],
+        [
+          3328,
+          3392
+        ],
+        [
+          3456,
+          3520
+        ],
+        [
+          3584,
+          3648
+        ],
+        [
+          3712,
+          3776
+        ],
+        [
+          3840,
+          3904
+        ],
+        [
+          3968,
+          4032
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "buffer": "d_m",
+      "stage": "lud_perimeter:write",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          192,
+          256
+        ],
+        [
+          320,
+          384
+        ],
+        [
+          448,
+          512
+        ],
+        [
+          576,
+          640
+        ],
+        [
+          704,
+          768
+        ],
+        [
+          832,
+          896
+        ],
+        [
+          960,
+          1024
+        ],
+        [
+          1088,
+          1152
+        ],
+        [
+          1216,
+          1280
+        ],
+        [
+          1344,
+          1408
+        ],
+        [
+          1472,
+          1536
+        ],
+        [
+          1600,
+          1664
+        ],
+        [
+          1728,
+          1792
+        ],
+        [
+          1856,
+          1920
+        ],
+        [
+          1984,
+          2112
+        ],
+        [
+          2176,
+          2240
+        ],
+        [
+          2304,
+          2368
+        ],
+        [
+          2432,
+          2496
+        ],
+        [
+          2560,
+          2624
+        ],
+        [
+          2688,
+          2752
+        ],
+        [
+          2816,
+          2880
+        ],
+        [
+          2944,
+          3008
+        ],
+        [
+          3072,
+          3136
+        ],
+        [
+          3200,
+          3264
+        ],
+        [
+          3328,
+          3392
+        ],
+        [
+          3456,
+          3520
+        ],
+        [
+          3584,
+          3648
+        ],
+        [
+          3712,
+          3776
+        ],
+        [
+          3840,
+          3904
+        ],
+        [
+          3968,
+          4032
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "buffer": "d_m",
+      "stage": "lud_internal:read",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          64,
+          128
+        ],
+        [
+          192,
+          256
+        ],
+        [
+          320,
+          384
+        ],
+        [
+          448,
+          512
+        ],
+        [
+          576,
+          640
+        ],
+        [
+          704,
+          768
+        ],
+        [
+          832,
+          896
+        ],
+        [
+          960,
+          1024
+        ],
+        [
+          1088,
+          1152
+        ],
+        [
+          1216,
+          1280
+        ],
+        [
+          1344,
+          1408
+        ],
+        [
+          1472,
+          1536
+        ],
+        [
+          1600,
+          1664
+        ],
+        [
+          1728,
+          1792
+        ],
+        [
+          1856,
+          1920
+        ],
+        [
+          1984,
+          4096
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "buffer": "d_m",
+      "stage": "lud_internal:write",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          2112,
+          2176
+        ],
+        [
+          2240,
+          2304
+        ],
+        [
+          2368,
+          2432
+        ],
+        [
+          2496,
+          2560
+        ],
+        [
+          2624,
+          2688
+        ],
+        [
+          2752,
+          2816
+        ],
+        [
+          2880,
+          2944
+        ],
+        [
+          3008,
+          3072
+        ],
+        [
+          3136,
+          3200
+        ],
+        [
+          3264,
+          3328
+        ],
+        [
+          3392,
+          3456
+        ],
+        [
+          3520,
+          3584
+        ],
+        [
+          3648,
+          3712
+        ],
+        [
+          3776,
+          3840
+        ],
+        [
+          3904,
+          3968
+        ],
+        [
+          4032,
+          4096
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "buffer": "d_m",
+      "stage": "lud_diagonal:read",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          2112,
+          2176
+        ],
+        [
+          2240,
+          2304
+        ],
+        [
+          2368,
+          2432
+        ],
+        [
+          2496,
+          2560
+        ],
+        [
+          2624,
+          2688
+        ],
+        [
+          2752,
+          2816
+        ],
+        [
+          2880,
+          2944
+        ],
+        [
+          3008,
+          3072
+        ],
+        [
+          3136,
+          3200
+        ],
+        [
+          3264,
+          3328
+        ],
+        [
+          3392,
+          3456
+        ],
+        [
+          3520,
+          3584
+        ],
+        [
+          3648,
+          3712
+        ],
+        [
+          3776,
+          3840
+        ],
+        [
+          3904,
+          3968
+        ],
+        [
+          4032,
+          4096
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "buffer": "d_m",
+      "stage": "lud_diagonal:write",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          2240,
+          2304
+        ],
+        [
+          2368,
+          2432
+        ],
+        [
+          2496,
+          2560
+        ],
+        [
+          2624,
+          2688
+        ],
+        [
+          2752,
+          2816
+        ],
+        [
+          2880,
+          2944
+        ],
+        [
+          3008,
+          3072
+        ],
+        [
+          3136,
+          3200
+        ],
+        [
+          3264,
+          3328
+        ],
+        [
+          3392,
+          3456
+        ],
+        [
+          3520,
+          3584
+        ],
+        [
+          3648,
+          3712
+        ],
+        [
+          3776,
+          3840
+        ],
+        [
+          3904,
+          3968
+        ],
+        [
+          4032,
+          4096
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "buffer": "d_m",
+      "stage": "download",
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4096
+        ]
+      ]
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique byte footprints per kernel; byte_ranges in metadata are half-open intervals, not measured memory traffic.",
+    "Edges express overlapping-region RAW/WAR/WAW dependencies and conservative kernel input-to-output readiness, not stream execution order.",
+    "Stream/event ordering is checked for conflicting buffer accesses; metadata records operation ordering, not timing.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies.",
+    "Host input parsing/loading and CPU result selection use explicit, source-hash-checked summaries; they are not executed.",
+    "Device properties are configured assumptions, not measurements; bounded kernel address evaluation requires no GPU.",
+    "Device values remain unknown; data-dependent control/indexing and cross-thread read/write races are rejected.",
+    "Host numeric array contents and random initialization remain unknown. Host allocation sizes and scalar control flow are evaluated; CPU numerical correctness is not validated.",
+    "Shared-array bounds are checked but contents remain unknown; shared transfers, initialization, races, and barrier correctness are not modeled. Global footprints assume valid kernel synchronization."
+  ],
+  "configured_analysis": {
+    "configuration": {
+      "version": 1,
+      "parameters": {
+        "dimension": 32
+      },
+      "arguments": [
+        "-s",
+        {
+          "parameter": "dimension"
+        }
+      ],
+      "analyzed_functions": [
+        "lud_cuda"
+      ],
+      "additional_sources": [
+        "lud.cu",
+        "lud_kernel.cu",
+        "common.c",
+        "common.h"
+      ],
+      "scalar_device_functions": [],
+      "lexical_scopes": true,
+      "host_memory": "opaque_values",
+      "shared_memory": "opaque_values",
+      "dependency_granularity": "byte_regions",
+      "device": {
+        "ordinal": 0,
+        "max_grid_size": [
+          65535,
+          65535,
+          65535
+        ],
+        "max_threads_per_block": 1024,
+        "free_memory_bytes": 1073741824,
+        "total_memory_bytes": 2147483648
+      },
+      "max_enumerated_threads": 65536,
+      "max_loop_iterations": 1024,
+      "preprocessor_sha256": "e4b4fc7494136223c7fd394071b6d56e5d9c172a1f5d3bb28d43e03acc3f3e26",
+      "additional_preprocessor_sha256": {
+        "lud.cu": "7ae913657753e9d9ee0c50074c0edfacc65c0bb79e2d46818897c817aae04281",
+        "lud_kernel.cu": "3d35b062e1c2fafc813585f98b91dceb8d088f1255843c97a336013c31cec6ec",
+        "common.c": "13814a96cbf9a13021579cf585018c1fdf1c62efd6712176cc6d8242fa839090",
+        "common.h": "4c63254500a67862cf8c0ea60cea56d4e6c19519b1aa74a81c4468ef6795ce83"
+      },
+      "host_summaries": {
+        "stopwatch_start": {
+          "body_sha256": "ceb6b7c8397c7238102acde88d66793665de7849e751e004771c176ac712f96f"
+        },
+        "stopwatch_stop": {
+          "body_sha256": "fdcc59786b8606ea305fdf2b509e5182cbb0724dd09451586776792e6f031d3c"
+        },
+        "get_interval_by_sec": {
+          "body_sha256": "8c0ba3c7b336e9fb0ff00409b9eaee62620dd342184e9de74305b72944280e1a"
+        },
+        "create_matrix": {
+          "body_sha256": "b9d41951f72e852fbfd4ac781834cad78ef8a317e4c21ff5a946d685c87ebc46",
+          "requires": {
+            "1": {
+              "parameter": "dimension"
+            }
+          },
+          "buffers": {
+            "0": {
+              "base": "float",
+              "shape": [
+                {
+                  "parameter": "dimension"
+                },
+                {
+                  "parameter": "dimension"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "launches": [
+      {
+        "kernel": "lud_diagonal",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          16,
+          1,
+          1
+        ],
+        "enumerated_threads": 16
+      },
+      {
+        "kernel": "lud_perimeter",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          32,
+          1,
+          1
+        ],
+        "enumerated_threads": 32
+      },
+      {
+        "kernel": "lud_internal",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          16,
+          16,
+          1
+        ],
+        "enumerated_threads": 256
+      },
+      {
+        "kernel": "lud_diagonal",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          16,
+          1,
+          1
+        ],
+        "enumerated_threads": 16
+      }
+    ],
+    "source_units": {
+      "analysis_unit.cu": "4ac947fe6ef9141fb3169cd69e0e9d492040c30bd769219304c3c1ea75f13ef6",
+      "lud.cu": "3ba16a146cd8d983c457bdedc3848a6050827607e287242febcb089da428b248",
+      "lud_kernel.cu": "fe3d0a5f06c82947f54cbf6fd9a75342b61263808a1587ead929fc3f8763fdc0",
+      "common.c": "8a6cca89c03be97a690a5fc0a657810dabd451e86c34bf97857785a36eb28e5c",
+      "common.h": "0526fd93029daaa35710172fed29c97552f518bf77d2122870f3a763c0adf0eb"
+    },
+    "used_host_summaries": [
+      "create_matrix",
+      "get_interval_by_sec",
+      "stopwatch_start",
+      "stopwatch_stop"
+    ]
+  }
+}

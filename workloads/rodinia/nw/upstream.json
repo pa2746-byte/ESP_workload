@@ -1,0 +1,10 @@
+{
+  "repository": "https://github.com/yuhc/gpu-rodinia",
+  "revision": "9c10d3ea16ddba2ba057cc3951a9efc4c2cc18a4",
+  "directory": "cuda/nw",
+  "sha256": {
+    "needle.cu": "ff37b5e6969b6f8a3fe812b5d0bb65c0958b6c51b89f41f38fb05ec420a385f1",
+    "needle_kernel.cu": "5d1e9448b2ce90b7f0acbbde1289a95108e3480ea6772fba768a985a01914f0c",
+    "needle.h": "38ffaf31b59432e204dff8b22e10ada572c18eae27abfd0a82ea3f08b178b180"
+  }
+}

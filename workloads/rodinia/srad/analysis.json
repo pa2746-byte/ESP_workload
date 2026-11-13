@@ -1,0 +1,88 @@
+{
+  "version": 1,
+  "parameters": {
+    "rows": 4,
+    "cols": 4,
+    "iterations": 2
+  },
+  "arguments": [
+    {
+      "parameter": "iterations"
+    },
+    "0.5",
+    {
+      "parameter": "rows"
+    },
+    {
+      "parameter": "cols"
+    }
+  ],
+  "analyzed_functions": [],
+  "additional_sources": [
+    "compress_kernel.cu",
+    "define.c",
+    "device.c",
+    "extract_kernel.cu",
+    "graphics.c",
+    "prepare_kernel.cu",
+    "reduce_kernel.cu",
+    "resize.c",
+    "srad2_kernel.cu",
+    "srad_kernel.cu",
+    "timer.c"
+  ],
+  "scalar_device_functions": [],
+  "lexical_scopes": true,
+  "host_memory": "opaque_values",
+  "shared_memory": "opaque_values",
+  "dependency_granularity": "byte_regions",
+  "device": {
+    "ordinal": 0,
+    "max_grid_size": [
+      65535,
+      65535,
+      65535
+    ],
+    "max_threads_per_block": 1024,
+    "free_memory_bytes": 1073741824,
+    "total_memory_bytes": 2147483648
+  },
+  "max_enumerated_threads": 65536,
+  "max_loop_iterations": 1024,
+  "preprocessor_sha256": "f69bbfd4b554d5ee43b0492c98dee4a3a614b6535c3ead8ceb4b2ea1cc5bd95b",
+  "additional_preprocessor_sha256": {
+    "compress_kernel.cu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "define.c": "0b8b3580fc1fe405929adc6c692d4995440ac098f4bf356d21b912670e8b6f30",
+    "device.c": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "extract_kernel.cu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "graphics.c": "1e839e32685d525d4c1965f9ba99267582bb562cbb1d9eba94b1c8058cde2f2e",
+    "prepare_kernel.cu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "reduce_kernel.cu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "resize.c": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "srad2_kernel.cu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "srad_kernel.cu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "timer.c": "7dff3f3e82f08f45e3a271994e3e9031377ba302d88037a56d60d9398589f142"
+  },
+  "host_dependencies": true,
+  "known_integer_inputs": true,
+  "checked_block_barriers": true,
+  "opaque_scalar_branches": true,
+  "host_summaries": {
+    "write_graphics": {
+      "body_sha256": "98523c59c6a4492511d60531d5012338492ce31a340c8ba2008748f40aa0535a"
+    },
+    "read_graphics": {
+      "body_sha256": "2e22de5a1db4547777808cb6acb3797cebd5dad67015ac90ea7428b093b7a3dd"
+    },
+    "resize": {
+      "body_sha256": "a140ad58eafc098e43e3126eec681207e8d4be30fdca6b57ddf54668ecf57aaa"
+    },
+    "get_time": {
+      "body_sha256": "32d2c5df44932f24527074ff92cdfc86437bf2bb43d3f752479adc9e196e63f6",
+      "return_unknown": true
+    },
+    "checkCUDAError": {
+      "body_sha256": "ffa564bc0f62b8545c46b5fe96b583f35f7d97922fd2323e40dd0c543d6b68f9"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "repository": "https://github.com/yuhc/gpu-rodinia",
+  "revision": "9c10d3ea16ddba2ba057cc3951a9efc4c2cc18a4",
+  "upstream_directory": "cuda/backprop",
+  "adaptation": "None; source files unchanged.",
+  "sha256": {
+    "backprop.c": "3528b0256e55650908f4ff77fbdfa1e2bcbdb69237e5d343426652aa341ff70e",
+    "backprop_cuda_kernel.cu": "6014d0467a0c2e91896aa4d55a0c42a15c0e6619359fc4905615ef6706e4590d",
+    "backprop.h": "5b6ce5b8434b6217cb49e536e9eaebfc281f0b1a76afbda95fe5c3cbea449d7f",
+    "imagenet.c": "c3b48529cb45eaff4136a54ba5b01c29dcedf9c2de8c79c2813b34ef8a174323",
+    "facetrain.c": "5a1c324735b4eb7ff08d6b488134a8e66b5aaddcd4168623803ccbb96c8dd293",
+    "backprop_cuda.cu": "1bd966c36f6277d8d0246a5411e734e69e96050532303e40c5253e06b76d6383"
+  }
+}

@@ -1,5 +1,10 @@
 # CUDA Workload + Nsight Dataflow Workflow Log
 
+> Archive note (September 23, 2026): February–April result files have moved to
+> `past graphs from nsight/`, preserving their filenames and `graph_img/`
+> subdirectory. Commands below are historical; prefix archived input paths
+> with that directory when reusing them. Source files and tools remain at root.
+
 This document captures all work completed so far, including iteration steps, command history, issues encountered, and fixes.
 
 ## Iteration 1: Create CUDA workloads

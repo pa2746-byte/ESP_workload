@@ -1,0 +1,2147 @@
+{
+  "workload": "main",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/rodinia/srad/main.cu",
+  "source_sha256": "7b9dd42ed57d554b34ce281eb1db5fddfec63ff9679c2c6e0f029d8d69f8c3e2",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "d_iN",
+      "stage": "upload",
+      "operation_id": 0,
+      "stream": "default",
+      "ordered_after_operations": [],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ],
+      "known_integer_values": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          12,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "buffer": "d_iS",
+      "stage": "upload",
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ],
+      "known_integer_values": [
+        [
+          0,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          12,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "buffer": "d_jE",
+      "stage": "upload",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ],
+      "known_integer_values": [
+        [
+          0,
+          1
+        ],
+        [
+          4,
+          2
+        ],
+        [
+          8,
+          3
+        ],
+        [
+          12,
+          3
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "buffer": "d_jW",
+      "stage": "upload",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ],
+      "known_integer_values": [
+        [
+          0,
+          0
+        ],
+        [
+          4,
+          0
+        ],
+        [
+          8,
+          1
+        ],
+        [
+          12,
+          2
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "buffer": "d_I",
+      "stage": "upload",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "buffer": "d_I",
+      "stage": "extract:read",
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "buffer": "d_I",
+      "stage": "extract:write",
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "buffer": "d_I",
+      "stage": "prepare:read",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "buffer": "d_sums",
+      "stage": "prepare:write",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "buffer": "d_sums2",
+      "stage": "prepare:write",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "buffer": "d_sums",
+      "stage": "reduce:read",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 11,
+      "buffer": "d_sums2",
+      "stage": "reduce:read",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 12,
+      "buffer": "d_sums",
+      "stage": "reduce:write",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 13,
+      "buffer": "d_sums2",
+      "stage": "reduce:write",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 14,
+      "buffer": "d_sums",
+      "stage": "download",
+      "operation_id": 8,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 15,
+      "buffer": "d_sums2",
+      "stage": "download",
+      "operation_id": 9,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 16,
+      "buffer": "d_I",
+      "stage": "srad:read",
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 17,
+      "buffer": "d_iN",
+      "stage": "srad:read",
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 18,
+      "buffer": "d_iS",
+      "stage": "srad:read",
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 19,
+      "buffer": "d_jE",
+      "stage": "srad:read",
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 20,
+      "buffer": "d_jW",
+      "stage": "srad:read",
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 21,
+      "buffer": "d_dN",
+      "stage": "srad:write",
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ],
+      "host_input_dependencies": [
+        14,
+        15
+      ]
+    },
+    {
+      "id": 22,
+      "buffer": "d_dS",
+      "stage": "srad:write",
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ],
+      "host_input_dependencies": [
+        14,
+        15
+      ]
+    },
+    {
+      "id": 23,
+      "buffer": "d_dW",
+      "stage": "srad:write",
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ],
+      "host_input_dependencies": [
+        14,
+        15
+      ]
+    },
+    {
+      "id": 24,
+      "buffer": "d_dE",
+      "stage": "srad:write",
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ],
+      "host_input_dependencies": [
+        14,
+        15
+      ]
+    },
+    {
+      "id": 25,
+      "buffer": "d_c",
+      "stage": "srad:write",
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ],
+      "host_input_dependencies": [
+        14,
+        15
+      ]
+    },
+    {
+      "id": 26,
+      "buffer": "d_I",
+      "stage": "srad2:read",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 27,
+      "buffer": "d_iS",
+      "stage": "srad2:read",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 28,
+      "buffer": "d_jE",
+      "stage": "srad2:read",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 29,
+      "buffer": "d_dN",
+      "stage": "srad2:read",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 30,
+      "buffer": "d_dS",
+      "stage": "srad2:read",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 31,
+      "buffer": "d_dW",
+      "stage": "srad2:read",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 32,
+      "buffer": "d_dE",
+      "stage": "srad2:read",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 33,
+      "buffer": "d_c",
+      "stage": "srad2:read",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 34,
+      "buffer": "d_I",
+      "stage": "srad2:write",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 35,
+      "buffer": "d_I",
+      "stage": "prepare:read",
+      "operation_id": 12,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 36,
+      "buffer": "d_sums",
+      "stage": "prepare:write",
+      "operation_id": 12,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 37,
+      "buffer": "d_sums2",
+      "stage": "prepare:write",
+      "operation_id": 12,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 38,
+      "buffer": "d_sums",
+      "stage": "reduce:read",
+      "operation_id": 13,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 39,
+      "buffer": "d_sums2",
+      "stage": "reduce:read",
+      "operation_id": 13,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 40,
+      "buffer": "d_sums",
+      "stage": "reduce:write",
+      "operation_id": 13,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 41,
+      "buffer": "d_sums2",
+      "stage": "reduce:write",
+      "operation_id": 13,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 42,
+      "buffer": "d_sums",
+      "stage": "download",
+      "operation_id": 14,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 43,
+      "buffer": "d_sums2",
+      "stage": "download",
+      "operation_id": 15,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 44,
+      "buffer": "d_I",
+      "stage": "srad:read",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 45,
+      "buffer": "d_iN",
+      "stage": "srad:read",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 46,
+      "buffer": "d_iS",
+      "stage": "srad:read",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 47,
+      "buffer": "d_jE",
+      "stage": "srad:read",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 48,
+      "buffer": "d_jW",
+      "stage": "srad:read",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 49,
+      "buffer": "d_dN",
+      "stage": "srad:write",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ],
+      "host_input_dependencies": [
+        42,
+        43
+      ]
+    },
+    {
+      "id": 50,
+      "buffer": "d_dS",
+      "stage": "srad:write",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ],
+      "host_input_dependencies": [
+        42,
+        43
+      ]
+    },
+    {
+      "id": 51,
+      "buffer": "d_dW",
+      "stage": "srad:write",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ],
+      "host_input_dependencies": [
+        42,
+        43
+      ]
+    },
+    {
+      "id": 52,
+      "buffer": "d_dE",
+      "stage": "srad:write",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ],
+      "host_input_dependencies": [
+        42,
+        43
+      ]
+    },
+    {
+      "id": 53,
+      "buffer": "d_c",
+      "stage": "srad:write",
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ],
+      "host_input_dependencies": [
+        42,
+        43
+      ]
+    },
+    {
+      "id": 54,
+      "buffer": "d_I",
+      "stage": "srad2:read",
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 55,
+      "buffer": "d_iS",
+      "stage": "srad2:read",
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 56,
+      "buffer": "d_jE",
+      "stage": "srad2:read",
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16
+        ]
+      ]
+    },
+    {
+      "id": 57,
+      "buffer": "d_dN",
+      "stage": "srad2:read",
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 58,
+      "buffer": "d_dS",
+      "stage": "srad2:read",
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 59,
+      "buffer": "d_dW",
+      "stage": "srad2:read",
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 60,
+      "buffer": "d_dE",
+      "stage": "srad2:read",
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 61,
+      "buffer": "d_c",
+      "stage": "srad2:read",
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 62,
+      "buffer": "d_I",
+      "stage": "srad2:write",
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 63,
+      "buffer": "d_I",
+      "stage": "compress:read",
+      "operation_id": 18,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 64,
+      "buffer": "d_I",
+      "stage": "compress:write",
+      "operation_id": 18,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    },
+    {
+      "id": 65,
+      "buffer": "d_I",
+      "stage": "download",
+      "operation_id": 19,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ]
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique byte footprints per kernel; byte_ranges in metadata are half-open intervals, not measured memory traffic.",
+    "Edges express overlapping-region RAW/WAR/WAW dependencies and conservative kernel input-to-output readiness, not stream execution order.",
+    "Stream/event ordering is checked for conflicting buffer accesses; metadata records operation ordering, not timing.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies.",
+    "Host input parsing/loading and CPU result selection use explicit, source-hash-checked summaries; they are not executed.",
+    "Device properties are configured assumptions, not measurements; bounded kernel address evaluation requires no GPU.",
+    "Device values remain unknown; data-dependent control/indexing and cross-thread read/write races are rejected.",
+    "Explicitly initialized or fixture-loaded integer index arrays are propagated through uploads; other device values remain unknown. This qualifies the unknown-index rejection above.",
+    "CPU-mediated dependencies are propagated conservatively per host buffer; CPU numerical values and latency are not simulated.",
+    "Block barrier participation and phases are checked for global-memory conflicts; shared-memory numerical correctness is not validated.",
+    "Unknown conditions may merge scalar-only local branches; hidden memory accesses and unknown address decisions remain unsupported.",
+    "Host numeric array contents and random initialization remain unknown. Host allocation sizes and scalar control flow are evaluated; CPU numerical correctness is not validated.",
+    "Shared-array bounds are checked but contents remain unknown; shared transfers, initialization, races, and barrier correctness are not modeled. Global footprints assume valid kernel synchronization."
+  ],
+  "configured_analysis": {
+    "configuration": {
+      "version": 1,
+      "parameters": {
+        "rows": 4,
+        "cols": 4,
+        "iterations": 2
+      },
+      "arguments": [
+        {
+          "parameter": "iterations"
+        },
+        "0.5",
+        {
+          "parameter": "rows"
+        },
+        {
+          "parameter": "cols"
+        }
+      ],
+      "analyzed_functions": [],
+      "additional_sources": [
+        "compress_kernel.cu",
+        "define.c",
+        "device.c",
+        "extract_kernel.cu",
+        "graphics.c",
+        "prepare_kernel.cu",
+        "reduce_kernel.cu",
+        "resize.c",
+        "srad2_kernel.cu",
+        "srad_kernel.cu",
+        "timer.c"
+      ],
+      "scalar_device_functions": [],
+      "lexical_scopes": true,
+      "host_memory": "opaque_values",
+      "shared_memory": "opaque_values",
+      "dependency_granularity": "byte_regions",
+      "device": {
+        "ordinal": 0,
+        "max_grid_size": [
+          65535,
+          65535,
+          65535
+        ],
+        "max_threads_per_block": 1024,
+        "free_memory_bytes": 1073741824,
+        "total_memory_bytes": 2147483648
+      },
+      "max_enumerated_threads": 65536,
+      "max_loop_iterations": 1024,
+      "preprocessor_sha256": "f69bbfd4b554d5ee43b0492c98dee4a3a614b6535c3ead8ceb4b2ea1cc5bd95b",
+      "additional_preprocessor_sha256": {
+        "compress_kernel.cu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "define.c": "0b8b3580fc1fe405929adc6c692d4995440ac098f4bf356d21b912670e8b6f30",
+        "device.c": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "extract_kernel.cu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "graphics.c": "1e839e32685d525d4c1965f9ba99267582bb562cbb1d9eba94b1c8058cde2f2e",
+        "prepare_kernel.cu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "reduce_kernel.cu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "resize.c": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "srad2_kernel.cu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "srad_kernel.cu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "timer.c": "7dff3f3e82f08f45e3a271994e3e9031377ba302d88037a56d60d9398589f142"
+      },
+      "host_dependencies": true,
+      "known_integer_inputs": true,
+      "checked_block_barriers": true,
+      "opaque_scalar_branches": true,
+      "host_summaries": {
+        "write_graphics": {
+          "body_sha256": "98523c59c6a4492511d60531d5012338492ce31a340c8ba2008748f40aa0535a"
+        },
+        "read_graphics": {
+          "body_sha256": "2e22de5a1db4547777808cb6acb3797cebd5dad67015ac90ea7428b093b7a3dd"
+        },
+        "resize": {
+          "body_sha256": "a140ad58eafc098e43e3126eec681207e8d4be30fdca6b57ddf54668ecf57aaa"
+        },
+        "get_time": {
+          "body_sha256": "32d2c5df44932f24527074ff92cdfc86437bf2bb43d3f752479adc9e196e63f6",
+          "return_unknown": true
+        },
+        "checkCUDAError": {
+          "body_sha256": "ffa564bc0f62b8545c46b5fe96b583f35f7d97922fd2323e40dd0c543d6b68f9"
+        }
+      }
+    },
+    "launches": [
+      {
+        "kernel": "extract",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          512,
+          1,
+          1
+        ],
+        "enumerated_threads": 512
+      },
+      {
+        "kernel": "prepare",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          512,
+          1,
+          1
+        ],
+        "enumerated_threads": 512
+      },
+      {
+        "kernel": "reduce",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          512,
+          1,
+          1
+        ],
+        "enumerated_threads": 512
+      },
+      {
+        "kernel": "srad",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          512,
+          1,
+          1
+        ],
+        "enumerated_threads": 512
+      },
+      {
+        "kernel": "srad2",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          512,
+          1,
+          1
+        ],
+        "enumerated_threads": 512
+      },
+      {
+        "kernel": "prepare",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          512,
+          1,
+          1
+        ],
+        "enumerated_threads": 512
+      },
+      {
+        "kernel": "reduce",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          512,
+          1,
+          1
+        ],
+        "enumerated_threads": 512
+      },
+      {
+        "kernel": "srad",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          512,
+          1,
+          1
+        ],
+        "enumerated_threads": 512
+      },
+      {
+        "kernel": "srad2",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          512,
+          1,
+          1
+        ],
+        "enumerated_threads": 512
+      },
+      {
+        "kernel": "compress",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          512,
+          1,
+          1
+        ],
+        "enumerated_threads": 512
+      }
+    ],
+    "source_units": {
+      "main.cu": "7b9dd42ed57d554b34ce281eb1db5fddfec63ff9679c2c6e0f029d8d69f8c3e2",
+      "compress_kernel.cu": "6343624f054900b23bbfcb31085b6bb3801c2706a1af1107ce845aecc362f4d9",
+      "define.c": "0ee5faefa693c924fe65b36d595528c6afb280d54744952ef978a5cab1bb7b6b",
+      "device.c": "2ce481400c22f1bbec0d13cea1fb8269c7aff5050deed72315c037bb9d782fbd",
+      "extract_kernel.cu": "94dc1329742b5b192001e83ef261e1f5ec811d05c3d1c5360d406c327800c23a",
+      "graphics.c": "6215d9c90d34d25eb7ec4de1987f7651ca19d6131f8aafbb43e82b9104aaf934",
+      "prepare_kernel.cu": "861337a2101ad23a8df6207d9d0d763d6f4bb0d0062c1342c8a9cf5a1cebad13",
+      "reduce_kernel.cu": "48dc76746fc5f83b030e88df3848cdb57059101a081d2d7deef43c9fff6c0634",
+      "resize.c": "df16a4f64835018caf1d015efbd9124db7f83574a8333ed85c40255845d399bc",
+      "srad2_kernel.cu": "2dfb3660fc1eed707ec0fcafdb21a7711479d61f78a28c33f05a5571d4d9db2a",
+      "srad_kernel.cu": "5739dfdc4cfcbed2bbf702757b01eebb2bc50b96d741d33a766344703c53897d",
+      "timer.c": "42c93cffa36dab6969bc3eb22721c475d69f3f199fab6a0221fe1d4f332b03a8"
+    },
+    "used_host_summaries": [
+      "checkCUDAError",
+      "get_time",
+      "read_graphics",
+      "resize",
+      "write_graphics"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+Start (ns),Duration (ns),CorrId,GrdX,GrdY,GrdZ,BlkX,BlkY,BlkZ,Reg/Trd,StcSMem (MB),DymSMem (MB),Bytes (MB),Throughput (MBps),SrcMemKd,DstMemKd,Device,Ctx,Strm,Name
+228102968,208097,122,None,None,None,None,None,None,None,None,None,4.194,20153.631,Pageable,Device,NVIDIA GeForce RTX 4080 SUPER (0),1,7,[CUDA memcpy HtoD]
+228371353,206338,123,None,None,None,None,None,None,None,None,None,4.194,20325.597,Pageable,Device,NVIDIA GeForce RTX 4080 SUPER (0),1,7,[CUDA memcpy HtoD]
+234996836,9696,124,4096,1,1,256,1,1,16,0.000,0.000,None,,None,None,NVIDIA GeForce RTX 4080 SUPER (0),1,7,"vectorAdd(const float *, const float *, float *, int)"
+235013125,5024,125,4096,1,1,256,1,1,16,0.000,0.000,None,,None,None,NVIDIA GeForce RTX 4080 SUPER (0),1,7,"scaleVector(const float *, float *, float, int)"
+235025829,444194,126,None,None,None,None,None,None,None,None,None,4.194,9441.378,Device,Pageable,NVIDIA GeForce RTX 4080 SUPER (0),1,7,[CUDA memcpy DtoH]
