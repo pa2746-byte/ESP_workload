@@ -212,12 +212,17 @@ def checked_call(stmt, funcs):
     return actual
 
 
-def parse_source(path, clang=None, defines=None):
+def parse_source(path, clang=None, defines=None, include_dirs=()):
     include = Path(__file__).parent / "source_analysis" / "include"
     command = [clang or os.environ.get("CLANGXX", "clang++"), "-x", "cuda", "--cuda-host-only",
-               "-nocudainc", "-nocudalib", "-I" + str(include),
+               "-nocudainc", "-nocudalib", "-Wno-reserved-user-defined-literal", "-I" + str(include),
                "-include", str(include / "cuda_runtime.h"), "-std=c++17", "-fsyntax-only",
                "-Xclang", "-ast-dump=json", str(path)]
+    for directory in include_dirs:
+        directory = Path(directory).resolve()
+        if not directory.is_dir():
+            raise UnsupportedSource(f"Include directory does not exist: {directory}")
+        command.insert(-1, "-I" + str(directory))
     for name, value in (defines or {}).items():
         if not re.fullmatch(r'[A-Za-z_][A-Za-z_0-9]*', name) or type(value) is not int:
             raise UnsupportedSource('Compile definitions must be named integer constants')

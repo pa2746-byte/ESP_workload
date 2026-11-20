@@ -1,0 +1,15 @@
+{
+  "repository": "https://github.com/yuhc/gpu-rodinia",
+  "revision": "9c10d3ea16ddba2ba057cc3951a9efc4c2cc18a4",
+  "upstream_directory": "cuda/streamcluster",
+  "status": "source imported; analyzer support pending",
+  "sha256": {
+    "Makefile": "5789a3df2bbdf4c0c20868302038dd902c0bea10cc5a13790a3436c3e5c6dfcf",
+    "streamcluster_cuda_cpu.cpp": "3e8a435af2552220fe143e2d8ad9c7efdad2c1a3927e08c3e79253e198631030",
+    "streamcluster_cuda.cu": "a2eff9aaa34e08ae48d2f6d3fd37683f90c14834af53b53831688a6f806c835c",
+    "Makefile_nvidia": "65d2a772368c6f80480ac9a5e59aa814ad4dff907d2d26914ad96bba5839f28a",
+    "run": "2d14bba219a40bb21c883222be02d0548d56c2c81a10bb28d869276df6469dae",
+    "streamcluster_original.cpp": "c866e17a85074018edafab94025e5a453d4c1ebe19fc9b3449c95bd3709d8298",
+    "streamcluster_header.cu": "e46d0ac3cce50dd63266c649101ad09d9e02fc148befa703e3928bbdd37600ee"
+  }
+}

@@ -168,7 +168,13 @@ def directives_hash(source):
 
 class Evaluator:
     def __init__(self, path, config, cpu, mem, acc, clang):
-        self.ast = parse_host_translation(path, clang, config.get('compile_defines')) if path.suffix == '.c' else parse_source(path, clang, config.get('compile_defines'))
+        include_dirs = []
+        for relative in config.get('include_directories', []):
+            directory = (path.parent / relative).resolve()
+            if not directory.is_relative_to(path.parent.resolve()) or not directory.is_dir():
+                raise UnsupportedSource('Include directories must exist within the application directory')
+            include_dirs.append(directory)
+        self.ast = parse_host_translation(path, clang, config.get('compile_defines')) if path.suffix == '.c' else parse_source(path, clang, config.get('compile_defines'), include_dirs)
         self.source_directory = path.parent.resolve()
         self.input_file_hashes = {}
         self.output_stream = HostStream([], True)
@@ -187,7 +193,7 @@ class Evaluator:
             extra = (path.parent / relative).resolve()
             if not extra.is_relative_to(path.parent.resolve()) or extra.suffix != '.cu':
                 raise UnsupportedSource('CUDA translation units must be within the source directory')
-            extra_ast = parse_source(extra, clang, config.get('compile_defines'))
+            extra_ast = parse_source(extra, clang, config.get('compile_defines'), include_dirs)
             selected, files = source_declarations(extra_ast, extra,
                 [os.path.relpath(p, extra.parent) for p in self.source_files if p != extra and p.is_relative_to(extra.parent)])
             # Namespace process-local AST identifiers before linking units.

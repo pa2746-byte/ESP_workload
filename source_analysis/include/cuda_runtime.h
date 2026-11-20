@@ -57,3 +57,44 @@ template<class T> cudaChannelFormatDesc cudaCreateChannelDesc();
 template<class T,int D,cudaTextureReadMode R> int cudaBindTexture(size_t*,texture<T,D,R>*,const void*,const cudaChannelFormatDesc*,size_t);
 template<class T,int D,cudaTextureReadMode R> __device__ T tex1Dfetch(texture<T,D,R>,int);
 #define CUDA_SUCCESS 0
+
+#include "vector_types.h"
+
+// Declarations only: parsing these operations does not enable evaluator support.
+#define __align__(n) __attribute__((aligned(n)))
+#define __forceinline__ inline __attribute__((always_inline))
+template<class T> int cudaMallocHost(T**,size_t);
+int cudaFreeHost(void*);
+int cudaStreamCreate(cudaStream_t*);
+int cudaEventCreate(cudaEvent_t*);
+int cudaEventSynchronize(cudaEvent_t);
+int cudaEventElapsedTime(float*,cudaEvent_t,cudaEvent_t);
+int cudaMemcpyAsync(void*,const void*,size_t,cudaMemcpyKind,cudaStream_t=0);
+template<class T> __device__ T atomicAdd(T*,T);
+template<class T> __device__ T atomicAnd(T*,T);
+template<class T> __device__ T atomicOr(T*,T);
+__device__ unsigned atomicInc(unsigned*,unsigned);
+__device__ double pow(double,double);
+__device__ double fabs(double);
+__device__ double abs(double);
+__device__ int abs(int);
+__device__ double fmod(double,double);
+__device__ double log10(double);
+__device__ double sin(double);
+__device__ double cos(double);
+__device__ double tanh(double);
+template<class T,int D,cudaTextureReadMode R> int cudaBindTexture(size_t*,texture<T,D,R>&,const void*,size_t);
+template<class T,int D,cudaTextureReadMode R> int cudaUnbindTexture(texture<T,D,R>&);
+template<class T,int D,cudaTextureReadMode R> __device__ T tex2D(texture<T,D,R>,float,float);
+__device__ unsigned atomicAdd(unsigned*,int);
+__device__ int __mul24(int,int);
+__device__ unsigned __umul24(unsigned,unsigned);
+__device__ bool isnan(double);
+template<class T> __host__ __device__ T max(T,T);
+template<class T> __host__ __device__ T min(T,T);
+__host__ __device__ int2 make_int2(int,int);
+__host__ __device__ uchar3 make_uchar3(unsigned char,unsigned char,unsigned char);
+#if defined(__APPLE__)
+// Opaque declaration for signatures only. No pthread execution model is implied.
+struct pthread_barrier_t;
+#endif

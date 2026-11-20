@@ -1,0 +1,6 @@
+{
+  "entry": "main.cu",
+  "parse": "failed",
+  "diagnostic": "Clang could not parse source:\n/Users/priyalagarwal/Desktop/ESP_workload/workloads/rodinia/hybridsort/main.cu:221:3: error: use of undeclared identifier 'checkCudaErrors'\n  221 |                 checkCudaErrors(        cudaMemcpy((void *) resultList, \n      |                 ^\n1 error generated when compiling for host.\n",
+  "graph_support": "pending"
+}

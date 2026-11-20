@@ -1,0 +1,30 @@
+{
+  "repository": "https://github.com/yuhc/gpu-rodinia",
+  "revision": "9c10d3ea16ddba2ba057cc3951a9efc4c2cc18a4",
+  "upstream_directory": "cuda/huffman",
+  "status": "source imported; analyzer support pending",
+  "sha256": {
+    "cutil.h": "cd9229d312c44a3962b24dc5e4eb782f626efbd2e47b31b8901fe8aac469844f",
+    "stats_logger.cpp": "209731b944b5902ed327213153cfbb7c7b82378d2c7663620a2339303b863e70",
+    "stdafx.h": "236d74b63218eee9cb016cc8141f89d614e776c15c441f3093f3fcdfa457b3bf",
+    "cpuencode.h": "e63c53eed46f2b4535c769b85914acb7b7302e81a24084261acc635101897aaf",
+    "cuda_helpers.h": "87ac3e56a71029b8ac21ae3fa60fc0d795c7775d51afe1cd8424999d3aada960",
+    "hist.cu": "6f6a5c3a6407dee84e2fcf823283d3e4e55feda764a11d989620a7f3885cd035",
+    "Makefile": "4d26f59d3fd687bd9ad88a15bc717459ee15536f51eb247e5f7ce389ebb64c4f",
+    "huffTree.h": "5b512dea275404bd5952b669c1d90c6398a796f11d68924fbf27d7aae50f1eb3",
+    "stats_logger.h": "2c7e98a01375c928b36c6dc2bf2687c9f53d831a9f3bffe354d24a30e2b39f93",
+    "scanLargeArray_kernel.cu": "953d46f5b1bbbf37333f66085e77271f46150cde4817df156f21412c9a6336ba",
+    "pabio_kernels_v2.cu": "008f3128475c69fd282015bdf014d9bdda9b06703630ea9a2dc380c591cfe679",
+    "parameters.h": "2c8c4b159ea370465bcf1d9b86f206ac2e9993a12415743e4a4a31121655feb3",
+    "comparison_helpers.h": "3fd2a86008e269628e9c315fb43bb9c45bdaa05f5e26c28821ce4f537743b14a",
+    "vlc_kernel_sm64huff.cu": "c6db401b4d77a142ac1ff0824eeefde7c78a3857b10fa6c9186c50929659e372",
+    "cpuencode.cpp": "a9bc1243085e726fa11edd71e7f4462c67bf5b97d7dd4fb598e73a4d774384e9",
+    "run": "2f302fb49d6b875243f5433b11eaf46adeaef3c5de460dbcab2714b1c323c338",
+    "main_test_cu.cu": "09789aa2cf33de35836d5824934870d1d81b090140645edd5af9f63a2658e9bd",
+    "testdatagen.h": "a26f5b9bdf9b45dba417bfe709abe0cbe5a11ed69caefb844346d73531b219a4",
+    "pack_kernels.cu": "68ab5d7e95981911672299280d3daa44942cb16fa541ab19bb29f6f5a2069b90",
+    "scan.cu": "4d2abcdf12a1b10acd382ad1e7f76d5ebe3b54aebd4147677102bf3ee3df2417",
+    "load_data.h": "acf5faf41adac1537ba1fba6061b0c2ce41a18277103cebb06fe3895cf2a5456",
+    "print_helpers.h": "d49002af33da5272128982da63d0523b834d393db59889b32a9ecd7677a0b3b3"
+  }
+}
