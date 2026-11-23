@@ -98,3 +98,15 @@ __host__ __device__ uchar3 make_uchar3(unsigned char,unsigned char,unsigned char
 // Opaque declaration for signatures only. No pthread execution model is implied.
 struct pthread_barrier_t;
 #endif
+__device__ bool isinf(double);
+__host__ __device__ unsigned max(int,unsigned);
+__host__ __device__ unsigned max(unsigned,int);
+int cudaThreadExit();
+// Legacy SDK helper signature, parsed as a host call and checked by evaluation.
+#ifndef checkCudaErrors
+int checkCudaErrors(int);
+#endif
+
+#ifndef __launch_bounds__
+#define __launch_bounds__(...) __attribute__((launch_bounds(__VA_ARGS__)))
+#endif

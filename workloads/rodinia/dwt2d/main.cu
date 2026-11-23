@@ -345,10 +345,10 @@ int main(int argc, char **argv)
     d->dwtLvls  = dwtLvls;
 
     // file names
-    d->srcFilename = (char *)malloc(strlen(argv[0]));
+    d->srcFilename = (char *)malloc(strlen(argv[0])+1);
     strcpy(d->srcFilename, argv[0]);
     if (argc == 1) { // only one filename supplyed
-        d->outFilename = (char *)malloc(strlen(d->srcFilename)+4);
+        d->outFilename = (char *)malloc(strlen(d->srcFilename)+5);
         strcpy(d->outFilename, d->srcFilename);
         strcpy(d->outFilename+strlen(d->srcFilename), ".dwt");
     } else {

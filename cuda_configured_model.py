@@ -87,7 +87,7 @@ def source_declarations(ast, path, additional_sources=()):
     def linkage_nodes(nodes):
         for node in nodes:
             yield node
-            if node['kind'] == 'LinkageSpecDecl': yield from linkage_nodes(children(node))
+            if node['kind'] in {'LinkageSpecDecl', 'NamespaceDecl'}: yield from linkage_nodes(children(node))
             if node['kind'] == 'FunctionTemplateDecl':
                 for specialization in children(node):
                     if specialization['kind'] == 'FunctionDecl' and any(c['kind'] == 'TemplateArgument' for c in children(specialization)):
@@ -105,6 +105,7 @@ class Reference:
     label: str = None
     pointer_base: str = None
     scalar_type: str = None
+    read_only: bool = False
 
 
 @dataclass
@@ -212,7 +213,12 @@ class Evaluator:
         specializations = {}
         for node, _ in declarations:
             if node['kind'] != 'FunctionDecl': continue
-            arguments = [c['type']['qualType'] for c in children(node) if c['kind'] == 'TemplateArgument' and 'type' in c]
+            arguments = []
+            for argument in children(node):
+                if argument['kind'] != 'TemplateArgument': continue
+                if 'type' in argument: arguments.append(argument['type']['qualType'])
+                elif 'value' in argument: arguments.append(str(argument['value']))
+                else: raise UnsupportedSource('Unsupported template argument in source function')
             if arguments: specializations[node['id']] = node['name'] + '<' + ','.join(arguments) + '>'
         for node in walk(self.ast):
             if node.get('id') in specializations: node['name'] = specializations[node['id']]
@@ -220,11 +226,30 @@ class Evaluator:
                 node['referencedDecl']['name'] = specializations[node['referencedDecl']['id']]
         definitions = [n for n, _ in declarations if n['kind'] == 'FunctionDecl'
                        and any(c['kind'] == 'CompoundStmt' for c in children(n))]
+        # Link overloads by their Clang function type rather than discarding one
+        # when two source functions share a spelling (e.g. float/int helpers).
+        signatures = {}
+        for node in definitions:
+            signatures.setdefault(node['name'], set()).add(node.get('type', {}).get('qualType'))
+        overloads = {(name, signature): name + ' [' + signature + ']'
+                     for name, types in signatures.items() if len(types) > 1
+                     for signature in types}
+        renamed_ids = {}
+        for node in walk(self.ast):
+            if node.get('kind') == 'FunctionDecl':
+                key = (node.get('name'), node.get('type', {}).get('qualType'))
+                if key in overloads:
+                    renamed_ids[node['id']] = overloads[key]
+                    node['name'] = overloads[key]
+        for node in walk(self.ast):
+            reference = node.get('referencedDecl', {})
+            if reference.get('id') in renamed_ids:
+                reference['name'] = renamed_ids[reference['id']]
         function_sources = {n['name']: contents for n, contents in declarations
                             if n['kind'] == 'FunctionDecl' and any(c['kind'] == 'CompoundStmt' for c in children(n))}
         self.functions = {n['name']: n for n in definitions}
         if len(self.functions) != len(definitions) or 'main' not in self.functions:
-            raise UnsupportedSource('Configured analysis requires unique functions and main')
+            raise UnsupportedSource('Configured analysis requires unique functions and main; duplicate definitions: ' + ', '.join(sorted({n['name'] for n in definitions if sum(x['name'] == n['name'] for x in definitions) > 1})))
         self.config = config
         self.opaque_shared = config.get('shared_memory', 'reject') == 'opaque_values'
         if config.get('shared_memory', 'reject') not in {'reject', 'opaque_values'}:
@@ -292,7 +317,7 @@ class Evaluator:
             if not self.lexical_scopes and len(names) != len(set(names)):
                 raise UnsupportedSource('Shadowed/redeclared variables require scope analysis')
         self.types = {'float': (4, 4, {}), 'double': (8, 8, {}), 'int': (4, 4, {}),
-                      'unsigned int': (4, 4, {}), 'char': (1, 1, {}), 'long': (8, 8, {}), 'long long': (8, 8, {}), 'bool': (1, 1, {}),
+                      'unsigned int': (4, 4, {}), 'unsigned char': (1, 1, {}), 'char': (1, 1, {}), 'long': (8, 8, {}), 'long long': (8, 8, {}), 'bool': (1, 1, {}),
                       'float3': (12, 4, {axis: (4*i, 'float') for i, axis in enumerate('xyz')})}
         # Only plain standard-layout records of primitive fields/arrays. No ABI guessing
         # for inheritance, packing, pointers, unions, or user-provided constructors.
@@ -474,6 +499,8 @@ class Evaluator:
         raise UnsupportedSource('Unsupported lvalue read')
 
     def store(self, location, value):
+        if isinstance(location, Reference) and location.read_only:
+            raise UnsupportedSource("Cannot write through a const temporary reference")
         if isinstance(location, SharedView):
             if location.shape or not isinstance(value, (int, float, Unknown)):
                 raise UnsupportedSource('Shared storage only supports scalar numeric values')
@@ -595,6 +622,10 @@ class Evaluator:
 
     def eval(self, n):
         k, cs = n['kind'], children(n)
+        if k == 'SubstNonTypeTemplateParmExpr':
+            values = [c for c in cs if c['kind'] != 'NonTypeTemplateParmDecl']
+            if len(values) != 1: raise UnsupportedSource('Ambiguous template parameter substitution')
+            return self.eval(values[0])
         if k in {'ImplicitCastExpr', 'ParenExpr', 'ConstantExpr', 'ExprWithCleanups', 'CXXBindTemporaryExpr', 'MaterializeTemporaryExpr'}:
             if len(cs) != 1: raise UnsupportedSource('Ambiguous wrapped expression')
             value = self.eval(cs[0])
@@ -605,6 +636,17 @@ class Evaluator:
         if k == 'CXXDefaultArgExpr': return self.eval(cs[0]) if cs else None
         if k in {'CStyleCastExpr', 'CXXStaticCastExpr', 'CXXFunctionalCastExpr'}:
             value = self.eval(cs[0])
+            if self.clean(n['type']['qualType']) == 'void': return None
+            if isinstance(value, SharedView):
+                typ = self.clean(n['type']['qualType'])
+                if not self.opaque_shared or len(value.shape) != 1 or not typ.endswith('*'):
+                    raise UnsupportedSource('Only one-dimensional opaque shared-array casts are supported')
+                base = typ[:-1].strip()
+                source_size = self.layout(value.base)[0] * value.shape[0]
+                size, _, fields = self.layout(base)
+                if fields or source_size % size:
+                    raise UnsupportedSource('Shared reinterpretation must preserve an integral numeric element count')
+                return SharedView((source_size // size,), base)
             if isinstance(value, Pointer):
                 typ = self.clean(n['type']['qualType'])
                 if not typ.endswith('*'): raise UnsupportedSource('Pointer to scalar cast')
@@ -717,6 +759,11 @@ class Evaluator:
             location = self.location(cs[0])
             a, b = self.read(location), self.eval(cs[1])
             if isinstance(a, Unknown) or isinstance(b, Unknown): value = unknown_from(a, b)
+            elif op == '+=' and isinstance(a, list) and all(isinstance(v, str) for v in a) and type(b) is int:
+                if not 0 <= b <= len(a): raise UnsupportedSource('Argument vector offset is out of bounds')
+                value = a[b:]
+            elif isinstance(a, Pointer) and op in {'+=', '-='}:
+                value = self.offset(a, b if op == '+=' else -b)
             elif op == '+=': value = a + b
             elif op == '-=': value = a - b
             elif op == '*=': value = a * b
@@ -734,11 +781,29 @@ class Evaluator:
             if op == '||': return self.truth(a) or self.truth(self.eval(cs[1]))
             b = self.eval(cs[1])
             if isinstance(a, Pointer) and op in {'+', '-'}: return self.offset(a, b if op == '+' else -b)
+            if isinstance(a, str) and op == '+' and type(b) is int:
+                if not 0 <= b <= len(a): raise UnsupportedSource('String offset is out of bounds')
+                return a[b:]
             if isinstance(a, Unknown) or isinstance(b, Unknown): return unknown_from(a, b)
             if op in {'==', '!='} and (isinstance(a, (Pointer, str, HostStream)) or isinstance(b, (Pointer, str, HostStream))) and (a is None or b is None or a == 0 or b == 0):
                 return op == '!='
             if type(a) not in (int, float, bool) or type(b) not in (int, float, bool):
                 raise UnsupportedSource('Unsupported binary operands')
+            if op in {'>>', '<<', '&', '|', '^'}:
+                if type(a) is not int or type(b) is not int:
+                    raise UnsupportedSource('Bitwise operations require integer operands')
+                if op == '&': return a & b
+                if op == '|': return a | b
+                if op == '^': return a ^ b
+                typ = self.clean(n['type']['qualType'])
+                width = self.layout(typ)[0] * 8
+                if a < 0 or not 0 <= b < width:
+                    raise UnsupportedSource('Shift requires nonnegative value and valid source-type shift count')
+                if op == '>>': return a >> b
+                result = a << b
+                limit = 2**width if typ.startswith('unsigned') else 2**(width-1)
+                if result >= limit: raise UnsupportedSource('Left shift exceeds the supported source-type range')
+                return result
             if op == '+': return a + b
             if op == '-': return a - b
             if op == '*': return a * b
@@ -834,7 +899,7 @@ class Evaluator:
                 if var.get('storageClass')=='extern' and name in self.cli_state:
                     self.env[name]=Binding(Reference(self.cli_state,name)); continue
                 if any(c['kind'] == 'CUDASharedAttr' for c in children(var)):
-                    match = re.fullmatch(r'([A-Za-z_][A-Za-z_0-9]*)\s*((?:\[\d+\])+)', typ)
+                    match = re.fullmatch(r'([A-Za-z_][A-Za-z_0-9]*(?: [A-Za-z_][A-Za-z_0-9]*)*)\s*((?:\[\d+\])+)' , typ)
                     if not self.kernel or not self.opaque_shared or not match or match[1] not in self.types or any(c['kind'] != 'CUDASharedAttr' and not (c['kind']=='CXXConstructExpr' and not children(c) and bool(self.types[match[1]][2])) for c in children(var)):
                         raise UnsupportedSource('Only explicitly enabled fixed shared numeric arrays are supported')
                     self.env[name] = SharedView(tuple(int(d) for d in re.findall(r'\d+', match[2])), match[1])
@@ -993,6 +1058,8 @@ class Evaluator:
             return self.invoke_function(name, expressions, args)
         if self.opaque_host and name in {'exp','sqrt','cos','sin'} and name not in self.functions and len(args) == 1:
             return args[0] if isinstance(args[0], Unknown) else getattr(math, name)(args[0])
+        if name == '__builtin_expect' and len(args) == 2 and name not in self.functions:
+            return args[0]
         if name == 'min' and len(args) == 2 and all(type(v) is int for v in args): return min(args)
         if name == 'sdkGetAverageTimerValue': return UNKNOWN
         if name in {'sdkCreateTimer','sdkStartTimer','sdkStopTimer','getLastCudaError'}:
@@ -1040,7 +1107,16 @@ class Evaluator:
             if args != [self.device.get('ordinal', 0)]: raise UnsupportedSource('Unconfigured device selection')
         elif name == 'cudaGetDeviceProperties':
             if args[1] != self.device.get('ordinal', 0): raise UnsupportedSource('Device ordinal not configured')
-            self.store(args[0], {'maxGridSize': self.device['max_grid_size'], 'maxThreadsPerBlock': self.device['max_threads_per_block']})
+            properties = {'maxGridSize': self.device['max_grid_size'], 'maxThreadsPerBlock': self.device['max_threads_per_block']}
+            for field in ('major', 'minor'):
+                if field in self.device:
+                    if type(self.device[field]) is not int or self.device[field] < 0:
+                        raise UnsupportedSource('Device compute capability must use nonnegative integers')
+                    properties[field] = self.device[field]
+            if 'name' in self.device:
+                if not isinstance(self.device['name'], str): raise UnsupportedSource('Device name must be a string')
+                properties['name'] = self.device['name']
+            self.store(args[0], properties)
         elif name == 'cudaMemGetInfo':
             self.store(args[0], self.device['free_memory_bytes']); self.store(args[1], self.device['total_memory_bytes'])
         elif name in {'cudaThreadSynchronize', 'cudaDeviceSynchronize'}: self.order.synchronize()
@@ -1063,11 +1139,36 @@ class Evaluator:
                 base = self.clean(declarations[0]['type']['qualType']).rstrip('*').strip()
             self.layout(base)
             self.store(target, Pointer(label, 0, base, True))
+        elif name == 'cudaMallocHost':
+            if len(args) != 2 or not (isinstance(args[0], Reference) or isinstance(args[0], Pointer) and not args[0].device and args[0].base.endswith('*')):
+                raise UnsupportedSource('cudaMallocHost requires a host pointer destination and size')
+            key = 'host_alloc_' + str(self.host_allocation_count)
+            self.host_allocation_count += 1
+            self.host_sizes[key] = self.positive(args[1])
+            base = (args[0].pointer_base or 'char') if isinstance(args[0], Reference) else args[0].base[:-1].strip()
+            self.store(args[0], Pointer(key, 0, base))
+            return 0
+        elif name == 'cudaFreeHost':
+            if len(args) != 1 or not isinstance(args[0], Pointer) or args[0].device or args[0].offset != 0:
+                raise UnsupportedSource('cudaFreeHost requires an allocated host buffer')
+            if args[0].buffer not in self.host_sizes: raise UnsupportedSource('Unknown host allocation')
+            self.free_host(args[0])
+            return 0
         elif name in {'malloc', 'calloc'}:
             key = 'host_alloc_' + str(self.host_allocation_count)
             self.host_allocation_count += 1
             self.host_sizes[key] = self.positive(args[0] * args[1] if name == 'calloc' else args[0])
             return Pointer(key, 0, 'char')
+        elif name in {'strlen', 'strstr'}:
+            if name in self.functions:
+                raise UnsupportedSource('String library model cannot replace a source-defined function')
+            count = 1 if name == 'strlen' else 2
+            if len(args) != count or not all(isinstance(a, str) for a in args):
+                raise UnsupportedSource(f'{name} requires known string arguments')
+            strings = [a.split('\0', 1)[0] for a in args]
+            if name == 'strlen': return len(strings[0])
+            index = strings[0].find(strings[1])
+            return None if index < 0 else args[0][index:]
         elif name == 'atof':
             if len(args) != 1 or not isinstance(args[0], str): raise UnsupportedSource('atof requires a configured string')
             value = float(args[0])
@@ -1180,10 +1281,28 @@ class Evaluator:
             raise UnsupportedSource('Kernel helper must be a device function')
         params = [p for p in children(fn) if p['kind'] == 'ParmVarDecl']
         if len(args) != len(params): raise UnsupportedSource('Function argument count mismatch')
-        bindings = [Binding(self.location(e)) if p['type']['qualType'].endswith('&') else a
-                    for p, e, a in zip(params, expressions, args)]
+        bindings = []
+        for param, expression, value in zip(params, expressions, args):
+            typ = param['type']['qualType']
+            if not typ.endswith('&'):
+                bindings.append(value)
+                continue
+            temporary = any(n['kind'] == 'MaterializeTemporaryExpr' for n in walk(expression))
+            if temporary:
+                base = self.clean(typ.rstrip('&').strip())
+                if 'const' not in typ.split() or not isinstance(value, (int, float, bool, Unknown)) or base not in self.types or self.types[base][2]:
+                    raise UnsupportedSource('Only scalar const-reference temporaries are supported')
+                # The evaluated argument is stored once, for this call's lifetime.
+                bindings.append(Binding(Reference({'value': value}, 'value', scalar_type=base, read_only=True)))
+            else:
+                if any(n['kind'] in {'CallExpr','CXXMemberCallExpr','CompoundAssignOperator'} or n.get('opcode') in {'++','--','='} for n in walk(expression)):
+                    raise UnsupportedSource('Reference argument must have a side-effect-free location')
+                bindings.append(Binding(self.location(expression)))
         saved, saved_fn = self.env, self.current_function
         self.env = {p['name']: a for p, a in zip(params, bindings)}
+        if self.kernel:
+            for builtin in ('threadIdx', 'blockIdx', 'blockDim', 'gridDim'):
+                if builtin in saved: self.env[builtin] = saved[builtin]
         self.current_function = name
         self.call_stack.append(name)
         try:

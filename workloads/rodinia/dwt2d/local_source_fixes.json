@@ -1,0 +1,9 @@
+{
+  "upstream_sha256": "99d25453a62aac9ca9aaaa8a854c01a101391bb16c5dec4ca448e95a565f318f",
+  "corrected_sha256": "7ea08ab09896099189716b75e384068a7baf68fd9f82ab1360dd293256225e1b",
+  "changes": [
+    "Allocate strlen(input_name)+1 including terminating NUL",
+    "Allocate strlen(input_name)+5 for .dwt plus terminating NUL"
+  ],
+  "gpu_capture_note": "Existing capture used the upstream allocations; the corrected source has not been rerun on GPU."
+}

@@ -1,0 +1,25 @@
+{
+  "status": "unsupported",
+  "config": "analysis_in_progress.json",
+  "error": "Unsupported kernel call: run",
+  "completed_kernel_evaluation": [
+    {
+      "kernel": "c_CopySrcToComponents<int>",
+      "grid": [
+        16,
+        1,
+        1
+      ],
+      "block": [
+        256,
+        1,
+        1
+      ],
+      "enumerated_threads": 4096
+    }
+  ],
+  "graph_emitted": false,
+  "source_correction": "local_source_fixes.json",
+  "input_capture": "20261123T005703612561Z",
+  "next_capability": "Qualified class-template methods and object/shared-state evaluation"
+}

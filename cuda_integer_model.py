@@ -108,7 +108,7 @@ class IntegerEvaluator(Evaluator):
         return value
 
     def integer_type(self, base):
-        return base in {'bool', 'char', 'int', 'unsigned int', 'long', 'long long', 'unsigned long'}
+        return base in {'bool', 'unsigned char', 'char', 'int', 'unsigned int', 'long', 'long long', 'unsigned long'}
 
     def known_value(self, pointer, storage):
         floating = pointer.base in {'float','double'} and self.config.get('known_floating_values')
@@ -182,6 +182,8 @@ class IntegerEvaluator(Evaluator):
                 if key[0]==value.buffer and key[1]>=value.offset:del self.known_host[key]
 
     def store(self, location, value):
+        if isinstance(location, Reference) and location.read_only:
+            raise UnsupportedSource("Cannot write through a const temporary reference")
         if isinstance(location,Reference) and location.scalar_type=='float' and self.config.get('known_floating_values') and type(value) in (int,float):
             value=struct.unpack('<f',struct.pack('<f',value))[0]
 
@@ -309,7 +311,51 @@ class IntegerEvaluator(Evaluator):
             return
         return super().statement(n)
 
+    def host_string_bytes(self, value):
+        if isinstance(value, str):
+            try: return value.split('\0', 1)[0].encode('ascii')
+            except UnicodeEncodeError: raise UnsupportedSource('Host string model requires ASCII bytes')
+        if not isinstance(value, Pointer) or value.device or value.base not in {'char', 'unsigned char'}:
+            raise UnsupportedSource('String operation requires a known host character buffer')
+        size = self.host_sizes.get(value.buffer, 0)
+        if not 0 <= value.offset < size: raise UnsupportedSource('Host string pointer is out of bounds')
+        result = bytearray()
+        for offset in range(value.offset, size):
+            byte = self.known_host.get((value.buffer, offset))
+            if byte is None: raise UnsupportedSource('Host string contains unknown bytes')
+            if byte == 0: return bytes(result)
+            result.append(byte)
+        raise UnsupportedSource('Host string has no terminator within its allocation')
+
     def call(self,name,expressions,site=None):
+        if name in {'strcpy', 'strcat', 'strdup', 'strlen', 'strstr'} and not self.kernel:
+            if name in self.functions:
+                raise UnsupportedSource('String model cannot replace a source-defined function')
+            args = [self.eval(n) for n in expressions]
+            expected = 2 if name in {'strcpy', 'strcat', 'strstr'} else 1
+            if len(args) != expected: raise UnsupportedSource('Invalid string call argument count')
+            if name == 'strlen': return len(self.host_string_bytes(args[0]))
+            if name == 'strstr':
+                text, needle = [self.host_string_bytes(a) for a in args]
+                index = text.find(needle)
+                if index < 0: return None
+                return args[0][index:] if isinstance(args[0], str) else Pointer(args[0].buffer, args[0].offset+index, args[0].base)
+            prefix = self.host_string_bytes(args[0]) if name == 'strcat' else b''
+            data = prefix + self.host_string_bytes(args[-1]) + b'\0'
+            if name == 'strdup':
+                key = 'host_alloc_' + str(self.host_allocation_count)
+                self.host_allocation_count += 1
+                self.host_sizes[key] = len(data)
+                dst = Pointer(key, 0, 'char')
+            else:
+                dst = args[0]
+                if not isinstance(dst, Pointer) or dst.device or dst.offset < 0 or dst.offset+len(data) > self.host_sizes.get(dst.buffer,0):
+                    raise UnsupportedSource(f'{name} destination is too small including the terminating NUL')
+                src = args[1]
+                if isinstance(src, Pointer) and src.buffer == dst.buffer and max(src.offset,dst.offset) < min(src.offset+len(data),dst.offset+len(data)):
+                    raise UnsupportedSource('Overlapping strcpy is undefined')
+            self.known_host.update({(dst.buffer,dst.offset+i):v for i,v in enumerate(data)})
+            return dst
         modeled={'rand','getchar','feof','fseek','ftell','rewind','fread','memset','open','read','close','getopt','calloc','memcpy','strcmp','sscanf','pow','fabs','ceil','time','srand','fopen','fscanf','fclose'}
         if name in modeled and name in self.functions and name not in self.summaries and name not in self.analyzed_functions:
             raise UnsupportedSource('Library model cannot replace a source-defined function')
@@ -385,10 +431,14 @@ class IntegerEvaluator(Evaluator):
                     self.cli_state['optarg']=argv[i+1];i+=1
                 self.cli_state['optind']=i+1;return ord(key)
             if name=='open':
-                filename=args[0];path=(self.source_directory/filename).resolve()
-                if path.parent!=self.source_directory or args[1]!=0:raise UnsupportedSource('Only sibling read-only input is supported')
+                if len(args) not in {2,3} or args[1] != 0:
+                    raise UnsupportedSource('Only read-only input is supported')
+                filename = self.host_string_bytes(args[0]).decode('ascii')
+                expected = self.config.get('input_files', {}).get(filename)
+                if not expected: raise UnsupportedSource('Input filename must be explicitly configured')
+                path = (self.source_directory/filename).resolve()
                 data=path.read_bytes();digest=hashlib.sha256(data).hexdigest()
-                if self.config.get('input_files',{}).get(filename)!=digest:raise UnsupportedSource('Configured input file changed')
+                if expected!=digest:raise UnsupportedSource('Configured input file changed')
                 self.input_file_hashes[filename]=digest;self.binary_input=[data,0];return 3
             if name=='close':return 0
             if name=='read':
