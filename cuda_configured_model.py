@@ -43,14 +43,19 @@ class ProgramExit(Exception):
     pass
 
 
-def parse_host_translation(path, clang=None, defines=None):
+def parse_host_translation(path, clang=None, defines=None, include_dirs=()):
     include = Path(__file__).parent / 'source_analysis/include'
-    command = [clang or os.environ.get('CLANGXX', 'clang++'), '-x', 'c', '-std=gnu89',
-               '-Wno-error=implicit-function-declaration', '-Wno-error=implicit-int',
+    language = ['-x', 'c', '-std=gnu89', '-Wno-error=implicit-function-declaration', '-Wno-error=implicit-int'] if path.suffix == '.c' else ['-x', 'c++', '-std=c++17']
+    command = [clang or os.environ.get('CLANGXX', 'clang++'), *language,
                '-I' + str(include), '-fsyntax-only', '-Xclang', '-ast-dump=json', str(path)]
     for key,value in (defines or {}).items():
         if not re.fullmatch(r'[A-Za-z_][A-Za-z_0-9]*',key) or type(value) is not int:raise UnsupportedSource('Invalid preprocessor definition')
         command.insert(1,f'-D{key}={value}')
+    for directory in include_dirs:
+        directory = Path(directory).resolve()
+        if not directory.is_dir():
+            raise UnsupportedSource('Host include directory does not exist')
+        command.insert(1, '-I' + str(directory))
     result = subprocess.run(command, capture_output=True, text=True)
     if result.returncode:
         raise UnsupportedSource('Clang could not parse host translation unit:\n' + result.stderr)
@@ -174,7 +179,7 @@ class Evaluator:
             if not directory.is_relative_to(path.parent.resolve()) or not directory.is_dir():
                 raise UnsupportedSource('Include directories must exist within the application directory')
             include_dirs.append(directory)
-        self.ast = parse_host_translation(path, clang, config.get('compile_defines')) if path.suffix == '.c' else parse_source(path, clang, config.get('compile_defines'), include_dirs)
+        self.ast = parse_host_translation(path, clang, config.get('compile_defines'), include_dirs) if path.suffix in {'.c', '.cpp', '.cc', '.cxx'} else parse_source(path, clang, config.get('compile_defines'), include_dirs)
         self.source_directory = path.parent.resolve()
         self.input_file_hashes = {}
         self.output_stream = HostStream([], True)
@@ -182,9 +187,9 @@ class Evaluator:
         declarations, self.source_files = source_declarations(self.ast, path, config.get('additional_sources', []))
         for relative in config.get('host_translation_units', []):
             host_path = (path.parent / relative).resolve()
-            if not host_path.is_relative_to(path.parent.resolve()) or host_path.suffix != '.c':
-                raise UnsupportedSource('Host translation units must be sibling C sources')
-            host_ast = parse_host_translation(host_path, clang, config.get('compile_defines'))
+            if not host_path.is_relative_to(path.parent.resolve()) or host_path.suffix not in {'.c', '.cpp', '.cc', '.cxx'}:
+                raise UnsupportedSource('Host translation units must be C or C++ sources within the application directory')
+            host_ast = parse_host_translation(host_path, clang, config.get('compile_defines'), include_dirs)
             host_declarations, files = source_declarations(host_ast, host_path)
             declarations.extend(host_declarations)
             self.source_files.update(files)
@@ -254,9 +259,20 @@ class Evaluator:
         for name, summary in self.summaries.items():
             if name not in self.functions or body_hash(self.functions[name], function_sources[name]) != summary['body_sha256']:
                 raise UnsupportedSource(f'Host summary source changed: {name}; review its contract')
+        included_hashes = config.get('additional_preprocessor_sha256', {})
+        basename_counts = {}
+        for file in self.source_files:
+            if file != path.resolve():
+                basename_counts[file.name] = basename_counts.get(file.name, 0) + 1
         for file, contents in self.source_files.items():
-            if file != path.resolve() and config.get('additional_preprocessor_sha256', {}).get(file.name) != directives_hash(contents):
-                raise UnsupportedSource('Included source directives changed; review host contracts')
+            if file == path.resolve():
+                continue
+            relative = file.relative_to(path.parent.resolve()).as_posix()
+            expected = included_hashes.get(relative)
+            if expected is None and basename_counts[file.name] == 1:
+                expected = included_hashes.get(file.name)
+            if expected != directives_hash(contents):
+                raise UnsupportedSource(f'Included source directives changed: {relative}; use application-relative paths for duplicate filenames')
         self.analyzed_functions = set(config.get('analyzed_functions', []))
         if self.analyzed_functions & self.summaries.keys():
             raise UnsupportedSource('A function cannot be both analyzed and summarized')
@@ -1058,9 +1074,13 @@ class Evaluator:
             if not math.isfinite(value): raise UnsupportedSource('Nonfinite numeric argument')
             return value
         elif name == 'atoi':
-            if len(args) != 1 or not isinstance(args[0], str) or not re.fullmatch(r'[+-]?\d+', args[0]):
-                raise UnsupportedSource('atoi requires a configured integer string')
-            return int(args[0])
+            if len(args) != 1 or not isinstance(args[0], str):
+                raise UnsupportedSource('atoi requires a configured string')
+            match = re.match(r'[ \t\n\r\v\f]*([+-]?[0-9]+)', args[0].split('\0', 1)[0])
+            value = int(match.group(1)) if match else 0
+            if not -(2**31) <= value < 2**31:
+                raise UnsupportedSource('atoi result exceeds the supported 32-bit int range')
+            return value
         elif name == 'memcpy':
             dst, src, size = args
             self.positive(size)

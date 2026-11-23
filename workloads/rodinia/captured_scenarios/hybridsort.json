@@ -1,0 +1,26 @@
+{
+  "capture": "20261123T012815164507Z",
+  "archive_sha256": "817936f0a4dacb5e587f8c24a07875bf4ac2e3d56eefb0d704b66b4f818d24cf",
+  "entry": "cuda/hybridsort/main.cu",
+  "working_directory": "cuda/hybridsort",
+  "arguments": [
+    "r"
+  ],
+  "captured_kernel_count": 68,
+  "analysis_status": "pending",
+  "source_and_input_sha256": {
+    "cuda/hybridsort/mergesort.cuh": "2e5c2798a40332c986043bc4801dc0e424f5695d46d56299fd10b4db2c9a27e7",
+    "cuda/hybridsort/helper_string.h": "7d5c078b2d5d053d2bd085e6aaebe0c39afc5561c68ba67efd5a06aae92cb368",
+    "cuda/hybridsort/helper_cuda.h": "c1b9500ab5ba2fc06e7fbed0b841d3db98f36a975a0a200dabf8deaa71c6c219",
+    "cuda/hybridsort/histogram1024_kernel.cu": "89dae1a9218e1e9c633e5baded9b6e9b1e80d4a3c6e341c981c6badc98f95f4e",
+    "cuda/hybridsort/exception.h": "95a0be5385b1d684b6d9bfa028de157494e4d6307b95fa63307b5cb3d70a0aca",
+    "cuda/hybridsort/bucketsort.cu": "6d01ee8dbc94f4c3eacff44f19d0cc069e993215444a11d00f738583911ae849",
+    "cuda/hybridsort/mergesort.cu": "40b06ab91e8e6012cb0a1e9d25911875216c93360978fc19d5e666118dd9bbc1",
+    "cuda/hybridsort/mergesort_kernel.cu": "8d65cdbdf2fcc84ece2cef46a836646d7d615d05bb8f5c45fc2318b9a10fecc9",
+    "cuda/hybridsort/helper_timer.h": "735c5a9b3eb704450cfdf2eedebaca4bfcaccf3de3b7e7abf388dbb759434c79",
+    "cuda/hybridsort/bucketsort.cuh": "6cae192a64974dcc3ec459fce08b9e6b3a58c967945ef9c25eb4c375e2917030",
+    "cuda/hybridsort/bucketsort_kernel.cu": "013a19e88f07fd63fda5015f891f87602ba927e1efe58be978e0165c72f3962b",
+    "cuda/hybridsort/main.cu": "237f608a2ef869443b2b21672ed1aab0ec569af1a09642062dc3e66311f767dd"
+  },
+  "scope": "Exact captured sources and inputs; no GPU trace is used to infer source dependencies."
+}

@@ -1,0 +1,25 @@
+{
+  "capture": "20261123T005703612561Z",
+  "archive_sha256": "2bb699eb0abe5db7c0f5cb1192dfb021d1bf5ab11c496793078511ccd2b515e6",
+  "entry": "cuda/heartwall/main.cu",
+  "working_directory": "cuda/heartwall",
+  "arguments": [
+    "../../data/heartwall/test.avi",
+    "2"
+  ],
+  "captured_kernel_count": 2,
+  "analysis_status": "pending",
+  "source_and_input_sha256": {
+    "cuda/heartwall/define.c": "e42a5b00adcf32ee62f163e7586e93d485972696786081693aee315516cca0f1",
+    "cuda/heartwall/kernel.cu": "5ef164410a6ccbcb473f09a6068b046f05338e84de46ee78d442acd9b97cab5a",
+    "cuda/heartwall/setdevice.cu": "b9f65672983990be6a623ced7e73efc0b3715aefdc401b1bbc3e848c96899a26",
+    "cuda/heartwall/main.cu": "9ad3e8e470bc989585c9d699e51539e3cf2b52c794156337aef9020a6b6a7723",
+    "cuda/heartwall/AVI/avimod.c": "38494379dc528b2302c18f60be6421514519850aee1587e4af0efc2755b818b1",
+    "cuda/heartwall/AVI/avilib.c": "2ad236bd5607dfe4d1bc5db488eff30aaf2245d8319a561cee276cd4118a6583",
+    "cuda/heartwall/AVI/avilib.h": "4ae6559bebf7fbc6fd6d5b314fa1c9a64761cde7d30b86b7df7aafe43347e768",
+    "cuda/heartwall/AVI/avimod.h": "47acda0df3358b4852cba8aba34257bfbde8398d087d81731ba7dd76f7e07621",
+    "data/heartwall/input.txt": "5bbb1b4df02a56dd8903c91142933181483e4d3c39578b2cbca50c99ed7cea74",
+    "data/heartwall/test.avi": "2820f9e18d68a9b49897b240a812fc5248a5ceda2b32f2decea16e01f5d8b5c9"
+  },
+  "scope": "Exact captured sources and inputs; no GPU trace is used to infer source dependencies."
+}

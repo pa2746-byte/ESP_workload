@@ -1,0 +1,26 @@
+{
+  "capture": "20261123T005703612561Z",
+  "archive_sha256": "2bb699eb0abe5db7c0f5cb1192dfb021d1bf5ab11c496793078511ccd2b515e6",
+  "entry": "cuda/streamcluster/streamcluster_cuda_cpu.cpp",
+  "working_directory": "cuda/streamcluster",
+  "arguments": [
+    "2",
+    "4",
+    "8",
+    "128",
+    "128",
+    "32",
+    "none",
+    "output.txt",
+    "1"
+  ],
+  "captured_kernel_count": 144,
+  "analysis_status": "pending",
+  "source_and_input_sha256": {
+    "cuda/streamcluster/streamcluster_cuda.cu": "eaed3abd70ad5908b7c5ab5d381904e6f1096defa1170030b44d9c4abbfd00e1",
+    "cuda/streamcluster/streamcluster_original.cpp": "c866e17a85074018edafab94025e5a453d4c1ebe19fc9b3449c95bd3709d8298",
+    "cuda/streamcluster/streamcluster_header.cu": "e46d0ac3cce50dd63266c649101ad09d9e02fc148befa703e3928bbdd37600ee",
+    "cuda/streamcluster/streamcluster_cuda_cpu.cpp": "3e8a435af2552220fe143e2d8ad9c7efdad2c1a3927e08c3e79253e198631030"
+  },
+  "scope": "Exact captured sources and inputs; no GPU trace is used to infer source dependencies."
+}
