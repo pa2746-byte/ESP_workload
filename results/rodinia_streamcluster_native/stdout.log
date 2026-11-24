@@ -1,0 +1,18 @@
+PARSEC Benchmark Suite
+time = 3.175724s
+time pgain = 0.000000s
+time pgain_dist = 0.000000s
+time pgain_init = 0.000000s
+time pselect = 0.000006s
+time pspeedy = 0.000029s
+time pshuffle = 0.000010s
+time localSearch = 3.173900s
+
+
+====CUDA Timing info (pgain)====
+time serial = 0.000000s
+time CPU to GPU memory copy = 0.000000s
+time GPU to CPU memory copy back = 0.000000s
+time GPU malloc = 0.000000s
+time GPU free = 0.000000s
+time kernel = 0.000000s

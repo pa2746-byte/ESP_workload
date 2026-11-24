@@ -1,0 +1,15 @@
+In file included from /private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-masl6j84/source_workspace/cuda/myocyte/main.cu:92:
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-masl6j84/source_workspace/cuda/myocyte/work.cu:126:9: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  126 |   read( "../../data/myocyte/y.txt",
+      |         ^
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-masl6j84/source_workspace/cuda/myocyte/work.cu:135:8: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  135 |   read("../../data/myocyte/params.txt",
+      |        ^
+In file included from /private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-masl6j84/source_workspace/cuda/myocyte/main.cu:93:
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-masl6j84/source_workspace/cuda/myocyte/work_2.cu:171:8: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  171 |   read("../../data/myocyte/y.txt",
+      |        ^
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-masl6j84/source_workspace/cuda/myocyte/work_2.cu:185:8: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+  185 |   read("../../data/myocyte/params.txt",
+      |        ^
+4 warnings generated.

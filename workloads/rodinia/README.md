@@ -1,6 +1,16 @@
 # Rodinia source-analysis experiments
 
-Fifteen analysis cases are now available:
+The original fifteen analysis cases are listed below; the additional configured DWT2D case is described in [expansion status](REMAINING_EIGHT.md).
+
+## Shared-memory limitation across supported cases
+
+The original fifteen Rodinia cases and the additional DWT2D case are supported only for their documented logical global-buffer footprints and configured scenarios. Support does not imply full simulation or validation of shared-memory execution. Where `shared_memory: opaque_values` is selected, shared arrays have checked shapes/bounds but unknown contents, including after writes and barriers. Internal shared-memory traffic, numerical results, initialization and shared-memory race freedom are not established. Global footprints assume valid kernel synchronization; optional barrier checks cover selected global-memory conflicts only.
+
+A graph can complete when unknown shared values do not determine global addresses, access counts or launch/control decisions. If such decisions depend on unresolved shared results, source analysis must reject the case. GPU timings/cycles annotate a completed graph separately and do not remove this limitation or prove numerical correctness.
+
+Three more applications have [experimental native source-execution scenarios](NATIVE_SOURCE_ANALYSIS.md): corrected Myocyte, 32-point Streamcluster, and corrected pointer-storage MUMmerGPU. They retain complete original drivers, but do not establish support in the Python AST interpreter or equivalence to the existing GPU captures.
+
+The original fifteen cases:
 
 - **Nearest Neighbor**, described below: struct fields, pointer offsets, and
   configured input size.

@@ -1,0 +1,118 @@
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:390:68: warning: format specifies type 'int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+  390 |  fprintf(__stderrp, "This tree will need %d bytes on the board\n", ref->bytes_on_board);
+      |                                          ~~                        ^~~~~~~~~~~~~~~~~~~
+      |                                          %zu
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:453:58: warning: format specifies type 'int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+  453 |     fprintf(__stderrp, "The refstr requires %d bytes\n", ref->len);
+      |                                             ~~           ^~~~~~~~
+      |                                             %zu
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:1071:16: warning: format specifies type 'int' but the argument has type 'unsigned long' [-Wformat]
+ 1070 |  fprintf(__stderrp, "Allocating result array for %d queries (%d bytes) ...",
+      |                                                              ~~
+      |                                                              %lu
+ 1071 |    numQueries, numCoords*sizeof(MatchCoord) );
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:1079:11: warning: format specifies type 'unsigned int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+ 1078 |    fprintf(__stderrp,"board free memory: %u total memory: %u\n",
+      |                                          ~~
+      |                                          %zu
+ 1079 |           boardFreeMemory, total_mem);
+      |           ^~~~~~~~~~~~~~~
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:1079:28: warning: format specifies type 'unsigned int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+ 1078 |    fprintf(__stderrp,"board free memory: %u total memory: %u\n",
+      |                                                           ~~
+      |                                                           %zu
+ 1079 |           boardFreeMemory, total_mem);
+      |                            ^~~~~~~~~
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:1335:77: warning: format specifies type 'int' but the argument has type 'unsigned long' [-Wformat]
+ 1335 |  fprintf(__stderrp, "Allocing %d bytes of host memory for %d alignments\n", alignmentOffset * sizeof(Alignment), numAlignments);
+      |                               ~~                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                               %lu
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:1362:76: warning: format specifies type 'int' but the argument has type 'unsigned long' [-Wformat]
+ 1362 |  fprintf(__stderrp, "Copying %d bytes to host memory for %d alignments\n", numAlignments * sizeof(Alignment), numAlignments);
+      |                              ~~                                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                              %lu
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:1485:3: warning: format specifies type 'unsigned int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+ 1484 |   fprintf(__stderrp, "board free memory: %u total memory: %u\n",
+      |                                          ~~
+      |                                          %zu
+ 1485 |   boardFreeMemory, total_mem);
+      |   ^~~~~~~~~~~~~~~
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:1485:20: warning: format specifies type 'unsigned int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+ 1484 |   fprintf(__stderrp, "board free memory: %u total memory: %u\n",
+      |                                                           ~~
+      |                                                           %zu
+ 1485 |   boardFreeMemory, total_mem);
+      |                    ^~~~~~~~~
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:1498:51: warning: format specifies type 'unsigned int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+ 1498 |     fprintf(__stderrp, "board free memory: %u\n", boardFreeMemory);
+      |                                            ~~     ^~~~~~~~~~~~~~~
+      |                                            %zu
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:1636:30: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+ 1636 |                  addToBuffer("> ");
+      |                              ^
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:1638:30: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+ 1638 |                  addToBuffer("\n");
+      |                              ^
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:1641:17: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 1641 |                 sprintf(buf, "%d\t%d\t%d\n",
+      |                 ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:16: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __attribute__((__deprecated__("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")))
+      |                ^
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:1975:13: warning: format specifies type 'int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+ 1974 |     fprintf(__stderrp, "Memory footprint is:\n\tqueries: %d\n\tref: %d\n\tresults: %d\n",
+      |                                                          ~~
+      |                                                          %zu
+ 1975 |             ctx->queries->bytes_on_board,
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:1976:13: warning: format specifies type 'int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+ 1974 |     fprintf(__stderrp, "Memory footprint is:\n\tqueries: %d\n\tref: %d\n\tresults: %d\n",
+      |                                                                     ~~
+      |                                                                     %zu
+ 1975 |             ctx->queries->bytes_on_board,
+ 1976 |             ctx->ref->bytes_on_board,
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:1977:13: warning: format specifies type 'int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+ 1974 |     fprintf(__stderrp, "Memory footprint is:\n\tqueries: %d\n\tref: %d\n\tresults: %d\n",
+      |                                                                                    ~~
+      |                                                                                    %zu
+ 1975 |             ctx->queries->bytes_on_board,
+ 1976 |             ctx->ref->bytes_on_board,
+ 1977 |             ctx->results.bytes_on_board);
+      |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:2051:3: warning: format specifies type 'unsigned int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+ 2050 |   fprintf(__stderrp, "board free memory: %u total memory: %u\n",
+      |                                          ~~
+      |                                          %zu
+ 2051 |   free_mem, total_mem);
+      |   ^~~~~~~~
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:2051:13: warning: format specifies type 'unsigned int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+ 2050 |   fprintf(__stderrp, "board free memory: %u total memory: %u\n",
+      |                                                           ~~
+      |                                                           %zu
+ 2051 |   free_mem, total_mem);
+      |             ^~~~~~~~~
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:2209:62: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+ 2209 |     writeStatisticsFile(&(ctx->statistics), ctx->stats_file, "node_hist.out", "child_hist.out");
+      |                                                              ^
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/mummergpu.cu:2209:79: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+ 2209 |     writeStatisticsFile(&(ctx->statistics), ctx->stats_file, "node_hist.out", "child_hist.out");
+      |                                                                               ^
+20 warnings generated.
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/suffix-tree.cpp:122:5: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+  122 |     sprintf(buffer, "%0.*f", precision, r);
+      |     ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:16: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __attribute__((__deprecated__("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")))
+      |                ^
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/suffix-tree.cpp:186:9: warning: 'this' pointer cannot be null in well-defined C++ code; pointer may be assumed to always convert to true [-Wundefined-bool-conversion]
+  186 |     if (this) { return m_nodeid; }
+      |     ~~  ^~~~
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-pvvvdi7e/source_workspace/cuda/mummergpu/src/suffix-tree.cpp:2289:6: warning: 'sprintf' is deprecated: This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead. [-Wdeprecated-declarations]
+ 2289 |      sprintf(buf, "\t%d\t%d\t%d\n", left_in_ref, qrypos, qrylen);
+      |      ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/_stdio.h:278:16: note: 'sprintf' has been explicitly marked deprecated here
+  278 | __attribute__((__deprecated__("This function is provided for compatibility reasons only.  Due to security concerns inherent in the design of sprintf(3), it is highly recommended that you use snprintf(3) instead.")))
+      |                ^
+3 warnings generated.

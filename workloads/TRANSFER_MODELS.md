@@ -191,6 +191,12 @@ allocations), in addition to the aggregate thread budget. Existing configuration
 retain whole-buffer semantics. See [Gaussian scope and validation](rodinia/gaussian/README.md).
 
 
+## Shared-memory limitation across supported cases
+
+The original fifteen Rodinia cases and the additional DWT2D case are supported only for their documented logical global-buffer footprints and configured scenarios. Support does not imply full simulation or validation of shared-memory execution. Where `shared_memory: opaque_values` is selected, shared arrays have checked shapes/bounds but unknown contents, including after writes and barriers. Internal shared-memory traffic, numerical results, initialization and shared-memory race freedom are not established. Global footprints assume valid kernel synchronization; optional barrier checks cover selected global-memory conflicts only.
+
+A graph can complete when unknown shared values do not determine global addresses, access counts or launch/control decisions. If such decisions depend on unresolved shared results, source analysis must reject the case. GPU timings/cycles annotate a completed graph separately and do not remove this limitation or prove numerical correctness.
+
 HotSpot 2D and Pathfinder explicitly select `shared_memory: opaque_values`.
 Fixed numeric shared arrays are tracked for shape and bounds only; every read
 returns unknown, including after writes and barriers. Shared transfers,
@@ -252,3 +258,8 @@ These graphs describe unique logical byte footprints and dependencies, not physi
 The BFS, LavaMD, Particle Filter, K-means and B+tree guides describe their exact supported scenarios. `cuda_integer_model.py` extends bounded AST evaluation with known integer bytes, optional floating bytes for the small K-means fixture, pre-launch snapshots plus thread-local writes, and identical-footprint path exploration. Unknown paths that differ in memory footprint or barriers are rejected, as are conflicting threads. Opaque host addresses do not prove CPU memory safety. CPU-visible downloads add conservative control dependencies to later transfers.
 
 `tests/test_five_source_workloads.py` uses four focused test groups: independent schedules and saved-artifact comparisons for all five cases; execution of B+tree's original CPU preparation with GPU calls stubbed; selected unsupported-input checks; and notebook/capture/CSV preparation checks. The CPU preparation test compares only defined bytes, not uninitialized padding. K-means floating evaluation does not prove arbitrary floating-point convergence or GPU FMA equivalence. No new GPU run, cycle measurement or simulator result is claimed by these tests.
+
+
+## Experimental native source backend
+
+`cuda_native_source_model.py` adds Clang-instrumented CPU execution for explicitly configured complete application drivers. It is separate from the bounded Python AST interpreter and from GPU enrichment. The three completed native scenarios select rejection of shared memory and barriers. Experimental opt-in checked block execution and serial stream projection are under development for the remaining workloads; they do not remove the shared-memory limitation of the AST interpreter or establish general CUDA scheduling equivalence. Its simulator nodes represent external kernel input reads and global output writes, with all global reads retained separately in launch metadata. Interval-based source dependencies avoid per-byte Python state. CPU arithmetic, ABI and build-specific behavior are not evidence of GPU equivalence. See [scenario scope, source corrections and reproduction](rodinia/NATIVE_SOURCE_ANALYSIS.md).

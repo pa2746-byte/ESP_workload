@@ -1,0 +1,10 @@
+{
+  "case": "dwt2d",
+  "layout_engine": "dot",
+  "source_file": "main_simulator.json",
+  "source_sha256": "64124f04888e63d2be107614be96073a538cc8b0895ee2b178eb3916f8c286ce",
+  "nodes": 22,
+  "edges": 23,
+  "gpu_measurements_attached": false,
+  "note": "All nodes and dependencies are retained. SVG supports zoom; PNG is an overview. Colors: orange writes, purple reads, blue uploads, green downloads."
+}

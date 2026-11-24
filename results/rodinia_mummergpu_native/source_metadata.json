@@ -1,0 +1,2102 @@
+{
+  "model": "Clang-instrumented CPU source execution: kernel external-input/output footprints",
+  "backend": "native_source_execution",
+  "experimental": true,
+  "capture_provenance": {
+    "case": "mummergpu",
+    "capture": "20261123T020343856158Z",
+    "archive_sha256": "e2efbb251a677c7662173fec73cadb6f15e2360933bf41720086d0a7f341ffdd",
+    "original_arguments": [
+      "-l",
+      "1",
+      "data/shortref.fa",
+      "data/shortqry.fa"
+    ]
+  },
+  "host_environment": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "release": "24.6.0"
+  },
+  "volume_unit": "bytes",
+  "configuration": {
+    "case": "mummergpu",
+    "arguments": [
+      "-l",
+      "1",
+      "data/shortref.fa",
+      "data/shortqry.fa"
+    ],
+    "translation_units": [
+      "src/mummergpu_main.cpp",
+      "src/mummergpu.cu",
+      "src/suffix-tree.cpp",
+      "src/PoolMalloc.cpp",
+      "src/mummergpu_gold.cpp"
+    ],
+    "include_directories": [
+      "src"
+    ],
+    "compile_defines": {
+      "UNIX": 1,
+      "TREETEX": 0
+    },
+    "timeout_seconds": 120,
+    "source_fixes": "workloads/rodinia/mummergpu/native_source_fixes.json"
+  },
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "device_1",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          4107
+        ]
+      ],
+      "operation_id": 0,
+      "stream": "default",
+      "ordered_after_operations": []
+    },
+    {
+      "id": 1,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          65536
+        ]
+      ],
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          65536,
+          131072
+        ]
+      ],
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          131072,
+          196608
+        ]
+      ],
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        2
+      ]
+    },
+    {
+      "id": 4,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          196608,
+          262144
+        ]
+      ],
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        3
+      ]
+    },
+    {
+      "id": 5,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          262144,
+          327680
+        ]
+      ],
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        4
+      ]
+    },
+    {
+      "id": 6,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          327680,
+          393216
+        ]
+      ],
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        5
+      ]
+    },
+    {
+      "id": 7,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          393216,
+          458752
+        ]
+      ],
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        6
+      ]
+    },
+    {
+      "id": 8,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          458752,
+          524288
+        ]
+      ],
+      "operation_id": 8,
+      "stream": "default",
+      "ordered_after_operations": [
+        7
+      ]
+    },
+    {
+      "id": 9,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          524288,
+          589824
+        ]
+      ],
+      "operation_id": 9,
+      "stream": "default",
+      "ordered_after_operations": [
+        8
+      ]
+    },
+    {
+      "id": 10,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          589824,
+          655360
+        ]
+      ],
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        9
+      ]
+    },
+    {
+      "id": 11,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          655360,
+          720896
+        ]
+      ],
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        10
+      ]
+    },
+    {
+      "id": 12,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          720896,
+          786432
+        ]
+      ],
+      "operation_id": 12,
+      "stream": "default",
+      "ordered_after_operations": [
+        11
+      ]
+    },
+    {
+      "id": 13,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          786432,
+          851968
+        ]
+      ],
+      "operation_id": 13,
+      "stream": "default",
+      "ordered_after_operations": [
+        12
+      ]
+    },
+    {
+      "id": 14,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          851968,
+          917504
+        ]
+      ],
+      "operation_id": 14,
+      "stream": "default",
+      "ordered_after_operations": [
+        13
+      ]
+    },
+    {
+      "id": 15,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          917504,
+          983040
+        ]
+      ],
+      "operation_id": 15,
+      "stream": "default",
+      "ordered_after_operations": [
+        14
+      ]
+    },
+    {
+      "id": 16,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          983040,
+          1048576
+        ]
+      ],
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        15
+      ]
+    },
+    {
+      "id": 17,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1048576,
+          1114112
+        ]
+      ],
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        16
+      ]
+    },
+    {
+      "id": 18,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1114112,
+          1179648
+        ]
+      ],
+      "operation_id": 18,
+      "stream": "default",
+      "ordered_after_operations": [
+        17
+      ]
+    },
+    {
+      "id": 19,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1179648,
+          1245184
+        ]
+      ],
+      "operation_id": 19,
+      "stream": "default",
+      "ordered_after_operations": [
+        18
+      ]
+    },
+    {
+      "id": 20,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1245184,
+          1310720
+        ]
+      ],
+      "operation_id": 20,
+      "stream": "default",
+      "ordered_after_operations": [
+        19
+      ]
+    },
+    {
+      "id": 21,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1310720,
+          1376256
+        ]
+      ],
+      "operation_id": 21,
+      "stream": "default",
+      "ordered_after_operations": [
+        20
+      ]
+    },
+    {
+      "id": 22,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1376256,
+          1441792
+        ]
+      ],
+      "operation_id": 22,
+      "stream": "default",
+      "ordered_after_operations": [
+        21
+      ]
+    },
+    {
+      "id": 23,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1441792,
+          1507328
+        ]
+      ],
+      "operation_id": 23,
+      "stream": "default",
+      "ordered_after_operations": [
+        22
+      ]
+    },
+    {
+      "id": 24,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1507328,
+          1572864
+        ]
+      ],
+      "operation_id": 24,
+      "stream": "default",
+      "ordered_after_operations": [
+        23
+      ]
+    },
+    {
+      "id": 25,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1572864,
+          1638400
+        ]
+      ],
+      "operation_id": 25,
+      "stream": "default",
+      "ordered_after_operations": [
+        24
+      ]
+    },
+    {
+      "id": 26,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1638400,
+          1703936
+        ]
+      ],
+      "operation_id": 26,
+      "stream": "default",
+      "ordered_after_operations": [
+        25
+      ]
+    },
+    {
+      "id": 27,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1703936,
+          1769472
+        ]
+      ],
+      "operation_id": 27,
+      "stream": "default",
+      "ordered_after_operations": [
+        26
+      ]
+    },
+    {
+      "id": 28,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1769472,
+          1835008
+        ]
+      ],
+      "operation_id": 28,
+      "stream": "default",
+      "ordered_after_operations": [
+        27
+      ]
+    },
+    {
+      "id": 29,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1835008,
+          1900544
+        ]
+      ],
+      "operation_id": 29,
+      "stream": "default",
+      "ordered_after_operations": [
+        28
+      ]
+    },
+    {
+      "id": 30,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1900544,
+          1966080
+        ]
+      ],
+      "operation_id": 30,
+      "stream": "default",
+      "ordered_after_operations": [
+        29
+      ]
+    },
+    {
+      "id": 31,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1966080,
+          2031616
+        ]
+      ],
+      "operation_id": 31,
+      "stream": "default",
+      "ordered_after_operations": [
+        30
+      ]
+    },
+    {
+      "id": 32,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          2031616,
+          2097152
+        ]
+      ],
+      "operation_id": 32,
+      "stream": "default",
+      "ordered_after_operations": [
+        31
+      ]
+    },
+    {
+      "id": 33,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          65536
+        ]
+      ],
+      "operation_id": 33,
+      "stream": "default",
+      "ordered_after_operations": [
+        32
+      ]
+    },
+    {
+      "id": 34,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          65536,
+          131072
+        ]
+      ],
+      "operation_id": 34,
+      "stream": "default",
+      "ordered_after_operations": [
+        33
+      ]
+    },
+    {
+      "id": 35,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          131072,
+          196608
+        ]
+      ],
+      "operation_id": 35,
+      "stream": "default",
+      "ordered_after_operations": [
+        34
+      ]
+    },
+    {
+      "id": 36,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          196608,
+          262144
+        ]
+      ],
+      "operation_id": 36,
+      "stream": "default",
+      "ordered_after_operations": [
+        35
+      ]
+    },
+    {
+      "id": 37,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          262144,
+          327680
+        ]
+      ],
+      "operation_id": 37,
+      "stream": "default",
+      "ordered_after_operations": [
+        36
+      ]
+    },
+    {
+      "id": 38,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          327680,
+          393216
+        ]
+      ],
+      "operation_id": 38,
+      "stream": "default",
+      "ordered_after_operations": [
+        37
+      ]
+    },
+    {
+      "id": 39,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          393216,
+          458752
+        ]
+      ],
+      "operation_id": 39,
+      "stream": "default",
+      "ordered_after_operations": [
+        38
+      ]
+    },
+    {
+      "id": 40,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          458752,
+          524288
+        ]
+      ],
+      "operation_id": 40,
+      "stream": "default",
+      "ordered_after_operations": [
+        39
+      ]
+    },
+    {
+      "id": 41,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          524288,
+          589824
+        ]
+      ],
+      "operation_id": 41,
+      "stream": "default",
+      "ordered_after_operations": [
+        40
+      ]
+    },
+    {
+      "id": 42,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          589824,
+          655360
+        ]
+      ],
+      "operation_id": 42,
+      "stream": "default",
+      "ordered_after_operations": [
+        41
+      ]
+    },
+    {
+      "id": 43,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          655360,
+          720896
+        ]
+      ],
+      "operation_id": 43,
+      "stream": "default",
+      "ordered_after_operations": [
+        42
+      ]
+    },
+    {
+      "id": 44,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          720896,
+          786432
+        ]
+      ],
+      "operation_id": 44,
+      "stream": "default",
+      "ordered_after_operations": [
+        43
+      ]
+    },
+    {
+      "id": 45,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          786432,
+          851968
+        ]
+      ],
+      "operation_id": 45,
+      "stream": "default",
+      "ordered_after_operations": [
+        44
+      ]
+    },
+    {
+      "id": 46,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          851968,
+          917504
+        ]
+      ],
+      "operation_id": 46,
+      "stream": "default",
+      "ordered_after_operations": [
+        45
+      ]
+    },
+    {
+      "id": 47,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          917504,
+          983040
+        ]
+      ],
+      "operation_id": 47,
+      "stream": "default",
+      "ordered_after_operations": [
+        46
+      ]
+    },
+    {
+      "id": 48,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          983040,
+          1048576
+        ]
+      ],
+      "operation_id": 48,
+      "stream": "default",
+      "ordered_after_operations": [
+        47
+      ]
+    },
+    {
+      "id": 49,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1048576,
+          1114112
+        ]
+      ],
+      "operation_id": 49,
+      "stream": "default",
+      "ordered_after_operations": [
+        48
+      ]
+    },
+    {
+      "id": 50,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1114112,
+          1179648
+        ]
+      ],
+      "operation_id": 50,
+      "stream": "default",
+      "ordered_after_operations": [
+        49
+      ]
+    },
+    {
+      "id": 51,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1179648,
+          1245184
+        ]
+      ],
+      "operation_id": 51,
+      "stream": "default",
+      "ordered_after_operations": [
+        50
+      ]
+    },
+    {
+      "id": 52,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1245184,
+          1310720
+        ]
+      ],
+      "operation_id": 52,
+      "stream": "default",
+      "ordered_after_operations": [
+        51
+      ]
+    },
+    {
+      "id": 53,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1310720,
+          1376256
+        ]
+      ],
+      "operation_id": 53,
+      "stream": "default",
+      "ordered_after_operations": [
+        52
+      ]
+    },
+    {
+      "id": 54,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1376256,
+          1441792
+        ]
+      ],
+      "operation_id": 54,
+      "stream": "default",
+      "ordered_after_operations": [
+        53
+      ]
+    },
+    {
+      "id": 55,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1441792,
+          1507328
+        ]
+      ],
+      "operation_id": 55,
+      "stream": "default",
+      "ordered_after_operations": [
+        54
+      ]
+    },
+    {
+      "id": 56,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1507328,
+          1572864
+        ]
+      ],
+      "operation_id": 56,
+      "stream": "default",
+      "ordered_after_operations": [
+        55
+      ]
+    },
+    {
+      "id": 57,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1572864,
+          1638400
+        ]
+      ],
+      "operation_id": 57,
+      "stream": "default",
+      "ordered_after_operations": [
+        56
+      ]
+    },
+    {
+      "id": 58,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1638400,
+          1703936
+        ]
+      ],
+      "operation_id": 58,
+      "stream": "default",
+      "ordered_after_operations": [
+        57
+      ]
+    },
+    {
+      "id": 59,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1703936,
+          1769472
+        ]
+      ],
+      "operation_id": 59,
+      "stream": "default",
+      "ordered_after_operations": [
+        58
+      ]
+    },
+    {
+      "id": 60,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1769472,
+          1835008
+        ]
+      ],
+      "operation_id": 60,
+      "stream": "default",
+      "ordered_after_operations": [
+        59
+      ]
+    },
+    {
+      "id": 61,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1835008,
+          1900544
+        ]
+      ],
+      "operation_id": 61,
+      "stream": "default",
+      "ordered_after_operations": [
+        60
+      ]
+    },
+    {
+      "id": 62,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1900544,
+          1966080
+        ]
+      ],
+      "operation_id": 62,
+      "stream": "default",
+      "ordered_after_operations": [
+        61
+      ]
+    },
+    {
+      "id": 63,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          1966080,
+          2031616
+        ]
+      ],
+      "operation_id": 63,
+      "stream": "default",
+      "ordered_after_operations": [
+        62
+      ]
+    },
+    {
+      "id": 64,
+      "buffer": "device_3",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          2031616,
+          2097152
+        ]
+      ],
+      "operation_id": 64,
+      "stream": "default",
+      "ordered_after_operations": [
+        63
+      ]
+    },
+    {
+      "id": 65,
+      "buffer": "device_4",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          11
+        ]
+      ],
+      "operation_id": 65,
+      "stream": "default",
+      "ordered_after_operations": [
+        64
+      ]
+    },
+    {
+      "id": 66,
+      "buffer": "device_5",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 66,
+      "stream": "default",
+      "ordered_after_operations": [
+        65
+      ]
+    },
+    {
+      "id": 67,
+      "buffer": "device_6",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 67,
+      "stream": "default",
+      "ordered_after_operations": [
+        66
+      ]
+    },
+    {
+      "id": 68,
+      "buffer": "device_7",
+      "stage": "memset",
+      "byte_ranges": [
+        [
+          0,
+          40
+        ]
+      ],
+      "operation_id": 68,
+      "stream": "default",
+      "ordered_after_operations": [
+        67
+      ]
+    },
+    {
+      "id": 69,
+      "buffer": "device_2",
+      "stage": "mummergpuKernel:read",
+      "byte_ranges": [
+        [
+          65536,
+          65552
+        ],
+        [
+          131072,
+          131088
+        ],
+        [
+          196608,
+          196624
+        ],
+        [
+          393216,
+          393232
+        ]
+      ],
+      "operation_id": 69,
+      "stream": "default",
+      "ordered_after_operations": [
+        68
+      ]
+    },
+    {
+      "id": 70,
+      "buffer": "device_3",
+      "stage": "mummergpuKernel:read",
+      "byte_ranges": [
+        [
+          65536,
+          65552
+        ],
+        [
+          131072,
+          131088
+        ]
+      ],
+      "operation_id": 69,
+      "stream": "default",
+      "ordered_after_operations": [
+        68
+      ]
+    },
+    {
+      "id": 71,
+      "buffer": "device_4",
+      "stage": "mummergpuKernel:read",
+      "byte_ranges": [
+        [
+          1,
+          3
+        ],
+        [
+          4,
+          7
+        ],
+        [
+          8,
+          10
+        ]
+      ],
+      "operation_id": 69,
+      "stream": "default",
+      "ordered_after_operations": [
+        68
+      ]
+    },
+    {
+      "id": 72,
+      "buffer": "device_5",
+      "stage": "mummergpuKernel:read",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 69,
+      "stream": "default",
+      "ordered_after_operations": [
+        68
+      ]
+    },
+    {
+      "id": 73,
+      "buffer": "device_6",
+      "stage": "mummergpuKernel:read",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 69,
+      "stream": "default",
+      "ordered_after_operations": [
+        68
+      ]
+    },
+    {
+      "id": 74,
+      "buffer": "device_7",
+      "stage": "mummergpuKernel:write",
+      "byte_ranges": [
+        [
+          0,
+          24
+        ]
+      ],
+      "operation_id": 69,
+      "stream": "default",
+      "ordered_after_operations": [
+        68
+      ]
+    },
+    {
+      "id": 75,
+      "buffer": "device_7",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          40
+        ]
+      ],
+      "operation_id": 70,
+      "stream": "default",
+      "ordered_after_operations": [
+        69
+      ]
+    },
+    {
+      "id": 76,
+      "buffer": "device_9",
+      "stage": "memset",
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ],
+      "operation_id": 71,
+      "stream": "default",
+      "ordered_after_operations": [
+        70
+      ]
+    },
+    {
+      "id": 77,
+      "buffer": "device_8",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          60
+        ]
+      ],
+      "operation_id": 72,
+      "stream": "default",
+      "ordered_after_operations": [
+        71
+      ]
+    },
+    {
+      "id": 78,
+      "buffer": "device_2",
+      "stage": "printKernel:read",
+      "byte_ranges": [
+        [
+          65536,
+          65552
+        ],
+        [
+          131072,
+          131088
+        ],
+        [
+          196608,
+          196624
+        ],
+        [
+          393216,
+          393232
+        ],
+        [
+          458752,
+          458768
+        ],
+        [
+          524288,
+          524304
+        ],
+        [
+          589824,
+          589840
+        ],
+        [
+          655360,
+          655376
+        ],
+        [
+          720896,
+          720912
+        ]
+      ],
+      "operation_id": 73,
+      "stream": "default",
+      "ordered_after_operations": [
+        72
+      ]
+    },
+    {
+      "id": 79,
+      "buffer": "device_3",
+      "stage": "printKernel:read",
+      "byte_ranges": [
+        [
+          65536,
+          65552
+        ],
+        [
+          131072,
+          131088
+        ],
+        [
+          196608,
+          196624
+        ],
+        [
+          393216,
+          393232
+        ],
+        [
+          458752,
+          458768
+        ],
+        [
+          524288,
+          524304
+        ],
+        [
+          589824,
+          589840
+        ],
+        [
+          655360,
+          655376
+        ],
+        [
+          720896,
+          720912
+        ]
+      ],
+      "operation_id": 73,
+      "stream": "default",
+      "ordered_after_operations": [
+        72
+      ]
+    },
+    {
+      "id": 80,
+      "buffer": "device_4",
+      "stage": "printKernel:read",
+      "byte_ranges": [
+        [
+          0,
+          1
+        ],
+        [
+          3,
+          6
+        ]
+      ],
+      "operation_id": 73,
+      "stream": "default",
+      "ordered_after_operations": [
+        72
+      ]
+    },
+    {
+      "id": 81,
+      "buffer": "device_5",
+      "stage": "printKernel:read",
+      "byte_ranges": [
+        [
+          0,
+          8
+        ]
+      ],
+      "operation_id": 73,
+      "stream": "default",
+      "ordered_after_operations": [
+        72
+      ]
+    },
+    {
+      "id": 82,
+      "buffer": "device_8",
+      "stage": "printKernel:read",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ],
+        [
+          16,
+          32
+        ],
+        [
+          36,
+          52
+        ],
+        [
+          56,
+          60
+        ]
+      ],
+      "operation_id": 73,
+      "stream": "default",
+      "ordered_after_operations": [
+        72
+      ]
+    },
+    {
+      "id": 83,
+      "buffer": "device_9",
+      "stage": "printKernel:write",
+      "byte_ranges": [
+        [
+          0,
+          6
+        ],
+        [
+          8,
+          14
+        ],
+        [
+          16,
+          22
+        ],
+        [
+          24,
+          30
+        ],
+        [
+          32,
+          38
+        ],
+        [
+          40,
+          46
+        ]
+      ],
+      "operation_id": 73,
+      "stream": "default",
+      "ordered_after_operations": [
+        72
+      ]
+    },
+    {
+      "id": 84,
+      "buffer": "device_9",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          64
+        ]
+      ],
+      "operation_id": 74,
+      "stream": "default",
+      "ordered_after_operations": [
+        73
+      ]
+    }
+  ],
+  "launches": [
+    {
+      "kernel": "mummergpuKernel",
+      "grid": [
+        1,
+        1,
+        1
+      ],
+      "block": [
+        3,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              65536,
+              65552
+            ],
+            [
+              131072,
+              131088
+            ],
+            [
+              196608,
+              196624
+            ],
+            [
+              393216,
+              393232
+            ]
+          ],
+          "external_reads": [
+            [
+              65536,
+              65552
+            ],
+            [
+              131072,
+              131088
+            ],
+            [
+              196608,
+              196624
+            ],
+            [
+              393216,
+              393232
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [
+            [
+              65536,
+              65552
+            ],
+            [
+              131072,
+              131088
+            ]
+          ],
+          "external_reads": [
+            [
+              65536,
+              65552
+            ],
+            [
+              131072,
+              131088
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 4,
+          "reads": [
+            [
+              1,
+              3
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              8,
+              10
+            ]
+          ],
+          "external_reads": [
+            [
+              1,
+              3
+            ],
+            [
+              4,
+              7
+            ],
+            [
+              8,
+              10
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 5,
+          "reads": [
+            [
+              0,
+              12
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              12
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 6,
+          "reads": [
+            [
+              0,
+              12
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              12
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 7,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              24
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        69,
+        70,
+        71,
+        72,
+        73,
+        74
+      ]
+    },
+    {
+      "kernel": "printKernel",
+      "grid": [
+        1,
+        1,
+        1
+      ],
+      "block": [
+        3,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              65536,
+              65552
+            ],
+            [
+              131072,
+              131088
+            ],
+            [
+              196608,
+              196624
+            ],
+            [
+              393216,
+              393232
+            ],
+            [
+              458752,
+              458768
+            ],
+            [
+              524288,
+              524304
+            ],
+            [
+              589824,
+              589840
+            ],
+            [
+              655360,
+              655376
+            ],
+            [
+              720896,
+              720912
+            ]
+          ],
+          "external_reads": [
+            [
+              65536,
+              65552
+            ],
+            [
+              131072,
+              131088
+            ],
+            [
+              196608,
+              196624
+            ],
+            [
+              393216,
+              393232
+            ],
+            [
+              458752,
+              458768
+            ],
+            [
+              524288,
+              524304
+            ],
+            [
+              589824,
+              589840
+            ],
+            [
+              655360,
+              655376
+            ],
+            [
+              720896,
+              720912
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [
+            [
+              65536,
+              65552
+            ],
+            [
+              131072,
+              131088
+            ],
+            [
+              196608,
+              196624
+            ],
+            [
+              393216,
+              393232
+            ],
+            [
+              458752,
+              458768
+            ],
+            [
+              524288,
+              524304
+            ],
+            [
+              589824,
+              589840
+            ],
+            [
+              655360,
+              655376
+            ],
+            [
+              720896,
+              720912
+            ]
+          ],
+          "external_reads": [
+            [
+              65536,
+              65552
+            ],
+            [
+              131072,
+              131088
+            ],
+            [
+              196608,
+              196624
+            ],
+            [
+              393216,
+              393232
+            ],
+            [
+              458752,
+              458768
+            ],
+            [
+              524288,
+              524304
+            ],
+            [
+              589824,
+              589840
+            ],
+            [
+              655360,
+              655376
+            ],
+            [
+              720896,
+              720912
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 4,
+          "reads": [
+            [
+              0,
+              1
+            ],
+            [
+              3,
+              6
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              1
+            ],
+            [
+              3,
+              6
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 5,
+          "reads": [
+            [
+              0,
+              8
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              8
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 8,
+          "reads": [
+            [
+              0,
+              12
+            ],
+            [
+              16,
+              32
+            ],
+            [
+              36,
+              52
+            ],
+            [
+              56,
+              60
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              12
+            ],
+            [
+              16,
+              32
+            ],
+            [
+              36,
+              52
+            ],
+            [
+              56,
+              60
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 9,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              6
+            ],
+            [
+              8,
+              14
+            ],
+            [
+              16,
+              22
+            ],
+            [
+              24,
+              30
+            ],
+            [
+              32,
+              38
+            ],
+            [
+              40,
+              46
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        78,
+        79,
+        80,
+        81,
+        82,
+        83
+      ]
+    }
+  ],
+  "source_and_input_sha256": {
+    "cuda/mummergpu/data/README": "792625a1e9dd94165dc7befa09ea17d3cc35b9a5308ceb365760bd3986e94b46",
+    "cuda/mummergpu/data/shortref.fa": "e2e7caab6ae3e0d349867a86912a2238fcae152be3e7e8ce881c25a7c096e238",
+    "cuda/mummergpu/data/shortqry.fa": "6ae0a54fea718a382629ae55ced76e566e42b3300ac9e57eac1a14043126e9d5",
+    "cuda/mummergpu/src/mummergpu_gold.cpp": "b2e08a410aee034f05c54fe84fa5f99ca106fd28aedd37a675de0b1921ae520f",
+    "cuda/mummergpu/src/common.cu": "911676aba37b672289a81383bbd7a4de0cd68b077b912f6041eaca926bf896ec",
+    "cuda/mummergpu/src/mummergpu.cu": "14c60d51d4dd802b5798f5274d8f54cbd69ae57144bb10eeda4eed0042332693",
+    "cuda/mummergpu/src/PoolMalloc.hh": "c1056fe92fcf33bbe3827fe797e342a6d0fa38d6a1a870387601443054e87ff5",
+    "cuda/mummergpu/src/mummergpu.h": "da9e9ea93d12e2c405ab3f3f2d7ed42d0c447d860fc8946200277f2fb257c765",
+    "cuda/mummergpu/src/PoolMalloc.cpp": "680a87cc4684acc82a0bfe48af2b9a7bf26b39f9037565e29c577b0efeaaa5dc",
+    "cuda/mummergpu/src/morton.c": "5c19ae3f90b3a63794dd5524dd7817ea52d6308245d2e1fa978c1503937e3e18",
+    "cuda/mummergpu/src/smith-waterman.cpp": "9fa1020677553369e74475325a64133cdf3568fbf8209a5f29648d269b1b959a",
+    "cuda/mummergpu/src/mummergpu_main.cpp": "1b1a78ccaf131230a520fdd9b168fac62eeb010f4546597438081807d1458e30",
+    "cuda/mummergpu/src/suffix-tree.cpp": "2cd7925ab03b2157a5136ad26b8bd1889c81a23d4307391bd3ed9bdf800ef7ba",
+    "cuda/mummergpu/src/mummergpu_kernel.cu": "39dabf85bf10ea274bc633aea6e57853a29b72b703ebed54b89226205ffada16",
+    "cuda/mummergpu/data/timing/timing-exp.sh": "1ba158fa5b2c2d8ea11a28d14ca524ba4d329c41ccd7d23b936210e12f06dcce",
+    "cuda/mummergpu/data/timing/global.cnf": "530c371f8bebffb79382c242f45e7657bc0111630a4e7b043086981afe052d6b",
+    "cuda/mummergpu/data/timing/gentestdata.py": "b761c6610dc8e47906cbd49b7e0e4dc5ebdb4474b6b827d7643935cb1827125f",
+    "cuda/mummergpu/data/timing/instructions.cnf": "87093840544d60dbb1910c1e4c05d0604bac10ab5d166e6f39e106d3037b31a9"
+  },
+  "source_corrections": [
+    {
+      "path": "cuda/mummergpu/src/mummergpu.cu",
+      "before_sha256": "5febc5874e3bb47c3f007a8a009ec98bb027492771a3d97d985da2b3ed87e4df",
+      "after_sha256": "14c60d51d4dd802b5798f5274d8f54cbd69ae57144bb10eeda4eed0042332693",
+      "old": "int numrows = ceil(ref->len / ((float)ref->pitch));",
+      "new": "int numrows = ref->pitch ? (int)ceil(ref->len / ((float)ref->pitch)) : 0;",
+      "reason": "Avoid division by zero and inf-to-int conversion when the configured non-texture path leaves pitch zero."
+    },
+    {
+      "path": "cuda/mummergpu/src/suffix-tree.cpp",
+      "before_sha256": "e2e632a074f8fc802784de1cc676b338d3dd797795411c2ea05c63d882194b8c",
+      "after_sha256": "2cd7925ab03b2157a5136ad26b8bd1889c81a23d4307391bd3ed9bdf800ef7ba",
+      "old": "bytes_written +=  p_buf - (output_buf + bytes_written);\n}",
+      "new": "bytes_written +=  p_buf - (output_buf + bytes_written);\n\treturn 0;\n}",
+      "reason": "Return a defined value from the int-valued addMatchToBuffer output helper; callers ignore the result."
+    }
+  ],
+  "input_fixtures": [],
+  "source_units": {
+    "src/mummergpu_main.cpp": {
+      "source_sha256": "1b1a78ccaf131230a520fdd9b168fac62eeb010f4546597438081807d1458e30",
+      "expanded_sha256": "1536ccc9efebd61079d0f94cc4e031830136782d729b00b2bd670b42fc64cb4e",
+      "device_functions": []
+    },
+    "src/mummergpu.cu": {
+      "source_sha256": "14c60d51d4dd802b5798f5274d8f54cbd69ae57144bb10eeda4eed0042332693",
+      "expanded_sha256": "30883da021ae5d9a1d180830e6dbf22148a8973feee4ac745aacb500cc8ee0c1",
+      "device_functions": [
+        "addr2id",
+        "id2addr",
+        "arrayToAddress",
+        "getRef",
+        "rc",
+        "getNode",
+        "getChildren",
+        "set_result",
+        "mummergpuKernel",
+        "mummergpuRCKernel",
+        "printKernel"
+      ]
+    },
+    "src/suffix-tree.cpp": {
+      "source_sha256": "2cd7925ab03b2157a5136ad26b8bd1889c81a23d4307391bd3ed9bdf800ef7ba",
+      "expanded_sha256": "408ebd266e506c3bf7a526b7e3f6b8e1cc20ba5a095d6ba508390fdc6ea9d014",
+      "device_functions": []
+    },
+    "src/PoolMalloc.cpp": {
+      "source_sha256": "680a87cc4684acc82a0bfe48af2b9a7bf26b39f9037565e29c577b0efeaaa5dc",
+      "expanded_sha256": "52dc1495e75aae4da35537208f5ad0f02d5be37d72872cd013f5978120ce4aaa",
+      "device_functions": []
+    },
+    "src/mummergpu_gold.cpp": {
+      "source_sha256": "b2e08a410aee034f05c54fe84fa5f99ca106fd28aedd37a675de0b1921ae520f",
+      "expanded_sha256": "a89383204c2545fc0e54999cf84aa6feaf7bde0c0bbc093d3699ca5643dab495",
+      "device_functions": []
+    }
+  },
+  "backend_sha256": {
+    "cuda_native_source_model.py": "709ee50264b7d80c9c9ef5a73a6ec3f86fbedc5a5238092fdd1c584dfd7e7ddc",
+    "source_region_graph.py": "e934d23a3c95118eeb6c1b252f1ec6d3dd9677c35d46ea48634c73ed71b4d12f",
+    "source_analysis/native/runtime.hpp": "27235661e2f6a5b480854ca981a021fdac82e8fd31615261c55fcce7b2d67b12",
+    "source_analysis/native/parse_compat.hpp": "cf85e7dff55169f9ad5a6479a85f53ab42439fb8eeac12c77172e3c150195c96",
+    "source_analysis/native/block_executor.hpp": "948da564d0156ed54a81742f8eeff36b9a3e9af847e41bc1d29aa6e87a8d6f43",
+    "native_input_fixtures.py": "d403ed6ac8ebe6fd9535cd79203920f4cd18fd240fefac3db37fe257132baeeb"
+  },
+  "compiler": "Apple clang version 17.0.0 (clang-1700.0.13.5)",
+  "compile_flags": [
+    "-std=c++17",
+    "-O0",
+    "-ffp-contract=off",
+    "-fsanitize=address,undefined",
+    "-fno-omit-frame-pointer"
+  ],
+  "allocations_live_at_process_exit": {},
+  "gpu_measurements_attached": false,
+  "operation_order_representation": "Immediate predecessor in serial default-stream source execution",
+  "source_events_sha256": "297880030b1badc807079af9ad1253dae8a4b5628df313e9162a4f004967e707",
+  "matches_captured_scenario": false,
+  "source_matches_capture": false,
+  "application_arguments_match_capture": true,
+  "capture_build_equivalence_established": false,
+  "assumptions": [
+    "Original complete host drivers and instrumented kernel bodies execute on the CPU; no GPU run or timing measurement occurs.",
+    "CPU math and source-selected branches are fixture-specific; GPU floating-point, FMA, texture, ABI and numerical equivalence are not established.",
+    "Aggregate copies conservatively cover their native object storage, including padding. Only external kernel input reads and global output writes form transfer nodes. All global read footprints, including reads after same-thread writes, remain in per-launch metadata.",
+    "Uninitialized device reads, unordered inter-thread memory conflicts and concurrent host execution are rejected.",
+    "Shared-memory execution mode: reject. Checked block execution is experimental; it is not general CUDA scheduling equivalence.",
+    "Non-default streams are rejected.",
+    "ASan/UBSan check this native execution; this is not proof of general CUDA memory safety or shared-memory correctness.",
+    "Every later operation conservatively depends on prior CPU-visible downloads. Edges are logical region dependencies, not profiler event order.",
+    "GPU enrichment is separate and requires matching source/input/control-flow evidence; corrected-source or smaller scenarios cannot inherit old measurements."
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "case": "mummergpu",
+  "arguments": [
+    "-l",
+    "1",
+    "data/shortref.fa",
+    "data/shortqry.fa"
+  ],
+  "translation_units": [
+    "src/mummergpu_main.cpp",
+    "src/mummergpu.cu",
+    "src/suffix-tree.cpp",
+    "src/PoolMalloc.cpp",
+    "src/mummergpu_gold.cpp"
+  ],
+  "include_directories": [
+    "src"
+  ],
+  "compile_defines": {
+    "UNIX": 1,
+    "TREETEX": 0
+  },
+  "timeout_seconds": 120,
+  "source_fixes": "workloads/rodinia/mummergpu/native_source_fixes.json"
+}

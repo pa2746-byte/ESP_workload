@@ -1,0 +1,10 @@
+{
+  "case": "mummergpu",
+  "layout_engine": "dot",
+  "source_file": "source_simulator.json",
+  "source_sha256": "3fce4d90cdb31232a106e457a20d0efd9f642b60a3e07d34c7dd4b72e3d02d6b",
+  "nodes": 85,
+  "edges": 55,
+  "gpu_measurements_attached": false,
+  "note": "All nodes and dependencies are retained. SVG supports zoom; PNG is an overview. Colors: orange writes, purple reads, blue uploads, green downloads."
+}

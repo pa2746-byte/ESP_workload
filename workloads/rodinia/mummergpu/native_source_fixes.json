@@ -1,0 +1,18 @@
+[
+  {
+    "path": "cuda/mummergpu/src/mummergpu.cu",
+    "before_sha256": "5febc5874e3bb47c3f007a8a009ec98bb027492771a3d97d985da2b3ed87e4df",
+    "after_sha256": "14c60d51d4dd802b5798f5274d8f54cbd69ae57144bb10eeda4eed0042332693",
+    "old": "int numrows = ceil(ref->len / ((float)ref->pitch));",
+    "new": "int numrows = ref->pitch ? (int)ceil(ref->len / ((float)ref->pitch)) : 0;",
+    "reason": "Avoid division by zero and inf-to-int conversion when the configured non-texture path leaves pitch zero."
+  },
+  {
+    "path": "cuda/mummergpu/src/suffix-tree.cpp",
+    "before_sha256": "e2e632a074f8fc802784de1cc676b338d3dd797795411c2ea05c63d882194b8c",
+    "after_sha256": "2cd7925ab03b2157a5136ad26b8bd1889c81a23d4307391bd3ed9bdf800ef7ba",
+    "old": "bytes_written +=  p_buf - (output_buf + bytes_written);\n}",
+    "new": "bytes_written +=  p_buf - (output_buf + bytes_written);\n\treturn 0;\n}",
+    "reason": "Return a defined value from the int-valued addMatchToBuffer output helper; callers ignore the result."
+  }
+]

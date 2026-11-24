@@ -14,7 +14,7 @@
     "input.rgb"
   ],
   "captured_kernel_count": 4,
-  "analysis_status": "pending",
+  "analysis_status": "completed_with_reviewed_source_corrections",
   "source_and_input_sha256": {
     "cuda/dwt2d/common.h": "3f4889c2cb09c5d66d65e4ba7790e6d685ec05476a2bda2e8cd4650e95e31cea",
     "cuda/dwt2d/components.h": "0fca52ba9c238e0a12ea957d36e7e8b558b3494f251b7ff7b7be81fad65f24cd",
@@ -33,5 +33,8 @@
     "cuda/dwt2d/dwt_cuda/fdwt53.cu": "34456c3db48753a9bafa9d318f337e2f09915e9e7833922fdf85bc958eec473b",
     "data/dwt2d/input.rgb": "8dec5fb0de8a0b457c0cf7be559e4ef488e9cf39d5ddb0ff7464b23372ab21fa"
   },
-  "scope": "Exact captured sources and inputs; no GPU trace is used to infer source dependencies."
+  "scope": "Exact captured sources and inputs; no GPU trace is used to infer source dependencies.",
+  "analysis_configuration": "../dwt2d/analysis.json",
+  "analysis_results": "results/rodinia_dwt2d",
+  "analysis_note": "Source-only graph completed for the recorded input and arguments, with the two filename-allocation corrections in dwt2d/local_source_fixes.json. No corrected-source GPU rerun or numerical validation is claimed."
 }

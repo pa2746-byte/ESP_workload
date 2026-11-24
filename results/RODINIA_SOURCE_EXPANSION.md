@@ -1,0 +1,10 @@
+# Four additional bounded source graphs
+
+These source-only scenarios contain no attached GPU timings or cycles. Corrected sources, smaller inputs and native CPU execution are explicitly scoped in [the analysis notes](../workloads/rodinia/NATIVE_SOURCE_ANALYSIS.md). SVGs retain all nodes and edges and can be downloaded for zooming; PNGs are overview previews.
+
+- **DWT2D:** 4 launches, 22 transfers, 23 dependencies. [PNG](rodinia_dwt2d/graphs/main_simulator.png) · [SVG](rodinia_dwt2d/graphs/main_simulator.svg) · [JSON](rodinia_dwt2d/main_simulator.json). AST evaluator, fixed 64×64 RGB one-level forward 5/3, corrected filename allocations.
+- **Myocyte:** 39 launches, 312 transfers, 883 dependencies. [PNG](rodinia_myocyte_native/graphs/source_simulator.png) · [SVG](rodinia_myocyte_native/graphs/source_simulator.svg) · [JSON](rodinia_myocyte_native/source_simulator.json). Experimental native execution of reviewed corrected source, arguments `1 1 0`.
+- **Streamcluster:** 128 launches, 1,495 transfers, 4,256 dependencies. [PNG](rodinia_streamcluster_native/graphs/source_simulator.png) · [SVG](rodinia_streamcluster_native/graphs/source_simulator.svg) · [JSON](rodinia_streamcluster_native/source_simulator.json). Experimental native execution, original source, smaller 32-point scenario.
+- **MUMmerGPU:** 2 launches, 85 transfers, 55 dependencies. [PNG](rodinia_mummergpu_native/graphs/source_simulator.png) · [SVG](rodinia_mummergpu_native/graphs/source_simulator.svg) · [JSON](rodinia_mummergpu_native/source_simulator.json). Experimental native execution, corrected pointer-storage build and tiny inputs.
+
+Recreate images with `python3 tools/render_source_graphs.py` (Graphviz required). Each `render_manifest.json` pins the graph JSON hash and counts. Logical transfer volumes describe global-buffer footprints, not measured DRAM traffic. Native CPU execution does not establish GPU numerical, ABI or floating-point equivalence. Matching GPU runs are required before enriching these source/build/input variants.

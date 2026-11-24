@@ -1,0 +1,10130 @@
+{
+  "model": "Clang-instrumented CPU source execution: kernel external-input/output footprints",
+  "backend": "native_source_execution",
+  "experimental": true,
+  "capture_provenance": {
+    "case": "myocyte",
+    "capture": "20261123T005703612561Z",
+    "archive_sha256": "2bb699eb0abe5db7c0f5cb1192dfb021d1bf5ab11c496793078511ccd2b515e6",
+    "original_arguments": [
+      "1",
+      "1",
+      "0"
+    ]
+  },
+  "host_environment": {
+    "system": "Darwin",
+    "machine": "arm64",
+    "release": "24.6.0"
+  },
+  "volume_unit": "bytes",
+  "configuration": {
+    "case": "myocyte",
+    "arguments": [
+      "1",
+      "1",
+      "0"
+    ],
+    "translation_units": [
+      "main.cu"
+    ],
+    "source_fixes": "workloads/rodinia/myocyte/native_source_fixes.json",
+    "timeout_seconds": 120
+  },
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 0,
+      "stream": "default",
+      "ordered_after_operations": []
+    },
+    {
+      "id": 1,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        1
+      ]
+    },
+    {
+      "id": 5,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        2
+      ]
+    },
+    {
+      "id": 7,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        3
+      ]
+    },
+    {
+      "id": 8,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        4
+      ]
+    },
+    {
+      "id": 9,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        5
+      ]
+    },
+    {
+      "id": 10,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        6
+      ]
+    },
+    {
+      "id": 11,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        6
+      ]
+    },
+    {
+      "id": 12,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        6
+      ]
+    },
+    {
+      "id": 13,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        6
+      ]
+    },
+    {
+      "id": 14,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 8,
+      "stream": "default",
+      "ordered_after_operations": [
+        7
+      ]
+    },
+    {
+      "id": 15,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 9,
+      "stream": "default",
+      "ordered_after_operations": [
+        8
+      ]
+    },
+    {
+      "id": 16,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        9
+      ]
+    },
+    {
+      "id": 17,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        10
+      ]
+    },
+    {
+      "id": 18,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 12,
+      "stream": "default",
+      "ordered_after_operations": [
+        11
+      ]
+    },
+    {
+      "id": 19,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 12,
+      "stream": "default",
+      "ordered_after_operations": [
+        11
+      ]
+    },
+    {
+      "id": 20,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 12,
+      "stream": "default",
+      "ordered_after_operations": [
+        11
+      ]
+    },
+    {
+      "id": 21,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 12,
+      "stream": "default",
+      "ordered_after_operations": [
+        11
+      ]
+    },
+    {
+      "id": 22,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 13,
+      "stream": "default",
+      "ordered_after_operations": [
+        12
+      ]
+    },
+    {
+      "id": 23,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 14,
+      "stream": "default",
+      "ordered_after_operations": [
+        13
+      ]
+    },
+    {
+      "id": 24,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 15,
+      "stream": "default",
+      "ordered_after_operations": [
+        14
+      ]
+    },
+    {
+      "id": 25,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 16,
+      "stream": "default",
+      "ordered_after_operations": [
+        15
+      ]
+    },
+    {
+      "id": 26,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        16
+      ]
+    },
+    {
+      "id": 27,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        16
+      ]
+    },
+    {
+      "id": 28,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        16
+      ]
+    },
+    {
+      "id": 29,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 17,
+      "stream": "default",
+      "ordered_after_operations": [
+        16
+      ]
+    },
+    {
+      "id": 30,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 18,
+      "stream": "default",
+      "ordered_after_operations": [
+        17
+      ]
+    },
+    {
+      "id": 31,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 19,
+      "stream": "default",
+      "ordered_after_operations": [
+        18
+      ]
+    },
+    {
+      "id": 32,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 20,
+      "stream": "default",
+      "ordered_after_operations": [
+        19
+      ]
+    },
+    {
+      "id": 33,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 21,
+      "stream": "default",
+      "ordered_after_operations": [
+        20
+      ]
+    },
+    {
+      "id": 34,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 22,
+      "stream": "default",
+      "ordered_after_operations": [
+        21
+      ]
+    },
+    {
+      "id": 35,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 22,
+      "stream": "default",
+      "ordered_after_operations": [
+        21
+      ]
+    },
+    {
+      "id": 36,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 22,
+      "stream": "default",
+      "ordered_after_operations": [
+        21
+      ]
+    },
+    {
+      "id": 37,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 22,
+      "stream": "default",
+      "ordered_after_operations": [
+        21
+      ]
+    },
+    {
+      "id": 38,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 23,
+      "stream": "default",
+      "ordered_after_operations": [
+        22
+      ]
+    },
+    {
+      "id": 39,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 24,
+      "stream": "default",
+      "ordered_after_operations": [
+        23
+      ]
+    },
+    {
+      "id": 40,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 25,
+      "stream": "default",
+      "ordered_after_operations": [
+        24
+      ]
+    },
+    {
+      "id": 41,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 26,
+      "stream": "default",
+      "ordered_after_operations": [
+        25
+      ]
+    },
+    {
+      "id": 42,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 27,
+      "stream": "default",
+      "ordered_after_operations": [
+        26
+      ]
+    },
+    {
+      "id": 43,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 27,
+      "stream": "default",
+      "ordered_after_operations": [
+        26
+      ]
+    },
+    {
+      "id": 44,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 27,
+      "stream": "default",
+      "ordered_after_operations": [
+        26
+      ]
+    },
+    {
+      "id": 45,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 27,
+      "stream": "default",
+      "ordered_after_operations": [
+        26
+      ]
+    },
+    {
+      "id": 46,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 28,
+      "stream": "default",
+      "ordered_after_operations": [
+        27
+      ]
+    },
+    {
+      "id": 47,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 29,
+      "stream": "default",
+      "ordered_after_operations": [
+        28
+      ]
+    },
+    {
+      "id": 48,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 30,
+      "stream": "default",
+      "ordered_after_operations": [
+        29
+      ]
+    },
+    {
+      "id": 49,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 31,
+      "stream": "default",
+      "ordered_after_operations": [
+        30
+      ]
+    },
+    {
+      "id": 50,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 32,
+      "stream": "default",
+      "ordered_after_operations": [
+        31
+      ]
+    },
+    {
+      "id": 51,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 32,
+      "stream": "default",
+      "ordered_after_operations": [
+        31
+      ]
+    },
+    {
+      "id": 52,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 32,
+      "stream": "default",
+      "ordered_after_operations": [
+        31
+      ]
+    },
+    {
+      "id": 53,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 32,
+      "stream": "default",
+      "ordered_after_operations": [
+        31
+      ]
+    },
+    {
+      "id": 54,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 33,
+      "stream": "default",
+      "ordered_after_operations": [
+        32
+      ]
+    },
+    {
+      "id": 55,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 34,
+      "stream": "default",
+      "ordered_after_operations": [
+        33
+      ]
+    },
+    {
+      "id": 56,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 35,
+      "stream": "default",
+      "ordered_after_operations": [
+        34
+      ]
+    },
+    {
+      "id": 57,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 36,
+      "stream": "default",
+      "ordered_after_operations": [
+        35
+      ]
+    },
+    {
+      "id": 58,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 37,
+      "stream": "default",
+      "ordered_after_operations": [
+        36
+      ]
+    },
+    {
+      "id": 59,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 37,
+      "stream": "default",
+      "ordered_after_operations": [
+        36
+      ]
+    },
+    {
+      "id": 60,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 37,
+      "stream": "default",
+      "ordered_after_operations": [
+        36
+      ]
+    },
+    {
+      "id": 61,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 37,
+      "stream": "default",
+      "ordered_after_operations": [
+        36
+      ]
+    },
+    {
+      "id": 62,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 38,
+      "stream": "default",
+      "ordered_after_operations": [
+        37
+      ]
+    },
+    {
+      "id": 63,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 39,
+      "stream": "default",
+      "ordered_after_operations": [
+        38
+      ]
+    },
+    {
+      "id": 64,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 40,
+      "stream": "default",
+      "ordered_after_operations": [
+        39
+      ]
+    },
+    {
+      "id": 65,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 41,
+      "stream": "default",
+      "ordered_after_operations": [
+        40
+      ]
+    },
+    {
+      "id": 66,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 42,
+      "stream": "default",
+      "ordered_after_operations": [
+        41
+      ]
+    },
+    {
+      "id": 67,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 42,
+      "stream": "default",
+      "ordered_after_operations": [
+        41
+      ]
+    },
+    {
+      "id": 68,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 42,
+      "stream": "default",
+      "ordered_after_operations": [
+        41
+      ]
+    },
+    {
+      "id": 69,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 42,
+      "stream": "default",
+      "ordered_after_operations": [
+        41
+      ]
+    },
+    {
+      "id": 70,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 43,
+      "stream": "default",
+      "ordered_after_operations": [
+        42
+      ]
+    },
+    {
+      "id": 71,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 44,
+      "stream": "default",
+      "ordered_after_operations": [
+        43
+      ]
+    },
+    {
+      "id": 72,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 45,
+      "stream": "default",
+      "ordered_after_operations": [
+        44
+      ]
+    },
+    {
+      "id": 73,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 46,
+      "stream": "default",
+      "ordered_after_operations": [
+        45
+      ]
+    },
+    {
+      "id": 74,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 47,
+      "stream": "default",
+      "ordered_after_operations": [
+        46
+      ]
+    },
+    {
+      "id": 75,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 47,
+      "stream": "default",
+      "ordered_after_operations": [
+        46
+      ]
+    },
+    {
+      "id": 76,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 47,
+      "stream": "default",
+      "ordered_after_operations": [
+        46
+      ]
+    },
+    {
+      "id": 77,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 47,
+      "stream": "default",
+      "ordered_after_operations": [
+        46
+      ]
+    },
+    {
+      "id": 78,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 48,
+      "stream": "default",
+      "ordered_after_operations": [
+        47
+      ]
+    },
+    {
+      "id": 79,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 49,
+      "stream": "default",
+      "ordered_after_operations": [
+        48
+      ]
+    },
+    {
+      "id": 80,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 50,
+      "stream": "default",
+      "ordered_after_operations": [
+        49
+      ]
+    },
+    {
+      "id": 81,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 51,
+      "stream": "default",
+      "ordered_after_operations": [
+        50
+      ]
+    },
+    {
+      "id": 82,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 52,
+      "stream": "default",
+      "ordered_after_operations": [
+        51
+      ]
+    },
+    {
+      "id": 83,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 52,
+      "stream": "default",
+      "ordered_after_operations": [
+        51
+      ]
+    },
+    {
+      "id": 84,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 52,
+      "stream": "default",
+      "ordered_after_operations": [
+        51
+      ]
+    },
+    {
+      "id": 85,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 52,
+      "stream": "default",
+      "ordered_after_operations": [
+        51
+      ]
+    },
+    {
+      "id": 86,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 53,
+      "stream": "default",
+      "ordered_after_operations": [
+        52
+      ]
+    },
+    {
+      "id": 87,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 54,
+      "stream": "default",
+      "ordered_after_operations": [
+        53
+      ]
+    },
+    {
+      "id": 88,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 55,
+      "stream": "default",
+      "ordered_after_operations": [
+        54
+      ]
+    },
+    {
+      "id": 89,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 56,
+      "stream": "default",
+      "ordered_after_operations": [
+        55
+      ]
+    },
+    {
+      "id": 90,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 57,
+      "stream": "default",
+      "ordered_after_operations": [
+        56
+      ]
+    },
+    {
+      "id": 91,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 57,
+      "stream": "default",
+      "ordered_after_operations": [
+        56
+      ]
+    },
+    {
+      "id": 92,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 57,
+      "stream": "default",
+      "ordered_after_operations": [
+        56
+      ]
+    },
+    {
+      "id": 93,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 57,
+      "stream": "default",
+      "ordered_after_operations": [
+        56
+      ]
+    },
+    {
+      "id": 94,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 58,
+      "stream": "default",
+      "ordered_after_operations": [
+        57
+      ]
+    },
+    {
+      "id": 95,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 59,
+      "stream": "default",
+      "ordered_after_operations": [
+        58
+      ]
+    },
+    {
+      "id": 96,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 60,
+      "stream": "default",
+      "ordered_after_operations": [
+        59
+      ]
+    },
+    {
+      "id": 97,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 61,
+      "stream": "default",
+      "ordered_after_operations": [
+        60
+      ]
+    },
+    {
+      "id": 98,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 62,
+      "stream": "default",
+      "ordered_after_operations": [
+        61
+      ]
+    },
+    {
+      "id": 99,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 62,
+      "stream": "default",
+      "ordered_after_operations": [
+        61
+      ]
+    },
+    {
+      "id": 100,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 62,
+      "stream": "default",
+      "ordered_after_operations": [
+        61
+      ]
+    },
+    {
+      "id": 101,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 62,
+      "stream": "default",
+      "ordered_after_operations": [
+        61
+      ]
+    },
+    {
+      "id": 102,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 63,
+      "stream": "default",
+      "ordered_after_operations": [
+        62
+      ]
+    },
+    {
+      "id": 103,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 64,
+      "stream": "default",
+      "ordered_after_operations": [
+        63
+      ]
+    },
+    {
+      "id": 104,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 65,
+      "stream": "default",
+      "ordered_after_operations": [
+        64
+      ]
+    },
+    {
+      "id": 105,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 66,
+      "stream": "default",
+      "ordered_after_operations": [
+        65
+      ]
+    },
+    {
+      "id": 106,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 67,
+      "stream": "default",
+      "ordered_after_operations": [
+        66
+      ]
+    },
+    {
+      "id": 107,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 67,
+      "stream": "default",
+      "ordered_after_operations": [
+        66
+      ]
+    },
+    {
+      "id": 108,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 67,
+      "stream": "default",
+      "ordered_after_operations": [
+        66
+      ]
+    },
+    {
+      "id": 109,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 67,
+      "stream": "default",
+      "ordered_after_operations": [
+        66
+      ]
+    },
+    {
+      "id": 110,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 68,
+      "stream": "default",
+      "ordered_after_operations": [
+        67
+      ]
+    },
+    {
+      "id": 111,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 69,
+      "stream": "default",
+      "ordered_after_operations": [
+        68
+      ]
+    },
+    {
+      "id": 112,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 70,
+      "stream": "default",
+      "ordered_after_operations": [
+        69
+      ]
+    },
+    {
+      "id": 113,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 71,
+      "stream": "default",
+      "ordered_after_operations": [
+        70
+      ]
+    },
+    {
+      "id": 114,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 72,
+      "stream": "default",
+      "ordered_after_operations": [
+        71
+      ]
+    },
+    {
+      "id": 115,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 72,
+      "stream": "default",
+      "ordered_after_operations": [
+        71
+      ]
+    },
+    {
+      "id": 116,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 72,
+      "stream": "default",
+      "ordered_after_operations": [
+        71
+      ]
+    },
+    {
+      "id": 117,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 72,
+      "stream": "default",
+      "ordered_after_operations": [
+        71
+      ]
+    },
+    {
+      "id": 118,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 73,
+      "stream": "default",
+      "ordered_after_operations": [
+        72
+      ]
+    },
+    {
+      "id": 119,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 74,
+      "stream": "default",
+      "ordered_after_operations": [
+        73
+      ]
+    },
+    {
+      "id": 120,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 75,
+      "stream": "default",
+      "ordered_after_operations": [
+        74
+      ]
+    },
+    {
+      "id": 121,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 76,
+      "stream": "default",
+      "ordered_after_operations": [
+        75
+      ]
+    },
+    {
+      "id": 122,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 77,
+      "stream": "default",
+      "ordered_after_operations": [
+        76
+      ]
+    },
+    {
+      "id": 123,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 77,
+      "stream": "default",
+      "ordered_after_operations": [
+        76
+      ]
+    },
+    {
+      "id": 124,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 77,
+      "stream": "default",
+      "ordered_after_operations": [
+        76
+      ]
+    },
+    {
+      "id": 125,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 77,
+      "stream": "default",
+      "ordered_after_operations": [
+        76
+      ]
+    },
+    {
+      "id": 126,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 78,
+      "stream": "default",
+      "ordered_after_operations": [
+        77
+      ]
+    },
+    {
+      "id": 127,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 79,
+      "stream": "default",
+      "ordered_after_operations": [
+        78
+      ]
+    },
+    {
+      "id": 128,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 80,
+      "stream": "default",
+      "ordered_after_operations": [
+        79
+      ]
+    },
+    {
+      "id": 129,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 81,
+      "stream": "default",
+      "ordered_after_operations": [
+        80
+      ]
+    },
+    {
+      "id": 130,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 82,
+      "stream": "default",
+      "ordered_after_operations": [
+        81
+      ]
+    },
+    {
+      "id": 131,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 82,
+      "stream": "default",
+      "ordered_after_operations": [
+        81
+      ]
+    },
+    {
+      "id": 132,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 82,
+      "stream": "default",
+      "ordered_after_operations": [
+        81
+      ]
+    },
+    {
+      "id": 133,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 82,
+      "stream": "default",
+      "ordered_after_operations": [
+        81
+      ]
+    },
+    {
+      "id": 134,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 83,
+      "stream": "default",
+      "ordered_after_operations": [
+        82
+      ]
+    },
+    {
+      "id": 135,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 84,
+      "stream": "default",
+      "ordered_after_operations": [
+        83
+      ]
+    },
+    {
+      "id": 136,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 85,
+      "stream": "default",
+      "ordered_after_operations": [
+        84
+      ]
+    },
+    {
+      "id": 137,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 86,
+      "stream": "default",
+      "ordered_after_operations": [
+        85
+      ]
+    },
+    {
+      "id": 138,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 87,
+      "stream": "default",
+      "ordered_after_operations": [
+        86
+      ]
+    },
+    {
+      "id": 139,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 87,
+      "stream": "default",
+      "ordered_after_operations": [
+        86
+      ]
+    },
+    {
+      "id": 140,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 87,
+      "stream": "default",
+      "ordered_after_operations": [
+        86
+      ]
+    },
+    {
+      "id": 141,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 87,
+      "stream": "default",
+      "ordered_after_operations": [
+        86
+      ]
+    },
+    {
+      "id": 142,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 88,
+      "stream": "default",
+      "ordered_after_operations": [
+        87
+      ]
+    },
+    {
+      "id": 143,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 89,
+      "stream": "default",
+      "ordered_after_operations": [
+        88
+      ]
+    },
+    {
+      "id": 144,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 90,
+      "stream": "default",
+      "ordered_after_operations": [
+        89
+      ]
+    },
+    {
+      "id": 145,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 91,
+      "stream": "default",
+      "ordered_after_operations": [
+        90
+      ]
+    },
+    {
+      "id": 146,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 92,
+      "stream": "default",
+      "ordered_after_operations": [
+        91
+      ]
+    },
+    {
+      "id": 147,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 92,
+      "stream": "default",
+      "ordered_after_operations": [
+        91
+      ]
+    },
+    {
+      "id": 148,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 92,
+      "stream": "default",
+      "ordered_after_operations": [
+        91
+      ]
+    },
+    {
+      "id": 149,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 92,
+      "stream": "default",
+      "ordered_after_operations": [
+        91
+      ]
+    },
+    {
+      "id": 150,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 93,
+      "stream": "default",
+      "ordered_after_operations": [
+        92
+      ]
+    },
+    {
+      "id": 151,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 94,
+      "stream": "default",
+      "ordered_after_operations": [
+        93
+      ]
+    },
+    {
+      "id": 152,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 95,
+      "stream": "default",
+      "ordered_after_operations": [
+        94
+      ]
+    },
+    {
+      "id": 153,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 96,
+      "stream": "default",
+      "ordered_after_operations": [
+        95
+      ]
+    },
+    {
+      "id": 154,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 97,
+      "stream": "default",
+      "ordered_after_operations": [
+        96
+      ]
+    },
+    {
+      "id": 155,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 97,
+      "stream": "default",
+      "ordered_after_operations": [
+        96
+      ]
+    },
+    {
+      "id": 156,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 97,
+      "stream": "default",
+      "ordered_after_operations": [
+        96
+      ]
+    },
+    {
+      "id": 157,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 97,
+      "stream": "default",
+      "ordered_after_operations": [
+        96
+      ]
+    },
+    {
+      "id": 158,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 98,
+      "stream": "default",
+      "ordered_after_operations": [
+        97
+      ]
+    },
+    {
+      "id": 159,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 99,
+      "stream": "default",
+      "ordered_after_operations": [
+        98
+      ]
+    },
+    {
+      "id": 160,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 100,
+      "stream": "default",
+      "ordered_after_operations": [
+        99
+      ]
+    },
+    {
+      "id": 161,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 101,
+      "stream": "default",
+      "ordered_after_operations": [
+        100
+      ]
+    },
+    {
+      "id": 162,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 102,
+      "stream": "default",
+      "ordered_after_operations": [
+        101
+      ]
+    },
+    {
+      "id": 163,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 102,
+      "stream": "default",
+      "ordered_after_operations": [
+        101
+      ]
+    },
+    {
+      "id": 164,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 102,
+      "stream": "default",
+      "ordered_after_operations": [
+        101
+      ]
+    },
+    {
+      "id": 165,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 102,
+      "stream": "default",
+      "ordered_after_operations": [
+        101
+      ]
+    },
+    {
+      "id": 166,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 103,
+      "stream": "default",
+      "ordered_after_operations": [
+        102
+      ]
+    },
+    {
+      "id": 167,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 104,
+      "stream": "default",
+      "ordered_after_operations": [
+        103
+      ]
+    },
+    {
+      "id": 168,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 105,
+      "stream": "default",
+      "ordered_after_operations": [
+        104
+      ]
+    },
+    {
+      "id": 169,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 106,
+      "stream": "default",
+      "ordered_after_operations": [
+        105
+      ]
+    },
+    {
+      "id": 170,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 107,
+      "stream": "default",
+      "ordered_after_operations": [
+        106
+      ]
+    },
+    {
+      "id": 171,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 107,
+      "stream": "default",
+      "ordered_after_operations": [
+        106
+      ]
+    },
+    {
+      "id": 172,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 107,
+      "stream": "default",
+      "ordered_after_operations": [
+        106
+      ]
+    },
+    {
+      "id": 173,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 107,
+      "stream": "default",
+      "ordered_after_operations": [
+        106
+      ]
+    },
+    {
+      "id": 174,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 108,
+      "stream": "default",
+      "ordered_after_operations": [
+        107
+      ]
+    },
+    {
+      "id": 175,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 109,
+      "stream": "default",
+      "ordered_after_operations": [
+        108
+      ]
+    },
+    {
+      "id": 176,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 110,
+      "stream": "default",
+      "ordered_after_operations": [
+        109
+      ]
+    },
+    {
+      "id": 177,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 111,
+      "stream": "default",
+      "ordered_after_operations": [
+        110
+      ]
+    },
+    {
+      "id": 178,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 112,
+      "stream": "default",
+      "ordered_after_operations": [
+        111
+      ]
+    },
+    {
+      "id": 179,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 112,
+      "stream": "default",
+      "ordered_after_operations": [
+        111
+      ]
+    },
+    {
+      "id": 180,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 112,
+      "stream": "default",
+      "ordered_after_operations": [
+        111
+      ]
+    },
+    {
+      "id": 181,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 112,
+      "stream": "default",
+      "ordered_after_operations": [
+        111
+      ]
+    },
+    {
+      "id": 182,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 113,
+      "stream": "default",
+      "ordered_after_operations": [
+        112
+      ]
+    },
+    {
+      "id": 183,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 114,
+      "stream": "default",
+      "ordered_after_operations": [
+        113
+      ]
+    },
+    {
+      "id": 184,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 115,
+      "stream": "default",
+      "ordered_after_operations": [
+        114
+      ]
+    },
+    {
+      "id": 185,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 116,
+      "stream": "default",
+      "ordered_after_operations": [
+        115
+      ]
+    },
+    {
+      "id": 186,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 117,
+      "stream": "default",
+      "ordered_after_operations": [
+        116
+      ]
+    },
+    {
+      "id": 187,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 117,
+      "stream": "default",
+      "ordered_after_operations": [
+        116
+      ]
+    },
+    {
+      "id": 188,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 117,
+      "stream": "default",
+      "ordered_after_operations": [
+        116
+      ]
+    },
+    {
+      "id": 189,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 117,
+      "stream": "default",
+      "ordered_after_operations": [
+        116
+      ]
+    },
+    {
+      "id": 190,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 118,
+      "stream": "default",
+      "ordered_after_operations": [
+        117
+      ]
+    },
+    {
+      "id": 191,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 119,
+      "stream": "default",
+      "ordered_after_operations": [
+        118
+      ]
+    },
+    {
+      "id": 192,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 120,
+      "stream": "default",
+      "ordered_after_operations": [
+        119
+      ]
+    },
+    {
+      "id": 193,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 121,
+      "stream": "default",
+      "ordered_after_operations": [
+        120
+      ]
+    },
+    {
+      "id": 194,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 122,
+      "stream": "default",
+      "ordered_after_operations": [
+        121
+      ]
+    },
+    {
+      "id": 195,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 122,
+      "stream": "default",
+      "ordered_after_operations": [
+        121
+      ]
+    },
+    {
+      "id": 196,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 122,
+      "stream": "default",
+      "ordered_after_operations": [
+        121
+      ]
+    },
+    {
+      "id": 197,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 122,
+      "stream": "default",
+      "ordered_after_operations": [
+        121
+      ]
+    },
+    {
+      "id": 198,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 123,
+      "stream": "default",
+      "ordered_after_operations": [
+        122
+      ]
+    },
+    {
+      "id": 199,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 124,
+      "stream": "default",
+      "ordered_after_operations": [
+        123
+      ]
+    },
+    {
+      "id": 200,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 125,
+      "stream": "default",
+      "ordered_after_operations": [
+        124
+      ]
+    },
+    {
+      "id": 201,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 126,
+      "stream": "default",
+      "ordered_after_operations": [
+        125
+      ]
+    },
+    {
+      "id": 202,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 127,
+      "stream": "default",
+      "ordered_after_operations": [
+        126
+      ]
+    },
+    {
+      "id": 203,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 127,
+      "stream": "default",
+      "ordered_after_operations": [
+        126
+      ]
+    },
+    {
+      "id": 204,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 127,
+      "stream": "default",
+      "ordered_after_operations": [
+        126
+      ]
+    },
+    {
+      "id": 205,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 127,
+      "stream": "default",
+      "ordered_after_operations": [
+        126
+      ]
+    },
+    {
+      "id": 206,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 128,
+      "stream": "default",
+      "ordered_after_operations": [
+        127
+      ]
+    },
+    {
+      "id": 207,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 129,
+      "stream": "default",
+      "ordered_after_operations": [
+        128
+      ]
+    },
+    {
+      "id": 208,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 130,
+      "stream": "default",
+      "ordered_after_operations": [
+        129
+      ]
+    },
+    {
+      "id": 209,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 131,
+      "stream": "default",
+      "ordered_after_operations": [
+        130
+      ]
+    },
+    {
+      "id": 210,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 132,
+      "stream": "default",
+      "ordered_after_operations": [
+        131
+      ]
+    },
+    {
+      "id": 211,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 132,
+      "stream": "default",
+      "ordered_after_operations": [
+        131
+      ]
+    },
+    {
+      "id": 212,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 132,
+      "stream": "default",
+      "ordered_after_operations": [
+        131
+      ]
+    },
+    {
+      "id": 213,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 132,
+      "stream": "default",
+      "ordered_after_operations": [
+        131
+      ]
+    },
+    {
+      "id": 214,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 133,
+      "stream": "default",
+      "ordered_after_operations": [
+        132
+      ]
+    },
+    {
+      "id": 215,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 134,
+      "stream": "default",
+      "ordered_after_operations": [
+        133
+      ]
+    },
+    {
+      "id": 216,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 135,
+      "stream": "default",
+      "ordered_after_operations": [
+        134
+      ]
+    },
+    {
+      "id": 217,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 136,
+      "stream": "default",
+      "ordered_after_operations": [
+        135
+      ]
+    },
+    {
+      "id": 218,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 137,
+      "stream": "default",
+      "ordered_after_operations": [
+        136
+      ]
+    },
+    {
+      "id": 219,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 137,
+      "stream": "default",
+      "ordered_after_operations": [
+        136
+      ]
+    },
+    {
+      "id": 220,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 137,
+      "stream": "default",
+      "ordered_after_operations": [
+        136
+      ]
+    },
+    {
+      "id": 221,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 137,
+      "stream": "default",
+      "ordered_after_operations": [
+        136
+      ]
+    },
+    {
+      "id": 222,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 138,
+      "stream": "default",
+      "ordered_after_operations": [
+        137
+      ]
+    },
+    {
+      "id": 223,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 139,
+      "stream": "default",
+      "ordered_after_operations": [
+        138
+      ]
+    },
+    {
+      "id": 224,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 140,
+      "stream": "default",
+      "ordered_after_operations": [
+        139
+      ]
+    },
+    {
+      "id": 225,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 141,
+      "stream": "default",
+      "ordered_after_operations": [
+        140
+      ]
+    },
+    {
+      "id": 226,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 142,
+      "stream": "default",
+      "ordered_after_operations": [
+        141
+      ]
+    },
+    {
+      "id": 227,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 142,
+      "stream": "default",
+      "ordered_after_operations": [
+        141
+      ]
+    },
+    {
+      "id": 228,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 142,
+      "stream": "default",
+      "ordered_after_operations": [
+        141
+      ]
+    },
+    {
+      "id": 229,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 142,
+      "stream": "default",
+      "ordered_after_operations": [
+        141
+      ]
+    },
+    {
+      "id": 230,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 143,
+      "stream": "default",
+      "ordered_after_operations": [
+        142
+      ]
+    },
+    {
+      "id": 231,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 144,
+      "stream": "default",
+      "ordered_after_operations": [
+        143
+      ]
+    },
+    {
+      "id": 232,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 145,
+      "stream": "default",
+      "ordered_after_operations": [
+        144
+      ]
+    },
+    {
+      "id": 233,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 146,
+      "stream": "default",
+      "ordered_after_operations": [
+        145
+      ]
+    },
+    {
+      "id": 234,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 147,
+      "stream": "default",
+      "ordered_after_operations": [
+        146
+      ]
+    },
+    {
+      "id": 235,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 147,
+      "stream": "default",
+      "ordered_after_operations": [
+        146
+      ]
+    },
+    {
+      "id": 236,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 147,
+      "stream": "default",
+      "ordered_after_operations": [
+        146
+      ]
+    },
+    {
+      "id": 237,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 147,
+      "stream": "default",
+      "ordered_after_operations": [
+        146
+      ]
+    },
+    {
+      "id": 238,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 148,
+      "stream": "default",
+      "ordered_after_operations": [
+        147
+      ]
+    },
+    {
+      "id": 239,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 149,
+      "stream": "default",
+      "ordered_after_operations": [
+        148
+      ]
+    },
+    {
+      "id": 240,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 150,
+      "stream": "default",
+      "ordered_after_operations": [
+        149
+      ]
+    },
+    {
+      "id": 241,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 151,
+      "stream": "default",
+      "ordered_after_operations": [
+        150
+      ]
+    },
+    {
+      "id": 242,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 152,
+      "stream": "default",
+      "ordered_after_operations": [
+        151
+      ]
+    },
+    {
+      "id": 243,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 152,
+      "stream": "default",
+      "ordered_after_operations": [
+        151
+      ]
+    },
+    {
+      "id": 244,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 152,
+      "stream": "default",
+      "ordered_after_operations": [
+        151
+      ]
+    },
+    {
+      "id": 245,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 152,
+      "stream": "default",
+      "ordered_after_operations": [
+        151
+      ]
+    },
+    {
+      "id": 246,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 153,
+      "stream": "default",
+      "ordered_after_operations": [
+        152
+      ]
+    },
+    {
+      "id": 247,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 154,
+      "stream": "default",
+      "ordered_after_operations": [
+        153
+      ]
+    },
+    {
+      "id": 248,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 155,
+      "stream": "default",
+      "ordered_after_operations": [
+        154
+      ]
+    },
+    {
+      "id": 249,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 156,
+      "stream": "default",
+      "ordered_after_operations": [
+        155
+      ]
+    },
+    {
+      "id": 250,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 157,
+      "stream": "default",
+      "ordered_after_operations": [
+        156
+      ]
+    },
+    {
+      "id": 251,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 157,
+      "stream": "default",
+      "ordered_after_operations": [
+        156
+      ]
+    },
+    {
+      "id": 252,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 157,
+      "stream": "default",
+      "ordered_after_operations": [
+        156
+      ]
+    },
+    {
+      "id": 253,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 157,
+      "stream": "default",
+      "ordered_after_operations": [
+        156
+      ]
+    },
+    {
+      "id": 254,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 158,
+      "stream": "default",
+      "ordered_after_operations": [
+        157
+      ]
+    },
+    {
+      "id": 255,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 159,
+      "stream": "default",
+      "ordered_after_operations": [
+        158
+      ]
+    },
+    {
+      "id": 256,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 160,
+      "stream": "default",
+      "ordered_after_operations": [
+        159
+      ]
+    },
+    {
+      "id": 257,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 161,
+      "stream": "default",
+      "ordered_after_operations": [
+        160
+      ]
+    },
+    {
+      "id": 258,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 162,
+      "stream": "default",
+      "ordered_after_operations": [
+        161
+      ]
+    },
+    {
+      "id": 259,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 162,
+      "stream": "default",
+      "ordered_after_operations": [
+        161
+      ]
+    },
+    {
+      "id": 260,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 162,
+      "stream": "default",
+      "ordered_after_operations": [
+        161
+      ]
+    },
+    {
+      "id": 261,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 162,
+      "stream": "default",
+      "ordered_after_operations": [
+        161
+      ]
+    },
+    {
+      "id": 262,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 163,
+      "stream": "default",
+      "ordered_after_operations": [
+        162
+      ]
+    },
+    {
+      "id": 263,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 164,
+      "stream": "default",
+      "ordered_after_operations": [
+        163
+      ]
+    },
+    {
+      "id": 264,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 165,
+      "stream": "default",
+      "ordered_after_operations": [
+        164
+      ]
+    },
+    {
+      "id": 265,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 166,
+      "stream": "default",
+      "ordered_after_operations": [
+        165
+      ]
+    },
+    {
+      "id": 266,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 167,
+      "stream": "default",
+      "ordered_after_operations": [
+        166
+      ]
+    },
+    {
+      "id": 267,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 167,
+      "stream": "default",
+      "ordered_after_operations": [
+        166
+      ]
+    },
+    {
+      "id": 268,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 167,
+      "stream": "default",
+      "ordered_after_operations": [
+        166
+      ]
+    },
+    {
+      "id": 269,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 167,
+      "stream": "default",
+      "ordered_after_operations": [
+        166
+      ]
+    },
+    {
+      "id": 270,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 168,
+      "stream": "default",
+      "ordered_after_operations": [
+        167
+      ]
+    },
+    {
+      "id": 271,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 169,
+      "stream": "default",
+      "ordered_after_operations": [
+        168
+      ]
+    },
+    {
+      "id": 272,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 170,
+      "stream": "default",
+      "ordered_after_operations": [
+        169
+      ]
+    },
+    {
+      "id": 273,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 171,
+      "stream": "default",
+      "ordered_after_operations": [
+        170
+      ]
+    },
+    {
+      "id": 274,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 172,
+      "stream": "default",
+      "ordered_after_operations": [
+        171
+      ]
+    },
+    {
+      "id": 275,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 172,
+      "stream": "default",
+      "ordered_after_operations": [
+        171
+      ]
+    },
+    {
+      "id": 276,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 172,
+      "stream": "default",
+      "ordered_after_operations": [
+        171
+      ]
+    },
+    {
+      "id": 277,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 172,
+      "stream": "default",
+      "ordered_after_operations": [
+        171
+      ]
+    },
+    {
+      "id": 278,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 173,
+      "stream": "default",
+      "ordered_after_operations": [
+        172
+      ]
+    },
+    {
+      "id": 279,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 174,
+      "stream": "default",
+      "ordered_after_operations": [
+        173
+      ]
+    },
+    {
+      "id": 280,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 175,
+      "stream": "default",
+      "ordered_after_operations": [
+        174
+      ]
+    },
+    {
+      "id": 281,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 176,
+      "stream": "default",
+      "ordered_after_operations": [
+        175
+      ]
+    },
+    {
+      "id": 282,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 177,
+      "stream": "default",
+      "ordered_after_operations": [
+        176
+      ]
+    },
+    {
+      "id": 283,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 177,
+      "stream": "default",
+      "ordered_after_operations": [
+        176
+      ]
+    },
+    {
+      "id": 284,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 177,
+      "stream": "default",
+      "ordered_after_operations": [
+        176
+      ]
+    },
+    {
+      "id": 285,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 177,
+      "stream": "default",
+      "ordered_after_operations": [
+        176
+      ]
+    },
+    {
+      "id": 286,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 178,
+      "stream": "default",
+      "ordered_after_operations": [
+        177
+      ]
+    },
+    {
+      "id": 287,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 179,
+      "stream": "default",
+      "ordered_after_operations": [
+        178
+      ]
+    },
+    {
+      "id": 288,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 180,
+      "stream": "default",
+      "ordered_after_operations": [
+        179
+      ]
+    },
+    {
+      "id": 289,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 181,
+      "stream": "default",
+      "ordered_after_operations": [
+        180
+      ]
+    },
+    {
+      "id": 290,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 182,
+      "stream": "default",
+      "ordered_after_operations": [
+        181
+      ]
+    },
+    {
+      "id": 291,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 182,
+      "stream": "default",
+      "ordered_after_operations": [
+        181
+      ]
+    },
+    {
+      "id": 292,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 182,
+      "stream": "default",
+      "ordered_after_operations": [
+        181
+      ]
+    },
+    {
+      "id": 293,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 182,
+      "stream": "default",
+      "ordered_after_operations": [
+        181
+      ]
+    },
+    {
+      "id": 294,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 183,
+      "stream": "default",
+      "ordered_after_operations": [
+        182
+      ]
+    },
+    {
+      "id": 295,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 184,
+      "stream": "default",
+      "ordered_after_operations": [
+        183
+      ]
+    },
+    {
+      "id": 296,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 185,
+      "stream": "default",
+      "ordered_after_operations": [
+        184
+      ]
+    },
+    {
+      "id": 297,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 186,
+      "stream": "default",
+      "ordered_after_operations": [
+        185
+      ]
+    },
+    {
+      "id": 298,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 187,
+      "stream": "default",
+      "ordered_after_operations": [
+        186
+      ]
+    },
+    {
+      "id": 299,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 187,
+      "stream": "default",
+      "ordered_after_operations": [
+        186
+      ]
+    },
+    {
+      "id": 300,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 187,
+      "stream": "default",
+      "ordered_after_operations": [
+        186
+      ]
+    },
+    {
+      "id": 301,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 187,
+      "stream": "default",
+      "ordered_after_operations": [
+        186
+      ]
+    },
+    {
+      "id": 302,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 188,
+      "stream": "default",
+      "ordered_after_operations": [
+        187
+      ]
+    },
+    {
+      "id": 303,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 189,
+      "stream": "default",
+      "ordered_after_operations": [
+        188
+      ]
+    },
+    {
+      "id": 304,
+      "buffer": "device_0",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 190,
+      "stream": "default",
+      "ordered_after_operations": [
+        189
+      ]
+    },
+    {
+      "id": 305,
+      "buffer": "device_2",
+      "stage": "upload",
+      "byte_ranges": [
+        [
+          0,
+          72
+        ]
+      ],
+      "operation_id": 191,
+      "stream": "default",
+      "ordered_after_operations": [
+        190
+      ]
+    },
+    {
+      "id": 306,
+      "buffer": "device_0",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          0,
+          84
+        ],
+        [
+          88,
+          160
+        ],
+        [
+          184,
+          364
+        ]
+      ],
+      "operation_id": 192,
+      "stream": "default",
+      "ordered_after_operations": [
+        191
+      ]
+    },
+    {
+      "id": 307,
+      "buffer": "device_2",
+      "stage": "kernel:read",
+      "byte_ranges": [
+        [
+          4,
+          20
+        ],
+        [
+          24,
+          40
+        ],
+        [
+          44,
+          72
+        ]
+      ],
+      "operation_id": 192,
+      "stream": "default",
+      "ordered_after_operations": [
+        191
+      ]
+    },
+    {
+      "id": 308,
+      "buffer": "device_1",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 192,
+      "stream": "default",
+      "ordered_after_operations": [
+        191
+      ]
+    },
+    {
+      "id": 309,
+      "buffer": "device_3",
+      "stage": "kernel:write",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 192,
+      "stream": "default",
+      "ordered_after_operations": [
+        191
+      ]
+    },
+    {
+      "id": 310,
+      "buffer": "device_1",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          364
+        ]
+      ],
+      "operation_id": 193,
+      "stream": "default",
+      "ordered_after_operations": [
+        192
+      ]
+    },
+    {
+      "id": 311,
+      "buffer": "device_3",
+      "stage": "download",
+      "byte_ranges": [
+        [
+          0,
+          12
+        ]
+      ],
+      "operation_id": 194,
+      "stream": "default",
+      "ordered_after_operations": [
+        193
+      ]
+    }
+  ],
+  "launches": [
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        18,
+        19,
+        20,
+        21
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        26,
+        27,
+        28,
+        29
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        34,
+        35,
+        36,
+        37
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        42,
+        43,
+        44,
+        45
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        50,
+        51,
+        52,
+        53
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        58,
+        59,
+        60,
+        61
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        66,
+        67,
+        68,
+        69
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        74,
+        75,
+        76,
+        77
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        82,
+        83,
+        84,
+        85
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        90,
+        91,
+        92,
+        93
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        98,
+        99,
+        100,
+        101
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        106,
+        107,
+        108,
+        109
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        114,
+        115,
+        116,
+        117
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        122,
+        123,
+        124,
+        125
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        130,
+        131,
+        132,
+        133
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        138,
+        139,
+        140,
+        141
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        146,
+        147,
+        148,
+        149
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        154,
+        155,
+        156,
+        157
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        162,
+        163,
+        164,
+        165
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        170,
+        171,
+        172,
+        173
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        178,
+        179,
+        180,
+        181
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        186,
+        187,
+        188,
+        189
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        194,
+        195,
+        196,
+        197
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        202,
+        203,
+        204,
+        205
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        210,
+        211,
+        212,
+        213
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        218,
+        219,
+        220,
+        221
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        226,
+        227,
+        228,
+        229
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        234,
+        235,
+        236,
+        237
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        242,
+        243,
+        244,
+        245
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        250,
+        251,
+        252,
+        253
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        258,
+        259,
+        260,
+        261
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        266,
+        267,
+        268,
+        269
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        274,
+        275,
+        276,
+        277
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        282,
+        283,
+        284,
+        285
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        290,
+        291,
+        292,
+        293
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        298,
+        299,
+        300,
+        301
+      ]
+    },
+    {
+      "kernel": "kernel",
+      "grid": [
+        2,
+        1,
+        1
+      ],
+      "block": [
+        32,
+        1,
+        1
+      ],
+      "global_access_footprints": [
+        {
+          "buffer": 0,
+          "reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "external_reads": [
+            [
+              0,
+              84
+            ],
+            [
+              88,
+              160
+            ],
+            [
+              184,
+              364
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 1,
+          "reads": [
+            [
+              64,
+              120
+            ]
+          ],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              364
+            ]
+          ]
+        },
+        {
+          "buffer": 2,
+          "reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "external_reads": [
+            [
+              4,
+              20
+            ],
+            [
+              24,
+              40
+            ],
+            [
+              44,
+              72
+            ]
+          ],
+          "writes": []
+        },
+        {
+          "buffer": 3,
+          "reads": [],
+          "external_reads": [],
+          "writes": [
+            [
+              0,
+              12
+            ]
+          ]
+        }
+      ],
+      "node_ids": [
+        306,
+        307,
+        308,
+        309
+      ]
+    }
+  ],
+  "source_and_input_sha256": {
+    "cuda/myocyte/solver.cu": "3a45a27c0aba1615820ac473244b1e4d8599599e04d168e0717add516bb76429",
+    "cuda/myocyte/kernel_ecc.cu": "f040d06bae409b9482a0d3928b83b15378277532e713bacb2aba7f7fe9aba1da",
+    "cuda/myocyte/kernel_cam_2.cu": "94399c2df70bb2f87c9db0ba38a7a5e822f444b4028afb539c1571f9efa8b593",
+    "cuda/myocyte/kernel_ecc_2.cu": "45b8e7ab1db905ff2ba86985a03449971727d80f0d8757ec10a7911619e68a23",
+    "cuda/myocyte/master.cu": "7f8ce872c95dfb526c41014d70f385757b4d956b0c4a20705710798813c282b9",
+    "cuda/myocyte/kernel_cam.cu": "c3c3093930844ffdeb575c3bb529372f458f0469ff8af91d7b56a6b255e3f8c5",
+    "cuda/myocyte/define.c": "2038a43f688b05b83aef097cf004850db4005f9aeb88e0b15b0df30f66720fa0",
+    "cuda/myocyte/kernel.cu": "5089bc46c2b4ad67b2453efd409af15b724e4b6e7ba992cd73767dc8f0e6f080",
+    "cuda/myocyte/kernel_2.cu": "14bea7ff02d016edb89761474fbf35c878e9635291f73c36b8df53220790d606",
+    "cuda/myocyte/work_2.cu": "f13b5edf64d34d1e9a6a6db2082daa2ed692a10c99f80f196e11c9d4a576aed4",
+    "cuda/myocyte/work.cu": "ed4cfb97fd0c87bfa524bc9be9d56eb8c9ae5a1ea52f8cf64d9ded70f55edfe9",
+    "cuda/myocyte/embedded_fehlberg_7_8_2.cu": "62c92c8e20b8523c06acd7347fab3f993fc5ec3c7a367b0cf3b87b1d9dee2c50",
+    "cuda/myocyte/main.cu": "2623572e2c8ef2bfaf2d20ccea3ad67922d081b480f2c3dc24634732fda4d1d1",
+    "cuda/myocyte/kernel_fin_2.cu": "07d7f47c56b02cf9edf80e244d2ec824e57ad7687539c917570971c1ebbca2da",
+    "cuda/myocyte/file.c": "1857191dbd8d360e1c9036d6238403b0ab88f8866e63d1f41cf92ef94697d730",
+    "cuda/myocyte/kernel_fin.cu": "ad64e6ef3af13e49495e70a65e33da3eb2a69c0a453f6288ee41ca95a651babc",
+    "cuda/myocyte/timer.c": "42c93cffa36dab6969bc3eb22721c475d69f3f199fab6a0221fe1d4f332b03a8",
+    "cuda/myocyte/solver_2.cu": "f66673e46c627bb834faf4ccd6705163d40ce3a93cc46c00dc4f9f0d16b71461",
+    "cuda/myocyte/embedded_fehlberg_7_8.cu": "704b7cd89af9d8ea310a52a1e02aa3c6242fa85dfa4954cedda53e9ce1edd312",
+    "data/myocyte/params.txt": "db93a94808ceac0cc0ceb21d6c4a71c95d176462852bf64074a0228f18e6903b",
+    "data/myocyte/y.txt": "1f0264363fb3877066e93e708cc3511c80ebf01d4c3beb1518e2f4d7da417afa"
+  },
+  "source_corrections": [
+    {
+      "path": "cuda/myocyte/kernel_cam.cu",
+      "before_sha256": "a332e1242dd2a3622233c295da5dd2e85eb9cd1251d3188f9ee462ca7217c0f9",
+      "after_sha256": "c3c3093930844ffdeb575c3bb529372f458f0469ff8af91d7b56a6b255e3f8c5",
+      "old": "d_finavalu[com_offset] =",
+      "new": "d_com[com_offset] =",
+      "reason": "Write the communication result through the declared d_com output, avoiding a cross-thread overlap with ECC output."
+    },
+    {
+      "path": "cuda/myocyte/kernel_cam_2.cu",
+      "before_sha256": "2b61e0fde27ddf20baeeb71676ef43b52c203b921095ca47e329ae98bc01daf8",
+      "after_sha256": "94399c2df70bb2f87c9db0ba38a7a5e822f444b4028afb539c1571f9efa8b593",
+      "old": "d_finavalu[com_offset] =",
+      "new": "d_com[com_offset] =",
+      "reason": "Write the communication result through the declared d_com output, avoiding a cross-thread overlap with ECC output."
+    },
+    {
+      "path": "cuda/myocyte/work.cu",
+      "before_sha256": "2e73867b5a8fbc5717c9a52f3a3f7a565549673eccdf4e58c44b7ea35fdfb0e9",
+      "after_sha256": "ed4cfb97fd0c87bfa524bc9be9d56eb8c9ae5a1ea52f8cf64d9ded70f55edfe9",
+      "old": "%.12f % :",
+      "new": "%.12f %% :",
+      "reason": "Escape literal percent signs in timing diagnostics; the invalid original format crashes the native host printf interceptor."
+    },
+    {
+      "path": "cuda/myocyte/work_2.cu",
+      "before_sha256": "dd647ce2fe8a7e03af3090ad1b361db77e9c7e8e5022fc70db866d14e9774979",
+      "after_sha256": "f13b5edf64d34d1e9a6a6db2082daa2ed692a10c99f80f196e11c9d4a576aed4",
+      "old": "%.12f % :",
+      "new": "%.12f %% :",
+      "reason": "Escape literal percent signs in timing diagnostics; the invalid original format crashes the native host printf interceptor."
+    }
+  ],
+  "input_fixtures": [],
+  "source_units": {
+    "main.cu": {
+      "source_sha256": "2623572e2c8ef2bfaf2d20ccea3ad67922d081b480f2c3dc24634732fda4d1d1",
+      "expanded_sha256": "85197842279e187459ccf6faf31cda81f16a339b887028cbe5c8e381cf19b514",
+      "device_functions": [
+        "kernel_ecc",
+        "kernel_cam",
+        "kernel",
+        "kernel_fin_2",
+        "kernel_ecc_2",
+        "kernel_cam_2",
+        "kernel_2",
+        "embedded_fehlberg_7_8_2",
+        "solver_2"
+      ]
+    }
+  },
+  "backend_sha256": {
+    "cuda_native_source_model.py": "709ee50264b7d80c9c9ef5a73a6ec3f86fbedc5a5238092fdd1c584dfd7e7ddc",
+    "source_region_graph.py": "e934d23a3c95118eeb6c1b252f1ec6d3dd9677c35d46ea48634c73ed71b4d12f",
+    "source_analysis/native/runtime.hpp": "27235661e2f6a5b480854ca981a021fdac82e8fd31615261c55fcce7b2d67b12",
+    "source_analysis/native/parse_compat.hpp": "cf85e7dff55169f9ad5a6479a85f53ab42439fb8eeac12c77172e3c150195c96",
+    "source_analysis/native/block_executor.hpp": "948da564d0156ed54a81742f8eeff36b9a3e9af847e41bc1d29aa6e87a8d6f43",
+    "native_input_fixtures.py": "d403ed6ac8ebe6fd9535cd79203920f4cd18fd240fefac3db37fe257132baeeb"
+  },
+  "compiler": "Apple clang version 17.0.0 (clang-1700.0.13.5)",
+  "compile_flags": [
+    "-std=c++17",
+    "-O0",
+    "-ffp-contract=off",
+    "-fsanitize=address,undefined",
+    "-fno-omit-frame-pointer"
+  ],
+  "allocations_live_at_process_exit": {},
+  "gpu_measurements_attached": false,
+  "operation_order_representation": "Immediate predecessor in serial default-stream source execution",
+  "source_events_sha256": "3ba597aab0a115365091e8ece816cd0ea9790dadc52d13ff3446fab35238d046",
+  "matches_captured_scenario": false,
+  "source_matches_capture": false,
+  "application_arguments_match_capture": true,
+  "capture_build_equivalence_established": false,
+  "assumptions": [
+    "Original complete host drivers and instrumented kernel bodies execute on the CPU; no GPU run or timing measurement occurs.",
+    "CPU math and source-selected branches are fixture-specific; GPU floating-point, FMA, texture, ABI and numerical equivalence are not established.",
+    "Aggregate copies conservatively cover their native object storage, including padding. Only external kernel input reads and global output writes form transfer nodes. All global read footprints, including reads after same-thread writes, remain in per-launch metadata.",
+    "Uninitialized device reads, unordered inter-thread memory conflicts and concurrent host execution are rejected.",
+    "Shared-memory execution mode: reject. Checked block execution is experimental; it is not general CUDA scheduling equivalence.",
+    "Non-default streams are rejected.",
+    "ASan/UBSan check this native execution; this is not proof of general CUDA memory safety or shared-memory correctness.",
+    "Every later operation conservatively depends on prior CPU-visible downloads. Edges are logical region dependencies, not profiler event order.",
+    "GPU enrichment is separate and requires matching source/input/control-flow evidence; corrected-source or smaller scenarios cannot inherit old measurements."
+  ]
+}

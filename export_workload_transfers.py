@@ -92,6 +92,7 @@ def main():
             metadata["assumptions"].extend([
                 "Host input parsing/loading and CPU result selection use explicit, source-hash-checked summaries; they are not executed.",
                 "Device properties are configured assumptions, not measurements; bounded kernel address evaluation requires no GPU.",
+                "Support covers the configured logical global-buffer footprint, not complete shared-memory execution or numerical correctness. Unresolved shared values cannot determine addresses or control flow; GPU enrichment does not remove this limitation.",
                 "Device values remain unknown; data-dependent control/indexing and non-contiguous footprints are rejected.",
             ])
             if configuration.get('dependency_granularity') == 'byte_regions':
@@ -130,6 +131,10 @@ def main():
             if configuration.get('scalar_device_functions'):
                 metadata['assumptions'].append(
                     "Configured scalar device helpers are checked for memory-free, local-only bodies. Unknown arguments produce unknown results; these results cannot determine addresses or launch/control decisions."
+                )
+            if configuration.get('source_objects'):
+                metadata['assumptions'].append(
+                    'Selected source methods execute with receiver and template identity, trivial object lifetimes and single nonvirtual base subobjects. Object ABI copies, virtual dispatch and nontrivial construction remain unsupported.'
                 )
             if configuration.get('shared_memory') == 'opaque_values':
                 metadata['assumptions'].append(

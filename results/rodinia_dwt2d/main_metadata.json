@@ -1,0 +1,766 @@
+{
+  "workload": "main",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/private/tmp/rodinia-matched-source/cuda/dwt2d/main.cu",
+  "source_sha256": "7ea08ab09896099189716b75e384068a7baf68fd9f82ab1360dd293256225e1b",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "c_r_out",
+      "stage": "memset",
+      "operation_id": 0,
+      "stream": "default",
+      "ordered_after_operations": [],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "buffer": "backup",
+      "stage": "memset",
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "buffer": "c_g_out",
+      "stage": "memset",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "buffer": "c_b_out",
+      "stage": "memset",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "buffer": "c_r",
+      "stage": "memset",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "buffer": "c_g",
+      "stage": "memset",
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "buffer": "c_b",
+      "stage": "memset",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "buffer": "d_src",
+      "stage": "memset",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12288
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "buffer": "d_src",
+      "stage": "upload",
+      "operation_id": 8,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12288
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "buffer": "d_src",
+      "stage": "c_CopySrcToComponents<int>:read",
+      "operation_id": 9,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "byte_ranges": [
+        [
+          0,
+          12288
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "buffer": "c_r",
+      "stage": "c_CopySrcToComponents<int>:write",
+      "operation_id": 9,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ]
+    },
+    {
+      "id": 11,
+      "buffer": "c_g",
+      "stage": "c_CopySrcToComponents<int>:write",
+      "operation_id": 9,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ]
+    },
+    {
+      "id": 12,
+      "buffer": "c_b",
+      "stage": "c_CopySrcToComponents<int>:write",
+      "operation_id": 9,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ]
+    },
+    {
+      "id": 13,
+      "buffer": "backup",
+      "stage": "device_copy",
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ],
+      "source_buffer": "c_r"
+    },
+    {
+      "id": 14,
+      "buffer": "c_r",
+      "stage": "fdwt53Kernel<64,8>:read",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ]
+    },
+    {
+      "id": 15,
+      "buffer": "c_r_out",
+      "stage": "fdwt53Kernel<64,8>:write",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ]
+    },
+    {
+      "id": 16,
+      "buffer": "backup",
+      "stage": "device_copy",
+      "operation_id": 12,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ],
+      "source_buffer": "c_g"
+    },
+    {
+      "id": 17,
+      "buffer": "c_g",
+      "stage": "fdwt53Kernel<64,8>:read",
+      "operation_id": 13,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ]
+    },
+    {
+      "id": 18,
+      "buffer": "c_g_out",
+      "stage": "fdwt53Kernel<64,8>:write",
+      "operation_id": 13,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ]
+    },
+    {
+      "id": 19,
+      "buffer": "backup",
+      "stage": "device_copy",
+      "operation_id": 14,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ],
+      "source_buffer": "c_b"
+    },
+    {
+      "id": 20,
+      "buffer": "c_b",
+      "stage": "fdwt53Kernel<64,8>:read",
+      "operation_id": 15,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ]
+    },
+    {
+      "id": 21,
+      "buffer": "c_b_out",
+      "stage": "fdwt53Kernel<64,8>:write",
+      "operation_id": 15,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "byte_ranges": [
+        [
+          0,
+          16384
+        ]
+      ]
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique byte footprints per kernel; byte_ranges in metadata are half-open intervals, not measured memory traffic.",
+    "Edges express overlapping-region RAW/WAR/WAW dependencies and conservative kernel input-to-output readiness, not stream execution order.",
+    "Stream/event ordering is checked for conflicting buffer accesses; metadata records operation ordering, not timing.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies.",
+    "Host input parsing/loading and CPU result selection use explicit, source-hash-checked summaries; they are not executed.",
+    "Device properties are configured assumptions, not measurements; bounded kernel address evaluation requires no GPU.",
+    "Unresolved device values remain unknown; address/control decisions must resolve from known state or pass explicitly enabled identical-footprint path exploration.",
+    "Fixed-input integer bytes are evaluated from source. Threads use pre-launch state plus their own writes; conflicting threads are rejected.",
+    "All later transfers conservatively depend on prior CPU-visible downloads; host_control_dependencies records these control barriers.",
+    "When enabled, unknown kernel branches are explored only within a bounded path budget and accepted only with identical access footprints and barrier sequences.",
+    "Explicit host-numerical contracts and opaque host addresses do not validate CPU numerical correctness or host memory safety.",
+    "Host numeric array contents and random initialization remain unknown. Host allocation sizes and scalar control flow are evaluated; CPU numerical correctness is not validated.",
+    "Selected source methods execute with receiver and template identity, trivial object lifetimes and single nonvirtual base subobjects. Object ABI copies, virtual dispatch and nontrivial construction remain unsupported.",
+    "Shared-array bounds are checked but contents remain unknown; shared transfers, initialization, races, and barrier correctness are not modeled. Global footprints assume valid kernel synchronization."
+  ],
+  "configured_analysis": {
+    "configuration": {
+      "version": 1,
+      "source_objects": true,
+      "parameters": {},
+      "arguments": [
+        "-d",
+        "64x64",
+        "-c",
+        "3",
+        "-l",
+        "1",
+        "-5",
+        "input.rgb"
+      ],
+      "lexical_scopes": true,
+      "host_memory": "opaque_values",
+      "shared_memory": "opaque_values",
+      "dependency_granularity": "byte_regions",
+      "integer_state": true,
+      "device": {
+        "ordinal": 0,
+        "major": 7,
+        "minor": 5,
+        "name": "Tesla T4",
+        "device_count": 1,
+        "max_grid_size": [
+          2147483647,
+          65535,
+          65535
+        ],
+        "max_threads_per_block": 1024,
+        "free_memory_bytes": 1073741824,
+        "total_memory_bytes": 2147483648
+      },
+      "preprocessor_sha256": "97c3a37a7abc8bfe41c4fae1005a815cc647dbc0e35c7e317feb70a5c93c7740",
+      "additional_sources": [
+        "dwt.cu",
+        "components.h",
+        "common.h",
+        "components.cu",
+        "dwt.h",
+        "dwt_cuda/fdwt53.cu",
+        "dwt_cuda/rdwt53.cu",
+        "dwt_cuda/transform_buffer.h",
+        "dwt_cuda/common.h",
+        "dwt_cuda/io.h",
+        "dwt_cuda/dwt.h",
+        "dwt_cuda/common.cu",
+        "dwt_cuda/rdwt97.cu",
+        "dwt_cuda/fdwt97.cu"
+      ],
+      "additional_preprocessor_sha256": {
+        "dwt.cu": "cb9150304bf7b460cbb4acb2098ba88d514d48935dc60eca8d7ecb4f3cdda002",
+        "components.h": "3d3cb349540b38da321681d70284ecb3cb385f7e5aae9e19f52f1fc8c87474bf",
+        "common.h": "71ea8fe4801a832d4a89c3dc40623f9b927442bd517a9eb3c1f1141bd5a20c8b",
+        "components.cu": "eae4cd76a21aa7b323e493752de02dd2740ff89f6322f4c00dd5c01c310d846f",
+        "dwt.h": "98487d1a2544dfbcfac8fdafe44e32ec1648893f8a2aa2c777bb2617fbb90ad2",
+        "dwt_cuda/fdwt53.cu": "9ab6178025d71b3c646da8372c5293cb17629c305449f1f5475965a350225064",
+        "dwt_cuda/rdwt53.cu": "9ab6178025d71b3c646da8372c5293cb17629c305449f1f5475965a350225064",
+        "dwt_cuda/transform_buffer.h": "bb555fa82ab18ab81935729e16116e0802d3a114e83d8bbd82d9a5da84068533",
+        "dwt_cuda/common.h": "66eb5f4bb3810e28ab6f1ac317651b94fa26546fca870113c5342819088945c8",
+        "dwt_cuda/io.h": "409eeaf92c086dd71e1f4c3f23f1771266bb6b1dd71a528e3d5aa11d91c818f7",
+        "dwt_cuda/dwt.h": "86cc4bd074c14cfc3d4cb4af25e5e7cefb3148ce8126a7d4d9efad45d314d4f8",
+        "dwt_cuda/common.cu": "72a09f57df203f609d9e7efd7f0f790adffa064e21af52622f365893b09326ec",
+        "dwt_cuda/rdwt97.cu": "9ab6178025d71b3c646da8372c5293cb17629c305449f1f5475965a350225064",
+        "dwt_cuda/fdwt97.cu": "9ab6178025d71b3c646da8372c5293cb17629c305449f1f5475965a350225064"
+      },
+      "analyzed_functions": [
+        "bwToComponent<float>",
+        "bwToComponent<int>",
+        "c_CopySrcToComponent<float>",
+        "c_CopySrcToComponent<int>",
+        "c_CopySrcToComponents<float>",
+        "c_CopySrcToComponents<int>",
+        "divRndUp<int>",
+        "fdwt [void (float *, float *, int, int, int)]",
+        "fdwt [void (int *, int *, int, int, int)]",
+        "fdwt53",
+        "fdwt53Kernel<128,8>",
+        "fdwt53Kernel<192,8>",
+        "fdwt53Kernel<64,8>",
+        "getImg",
+        "launchFDWT53Kernel<128,8>",
+        "launchFDWT53Kernel<192,8>",
+        "launchFDWT53Kernel<64,8>",
+        "memCopy<int>",
+        "nStage2dDWT<float>",
+        "nStage2dDWT<int>",
+        "parityIdx<128>",
+        "parityIdx<192>",
+        "parityIdx<64>",
+        "processDWT<float>",
+        "processDWT<int>",
+        "rdwt [void (float *, float *, int, int, int)]",
+        "rdwt [void (int *, int *, int, int, int)]",
+        "rgbToComponents<float>",
+        "rgbToComponents<int>",
+        "samplesToChar [void (unsigned char *, float *, int)]",
+        "samplesToChar [void (unsigned char *, int *, int)]",
+        "storeComponent [void (float *, float, int)]",
+        "storeComponent [void (int *, int, int)]",
+        "storeComponents [void (float *, float *, float *, float, float, float, int)]",
+        "storeComponents [void (int *, int *, int *, int, int, int, int)]",
+        "usage",
+        "writeLinear<float>",
+        "writeLinear<int>",
+        "writeNStage2DDWT<float>",
+        "writeNStage2DDWT<int>"
+      ],
+      "input_files": {
+        "../../data/dwt2d/input.rgb": "8dec5fb0de8a0b457c0cf7be559e4ef488e9cf39d5ddb0ff7464b23372ab21fa"
+      },
+      "cuda_translation_units": [
+        "components.cu",
+        "dwt.cu",
+        "dwt_cuda/fdwt53.cu"
+      ],
+      "source_hashes": {
+        "main.cu": "7ea08ab09896099189716b75e384068a7baf68fd9f82ab1360dd293256225e1b",
+        "dwt.cu": "09ad64d7f127ce38dfbe4f80a6604a38b71ff66b1a92cc5371a56a7ed3fe7838",
+        "components.h": "0fca52ba9c238e0a12ea957d36e7e8b558b3494f251b7ff7b7be81fad65f24cd",
+        "common.h": "3f4889c2cb09c5d66d65e4ba7790e6d685ec05476a2bda2e8cd4650e95e31cea",
+        "components.cu": "fd481745f1c5078a23b71a99791beeafb1264491d705d5a9ded6c7c907658a15",
+        "dwt.h": "98e4e1847285b4fd477eb900ed9e2f6fc419abc9113754e66341d2664ed9d49c",
+        "dwt_cuda/fdwt53.cu": "34456c3db48753a9bafa9d318f337e2f09915e9e7833922fdf85bc958eec473b",
+        "dwt_cuda/rdwt53.cu": "d8d32c9aead4d2fe63b84220371ae4701cb982718b3f28ca4b695c1b1da74101",
+        "dwt_cuda/transform_buffer.h": "ff98a90ea28fbfe6a4ebcb7163eb20488aa337c4424c5e7daf9e6f048dfbd5dc",
+        "dwt_cuda/common.h": "39ae6eba20c426dd151f6d1bac5a0727b151609e4746eec894704e1c4ea6118b",
+        "dwt_cuda/io.h": "e19de17e7480dacfe27b71f832601be46e76de946cdb0098ffcf0d81c4f676ac",
+        "dwt_cuda/dwt.h": "c014245af385ab3a74e9f83804d5f9104317eccff3c6808e22364c98610dfdda",
+        "dwt_cuda/common.cu": "71e0d900449fd7de8eaf5f045c5773a0cabbbbb48e1cd9750986ef7b10ddbed1",
+        "dwt_cuda/rdwt97.cu": "30ffc4ded7ee4e10bf698ca189bf07b08964d7ad464ca8d5cbb9c950ca298881",
+        "dwt_cuda/fdwt97.cu": "b3e9f665bb5632c3f0007e3b8ab6798f145b4cc87182823007ddb69e39359b43"
+      },
+      "source_revision_note": "Two reviewed filename-allocation corrections postdate the GPU capture; see local_source_fixes.json. No corrected-source GPU rerun is claimed."
+    },
+    "launches": [
+      {
+        "kernel": "c_CopySrcToComponents<int>",
+        "grid": [
+          16,
+          1,
+          1
+        ],
+        "block": [
+          256,
+          1,
+          1
+        ],
+        "enumerated_threads": 4096,
+        "integer_state_evaluated": true
+      },
+      {
+        "kernel": "fdwt53Kernel<64,8>",
+        "grid": [
+          1,
+          8,
+          1
+        ],
+        "block": [
+          64,
+          1,
+          1
+        ],
+        "enumerated_threads": 512,
+        "integer_state_evaluated": true
+      },
+      {
+        "kernel": "fdwt53Kernel<64,8>",
+        "grid": [
+          1,
+          8,
+          1
+        ],
+        "block": [
+          64,
+          1,
+          1
+        ],
+        "enumerated_threads": 512,
+        "integer_state_evaluated": true
+      },
+      {
+        "kernel": "fdwt53Kernel<64,8>",
+        "grid": [
+          1,
+          8,
+          1
+        ],
+        "block": [
+          64,
+          1,
+          1
+        ],
+        "enumerated_threads": 512,
+        "integer_state_evaluated": true
+      }
+    ],
+    "source_units": {
+      "main.cu": "7ea08ab09896099189716b75e384068a7baf68fd9f82ab1360dd293256225e1b",
+      "dwt.cu": "09ad64d7f127ce38dfbe4f80a6604a38b71ff66b1a92cc5371a56a7ed3fe7838",
+      "components.h": "0fca52ba9c238e0a12ea957d36e7e8b558b3494f251b7ff7b7be81fad65f24cd",
+      "common.h": "3f4889c2cb09c5d66d65e4ba7790e6d685ec05476a2bda2e8cd4650e95e31cea",
+      "components.cu": "fd481745f1c5078a23b71a99791beeafb1264491d705d5a9ded6c7c907658a15",
+      "dwt.h": "98e4e1847285b4fd477eb900ed9e2f6fc419abc9113754e66341d2664ed9d49c",
+      "dwt_cuda/fdwt53.cu": "34456c3db48753a9bafa9d318f337e2f09915e9e7833922fdf85bc958eec473b",
+      "dwt_cuda/rdwt53.cu": "d8d32c9aead4d2fe63b84220371ae4701cb982718b3f28ca4b695c1b1da74101",
+      "dwt_cuda/transform_buffer.h": "ff98a90ea28fbfe6a4ebcb7163eb20488aa337c4424c5e7daf9e6f048dfbd5dc",
+      "dwt_cuda/common.h": "39ae6eba20c426dd151f6d1bac5a0727b151609e4746eec894704e1c4ea6118b",
+      "dwt_cuda/io.h": "e19de17e7480dacfe27b71f832601be46e76de946cdb0098ffcf0d81c4f676ac",
+      "dwt_cuda/dwt.h": "c014245af385ab3a74e9f83804d5f9104317eccff3c6808e22364c98610dfdda",
+      "dwt_cuda/common.cu": "71e0d900449fd7de8eaf5f045c5773a0cabbbbb48e1cd9750986ef7b10ddbed1",
+      "dwt_cuda/rdwt97.cu": "30ffc4ded7ee4e10bf698ca189bf07b08964d7ad464ca8d5cbb9c950ca298881",
+      "dwt_cuda/fdwt97.cu": "b3e9f665bb5632c3f0007e3b8ab6798f145b4cc87182823007ddb69e39359b43"
+    },
+    "used_host_summaries": [],
+    "input_files": {
+      "../../data/dwt2d/input.rgb": "8dec5fb0de8a0b457c0cf7be559e4ef488e9cf39d5ddb0ff7464b23372ab21fa"
+    }
+  }
+}

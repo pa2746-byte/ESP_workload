@@ -65,7 +65,7 @@ def parse_host_translation(path, clang=None, defines=None, include_dirs=()):
     def qualify(value):
         if isinstance(value, dict):
             for key, child in value.items():
-                if key == 'id' and isinstance(child, str): value[key] = prefix + child
+                if key in {'id','referencedMemberDecl','parentDeclContextId'} and isinstance(child, str): value[key] = prefix + child
                 else: qualify(child)
         elif isinstance(value, list):
             for child in value: qualify(child)
@@ -173,6 +173,8 @@ def directives_hash(source):
 
 
 class Evaluator:
+    object_model = None
+
     def __init__(self, path, config, cpu, mem, acc, clang):
         include_dirs = []
         for relative in config.get('include_directories', []):
@@ -207,6 +209,8 @@ class Evaluator:
                 if 'id' in node: node['id'] = relative + ':' + node['id']
                 if 'referencedDecl' in node and 'id' in node['referencedDecl']:
                     node['referencedDecl']['id'] = relative + ':' + node['referencedDecl']['id']
+                for key in ('referencedMemberDecl', 'parentDeclContextId'):
+                    if key in node: node[key] = relative + ':' + node[key]
             declarations.extend(selected)
             self.source_files.update(files)
             self.ast['inner'].extend(children(extra_ast))
@@ -251,6 +255,12 @@ class Evaluator:
         if len(self.functions) != len(definitions) or 'main' not in self.functions:
             raise UnsupportedSource('Configured analysis requires unique functions and main; duplicate definitions: ' + ', '.join(sorted({n['name'] for n in definitions if sum(x['name'] == n['name'] for x in definitions) > 1})))
         self.config = config
+        self.object_model = None
+        if type(config.get('source_objects', False)) is not bool:
+            raise UnsupportedSource('source_objects must be a boolean')
+        if config.get('source_objects', False):
+            from cuda_object_model import ObjectModel
+            self.object_model = ObjectModel(declarations)
         self.opaque_shared = config.get('shared_memory', 'reject') == 'opaque_values'
         if config.get('shared_memory', 'reject') not in {'reject', 'opaque_values'}:
             raise UnsupportedSource('Unknown shared-memory model')
@@ -557,6 +567,10 @@ class Evaluator:
 
     def location(self, n):
         k, cs = n['kind'], children(n)
+        if self.object_model is not None and k in {'CXXMemberCallExpr','CXXOperatorCallExpr'}:
+            value = self.eval(n)
+            if isinstance(value, (Reference, Pointer, SharedView)): return value
+            raise UnsupportedSource('Method does not return a modeled reference')
         if k in {'ParenExpr', 'ImplicitCastExpr'}: return self.location(cs[0])
         if k == 'DeclRefExpr':
             name = n['referencedDecl']['name']
@@ -575,6 +589,10 @@ class Evaluator:
             return value
         if k == 'MemberExpr':
             value = self.eval(cs[0])
+            from cuda_object_model import SourceObject
+            if isinstance(value, SourceObject):
+                if n['name'] not in value.fields: raise UnsupportedSource('Unknown object field')
+                return Reference(value.fields, n['name'])
             if isinstance(value, dict): return Reference(value, n['name'])
             if isinstance(value, Pointer):
                 fields = self.layout(value.base)[2]
@@ -622,6 +640,28 @@ class Evaluator:
 
     def eval(self, n):
         k, cs = n['kind'], children(n)
+        if self.object_model is not None and k == 'CXXOperatorCallExpr':
+            callee = cs[0]
+            while callee['kind'] in {'ImplicitCastExpr','ParenExpr'}: callee = children(callee)[0]
+            ident = callee.get('referencedDecl', {}).get('id')
+            if ident in self.object_model.methods:
+                receiver = self.eval(cs[1])
+                return self.object_model.invoke(self, ident, cs[2:], receiver)
+        if k == 'CXXThisExpr':
+            if '@this' not in self.env: raise UnsupportedSource('Object receiver is unavailable')
+            return self.env['@this']
+        if self.object_model is not None and k == 'CXXMemberCallExpr':
+            member = cs[0]
+            if member['kind'] == 'MemberExpr' and member.get('referencedMemberDecl') in self.object_model.methods:
+                receiver = self.eval(children(member)[0])
+                return self.object_model.invoke(self, member['referencedMemberDecl'], cs[1:], receiver)
+        if self.object_model is not None and k == 'CallExpr':
+            callee = cs[0]
+            while callee['kind'] in {'ImplicitCastExpr','ParenExpr'}: callee = children(callee)[0]
+            ident = callee.get('referencedDecl', {}).get('id') or callee.get('referencedMemberDecl')
+            if ident in self.object_model.methods:
+                receiver = self.eval(children(callee)[0]) if callee['kind'] == 'MemberExpr' and children(callee) else None
+                return self.object_model.invoke(self, ident, cs[1:], receiver)
         if k == 'SubstNonTypeTemplateParmExpr':
             values = [c for c in cs if c['kind'] != 'NonTypeTemplateParmDecl']
             if len(values) != 1: raise UnsupportedSource('Ambiguous template parameter substitution')
@@ -629,6 +669,14 @@ class Evaluator:
         if k in {'ImplicitCastExpr', 'ParenExpr', 'ConstantExpr', 'ExprWithCleanups', 'CXXBindTemporaryExpr', 'MaterializeTemporaryExpr'}:
             if len(cs) != 1: raise UnsupportedSource('Ambiguous wrapped expression')
             value = self.eval(cs[0])
+            if self.object_model is not None and n.get('castKind') in {'DerivedToBase','UncheckedDerivedToBase'}:
+                return self.object_model.base_view(value, n['type'].get('desugaredQualType', n['type']['qualType']))
+            if (self.object_model is not None and n.get('castKind') == 'LValueToRValue'
+                    and cs[0]['kind'] in {'CXXMemberCallExpr','CXXOperatorCallExpr','CallExpr'}):
+                if isinstance(value, (Reference, SharedView)):
+                    return self.read(value)
+                if isinstance(value, Pointer) and not self.clean(cs[0]['type']['qualType']).endswith('*'):
+                    return self.read(value)
             numeric_casts = {'IntegralToFloating', 'FloatingToIntegral', 'IntegralCast', 'FloatingCast'}
             if k == 'ImplicitCastExpr' and n.get('castKind') in numeric_casts and not isinstance(value, Unknown):
                 return float(value) if self.clean(n['type']['qualType']) in {'float','double'} else int(value)
@@ -817,8 +865,15 @@ class Evaluator:
             if op in {'<', '<=', '>', '>=', '==', '!='}:
                 return {'<': a < b, '<=': a <= b, '>': a > b, '>=': a >= b, '==': a == b, '!=': a != b}[op]
             raise UnsupportedSource(f'Unsupported binary operation: {op}')
-        if k == 'CXXConstructExpr':
+        if k in {'CXXConstructExpr','CXXTemporaryObjectExpr'}:
             typ = self.clean(n['type']['qualType'])
+            if self.object_model is not None:
+                record = n['type'].get('desugaredQualType', typ)
+                try: self.object_model.record_for(record)
+                except UnsupportedSource: pass
+                else:
+                    if cs: raise UnsupportedSource('Only trivial default source-object construction is supported')
+                    return self.object_model.construct(record, self)
             if typ in self.types and self.types[typ][2] and len(cs)==1:
                 import copy
                 value=self.eval(cs[0])
@@ -857,7 +912,12 @@ class Evaluator:
             if self.kernel or not n.get('isArray'): raise UnsupportedSource('Only host delete[] is supported')
             self.free_host(self.eval(cs[0]))
             return None
-        if k == 'CallExpr': return self.call(ref(cs[0]), cs[1:], n.get('id'))
+        if k == 'CallExpr':
+            try: name = ref(cs[0])
+            except UnsupportedSource as error:
+                error.add_note('Unresolved call in ' + self.current_function + ': ' + str(cs[0])[:1200])
+                raise
+            return self.call(name, cs[1:], n.get('id'))
         raise UnsupportedSource(f'Unsupported expression: {k}')
 
     @contextmanager
@@ -896,8 +956,27 @@ class Evaluator:
             for var in cs:
                 name, typ = var['name'], self.clean(var['type']['qualType'])
                 self.declare_local(name)
+                if self.object_model is not None and typ.endswith('&'):
+                    if typ.endswith('&&') or len(children(var)) != 1:
+                        raise UnsupportedSource('Local references require one lvalue initializer')
+                    initializer = children(var)[0]
+                    if any(part['kind'] == 'MaterializeTemporaryExpr' for part in walk(initializer)):
+                        raise UnsupportedSource('Local temporary reference lifetimes are unsupported')
+                    self.env[name] = Binding(self.location(initializer))
+                    continue
                 if var.get('storageClass')=='extern' and name in self.cli_state:
                     self.env[name]=Binding(Reference(self.cli_state,name)); continue
+                if self.object_model is not None and any(c['kind'] == 'CUDASharedAttr' for c in children(var)):
+                    record = var['type'].get('desugaredQualType', typ)
+                    try: self.object_model.record_for(record)
+                    except UnsupportedSource: pass
+                    else:
+                        if not self.kernel or not self.opaque_shared: raise UnsupportedSource('Shared objects require explicit opaque shared mode')
+                        initializers = [c for c in children(var) if c['kind'] != 'CUDASharedAttr']
+                        if any(c['kind'] != 'CXXConstructExpr' or children(c) for c in initializers):
+                            raise UnsupportedSource('Shared object initializer is unsupported')
+                        self.env[name] = self.object_model.construct(record, self, shared=True)
+                        continue
                 if any(c['kind'] == 'CUDASharedAttr' for c in children(var)):
                     match = re.fullmatch(r'([A-Za-z_][A-Za-z_0-9]*(?: [A-Za-z_][A-Za-z_0-9]*)*)\s*((?:\[\d+\])+)' , typ)
                     if not self.kernel or not self.opaque_shared or not match or match[1] not in self.types or any(c['kind'] != 'CUDASharedAttr' and not (c['kind']=='CXXConstructExpr' and not children(c) and bool(self.types[match[1]][2])) for c in children(var)):
@@ -976,7 +1055,19 @@ class Evaluator:
         elif k == 'NullStmt': pass
         elif k == 'BreakStmt': raise LoopBreak()
         elif k == 'ReturnStmt':
-            raise FunctionReturn(self.eval(cs[0]) if cs else None)
+            fn = self.functions[self.current_function]
+            if self.object_model is not None and re.search(r'&\s*\(', fn.get('type', {}).get('qualType', '')):
+                if not cs: raise UnsupportedSource('Reference return requires a location')
+                result = self.location(cs[0])
+                if isinstance(result, Reference) and id(result.owner) not in self.env.get('@reference_owners', set()):
+                    raise UnsupportedSource('Returning a reference to local storage is unsupported')
+                raise FunctionReturn(result)
+            result = self.eval(cs[0]) if cs else None
+            if self.object_model is not None:
+                from cuda_object_model import SourceObject
+                if isinstance(result, SourceObject):
+                    raise UnsupportedSource('Returning a source object by value requires copy semantics')
+            raise FunctionReturn(result)
         elif k == 'ForStmt':
             # Clang preserves an empty slot for a condition-variable declaration.
             raw = n.get('inner', [])
@@ -1273,7 +1364,7 @@ class Evaluator:
         else: raise UnsupportedSource(f'Unsupported host call (requires a reviewed contract): {name}')
         return 0
 
-    def invoke_function(self, name, expressions, args):
+    def invoke_function(self, name, expressions, args, receiver=None):
         if name in self.call_stack or len(self.call_stack) >= 16:
             raise UnsupportedSource('Recursive or excessively nested calls are unsupported')
         fn = self.functions[name]
@@ -1282,24 +1373,47 @@ class Evaluator:
         params = [p for p in children(fn) if p['kind'] == 'ParmVarDecl']
         if len(args) != len(params): raise UnsupportedSource('Function argument count mismatch')
         bindings = []
+        temporary_owners = set()
         for param, expression, value in zip(params, expressions, args):
             typ = param['type']['qualType']
             if not typ.endswith('&'):
+                from cuda_object_model import SourceObject
+                if isinstance(value, SourceObject):
+                    raise UnsupportedSource('Source objects passed by value require copy semantics')
                 bindings.append(value)
                 continue
             temporary = any(n['kind'] == 'MaterializeTemporaryExpr' for n in walk(expression))
             if temporary:
                 base = self.clean(typ.rstrip('&').strip())
-                if 'const' not in typ.split() or not isinstance(value, (int, float, bool, Unknown)) or base not in self.types or self.types[base][2]:
-                    raise UnsupportedSource('Only scalar const-reference temporaries are supported')
-                # The evaluated argument is stored once, for this call's lifetime.
-                bindings.append(Binding(Reference({'value': value}, 'value', scalar_type=base, read_only=True)))
+                from cuda_object_model import SourceObject
+                object_temporary = self.object_model is not None and isinstance(value, SourceObject)
+                scalar_temporary = isinstance(value, (int, float, bool, Unknown)) and base in self.types and not self.types[base][2]
+                if 'const' not in typ.split() or not (scalar_temporary or object_temporary):
+                    raise UnsupportedSource('Only scalar or modeled-object const-reference temporaries are supported')
+                # Evaluated once; this storage survives until the call returns.
+                storage = {'value': value}
+                temporary_owners.add(id(storage))
+                bindings.append(Binding(Reference(storage, 'value', scalar_type=base if scalar_temporary else None, read_only=True)))
             else:
                 if any(n['kind'] in {'CallExpr','CXXMemberCallExpr','CompoundAssignOperator'} or n.get('opcode') in {'++','--','='} for n in walk(expression)):
                     raise UnsupportedSource('Reference argument must have a side-effect-free location')
                 bindings.append(Binding(self.location(expression)))
         saved, saved_fn = self.env, self.current_function
         self.env = {p['name']: a for p, a in zip(params, bindings)}
+        if receiver is not None: self.env['@this'] = receiver
+        if self.object_model is not None:
+            from cuda_object_model import SourceObject
+            owners = set()
+            def allow_reference(value):
+                if isinstance(value, SourceObject):
+                    owners.add(id(value.fields))
+                    for field in value.fields.values(): allow_reference(field)
+                    allow_reference(value.base)
+                elif isinstance(value, Binding): allow_reference(value.location)
+                elif isinstance(value, Reference): owners.add(id(value.owner))
+            allow_reference(receiver)
+            for value in bindings: allow_reference(value)
+            self.env['@reference_owners'] = owners - temporary_owners
         if self.kernel:
             for builtin in ('threadIdx', 'blockIdx', 'blockDim', 'gridDim'):
                 if builtin in saved: self.env[builtin] = saved[builtin]
@@ -1374,12 +1488,18 @@ class Evaluator:
         self.host_sizes[name] = shape[0] * self.layout(spec['base'])[0]
         return Pointer(name, 0, spec['base'])
 
-    def host_provenance(self, value):
+    def host_provenance(self, value, seen=None):
+        from cuda_object_model import SourceObject
+        if seen is None: seen = set()
+        if id(value) in seen: return set()
+        seen.add(id(value))
         if isinstance(value, Unknown): return set(value.dependencies)
         if isinstance(value, Pointer): return set(self.host_dependencies.get(value.buffer, ()))
-        if isinstance(value, Reference): return self.host_provenance(self.read(value))
-        if isinstance(value, PointerArray): return set().union(*(self.host_provenance(v) for v in value.values.values()))
-        if isinstance(value, dict): return set().union(*(self.host_provenance(v) for v in value.values()))
+        if isinstance(value, Reference): return self.host_provenance(self.read(value), seen)
+        if isinstance(value, Binding): return self.host_provenance(value.location, seen)
+        if isinstance(value, SourceObject): return self.host_provenance(value.fields, seen) | self.host_provenance(value.base, seen)
+        if isinstance(value, PointerArray): return set().union(*(self.host_provenance(v, seen) for v in value.values.values()))
+        if isinstance(value, dict): return set().union(*(self.host_provenance(v, seen) for v in value.values()))
         return set()
 
     def mark_host_output(self, value, dependencies):
@@ -1433,16 +1553,25 @@ class Evaluator:
         del self.host_sizes[ptr.buffer]
 
     @staticmethod
-    def contains_device_pointer(value):
+    def contains_device_pointer(value, seen=None):
+        from cuda_object_model import SourceObject
         if isinstance(value, Pointer): return value.device
+        if seen is None: seen = set()
+        if id(value) in seen: return False
+        seen.add(id(value))
+        if isinstance(value, Binding):
+            return Evaluator.contains_device_pointer(value.location, seen)
         if isinstance(value, Reference):
-            return Evaluator.contains_device_pointer(value.owner.get(value.key, UNKNOWN))
+            return Evaluator.contains_device_pointer(value.owner.get(value.key, UNKNOWN), seen)
+        if isinstance(value, SourceObject):
+            return (Evaluator.contains_device_pointer(value.fields, seen)
+                    or Evaluator.contains_device_pointer(value.base, seen))
         if isinstance(value, PointerArray):
-            return any(Evaluator.contains_device_pointer(v) for v in value.values.values())
+            return any(Evaluator.contains_device_pointer(v, seen) for v in value.values.values())
         if isinstance(value, dict):
-            return any(Evaluator.contains_device_pointer(v) for v in value.values())
+            return any(Evaluator.contains_device_pointer(v, seen) for v in value.values())
         if isinstance(value, (list, tuple)):
-            return any(Evaluator.contains_device_pointer(v) for v in value)
+            return any(Evaluator.contains_device_pointer(v, seen) for v in value)
         return False
 
     def launch(self, n):
@@ -1571,6 +1700,13 @@ class Evaluator:
                           set(parents) | self.writers.get(buffer, set()) | self.readers.get(buffer, set()))
         self.writers[buffer], self.readers[buffer], self.initialized[buffer] = {i}, set(), size
 
+    def source_unit_hashes(self):
+        counts = {}
+        for file in self.source_files: counts[file.name] = counts.get(file.name, 0) + 1
+        return {(file.relative_to(self.source_directory).as_posix()
+                 if self.config.get('source_objects') or counts[file.name] > 1 else file.name):
+                hashlib.sha256(data).hexdigest() for file, data in self.source_files.items()}
+
     def run(self):
         try:
             self.statement(body_of(self.functions[self.entry]))
@@ -1583,7 +1719,7 @@ class Evaluator:
         return (dict(directed=True, multigraph=False, graph={}, nodes=self.nodes,
                      edges=[dict(source=s, target=t) for s, t in sorted(self.edges)]),
                 self.metadata, dict(configuration=self.config, launches=self.launches,
-                                    source_units={file.name: hashlib.sha256(data).hexdigest() for file, data in self.source_files.items()},
+                                    source_units=self.source_unit_hashes(),
                                     used_host_summaries=sorted(self.used_summaries),
                                     **({'input_files': self.input_file_hashes} if self.input_file_hashes else {})))
 

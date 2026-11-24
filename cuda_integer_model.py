@@ -588,6 +588,6 @@ class IntegerEvaluator(Evaluator):
         return (dict(directed=True,multigraph=False,graph={},nodes=self.nodes,
             edges=[dict(source=s,target=t) for s,t in sorted(self.edges)]),self.metadata,
             dict(configuration=self.config,launches=self.launches,
-                source_units={p.name:hashlib.sha256(b).hexdigest() for p,b in self.source_files.items()},
+                source_units=self.source_unit_hashes(),
                 used_host_summaries=sorted(self.used_summaries),input_files=self.input_file_hashes,
                 allocations_live_at_process_exit=dict(self.allocations)))

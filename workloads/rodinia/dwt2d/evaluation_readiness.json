@@ -1,25 +1,14 @@
 {
-  "status": "unsupported",
-  "config": "analysis_in_progress.json",
-  "error": "Unsupported kernel call: run",
-  "completed_kernel_evaluation": [
-    {
-      "kernel": "c_CopySrcToComponents<int>",
-      "grid": [
-        16,
-        1,
-        1
-      ],
-      "block": [
-        256,
-        1,
-        1
-      ],
-      "enumerated_threads": 4096
-    }
-  ],
-  "graph_emitted": false,
-  "source_correction": "local_source_fixes.json",
-  "input_capture": "20261123T005703612561Z",
-  "next_capability": "Qualified class-template methods and object/shared-state evaluation"
+  "status": "source_evaluation_completed",
+  "configuration": "analysis.json",
+  "scenario": "64x64 RGB, one forward 5/3 level, OUTPUT undefined",
+  "nodes": 22,
+  "edges": 23,
+  "source_kernel_launches": 4,
+  "host_summaries": [],
+  "graph_directory": "results/rodinia_dwt2d",
+  "independent_contract": "tests/test_dwt2d_graph_contract.py",
+  "gpu_measurements_attached": false,
+  "numerical_correctness_validated": false,
+  "source_revision_note": "Filename-allocation corrections postdate the capture; corrected-source GPU execution has not been measured."
 }
