@@ -1,0 +1,28 @@
+{
+  "repository": "https://github.com/yuhc/gpu-rodinia",
+  "revision": "9c10d3ea16ddba2ba057cc3951a9efc4c2cc18a4",
+  "upstream_directory": "cuda/dwt2d",
+  "status": "source imported; analyzer support pending",
+  "sha256": {
+    "Makefile": "eb83220a2010f69e1044a59283fef3fadf876bad2a31fdb6aabb793141db511d",
+    "dwt.cu": "09ad64d7f127ce38dfbe4f80a6604a38b71ff66b1a92cc5371a56a7ed3fe7838",
+    "README": "b31a9b6c5e0324da034ad9d7e2e13199f4e2477bebb0898c17c654664c80bc38",
+    "run.sh": "a6a225fbecd1250be026f2fa8990a15a068ec0883fdc714e362088d6f2106af1",
+    "main.cu": "99d25453a62aac9ca9aaaa8a854c01a101391bb16c5dec4ca448e95a565f318f",
+    "components.h": "0fca52ba9c238e0a12ea957d36e7e8b558b3494f251b7ff7b7be81fad65f24cd",
+    "common.h": "335b143b7f3387bd32f30979920697df2982fc1691fe79d5c1f7fb74125217d5",
+    "dwt_kernel.c.copy": "c3e0b068ee1ab45ea511719838356c5d1f863a144cee400f84e32342f7f86b9d",
+    "components.cu": "fd481745f1c5078a23b71a99791beeafb1264491d705d5a9ded6c7c907658a15",
+    "dwt.h": "98e4e1847285b4fd477eb900ed9e2f6fc419abc9113754e66341d2664ed9d49c",
+    "autorun.sh": "325bba0c7357d2e5b825604e894f31570c9e9d386c3aa6e514806c0fae6e8dda",
+    "dwt_cuda/fdwt53.cu": "34456c3db48753a9bafa9d318f337e2f09915e9e7833922fdf85bc958eec473b",
+    "dwt_cuda/rdwt53.cu": "d8d32c9aead4d2fe63b84220371ae4701cb982718b3f28ca4b695c1b1da74101",
+    "dwt_cuda/transform_buffer.h": "ff98a90ea28fbfe6a4ebcb7163eb20488aa337c4424c5e7daf9e6f048dfbd5dc",
+    "dwt_cuda/common.h": "1dc992307fd69203888d3fb478bc139a4c5383ca810f569e39e1e54e967f83fe",
+    "dwt_cuda/io.h": "e19de17e7480dacfe27b71f832601be46e76de946cdb0098ffcf0d81c4f676ac",
+    "dwt_cuda/dwt.h": "c014245af385ab3a74e9f83804d5f9104317eccff3c6808e22364c98610dfdda",
+    "dwt_cuda/common.cu": "71e0d900449fd7de8eaf5f045c5773a0cabbbbb48e1cd9750986ef7b10ddbed1",
+    "dwt_cuda/rdwt97.cu": "30ffc4ded7ee4e10bf698ca189bf07b08964d7ad464ca8d5cbb9c950ca298881",
+    "dwt_cuda/fdwt97.cu": "b3e9f665bb5632c3f0007e3b8ab6798f145b4cc87182823007ddb69e39359b43"
+  }
+}

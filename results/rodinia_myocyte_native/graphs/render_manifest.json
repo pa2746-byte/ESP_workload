@@ -1,0 +1,10 @@
+{
+  "case": "myocyte",
+  "layout_engine": "dot",
+  "source_file": "source_simulator.json",
+  "source_sha256": "ab12d9e2fe82947a7e6b063eb7374d232f1e9a1b596ac57198d2153e90e3e731",
+  "nodes": 312,
+  "edges": 883,
+  "gpu_measurements_attached": false,
+  "note": "All nodes and dependencies are retained. SVG supports zoom; PNG is an overview. Colors: orange writes, purple reads, blue uploads, green downloads."
+}

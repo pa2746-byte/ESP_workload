@@ -1,0 +1,40 @@
+{
+  "capture": "20261123T005703612561Z",
+  "archive_sha256": "2bb699eb0abe5db7c0f5cb1192dfb021d1bf5ab11c496793078511ccd2b515e6",
+  "entry": "cuda/dwt2d/main.cu",
+  "working_directory": "cuda/dwt2d",
+  "arguments": [
+    "-d",
+    "64x64",
+    "-c",
+    "3",
+    "-l",
+    "1",
+    "-5",
+    "input.rgb"
+  ],
+  "captured_kernel_count": 4,
+  "analysis_status": "completed_with_reviewed_source_corrections",
+  "source_and_input_sha256": {
+    "cuda/dwt2d/common.h": "3f4889c2cb09c5d66d65e4ba7790e6d685ec05476a2bda2e8cd4650e95e31cea",
+    "cuda/dwt2d/components.h": "0fca52ba9c238e0a12ea957d36e7e8b558b3494f251b7ff7b7be81fad65f24cd",
+    "cuda/dwt2d/dwt.h": "98e4e1847285b4fd477eb900ed9e2f6fc419abc9113754e66341d2664ed9d49c",
+    "cuda/dwt2d/components.cu": "fd481745f1c5078a23b71a99791beeafb1264491d705d5a9ded6c7c907658a15",
+    "cuda/dwt2d/dwt.cu": "09ad64d7f127ce38dfbe4f80a6604a38b71ff66b1a92cc5371a56a7ed3fe7838",
+    "cuda/dwt2d/main.cu": "99d25453a62aac9ca9aaaa8a854c01a101391bb16c5dec4ca448e95a565f318f",
+    "cuda/dwt2d/dwt_cuda/common.h": "39ae6eba20c426dd151f6d1bac5a0727b151609e4746eec894704e1c4ea6118b",
+    "cuda/dwt2d/dwt_cuda/io.h": "e19de17e7480dacfe27b71f832601be46e76de946cdb0098ffcf0d81c4f676ac",
+    "cuda/dwt2d/dwt_cuda/rdwt97.cu": "30ffc4ded7ee4e10bf698ca189bf07b08964d7ad464ca8d5cbb9c950ca298881",
+    "cuda/dwt2d/dwt_cuda/dwt.h": "c014245af385ab3a74e9f83804d5f9104317eccff3c6808e22364c98610dfdda",
+    "cuda/dwt2d/dwt_cuda/rdwt53.cu": "d8d32c9aead4d2fe63b84220371ae4701cb982718b3f28ca4b695c1b1da74101",
+    "cuda/dwt2d/dwt_cuda/common.cu": "71e0d900449fd7de8eaf5f045c5773a0cabbbbb48e1cd9750986ef7b10ddbed1",
+    "cuda/dwt2d/dwt_cuda/fdwt97.cu": "b3e9f665bb5632c3f0007e3b8ab6798f145b4cc87182823007ddb69e39359b43",
+    "cuda/dwt2d/dwt_cuda/transform_buffer.h": "ff98a90ea28fbfe6a4ebcb7163eb20488aa337c4424c5e7daf9e6f048dfbd5dc",
+    "cuda/dwt2d/dwt_cuda/fdwt53.cu": "34456c3db48753a9bafa9d318f337e2f09915e9e7833922fdf85bc958eec473b",
+    "data/dwt2d/input.rgb": "8dec5fb0de8a0b457c0cf7be559e4ef488e9cf39d5ddb0ff7464b23372ab21fa"
+  },
+  "scope": "Exact captured sources and inputs; no GPU trace is used to infer source dependencies.",
+  "analysis_configuration": "../dwt2d/analysis.json",
+  "analysis_results": "results/rodinia_dwt2d",
+  "analysis_note": "Source-only graph completed for the recorded input and arguments, with the two filename-allocation corrections in dwt2d/local_source_fixes.json. No corrected-source GPU rerun or numerical validation is claimed."
+}

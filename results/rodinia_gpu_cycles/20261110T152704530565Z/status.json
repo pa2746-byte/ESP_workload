@@ -1,0 +1,52 @@
+{
+  "bfs": {
+    "cycles_measured": true,
+    "trace_verified": true,
+    "expected_kernel_count": 8,
+    "nsys_returncode": 0,
+    "trace_kernel_count": 8,
+    "ncu_returncode": 0,
+    "profiled_kernel_count": 8,
+    "sum_kernel_elapsed_sm_avg_cycles": 24303.0
+  },
+  "lavamd": {
+    "cycles_measured": true,
+    "trace_verified": true,
+    "expected_kernel_count": 1,
+    "nsys_returncode": 0,
+    "trace_kernel_count": 1,
+    "ncu_returncode": 0,
+    "profiled_kernel_count": 1,
+    "sum_kernel_elapsed_sm_avg_cycles": 249301.0
+  },
+  "particlefilter": {
+    "cycles_measured": true,
+    "trace_verified": true,
+    "expected_kernel_count": 1,
+    "nsys_returncode": 0,
+    "trace_kernel_count": 1,
+    "ncu_returncode": 0,
+    "profiled_kernel_count": 1,
+    "sum_kernel_elapsed_sm_avg_cycles": 3761.2
+  },
+  "kmeans": {
+    "cycles_measured": true,
+    "trace_verified": true,
+    "expected_kernel_count": 3,
+    "nsys_returncode": 0,
+    "trace_kernel_count": 3,
+    "ncu_returncode": 0,
+    "profiled_kernel_count": 3,
+    "sum_kernel_elapsed_sm_avg_cycles": 8623.2
+  },
+  "btree": {
+    "cycles_measured": true,
+    "trace_verified": true,
+    "expected_kernel_count": 1,
+    "nsys_returncode": 0,
+    "trace_kernel_count": 1,
+    "ncu_returncode": 0,
+    "profiled_kernel_count": 1,
+    "sum_kernel_elapsed_sm_avg_cycles": 3682.2
+  }
+}

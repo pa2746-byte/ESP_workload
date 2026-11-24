@@ -1,0 +1,15 @@
+{
+  "repository": "https://github.com/yuhc/gpu-rodinia",
+  "revision": "9c10d3ea16ddba2ba057cc3951a9efc4c2cc18a4",
+  "upstream_directory": "cuda/kmeans",
+  "adaptation": "None in vendored source; GPU-build compatibility changes are recorded separately.",
+  "sha256": {
+    "rmse.c": "339d808f51d66e83d54a30a1a51c38b99698c5cfe348010a08a9e88ada759995",
+    "kmeans_cuda_kernel.cu": "2ea02f5cac52aaf2f23bdc38bbaa3f19c8bb33e38a22437ed566b65db089364e",
+    "kmeans.h": "17febbae999007d3a858dc4d7793f7ff93f84ab44de942a54e6164957e1eb29d",
+    "kmeans_clustering.c": "4ebdf3a00bc41ebfc340113da816e3aa74dd85a56145df8b4826c0d796660381",
+    "cluster.c": "28f01b1e4b0656ffa163b513889a29526047444595b415e4a31b889ccf032d10",
+    "kmeans.c": "3544ffbe528072518729e41b7241ceb4a699919a8bbeda7ae5f0bcc176e45646",
+    "kmeans_cuda.cu": "5c49c806943773e5dd17a813775372438cfd2a6e5f6f73d153c3a5f1f696a29e"
+  }
+}

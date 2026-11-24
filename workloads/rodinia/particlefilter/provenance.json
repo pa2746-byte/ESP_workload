@@ -1,0 +1,9 @@
+{
+  "repository": "https://github.com/yuhc/gpu-rodinia",
+  "revision": "9c10d3ea16ddba2ba057cc3951a9efc4c2cc18a4",
+  "upstream_directory": "cuda/particlefilter",
+  "adaptation": "None in vendored source; GPU-build compatibility changes are recorded separately.",
+  "sha256": {
+    "ex_particle_CUDA_naive_seq.cu": "d0ca61fec9848bb78a5de186c234c31da1d01422820a3d4ca3c3aaa840cf8e47"
+  }
+}

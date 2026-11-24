@@ -1,0 +1,1428 @@
+{
+  "workload": "backprop_cuda",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/rodinia/backprop/backprop_cuda.cu",
+  "source_sha256": "1bd966c36f6277d8d0246a5411e734e69e96050532303e40c5253e06b76d6383",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "input_cuda",
+      "stage": "upload",
+      "operation_id": 0,
+      "stream": "default",
+      "ordered_after_operations": [],
+      "byte_ranges": [
+        [
+          0,
+          132
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "buffer": "input_hidden_cuda",
+      "stage": "upload",
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ],
+      "byte_ranges": [
+        [
+          0,
+          2244
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "buffer": "input_cuda",
+      "stage": "bpnn_layerforward_CUDA:read",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          4,
+          132
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "buffer": "input_hidden_cuda",
+      "stage": "bpnn_layerforward_CUDA:read",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          72,
+          136
+        ],
+        [
+          140,
+          204
+        ],
+        [
+          208,
+          272
+        ],
+        [
+          276,
+          340
+        ],
+        [
+          344,
+          408
+        ],
+        [
+          412,
+          476
+        ],
+        [
+          480,
+          544
+        ],
+        [
+          548,
+          612
+        ],
+        [
+          616,
+          680
+        ],
+        [
+          684,
+          748
+        ],
+        [
+          752,
+          816
+        ],
+        [
+          820,
+          884
+        ],
+        [
+          888,
+          952
+        ],
+        [
+          956,
+          1020
+        ],
+        [
+          1024,
+          1088
+        ],
+        [
+          1092,
+          1156
+        ],
+        [
+          1160,
+          1224
+        ],
+        [
+          1228,
+          1292
+        ],
+        [
+          1296,
+          1360
+        ],
+        [
+          1364,
+          1428
+        ],
+        [
+          1432,
+          1496
+        ],
+        [
+          1500,
+          1564
+        ],
+        [
+          1568,
+          1632
+        ],
+        [
+          1636,
+          1700
+        ],
+        [
+          1704,
+          1768
+        ],
+        [
+          1772,
+          1836
+        ],
+        [
+          1840,
+          1904
+        ],
+        [
+          1908,
+          1972
+        ],
+        [
+          1976,
+          2040
+        ],
+        [
+          2044,
+          2108
+        ],
+        [
+          2112,
+          2176
+        ],
+        [
+          2180,
+          2244
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "buffer": "input_hidden_cuda",
+      "stage": "bpnn_layerforward_CUDA:write",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          72,
+          136
+        ],
+        [
+          140,
+          204
+        ],
+        [
+          208,
+          272
+        ],
+        [
+          276,
+          340
+        ],
+        [
+          344,
+          408
+        ],
+        [
+          412,
+          476
+        ],
+        [
+          480,
+          544
+        ],
+        [
+          548,
+          612
+        ],
+        [
+          616,
+          680
+        ],
+        [
+          684,
+          748
+        ],
+        [
+          752,
+          816
+        ],
+        [
+          820,
+          884
+        ],
+        [
+          888,
+          952
+        ],
+        [
+          956,
+          1020
+        ],
+        [
+          1024,
+          1088
+        ],
+        [
+          1092,
+          1156
+        ],
+        [
+          1160,
+          1224
+        ],
+        [
+          1228,
+          1292
+        ],
+        [
+          1296,
+          1360
+        ],
+        [
+          1364,
+          1428
+        ],
+        [
+          1432,
+          1496
+        ],
+        [
+          1500,
+          1564
+        ],
+        [
+          1568,
+          1632
+        ],
+        [
+          1636,
+          1700
+        ],
+        [
+          1704,
+          1768
+        ],
+        [
+          1772,
+          1836
+        ],
+        [
+          1840,
+          1904
+        ],
+        [
+          1908,
+          1972
+        ],
+        [
+          1976,
+          2040
+        ],
+        [
+          2044,
+          2108
+        ],
+        [
+          2112,
+          2176
+        ],
+        [
+          2180,
+          2244
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "buffer": "hidden_partial_sum",
+      "stage": "bpnn_layerforward_CUDA:write",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          0,
+          128
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "buffer": "hidden_partial_sum",
+      "stage": "download",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          0,
+          128
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "buffer": "hidden_delta_cuda",
+      "stage": "upload",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          0,
+          68
+        ]
+      ],
+      "host_input_dependencies": [
+        6
+      ]
+    },
+    {
+      "id": 8,
+      "buffer": "input_prev_weights_cuda",
+      "stage": "upload",
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "byte_ranges": [
+        [
+          0,
+          2244
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "buffer": "input_hidden_cuda",
+      "stage": "upload",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          0,
+          2244
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "buffer": "input_cuda",
+      "stage": "bpnn_adjust_weights_cuda:read",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          4,
+          132
+        ]
+      ]
+    },
+    {
+      "id": 11,
+      "buffer": "input_hidden_cuda",
+      "stage": "bpnn_adjust_weights_cuda:read",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          4,
+          68
+        ],
+        [
+          72,
+          136
+        ],
+        [
+          140,
+          204
+        ],
+        [
+          208,
+          272
+        ],
+        [
+          276,
+          340
+        ],
+        [
+          344,
+          408
+        ],
+        [
+          412,
+          476
+        ],
+        [
+          480,
+          544
+        ],
+        [
+          548,
+          612
+        ],
+        [
+          616,
+          680
+        ],
+        [
+          684,
+          748
+        ],
+        [
+          752,
+          816
+        ],
+        [
+          820,
+          884
+        ],
+        [
+          888,
+          952
+        ],
+        [
+          956,
+          1020
+        ],
+        [
+          1024,
+          1088
+        ],
+        [
+          1092,
+          1156
+        ],
+        [
+          1160,
+          1224
+        ],
+        [
+          1228,
+          1292
+        ],
+        [
+          1296,
+          1360
+        ],
+        [
+          1364,
+          1428
+        ],
+        [
+          1432,
+          1496
+        ],
+        [
+          1500,
+          1564
+        ],
+        [
+          1568,
+          1632
+        ],
+        [
+          1636,
+          1700
+        ],
+        [
+          1704,
+          1768
+        ],
+        [
+          1772,
+          1836
+        ],
+        [
+          1840,
+          1904
+        ],
+        [
+          1908,
+          1972
+        ],
+        [
+          1976,
+          2040
+        ],
+        [
+          2044,
+          2108
+        ],
+        [
+          2112,
+          2176
+        ],
+        [
+          2180,
+          2244
+        ]
+      ]
+    },
+    {
+      "id": 12,
+      "buffer": "hidden_delta_cuda",
+      "stage": "bpnn_adjust_weights_cuda:read",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          4,
+          68
+        ]
+      ]
+    },
+    {
+      "id": 13,
+      "buffer": "input_prev_weights_cuda",
+      "stage": "bpnn_adjust_weights_cuda:read",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          4,
+          68
+        ],
+        [
+          72,
+          136
+        ],
+        [
+          140,
+          204
+        ],
+        [
+          208,
+          272
+        ],
+        [
+          276,
+          340
+        ],
+        [
+          344,
+          408
+        ],
+        [
+          412,
+          476
+        ],
+        [
+          480,
+          544
+        ],
+        [
+          548,
+          612
+        ],
+        [
+          616,
+          680
+        ],
+        [
+          684,
+          748
+        ],
+        [
+          752,
+          816
+        ],
+        [
+          820,
+          884
+        ],
+        [
+          888,
+          952
+        ],
+        [
+          956,
+          1020
+        ],
+        [
+          1024,
+          1088
+        ],
+        [
+          1092,
+          1156
+        ],
+        [
+          1160,
+          1224
+        ],
+        [
+          1228,
+          1292
+        ],
+        [
+          1296,
+          1360
+        ],
+        [
+          1364,
+          1428
+        ],
+        [
+          1432,
+          1496
+        ],
+        [
+          1500,
+          1564
+        ],
+        [
+          1568,
+          1632
+        ],
+        [
+          1636,
+          1700
+        ],
+        [
+          1704,
+          1768
+        ],
+        [
+          1772,
+          1836
+        ],
+        [
+          1840,
+          1904
+        ],
+        [
+          1908,
+          1972
+        ],
+        [
+          1976,
+          2040
+        ],
+        [
+          2044,
+          2108
+        ],
+        [
+          2112,
+          2176
+        ],
+        [
+          2180,
+          2244
+        ]
+      ]
+    },
+    {
+      "id": 14,
+      "buffer": "input_hidden_cuda",
+      "stage": "bpnn_adjust_weights_cuda:write",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          4,
+          68
+        ],
+        [
+          72,
+          136
+        ],
+        [
+          140,
+          204
+        ],
+        [
+          208,
+          272
+        ],
+        [
+          276,
+          340
+        ],
+        [
+          344,
+          408
+        ],
+        [
+          412,
+          476
+        ],
+        [
+          480,
+          544
+        ],
+        [
+          548,
+          612
+        ],
+        [
+          616,
+          680
+        ],
+        [
+          684,
+          748
+        ],
+        [
+          752,
+          816
+        ],
+        [
+          820,
+          884
+        ],
+        [
+          888,
+          952
+        ],
+        [
+          956,
+          1020
+        ],
+        [
+          1024,
+          1088
+        ],
+        [
+          1092,
+          1156
+        ],
+        [
+          1160,
+          1224
+        ],
+        [
+          1228,
+          1292
+        ],
+        [
+          1296,
+          1360
+        ],
+        [
+          1364,
+          1428
+        ],
+        [
+          1432,
+          1496
+        ],
+        [
+          1500,
+          1564
+        ],
+        [
+          1568,
+          1632
+        ],
+        [
+          1636,
+          1700
+        ],
+        [
+          1704,
+          1768
+        ],
+        [
+          1772,
+          1836
+        ],
+        [
+          1840,
+          1904
+        ],
+        [
+          1908,
+          1972
+        ],
+        [
+          1976,
+          2040
+        ],
+        [
+          2044,
+          2108
+        ],
+        [
+          2112,
+          2176
+        ],
+        [
+          2180,
+          2244
+        ]
+      ]
+    },
+    {
+      "id": 15,
+      "buffer": "input_prev_weights_cuda",
+      "stage": "bpnn_adjust_weights_cuda:write",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          4,
+          68
+        ],
+        [
+          72,
+          136
+        ],
+        [
+          140,
+          204
+        ],
+        [
+          208,
+          272
+        ],
+        [
+          276,
+          340
+        ],
+        [
+          344,
+          408
+        ],
+        [
+          412,
+          476
+        ],
+        [
+          480,
+          544
+        ],
+        [
+          548,
+          612
+        ],
+        [
+          616,
+          680
+        ],
+        [
+          684,
+          748
+        ],
+        [
+          752,
+          816
+        ],
+        [
+          820,
+          884
+        ],
+        [
+          888,
+          952
+        ],
+        [
+          956,
+          1020
+        ],
+        [
+          1024,
+          1088
+        ],
+        [
+          1092,
+          1156
+        ],
+        [
+          1160,
+          1224
+        ],
+        [
+          1228,
+          1292
+        ],
+        [
+          1296,
+          1360
+        ],
+        [
+          1364,
+          1428
+        ],
+        [
+          1432,
+          1496
+        ],
+        [
+          1500,
+          1564
+        ],
+        [
+          1568,
+          1632
+        ],
+        [
+          1636,
+          1700
+        ],
+        [
+          1704,
+          1768
+        ],
+        [
+          1772,
+          1836
+        ],
+        [
+          1840,
+          1904
+        ],
+        [
+          1908,
+          1972
+        ],
+        [
+          1976,
+          2040
+        ],
+        [
+          2044,
+          2108
+        ],
+        [
+          2112,
+          2176
+        ],
+        [
+          2180,
+          2244
+        ]
+      ]
+    },
+    {
+      "id": 16,
+      "buffer": "input_cuda",
+      "stage": "download",
+      "operation_id": 8,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "byte_ranges": [
+        [
+          0,
+          132
+        ]
+      ]
+    },
+    {
+      "id": 17,
+      "buffer": "input_hidden_cuda",
+      "stage": "download",
+      "operation_id": 9,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "byte_ranges": [
+        [
+          0,
+          2244
+        ]
+      ]
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique byte footprints per kernel; byte_ranges in metadata are half-open intervals, not measured memory traffic.",
+    "Edges express overlapping-region RAW/WAR/WAW dependencies and conservative kernel input-to-output readiness, not stream execution order.",
+    "Stream/event ordering is checked for conflicting buffer accesses; metadata records operation ordering, not timing.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies.",
+    "Host input parsing/loading and CPU result selection use explicit, source-hash-checked summaries; they are not executed.",
+    "Device properties are configured assumptions, not measurements; bounded kernel address evaluation requires no GPU.",
+    "Device values remain unknown; data-dependent control/indexing and cross-thread read/write races are rejected.",
+    "CPU-mediated dependencies are propagated conservatively per host buffer; CPU numerical values and latency are not simulated.",
+    "Host numeric array contents and random initialization remain unknown. Host allocation sizes and scalar control flow are evaluated; CPU numerical correctness is not validated.",
+    "Shared-array bounds are checked but contents remain unknown; shared transfers, initialization, races, and barrier correctness are not modeled. Global footprints assume valid kernel synchronization."
+  ],
+  "configured_analysis": {
+    "configuration": {
+      "version": 1,
+      "parameters": {
+        "inputs": 32
+      },
+      "arguments": [
+        {
+          "parameter": "inputs"
+        }
+      ],
+      "analyzed_functions": [
+        "setup",
+        "backprop_face",
+        "bpnn_train_cuda"
+      ],
+      "additional_sources": [
+        "backprop_cuda_kernel.cu",
+        "backprop.h"
+      ],
+      "scalar_device_functions": [],
+      "lexical_scopes": true,
+      "host_memory": "opaque_values",
+      "shared_memory": "opaque_values",
+      "dependency_granularity": "byte_regions",
+      "device": {
+        "ordinal": 0,
+        "max_grid_size": [
+          65535,
+          65535,
+          65535
+        ],
+        "max_threads_per_block": 1024,
+        "free_memory_bytes": 1073741824,
+        "total_memory_bytes": 2147483648
+      },
+      "max_enumerated_threads": 65536,
+      "max_loop_iterations": 1024,
+      "preprocessor_sha256": "5e1e55b9375a1a6c63767c48ec0c1f576bc507f425c62727b590cb4966198320",
+      "additional_preprocessor_sha256": {
+        "backprop_cuda_kernel.cu": "f8b36a3a322a63f6711d679c33ec1be09299a21da6eb75b66cd56e1cb99fc4d6",
+        "backprop.h": "ef413fa02e5713103add69ba5e58364f86e2adf075fbfae0a6c5b85d6f13c062",
+        "facetrain.c": "25ced1e161db1eb26ab546450c1481502c324063da73c58493e26baf1a7f8f18",
+        "backprop.c": "583cfc1d21a7605d9bc717f26016dbf5d0d650f5b9f93ca745f77375b3f85f8d",
+        "imagenet.c": "e84dad76540b8c8294633d256ec2aa17351b20f8906edcb0e2658418c5d93d7d"
+      },
+      "host_translation_units": [
+        "facetrain.c",
+        "backprop.c",
+        "imagenet.c"
+      ],
+      "host_dependencies": true,
+      "allow_success_exit": true,
+      "mutable_scalar_globals": [
+        "layer_size",
+        "num_blocks"
+      ],
+      "host_summaries": {
+        "bpnn_create": {
+          "body_sha256": "ae5f769f1b4ded365e910b969fbaf3c9eaf9010123220ae2c9cba3649f7dc928",
+          "requires": {
+            "0": {
+              "parameter": "inputs"
+            },
+            "1": 16,
+            "2": 1
+          },
+          "returns_record": {
+            "input_n": {
+              "parameter": "inputs"
+            },
+            "hidden_n": 16,
+            "output_n": 1,
+            "input_units": {
+              "base": "float",
+              "shape": [
+                {
+                  "add": [
+                    {
+                      "parameter": "inputs"
+                    },
+                    1
+                  ]
+                }
+              ]
+            },
+            "hidden_units": {
+              "base": "float",
+              "shape": [
+                17
+              ]
+            },
+            "output_units": {
+              "base": "float",
+              "shape": [
+                2
+              ]
+            },
+            "hidden_delta": {
+              "base": "float",
+              "shape": [
+                17
+              ]
+            },
+            "output_delta": {
+              "base": "float",
+              "shape": [
+                2
+              ]
+            },
+            "target": {
+              "base": "float",
+              "shape": [
+                2
+              ]
+            },
+            "input_weights": {
+              "base": "float",
+              "shape": [
+                {
+                  "add": [
+                    {
+                      "parameter": "inputs"
+                    },
+                    1
+                  ]
+                },
+                17
+              ]
+            },
+            "hidden_weights": {
+              "base": "float",
+              "shape": [
+                17,
+                2
+              ]
+            },
+            "input_prev_weights": {
+              "base": "float",
+              "shape": [
+                {
+                  "add": [
+                    {
+                      "parameter": "inputs"
+                    },
+                    1
+                  ]
+                },
+                17
+              ]
+            },
+            "hidden_prev_weights": {
+              "base": "float",
+              "shape": [
+                17,
+                2
+              ]
+            }
+          }
+        },
+        "bpnn_internal_create": {
+          "body_sha256": "75f6fbd1552638ad75afc823b1a82d76b4621fe12e216e92b300d15d14ffabd6"
+        },
+        "alloc_1d_dbl": {
+          "body_sha256": "2dfa777da38432a7eca8fd6db03c5b6fbbfb721db7930b34f3c1a6107361462b"
+        },
+        "alloc_2d_dbl": {
+          "body_sha256": "009f15de244bb3da12dfc9814aa611e9d5c64ce6d3b31cf840f6f2b57e1fd6f9"
+        },
+        "bpnn_randomize_weights": {
+          "body_sha256": "3349f9d6f71ed29298cf20ab3d80bcc4de114448fbfecb3fa5c0fa0a388ee98d"
+        },
+        "bpnn_randomize_row": {
+          "body_sha256": "9c872eced88652d778841a79b9f2fe75f607ce66b23323498aa7182bedfeacb7"
+        },
+        "bpnn_zero_weights": {
+          "body_sha256": "2bdb48dc404d2481f7a3d05307f10fede55a6f9f0fb6d13a0246e47a0e4253c9"
+        },
+        "load": {
+          "body_sha256": "8f1283130029f034dfaa5671f55cbbcfed469c4545ce0780e14b93b45aafa29d"
+        },
+        "bpnn_initialize": {
+          "body_sha256": "fe425e4b252f194313998e38cb80c64e2d64996fabcefee5757528038132bcc1"
+        },
+        "bpnn_free": {
+          "body_sha256": "be5a75e185a870d17e4188cbcb0c9cdd4d20971393b2c4c55c714a09ebd5f3f1"
+        },
+        "bpnn_layerforward": {
+          "body_sha256": "3323a9dac2723ad1d4e0aa26189f38b11f3c5a017bb82e0d20147a0db2600b4b",
+          "reads": [
+            0,
+            2
+          ],
+          "writes_unknown": [
+            1
+          ]
+        },
+        "bpnn_output_error": {
+          "body_sha256": "ae5b04209ca97747f4ff8a1db50b6717b5f6f43b9233f0f046da3d40e3275d46",
+          "reads": [
+            1,
+            2
+          ],
+          "writes_unknown": [
+            0,
+            4
+          ]
+        },
+        "bpnn_hidden_error": {
+          "body_sha256": "79ebc9fa516f8a8ff5a48d16a2b462e0dae332106247a8db2a95525c2d0b0368",
+          "reads": [
+            2,
+            4,
+            5
+          ],
+          "writes_unknown": [
+            0,
+            6
+          ]
+        },
+        "bpnn_adjust_weights": {
+          "body_sha256": "864da4d1a771ed1664dda7ac8bfe8392769adb5c793569545d41337584b6951f",
+          "reads": [
+            0,
+            2,
+            4,
+            5
+          ],
+          "writes_unknown": [
+            4,
+            5
+          ]
+        },
+        "squash": {
+          "body_sha256": "2872aeaac955ce1a07e6451f9288671ef0dcd78e1e52f9b5b4f7818d30ae8cbe"
+        }
+      }
+    },
+    "launches": [
+      {
+        "kernel": "bpnn_layerforward_CUDA",
+        "grid": [
+          1,
+          2,
+          1
+        ],
+        "block": [
+          16,
+          16,
+          1
+        ],
+        "enumerated_threads": 512
+      },
+      {
+        "kernel": "bpnn_adjust_weights_cuda",
+        "grid": [
+          1,
+          2,
+          1
+        ],
+        "block": [
+          16,
+          16,
+          1
+        ],
+        "enumerated_threads": 512
+      }
+    ],
+    "source_units": {
+      "backprop_cuda.cu": "1bd966c36f6277d8d0246a5411e734e69e96050532303e40c5253e06b76d6383",
+      "backprop_cuda_kernel.cu": "6014d0467a0c2e91896aa4d55a0c42a15c0e6619359fc4905615ef6706e4590d",
+      "backprop.h": "5b6ce5b8434b6217cb49e536e9eaebfc281f0b1a76afbda95fe5c3cbea449d7f",
+      "facetrain.c": "5a1c324735b4eb7ff08d6b488134a8e66b5aaddcd4168623803ccbb96c8dd293",
+      "backprop.c": "3528b0256e55650908f4ff77fbdfa1e2bcbdb69237e5d343426652aa341ff70e",
+      "imagenet.c": "c3b48529cb45eaff4136a54ba5b01c29dcedf9c2de8c79c2813b34ef8a174323"
+    },
+    "used_host_summaries": [
+      "bpnn_adjust_weights",
+      "bpnn_create",
+      "bpnn_free",
+      "bpnn_hidden_error",
+      "bpnn_initialize",
+      "bpnn_layerforward",
+      "bpnn_output_error",
+      "load"
+    ]
+  }
+}

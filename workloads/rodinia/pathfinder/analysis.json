@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "parameters": {
+    "rows": 5,
+    "cols": 16,
+    "pyramid": 2
+  },
+  "arguments": [
+    {
+      "parameter": "cols"
+    },
+    {
+      "parameter": "rows"
+    },
+    {
+      "parameter": "pyramid"
+    }
+  ],
+  "analyzed_functions": [
+    "run",
+    "calc_path"
+  ],
+  "dependency_granularity": "byte_regions",
+  "shared_memory": "opaque_values",
+  "device": {
+    "ordinal": 0,
+    "max_grid_size": [
+      65535,
+      65535,
+      65535
+    ],
+    "max_threads_per_block": 1024,
+    "free_memory_bytes": 1073741824,
+    "total_memory_bytes": 2147483648,
+    "device_count": 1
+  },
+  "max_enumerated_threads": 65536,
+  "max_loop_iterations": 1024,
+  "host_summaries": {
+    "init": {
+      "globals": {
+        "rows": {
+          "parameter": "rows"
+        },
+        "cols": {
+          "parameter": "cols"
+        },
+        "pyramid_height": {
+          "parameter": "pyramid"
+        },
+        "data": {
+          "shape": [
+            {
+              "parameter": "rows"
+            },
+            {
+              "parameter": "cols"
+            }
+          ]
+        },
+        "result": {
+          "shape": [
+            {
+              "parameter": "cols"
+            }
+          ]
+        },
+        "wall": {
+          "opaque_host_pointer": true
+        }
+      },
+      "body_sha256": "69d8e05a77eec77f0b811ef4808af83cf9dbe2058218fe247b2ef7639800d119"
+    }
+  },
+  "preprocessor_sha256": "d693b294214c8c8b88b02db9d15d7626c9df0f4a0be28e81f2dd03e7a80b0010"
+}

@@ -1,0 +1,81 @@
+{
+  "model": "Clang graph grouped by operation; no timing inference",
+  "nodes": [
+    {
+      "id": 0,
+      "label": "upload tIn_d",
+      "detail": "t0 \u00b7 49,152 B",
+      "logical_nodes": [
+        0
+      ]
+    },
+    {
+      "id": 1,
+      "label": "upload p_d",
+      "detail": "t1 \u00b7 49,152 B",
+      "logical_nodes": [
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "label": "hotspotOpt1",
+      "detail": "t2, t3, t4",
+      "logical_nodes": [
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": 3,
+      "label": "hotspotOpt1",
+      "detail": "t5, t6, t7",
+      "logical_nodes": [
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "id": 4,
+      "label": "download tOut_d",
+      "detail": "t8 \u00b7 49,152 B",
+      "logical_nodes": [
+        8
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": 0,
+      "target": 2,
+      "kind": "source_buffer_dependency"
+    },
+    {
+      "source": 0,
+      "target": 3,
+      "kind": "source_buffer_dependency"
+    },
+    {
+      "source": 1,
+      "target": 2,
+      "kind": "source_buffer_dependency"
+    },
+    {
+      "source": 1,
+      "target": 3,
+      "kind": "source_buffer_dependency"
+    },
+    {
+      "source": 2,
+      "target": 3,
+      "kind": "source_buffer_dependency"
+    },
+    {
+      "source": 2,
+      "target": 4,
+      "kind": "source_buffer_dependency"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-1fnfzcv1/source_workspace/cuda/streamcluster/streamcluster_cuda_cpu.cpp:745:27: warning: format specifies type 'unsigned int' but the argument has type 'long' [-Wformat]
+  745 |       fprintf(fp, "%u\n", centerIDs[i]);
+      |                    ~~     ^~~~~~~~~~~~
+      |                    %ld
+/private/var/folders/dz/0s98r3011lg9xmv0q4rg2grr0000gn/T/esp-native-source-1fnfzcv1/source_workspace/cuda/streamcluster/streamcluster_cuda_cpu.cpp:793:42: warning: format specifies type 'int' but the argument has type 'size_t' (aka 'unsigned long') [-Wformat]
+  793 |     fprintf(__stderrp,"read %d points\n",numRead);
+      |                             ~~           ^~~~~~~
+      |                             %zu
+2 warnings generated.

@@ -1,0 +1,233 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "id": 0,
+      "vol": 16384,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 1,
+      "vol": 16384,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 2,
+      "vol": 16384,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 3,
+      "vol": 16384,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 4,
+      "vol": 16384,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 5,
+      "vol": 16384,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 6,
+      "vol": 16384,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 7,
+      "vol": 12288,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 8,
+      "vol": 12288,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 9,
+      "vol": 12288,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 10,
+      "vol": 16384,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 11,
+      "vol": 16384,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 12,
+      "vol": 16384,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 13,
+      "vol": 16384,
+      "src_comp": "mem",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 14,
+      "vol": 16384,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 15,
+      "vol": 16384,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 16,
+      "vol": 16384,
+      "src_comp": "mem",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 17,
+      "vol": 16384,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 18,
+      "vol": 16384,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 19,
+      "vol": 16384,
+      "src_comp": "mem",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 20,
+      "vol": 16384,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 21,
+      "vol": 16384,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    }
+  ],
+  "edges": [
+    {
+      "source": 0,
+      "target": 15
+    },
+    {
+      "source": 1,
+      "target": 13
+    },
+    {
+      "source": 2,
+      "target": 18
+    },
+    {
+      "source": 3,
+      "target": 21
+    },
+    {
+      "source": 4,
+      "target": 10
+    },
+    {
+      "source": 5,
+      "target": 11
+    },
+    {
+      "source": 6,
+      "target": 12
+    },
+    {
+      "source": 7,
+      "target": 8
+    },
+    {
+      "source": 8,
+      "target": 9
+    },
+    {
+      "source": 9,
+      "target": 10
+    },
+    {
+      "source": 9,
+      "target": 11
+    },
+    {
+      "source": 9,
+      "target": 12
+    },
+    {
+      "source": 10,
+      "target": 13
+    },
+    {
+      "source": 10,
+      "target": 14
+    },
+    {
+      "source": 11,
+      "target": 16
+    },
+    {
+      "source": 11,
+      "target": 17
+    },
+    {
+      "source": 12,
+      "target": 19
+    },
+    {
+      "source": 12,
+      "target": 20
+    },
+    {
+      "source": 13,
+      "target": 16
+    },
+    {
+      "source": 14,
+      "target": 15
+    },
+    {
+      "source": 16,
+      "target": 19
+    },
+    {
+      "source": 17,
+      "target": 18
+    },
+    {
+      "source": 20,
+      "target": 21
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "repository": "https://github.com/yuhc/gpu-rodinia",
+  "revision": "9c10d3ea16ddba2ba057cc3951a9efc4c2cc18a4",
+  "upstream_directory": "cuda/myocyte",
+  "status": "source imported; analyzer support pending",
+  "sha256": {
+    "kernel_cam_2.cu": "2b61e0fde27ddf20baeeb71676ef43b52c203b921095ca47e329ae98bc01daf8",
+    "timer.c": "42c93cffa36dab6969bc3eb22721c475d69f3f199fab6a0221fe1d4f332b03a8",
+    "Makefile": "c333f71f50180a51d5dc08a7d98a367665972199b4735671099d17fb1103bf11",
+    "embedded_fehlberg_7_8_2.cu": "62c92c8e20b8523c06acd7347fab3f993fc5ec3c7a367b0cf3b87b1d9dee2c50",
+    "kernel_fin.cu": "ad64e6ef3af13e49495e70a65e33da3eb2a69c0a453f6288ee41ca95a651babc",
+    "kernel.cu": "5089bc46c2b4ad67b2453efd409af15b724e4b6e7ba992cd73767dc8f0e6f080",
+    "solver.cu": "3a45a27c0aba1615820ac473244b1e4d8599599e04d168e0717add516bb76429",
+    "README": "85878e05f965128bb1b8082c01d744941da205f467a7aac0941b38a03e8d3bca",
+    "main.cu": "2623572e2c8ef2bfaf2d20ccea3ad67922d081b480f2c3dc24634732fda4d1d1",
+    "kernel_ecc_2.cu": "45b8e7ab1db905ff2ba86985a03449971727d80f0d8757ec10a7911619e68a23",
+    "work_2.cu": "6042ab92a48efd7dd0edeca2d9139b7543d829c8464d9715f631941f0c8fd879",
+    "define.c": "2038a43f688b05b83aef097cf004850db4005f9aeb88e0b15b0df30f66720fa0",
+    "solver_2.cu": "f66673e46c627bb834faf4ccd6705163d40ce3a93cc46c00dc4f9f0d16b71461",
+    "kernel_2.cu": "14bea7ff02d016edb89761474fbf35c878e9635291f73c36b8df53220790d606",
+    "kernel_fin_2.cu": "07d7f47c56b02cf9edf80e244d2ec824e57ad7687539c917570971c1ebbca2da",
+    "file.c": "1857191dbd8d360e1c9036d6238403b0ab88f8866e63d1f41cf92ef94697d730",
+    "kernel_ecc.cu": "f040d06bae409b9482a0d3928b83b15378277532e713bacb2aba7f7fe9aba1da",
+    "master.cu": "7f8ce872c95dfb526c41014d70f385757b4d956b0c4a20705710798813c282b9",
+    "run": "e7991af1de1720eaee23870817913b4e7e01137db530f0acad894b3ca239f10d",
+    "kernel_cam.cu": "a332e1242dd2a3622233c295da5dd2e85eb9cd1251d3188f9ee462ca7217c0f9",
+    "work.cu": "2e73867b5a8fbc5717c9a52f3a3f7a565549673eccdf4e58c44b7ea35fdfb0e9",
+    "embedded_fehlberg_7_8.cu": "704b7cd89af9d8ea310a52a1e02aa3c6242fa85dfa4954cedda53e9ce1edd312"
+  }
+}

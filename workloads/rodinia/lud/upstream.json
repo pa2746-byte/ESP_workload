@@ -1,0 +1,16 @@
+{
+  "repository": "https://github.com/yuhc/gpu-rodinia",
+  "revision": "9c10d3ea16ddba2ba057cc3951a9efc4c2cc18a4",
+  "paths": {
+    "lud.cu": "cuda/lud/cuda/lud.cu",
+    "lud_kernel.cu": "cuda/lud/cuda/lud_kernel.cu",
+    "common.c": "cuda/lud/common/common.c",
+    "common.h": "cuda/lud/common/common.h"
+  },
+  "sha256": {
+    "lud.cu": "3ba16a146cd8d983c457bdedc3848a6050827607e287242febcb089da428b248",
+    "lud_kernel.cu": "fe3d0a5f06c82947f54cbf6fd9a75342b61263808a1587ead929fc3f8763fdc0",
+    "common.c": "8a6cca89c03be97a690a5fc0a657810dabd451e86c34bf97857785a36eb28e5c",
+    "common.h": "0526fd93029daaa35710172fed29c97552f518bf77d2122870f3a763c0adf0eb"
+  }
+}

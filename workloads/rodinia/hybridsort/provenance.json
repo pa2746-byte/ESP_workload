@@ -1,0 +1,24 @@
+{
+  "repository": "https://github.com/yuhc/gpu-rodinia",
+  "revision": "9c10d3ea16ddba2ba057cc3951a9efc4c2cc18a4",
+  "upstream_directory": "cuda/hybridsort",
+  "status": "source imported; analyzer support pending",
+  "sha256": {
+    "cuda.rules": "cc195f04edee0ba9b063d8659251a7bfef77a4602ff62711fd5bb4cfc74a7485",
+    "Makefile": "899be3d35e218bb5bf9c28d3b4f1f2ebe8b2bf9f4c117c677ebf59485a8fdd87",
+    "histogram1024_kernel.cu": "89dae1a9218e1e9c633e5baded9b6e9b1e80d4a3c6e341c981c6badc98f95f4e",
+    "helper_cuda.h": "c1b9500ab5ba2fc06e7fbed0b841d3db98f36a975a0a200dabf8deaa71c6c219",
+    "README": "5917270648b34808f1e361c4c1bb6c1439a30acf2d2c021547abedc42b313ba2",
+    "bucketsort_kernel.cu": "013a19e88f07fd63fda5015f891f87602ba927e1efe58be978e0165c72f3962b",
+    "main.cu": "5dcd1c95c829678e27dc0dcd3f588505c3f43b0dba8ea60cada38eb9e4175c9d",
+    "bucketsort.cu": "6d01ee8dbc94f4c3eacff44f19d0cc069e993215444a11d00f738583911ae849",
+    "mergesort.cu": "40b06ab91e8e6012cb0a1e9d25911875216c93360978fc19d5e666118dd9bbc1",
+    "bucketsort.cuh": "6cae192a64974dcc3ec459fce08b9e6b3a58c967945ef9c25eb4c375e2917030",
+    "run": "fe06a69c1ae249e716cf6b8c207605b8090f0493dc75cd7d35b9f651f2ff9f13",
+    "mergesort_kernel.cu": "8d65cdbdf2fcc84ece2cef46a836646d7d615d05bb8f5c45fc2318b9a10fecc9",
+    "helper_timer.h": "735c5a9b3eb704450cfdf2eedebaca4bfcaccf3de3b7e7abf388dbb759434c79",
+    "exception.h": "95a0be5385b1d684b6d9bfa028de157494e4d6307b95fa63307b5cb3d70a0aca",
+    "mergesort.cuh": "2e5c2798a40332c986043bc4801dc0e424f5695d46d56299fd10b4db2c9a27e7",
+    "helper_string.h": "7d5c078b2d5d053d2bd085e6aaebe0c39afc5561c68ba67efd5a06aae92cb368"
+  }
+}

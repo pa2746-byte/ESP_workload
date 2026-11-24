@@ -1,0 +1,187 @@
+{
+  "version": 1,
+  "parameters": {},
+  "arguments": [
+    "file",
+    "one_key.txt",
+    "command",
+    "commands.txt"
+  ],
+  "analyzed_functions": [
+    "kernel_gpu_cuda_wrapper"
+  ],
+  "additional_sources": [
+    "main.h",
+    "common.h",
+    "kernel/kernel_gpu_cuda_2.cu",
+    "kernel/kernel_gpu_cuda_wrapper_2.h",
+    "kernel/kernel_gpu_cuda_wrapper.cu",
+    "kernel/kernel_gpu_cuda.cu",
+    "kernel/kernel_gpu_cuda_wrapper.h",
+    "kernel/kernel_gpu_cuda_wrapper_2.cu",
+    "util/cuda/cuda.h",
+    "util/cuda/cuda.cu",
+    "util/timer/timer.c",
+    "util/timer/timer.h",
+    "util/num/num.h",
+    "util/num/num.c"
+  ],
+  "scalar_device_functions": [],
+  "lexical_scopes": true,
+  "host_memory": "opaque_values",
+  "shared_memory": "opaque_values",
+  "dependency_granularity": "byte_regions",
+  "device": {
+    "ordinal": 0,
+    "max_grid_size": [
+      65535,
+      65535,
+      65535
+    ],
+    "max_threads_per_block": 1024,
+    "free_memory_bytes": 1073741824,
+    "total_memory_bytes": 2147483648
+  },
+  "max_enumerated_threads": 65536,
+  "max_loop_iterations": 1024,
+  "preprocessor_sha256": "bd9cb3a7edb72305e30297ffac31a2b7d2b4f3c800024a82dadd4d38e4581ae8",
+  "additional_preprocessor_sha256": {
+    "main.h": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "common.h": "f7751e38dd43b4ec5f3ecccc040065c807a34e61e7f75320602ec2fe1d63d078",
+    "kernel_gpu_cuda_2.cu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "kernel_gpu_cuda_wrapper_2.h": "1f443b11108b700dea91f37308d45e332f199761c003e0c214f7c9af6b72cf62",
+    "kernel_gpu_cuda_wrapper.cu": "155d72a021e7786f88c64b23b05e1ad4c4dfd8e6b9485a79fe0bd0f18993d67a",
+    "kernel_gpu_cuda.cu": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "kernel_gpu_cuda_wrapper.h": "1f443b11108b700dea91f37308d45e332f199761c003e0c214f7c9af6b72cf62",
+    "kernel_gpu_cuda_wrapper_2.cu": "4e862c43d4e68d1e56d68d5f0ffe89e1faf56a5f1f30cca381c1ec3e65243e42",
+    "cuda.h": "0c5cdbe9aefd5718d9b07654968dbd824352907b544b270ea0111bec801efcb7",
+    "cuda.cu": "2ab3dcd165989d098f497558e794f861df368d14f85a5853f14062aca5efc32d",
+    "timer.c": "28d122a2e511816692c65819992a336fdcbe1bbb29c964e19db75b41a78d6a54",
+    "timer.h": "1f443b11108b700dea91f37308d45e332f199761c003e0c214f7c9af6b72cf62",
+    "num.h": "1f443b11108b700dea91f37308d45e332f199761c003e0c214f7c9af6b72cf62",
+    "num.c": "1f443b11108b700dea91f37308d45e332f199761c003e0c214f7c9af6b72cf62"
+  },
+  "known_integer_inputs": false,
+  "host_dependencies": true,
+  "host_summaries": {
+    "insert": {
+      "body_sha256": "186359d47a9a91207a33ee5d53cdf7d6c01917c241dc1b1e9257a39eb62f02cd",
+      "requires": {
+        "1": 0,
+        "2": 0
+      },
+      "returns_record": {
+        "opaque_root": 1
+      }
+    },
+    "height": {
+      "body_sha256": "abee572a7fa3c75a69880efcca6806cc0cde3c2f1b26a58935c950df685d89f3",
+      "return": 0
+    },
+    "transform_to_cuda": {
+      "body_sha256": "b5a851a92109e35a9181f8b589087c23be768f0e02ec372e6e821e1897211966",
+      "requires": {
+        "1": 0
+      },
+      "return": 56,
+      "global_byte_buffer": {
+        "hex": "000000000000000000000000000000000100000000000000000000000000008000000000ffffff7fffffff7f000000000100000003000000",
+        "aliases": {
+          "mem": {
+            "offset": 0,
+            "base": "char"
+          },
+          "knodes": {
+            "offset": 4,
+            "base": "knode"
+          },
+          "krecords": {
+            "offset": 0,
+            "base": "record"
+          }
+        },
+        "known_ranges": [
+          [
+            0,
+            20
+          ],
+          [
+            28,
+            44
+          ],
+          [
+            48,
+            49
+          ],
+          [
+            52,
+            56
+          ]
+        ]
+      },
+      "requires_globals": {
+        "size": 1,
+        "order": 4
+      }
+    },
+    "get_time": {
+      "body_sha256": "32d2c5df44932f24527074ff92cdfc86437bf2bb43d3f752479adc9e196e63f6",
+      "return_unknown": true
+    },
+    "checkCUDAError": {
+      "body_sha256": "abbc85abf410babd285ef4f9d86468c964f5b650ee2685516a992b380dd92800"
+    }
+  },
+  "integer_state": true,
+  "host_translation_units": [
+    "util/timer/timer.c",
+    "util/num/num.c"
+  ],
+  "cuda_translation_units": [
+    "kernel/kernel_gpu_cuda_wrapper.cu",
+    "util/cuda/cuda.cu"
+  ],
+  "compile_defines": {
+    "RD_WG_SIZE": 4
+  },
+  "source_sha256": "7643208648408cb33703af27c0afa52d29223b5f2de13b1bf808676a1974736a",
+  "mutable_scalar_globals": [
+    "order",
+    "verbose_output",
+    "size",
+    "maxheight"
+  ],
+  "mutable_pointer_globals": [
+    "mem",
+    "knodes",
+    "krecords"
+  ],
+  "symbolic_pointer_integers": true,
+  "random_values": [
+    0
+  ],
+  "stdin_text": "\n",
+  "allow_process_exit_allocations": true,
+  "input_files": {
+    "one_key.txt": "5d90ef7fc0d040fd56a1e48697cfa99e0dfaf4fd803aefefc3b5053ec1d36aea",
+    "commands.txt": "8376bc100f2f832888f0d0715a977ad0fd271b77098bcb2e14d266d22dee96af"
+  },
+  "source_hashes": {
+    "main.h": "dbb0827e3aba52d0e5f303e627945ae00fafb2fb19ba96d998086453a166a435",
+    "common.h": "e2b24b975dfe882021fcc762bec9145e210e1c15500ca3b0a99f2267624025d7",
+    "main.c": "7643208648408cb33703af27c0afa52d29223b5f2de13b1bf808676a1974736a",
+    "kernel/kernel_gpu_cuda_2.cu": "7b2da2312b0b7c38f6c83a5cb8a8ae5394be155f7d7dc6373a1d2b7b72267daa",
+    "kernel/kernel_gpu_cuda_wrapper_2.h": "32ada607570732865d1ea8d22d593fe1d3c293553250f1e0b2b7844f12ba2568",
+    "kernel/kernel_gpu_cuda_wrapper.cu": "2f0715c4bf8f2bfad9ba143e0fa550b4c5d0b7fa7256a88bf665806bd453193b",
+    "kernel/kernel_gpu_cuda.cu": "4c79bdc48cc5bc03612e703ac86f13e190f7f5f3b6b1f32616447a12113fefb7",
+    "kernel/kernel_gpu_cuda_wrapper.h": "1b892992d1da45c6db349c08d49500aea6931e801048f29509fa5deada7bf60e",
+    "kernel/kernel_gpu_cuda_wrapper_2.cu": "4b6706e7071a5ce5faaf9f4657e72cdbfe015093ac78574d5b787daaacc4e572",
+    "util/cuda/cuda.h": "6c0075b4bebd7f4b40fe1ab743527f6ec32ec9fe3e3e3cb8172a825828338c13",
+    "util/cuda/cuda.cu": "b07ee56dcf78ba69f874db067c0911f8ddf99437d33196295d43e4b85a452ea5",
+    "util/timer/timer.c": "e437daf303ba449ff7f097ef4dbfb1bdb2248e4347baecfc7e063f017a252620",
+    "util/timer/timer.h": "af63ed78358a92b7701d2a46bab3078f11ae47a561ae3216dab8253b2b0ed5f3",
+    "util/num/num.h": "c3cc840f5446c0065ac3d59566b9acb1db6fb0252d5d1b26a01b597596841d3f",
+    "util/num/num.c": "5cabf5d35263b1d059d5b586bb995c02327e24d8f9ab4ae9eb45151badaf5c45"
+  },
+  "checked_block_barriers": true
+}

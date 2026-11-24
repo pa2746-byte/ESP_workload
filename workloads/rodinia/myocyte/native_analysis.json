@@ -1,0 +1,7 @@
+{
+  "case": "myocyte",
+  "arguments": ["1", "1", "0"],
+  "translation_units": ["main.cu"],
+  "source_fixes": "workloads/rodinia/myocyte/native_source_fixes.json",
+  "timeout_seconds": 120
+}

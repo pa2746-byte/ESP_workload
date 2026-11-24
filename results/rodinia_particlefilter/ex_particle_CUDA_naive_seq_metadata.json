@@ -1,0 +1,432 @@
+{
+  "workload": "ex_particle_CUDA_naive_seq",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/rodinia/particlefilter/ex_particle_CUDA_naive_seq.cu",
+  "source_sha256": "d0ca61fec9848bb78a5de186c234c31da1d01422820a3d4ca3c3aaa840cf8e47",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "arrayX_GPU",
+      "stage": "upload",
+      "operation_id": 0,
+      "stream": "default",
+      "ordered_after_operations": [],
+      "byte_ranges": [
+        [
+          0,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "buffer": "arrayY_GPU",
+      "stage": "upload",
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ],
+      "byte_ranges": [
+        [
+          0,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "buffer": "xj_GPU",
+      "stage": "upload",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          0,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "buffer": "yj_GPU",
+      "stage": "upload",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          0,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "buffer": "CDF_GPU",
+      "stage": "upload",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          0,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "buffer": "u_GPU",
+      "stage": "upload",
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "byte_ranges": [
+        [
+          0,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "buffer": "arrayX_GPU",
+      "stage": "kernel:read",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          0,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "buffer": "arrayY_GPU",
+      "stage": "kernel:read",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          0,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "buffer": "CDF_GPU",
+      "stage": "kernel:read",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          0,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "buffer": "u_GPU",
+      "stage": "kernel:read",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          0,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "buffer": "xj_GPU",
+      "stage": "kernel:write",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          0,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 11,
+      "buffer": "yj_GPU",
+      "stage": "kernel:write",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          0,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 12,
+      "buffer": "yj_GPU",
+      "stage": "download",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "byte_ranges": [
+        [
+          0,
+          8
+        ]
+      ]
+    },
+    {
+      "id": 13,
+      "buffer": "xj_GPU",
+      "stage": "download",
+      "operation_id": 8,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "host_control_dependencies": [
+        12
+      ],
+      "byte_ranges": [
+        [
+          0,
+          8
+        ]
+      ]
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique byte footprints per kernel; byte_ranges in metadata are half-open intervals, not measured memory traffic.",
+    "Edges express overlapping-region RAW/WAR/WAW dependencies and conservative kernel input-to-output readiness, not stream execution order.",
+    "Stream/event ordering is checked for conflicting buffer accesses; metadata records operation ordering, not timing.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies.",
+    "Host input parsing/loading and CPU result selection use explicit, source-hash-checked summaries; they are not executed.",
+    "Device properties are configured assumptions, not measurements; bounded kernel address evaluation requires no GPU.",
+    "Unresolved device values remain unknown; address/control decisions must resolve from known state or pass explicitly enabled identical-footprint path exploration.",
+    "Fixed-input integer bytes are evaluated from source. Threads use pre-launch state plus their own writes; conflicting threads are rejected.",
+    "All later transfers conservatively depend on prior CPU-visible downloads; host_control_dependencies records these control barriers.",
+    "When enabled, unknown kernel branches are explored only within a bounded path budget and accepted only with identical access footprints and barrier sequences.",
+    "Explicit host-numerical contracts and opaque host addresses do not validate CPU numerical correctness or host memory safety.",
+    "CPU-mediated dependencies are propagated conservatively per host buffer; CPU numerical values and latency are not simulated.",
+    "Block barrier participation and phases are checked for global-memory conflicts; shared-memory numerical correctness is not validated.",
+    "Host numeric array contents and random initialization remain unknown. Host allocation sizes and scalar control flow are evaluated; CPU numerical correctness is not validated.",
+    "Shared-array bounds are checked but contents remain unknown; shared transfers, initialization, races, and barrier correctness are not modeled. Global footprints assume valid kernel synchronization."
+  ],
+  "configured_analysis": {
+    "configuration": {
+      "version": 1,
+      "parameters": {},
+      "arguments": [
+        "-x",
+        "16",
+        "-y",
+        "16",
+        "-z",
+        "2",
+        "-np",
+        "1"
+      ],
+      "analyzed_functions": [
+        "particleFilter",
+        "roundDouble",
+        "strelDisk",
+        "getneighbors",
+        "check_error"
+      ],
+      "additional_sources": [],
+      "scalar_device_functions": [],
+      "lexical_scopes": true,
+      "host_memory": "opaque_values",
+      "shared_memory": "opaque_values",
+      "dependency_granularity": "byte_regions",
+      "device": {
+        "ordinal": 0,
+        "max_grid_size": [
+          65535,
+          65535,
+          65535
+        ],
+        "max_threads_per_block": 1024,
+        "free_memory_bytes": 1073741824,
+        "total_memory_bytes": 2147483648
+      },
+      "max_enumerated_threads": 65536,
+      "max_loop_iterations": 1024,
+      "preprocessor_sha256": "218e8ec8653829acd0e2451cb54e93899eb2ab0ca88167366ed71a681d63a3bb",
+      "additional_preprocessor_sha256": {},
+      "known_integer_inputs": false,
+      "host_dependencies": true,
+      "host_summaries": {
+        "get_time": {
+          "body_sha256": "0712995a6a0a5d8ff33cb75f6ee97f4946cfa298153c289d567d853eeaffc2a4",
+          "return_unknown": true
+        },
+        "elapsed_time": {
+          "body_sha256": "7936cb0ce78f46048b78f198ff8a117ca2c17fc05121477cc8245bbc1a4c017c",
+          "return_unknown": true
+        },
+        "videoSequence": {
+          "body_sha256": "a7ebed09d7fb3116ff92d61e435782000ff72331a1ba0d6228c9f3da85122350",
+          "writes_unknown": [
+            0,
+            4
+          ]
+        },
+        "randn": {
+          "body_sha256": "dd55475482ddd6b0a375052945b7ea2ecbf5f206ce3015142c24bfe5370f3f30",
+          "reads": [
+            0
+          ],
+          "writes_unknown": [
+            0
+          ],
+          "return_unknown": true
+        },
+        "randu": {
+          "body_sha256": "7a7cf9606fc6be647a10d2cf645a4c24609b78a0f7dd7a2a96ff4147b4a78f4e",
+          "reads": [
+            0
+          ],
+          "writes_unknown": [
+            0
+          ],
+          "return_unknown": true
+        },
+        "calcLikelihoodSum": {
+          "body_sha256": "5523a41887fa9b94a9bb9b40d8774c039814a8e841f465d3ff636ba70db8c475",
+          "reads": [
+            0,
+            1
+          ],
+          "return_unknown": true
+        }
+      },
+      "integer_state": true,
+      "opaque_host_addresses": true,
+      "enumerate_unknown_paths": true,
+      "host_numeric_helpers": [
+        "roundDouble"
+      ],
+      "checked_block_barriers": true
+    },
+    "launches": [
+      {
+        "kernel": "kernel",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          128,
+          1,
+          1
+        ],
+        "enumerated_threads": 128,
+        "integer_state_evaluated": true
+      }
+    ],
+    "source_units": {
+      "ex_particle_CUDA_naive_seq.cu": "d0ca61fec9848bb78a5de186c234c31da1d01422820a3d4ca3c3aaa840cf8e47"
+    },
+    "used_host_summaries": [
+      "calcLikelihoodSum",
+      "elapsed_time",
+      "get_time",
+      "randn",
+      "randu",
+      "videoSequence"
+    ]
+  }
+}

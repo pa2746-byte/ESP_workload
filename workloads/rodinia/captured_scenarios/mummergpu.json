@@ -1,0 +1,35 @@
+{
+  "capture": "20261123T020343856158Z",
+  "archive_sha256": "e2efbb251a677c7662173fec73cadb6f15e2360933bf41720086d0a7f341ffdd",
+  "entry": "cuda/mummergpu/src/mummergpu_main.cpp",
+  "working_directory": "cuda/mummergpu",
+  "arguments": [
+    "-l",
+    "1",
+    "data/shortref.fa",
+    "data/shortqry.fa"
+  ],
+  "captured_kernel_count": 2,
+  "analysis_status": "pending",
+  "source_and_input_sha256": {
+    "cuda/mummergpu/data/README": "792625a1e9dd94165dc7befa09ea17d3cc35b9a5308ceb365760bd3986e94b46",
+    "cuda/mummergpu/data/shortref.fa": "e2e7caab6ae3e0d349867a86912a2238fcae152be3e7e8ce881c25a7c096e238",
+    "cuda/mummergpu/data/shortqry.fa": "6ae0a54fea718a382629ae55ced76e566e42b3300ac9e57eac1a14043126e9d5",
+    "cuda/mummergpu/src/mummergpu_gold.cpp": "b2e08a410aee034f05c54fe84fa5f99ca106fd28aedd37a675de0b1921ae520f",
+    "cuda/mummergpu/src/common.cu": "911676aba37b672289a81383bbd7a4de0cd68b077b912f6041eaca926bf896ec",
+    "cuda/mummergpu/src/mummergpu.cu": "5febc5874e3bb47c3f007a8a009ec98bb027492771a3d97d985da2b3ed87e4df",
+    "cuda/mummergpu/src/PoolMalloc.hh": "c1056fe92fcf33bbe3827fe797e342a6d0fa38d6a1a870387601443054e87ff5",
+    "cuda/mummergpu/src/mummergpu.h": "da9e9ea93d12e2c405ab3f3f2d7ed42d0c447d860fc8946200277f2fb257c765",
+    "cuda/mummergpu/src/PoolMalloc.cpp": "680a87cc4684acc82a0bfe48af2b9a7bf26b39f9037565e29c577b0efeaaa5dc",
+    "cuda/mummergpu/src/morton.c": "5c19ae3f90b3a63794dd5524dd7817ea52d6308245d2e1fa978c1503937e3e18",
+    "cuda/mummergpu/src/smith-waterman.cpp": "9fa1020677553369e74475325a64133cdf3568fbf8209a5f29648d269b1b959a",
+    "cuda/mummergpu/src/mummergpu_main.cpp": "1b1a78ccaf131230a520fdd9b168fac62eeb010f4546597438081807d1458e30",
+    "cuda/mummergpu/src/suffix-tree.cpp": "e2e632a074f8fc802784de1cc676b338d3dd797795411c2ea05c63d882194b8c",
+    "cuda/mummergpu/src/mummergpu_kernel.cu": "39dabf85bf10ea274bc633aea6e57853a29b72b703ebed54b89226205ffada16",
+    "cuda/mummergpu/data/timing/timing-exp.sh": "1ba158fa5b2c2d8ea11a28d14ca524ba4d329c41ccd7d23b936210e12f06dcce",
+    "cuda/mummergpu/data/timing/global.cnf": "530c371f8bebffb79382c242f45e7657bc0111630a4e7b043086981afe052d6b",
+    "cuda/mummergpu/data/timing/gentestdata.py": "b761c6610dc8e47906cbd49b7e0e4dc5ebdb4474b6b827d7643935cb1827125f",
+    "cuda/mummergpu/data/timing/instructions.cnf": "87093840544d60dbb1910c1e4c05d0604bac10ab5d166e6f39e106d3037b31a9"
+  },
+  "scope": "Exact captured sources and inputs; no GPU trace is used to infer source dependencies."
+}

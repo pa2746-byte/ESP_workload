@@ -1,0 +1,154 @@
+{
+  "workload": "fork_join_streams",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/fork_join_streams.cu",
+  "source_sha256": "f57915dcf0e9410b11edc4c601232eeabc7a7c3c838f9b0c262905c473e1c7f8",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "d_a",
+      "stage": "upload",
+      "operation_id": 0,
+      "stream": "default",
+      "ordered_after_operations": []
+    },
+    {
+      "id": 1,
+      "buffer": "d_b",
+      "stage": "upload",
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ]
+    },
+    {
+      "id": 2,
+      "buffer": "d_a",
+      "stage": "addBranch:read",
+      "operation_id": 2,
+      "stream": "addStream",
+      "ordered_after_operations": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "buffer": "d_b",
+      "stage": "addBranch:read",
+      "operation_id": 2,
+      "stream": "addStream",
+      "ordered_after_operations": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "buffer": "d_sum",
+      "stage": "addBranch:write",
+      "operation_id": 2,
+      "stream": "addStream",
+      "ordered_after_operations": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 5,
+      "buffer": "d_a",
+      "stage": "subtractBranch:read",
+      "operation_id": 3,
+      "stream": "subtractStream",
+      "ordered_after_operations": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "buffer": "d_b",
+      "stage": "subtractBranch:read",
+      "operation_id": 3,
+      "stream": "subtractStream",
+      "ordered_after_operations": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 7,
+      "buffer": "d_difference",
+      "stage": "subtractBranch:write",
+      "operation_id": 3,
+      "stream": "subtractStream",
+      "ordered_after_operations": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": 8,
+      "buffer": "d_sum",
+      "stage": "joinBranches:read",
+      "operation_id": 4,
+      "stream": "joinStream",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": 9,
+      "buffer": "d_difference",
+      "stage": "joinBranches:read",
+      "operation_id": 4,
+      "stream": "joinStream",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": 10,
+      "buffer": "d_result",
+      "stage": "joinBranches:write",
+      "operation_id": 4,
+      "stream": "joinStream",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": 11,
+      "buffer": "d_result",
+      "stage": "download",
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique contiguous buffer footprints per kernel; repeated element accesses are not instruction traffic.",
+    "Edges express whole-buffer readiness, not observed default-stream order.",
+    "Stream/event ordering is checked for conflicting buffer accesses; metadata records operation ordering, not timing.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies."
+  ]
+}

@@ -1,0 +1,48 @@
+TWO_LEVEL_NODE_TREE is 0
+TWO_LEVEL_CHILD_TREE is 0
+QRYTEX is 0
+COALESCED_QUERIES is 0
+REFTEX is 0
+REORDER_REF is 0
+NODETEX is 0
+CHILDTEX is 0
+MERGETEX is 0
+REORDER_TREE is 1
+RENUMBER_TREE is 1
+Loading ref: data/shortref.fa... 6 bp. [0.00068s]
+Opening data/shortqry.fa...
+Streaming reference pages against all queries
+Stream will use 1 pages for 6 bases, page size = 6
+Building reference texture...
+  Creating Suffix Tree... 11 nodes [0.00010s]
+  Renumbering tree... [0.00012s]
+  Flattening Tree...  node: 4096x32 children: 4096x32 [0.00023s]
+This tree will need 4194304 bytes on the board
+The refstr requires 4107 bytes
+Beginning reference page 0x610000000040
+board free memory: 1073741824 total memory: 1073741824
+done
+Loading query block... 3 queries (5 bp), need 75 bytes on the GPU (1052766197 avail) [0.00090s]
+done.
+Allocating device memory for queries... 	Processing queries 0 to 2
+	allocated 35 bytes
+Matching queries 0 - 2 against ref coords 1 - 4105
+Need 5 match coords for this result array
+Allocating result array for 3 queries (40 bytes) ...board free memory: 1073741824 total memory: 1073741824
+done
+Memory footprint is:
+	queries: 35
+	ref: 4198411
+	results: 40
+match kernel time= 2.788000
+board free memory: 1073741824 total memory: 1073741824
+board free memory: 1056964608
+Allocing 64 bytes of host memory for 8 alignments
+buffer prep time= 0.028000
+Round 1: Printing results for match coords [0-5) of 5 using 3 matches and 8 alignments
+prepared 3 matches 8 alignments
+Copying 64 bytes to host memory for 8 alignments
+  Calling print kernel... memcpy time= 0.054000
+print kernel time= 10.242000
+Finished processing 3 matches and 8 potential alignments in 1 rounds
+Loading query block... done.

@@ -1,0 +1,5 @@
+{
+  "entry": "main.cu",
+  "parse": "passed",
+  "graph_support": "pending"
+}

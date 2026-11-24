@@ -1,0 +1,19 @@
+{
+  "scenario": "dwt2d",
+  "capture": "20261123T005703612561Z",
+  "capture_archive_sha256": "2bb699eb0abe5db7c0f5cb1192dfb021d1bf5ab11c496793078511ccd2b515e6",
+  "reviewed_source_corrections": [
+    {
+      "path": "cuda/dwt2d/main.cu",
+      "upstream_sha256": "99d25453a62aac9ca9aaaa8a854c01a101391bb16c5dec4ca448e95a565f318f",
+      "corrected_sha256": "7ea08ab09896099189716b75e384068a7baf68fd9f82ab1360dd293256225e1b",
+      "changes": [
+        "Allocate strlen(input_name)+1 including terminating NUL",
+        "Allocate strlen(input_name)+5 for .dwt plus terminating NUL"
+      ],
+      "gpu_capture_note": "Existing capture used the upstream allocations; the corrected source has not been rerun on GPU."
+    }
+  ],
+  "gpu_measurements_attached": false,
+  "scope": "Source-only evaluation. Capture identifies inputs/provenance; profiler events and counts do not determine the graph."
+}

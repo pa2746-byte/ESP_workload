@@ -1,0 +1,107 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "id": 0,
+      "vol": 49152,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 1,
+      "vol": 49152,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 2,
+      "vol": 49152,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 3,
+      "vol": 49152,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 4,
+      "vol": 49152,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 5,
+      "vol": 49152,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 6,
+      "vol": 49152,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 7,
+      "vol": 49152,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 8,
+      "vol": 49152,
+      "src_comp": "mem",
+      "dest_comp": "cpu"
+    }
+  ],
+  "edges": [
+    {
+      "source": 0,
+      "target": 3
+    },
+    {
+      "source": 0,
+      "target": 7
+    },
+    {
+      "source": 1,
+      "target": 2
+    },
+    {
+      "source": 1,
+      "target": 5
+    },
+    {
+      "source": 2,
+      "target": 4
+    },
+    {
+      "source": 3,
+      "target": 4
+    },
+    {
+      "source": 3,
+      "target": 7
+    },
+    {
+      "source": 4,
+      "target": 6
+    },
+    {
+      "source": 4,
+      "target": 8
+    },
+    {
+      "source": 5,
+      "target": 7
+    },
+    {
+      "source": 6,
+      "target": 7
+    }
+  ]
+}

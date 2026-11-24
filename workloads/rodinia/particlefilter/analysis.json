@@ -1,0 +1,96 @@
+{
+  "version": 1,
+  "parameters": {},
+  "arguments": [
+    "-x",
+    "16",
+    "-y",
+    "16",
+    "-z",
+    "2",
+    "-np",
+    "1"
+  ],
+  "analyzed_functions": [
+    "particleFilter",
+    "roundDouble",
+    "strelDisk",
+    "getneighbors",
+    "check_error"
+  ],
+  "additional_sources": [],
+  "scalar_device_functions": [],
+  "lexical_scopes": true,
+  "host_memory": "opaque_values",
+  "shared_memory": "opaque_values",
+  "dependency_granularity": "byte_regions",
+  "device": {
+    "ordinal": 0,
+    "max_grid_size": [
+      65535,
+      65535,
+      65535
+    ],
+    "max_threads_per_block": 1024,
+    "free_memory_bytes": 1073741824,
+    "total_memory_bytes": 2147483648
+  },
+  "max_enumerated_threads": 65536,
+  "max_loop_iterations": 1024,
+  "preprocessor_sha256": "218e8ec8653829acd0e2451cb54e93899eb2ab0ca88167366ed71a681d63a3bb",
+  "additional_preprocessor_sha256": {},
+  "known_integer_inputs": false,
+  "host_dependencies": true,
+  "host_summaries": {
+    "get_time": {
+      "body_sha256": "0712995a6a0a5d8ff33cb75f6ee97f4946cfa298153c289d567d853eeaffc2a4",
+      "return_unknown": true
+    },
+    "elapsed_time": {
+      "body_sha256": "7936cb0ce78f46048b78f198ff8a117ca2c17fc05121477cc8245bbc1a4c017c",
+      "return_unknown": true
+    },
+    "videoSequence": {
+      "body_sha256": "a7ebed09d7fb3116ff92d61e435782000ff72331a1ba0d6228c9f3da85122350",
+      "writes_unknown": [
+        0,
+        4
+      ]
+    },
+    "randn": {
+      "body_sha256": "dd55475482ddd6b0a375052945b7ea2ecbf5f206ce3015142c24bfe5370f3f30",
+      "reads": [
+        0
+      ],
+      "writes_unknown": [
+        0
+      ],
+      "return_unknown": true
+    },
+    "randu": {
+      "body_sha256": "7a7cf9606fc6be647a10d2cf645a4c24609b78a0f7dd7a2a96ff4147b4a78f4e",
+      "reads": [
+        0
+      ],
+      "writes_unknown": [
+        0
+      ],
+      "return_unknown": true
+    },
+    "calcLikelihoodSum": {
+      "body_sha256": "5523a41887fa9b94a9bb9b40d8774c039814a8e841f465d3ff636ba70db8c475",
+      "reads": [
+        0,
+        1
+      ],
+      "return_unknown": true
+    }
+  },
+  "integer_state": true,
+  "opaque_host_addresses": true,
+  "enumerate_unknown_paths": true,
+  "host_numeric_helpers": [
+    "roundDouble"
+  ],
+  "checked_block_barriers": true
+}

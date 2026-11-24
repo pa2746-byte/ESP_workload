@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "parameters": {
+    "dimension": 32
+  },
+  "arguments": [
+    "-s",
+    {
+      "parameter": "dimension"
+    }
+  ],
+  "analyzed_functions": [
+    "lud_cuda"
+  ],
+  "additional_sources": [
+    "lud.cu",
+    "lud_kernel.cu",
+    "common.c",
+    "common.h"
+  ],
+  "scalar_device_functions": [],
+  "lexical_scopes": true,
+  "host_memory": "opaque_values",
+  "shared_memory": "opaque_values",
+  "dependency_granularity": "byte_regions",
+  "device": {
+    "ordinal": 0,
+    "max_grid_size": [
+      65535,
+      65535,
+      65535
+    ],
+    "max_threads_per_block": 1024,
+    "free_memory_bytes": 1073741824,
+    "total_memory_bytes": 2147483648
+  },
+  "max_enumerated_threads": 65536,
+  "max_loop_iterations": 1024,
+  "preprocessor_sha256": "e4b4fc7494136223c7fd394071b6d56e5d9c172a1f5d3bb28d43e03acc3f3e26",
+  "additional_preprocessor_sha256": {
+    "lud.cu": "7ae913657753e9d9ee0c50074c0edfacc65c0bb79e2d46818897c817aae04281",
+    "lud_kernel.cu": "3d35b062e1c2fafc813585f98b91dceb8d088f1255843c97a336013c31cec6ec",
+    "common.c": "13814a96cbf9a13021579cf585018c1fdf1c62efd6712176cc6d8242fa839090",
+    "common.h": "4c63254500a67862cf8c0ea60cea56d4e6c19519b1aa74a81c4468ef6795ce83"
+  },
+  "host_summaries": {
+    "stopwatch_start": {
+      "body_sha256": "ceb6b7c8397c7238102acde88d66793665de7849e751e004771c176ac712f96f"
+    },
+    "stopwatch_stop": {
+      "body_sha256": "fdcc59786b8606ea305fdf2b509e5182cbb0724dd09451586776792e6f031d3c"
+    },
+    "get_interval_by_sec": {
+      "body_sha256": "8c0ba3c7b336e9fb0ff00409b9eaee62620dd342184e9de74305b72944280e1a"
+    },
+    "create_matrix": {
+      "body_sha256": "b9d41951f72e852fbfd4ac781834cad78ef8a317e4c21ff5a946d685c87ebc46",
+      "requires": {
+        "1": {
+          "parameter": "dimension"
+        }
+      },
+      "buffers": {
+        "0": {
+          "base": "float",
+          "shape": [
+            {
+              "parameter": "dimension"
+            },
+            {
+              "parameter": "dimension"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

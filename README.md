@@ -1,2 +1,769 @@
-# ESP_workload
-Workload research 
+# ESP Workload Graphs
+
+## Project goal
+
+Generate workload graphs that describe **data transfers and their dependencies**.
+These graphs are inputs to a simulator, which uses them to produce performance
+metrics.
+
+The intended workflow is:
+
+**CUDA workload → transfer/dependency graph → simulator → performance metrics**
+
+The graph describes the workload's data requirements. The simulator determines
+how its modeled architecture executes those transfers. Whether the resulting
+metrics include computation time depends on the simulator's compute model.
+
+## Explaining a generated graph
+
+The [CUDA graph walkthrough](docs/cuda-graph-walkthrough/README.md) is a 14-part
+teaching guide with a browser presentation, speaker notes, diagrams, four small
+CUDA sources, and reproducible exports. It explains thread/task parallelism,
+partitioning, joins, memory coalescing, and what the simulator DAG omits. The
+matched single-stream and explicit-stream examples produce identical transfer
+JSONs despite different CUDA scheduling constraints.
+
+## Current status
+
+Source-derived graph generation now covers **twenty workload examples**: four
+original CUDA samples, the additional stream fork-join sample, and fifteen Rodinia analysis cases. The working branch is
+`pa2746-byte-sampleworkloads`. See the [earlier five-application expansion](workloads/rodinia/EXPANSION.md) and the
+[new five-application batch](#source-based-expansion-five-additional-applications) below for configured flows, validation, and graphs.
+
+- **Original samples:** vector addition (6 nodes / 5 edges), pipeline (8 / 7),
+  fork-join (12 / 13), and reduction (6 / 5).
+- **Explicit stream fork-join:** two worker streams and an event-based join
+  (12 / 13), with checks for missing synchronization.
+- **Rodinia Nearest Neighbor:** unchanged upstream source, configured for 513
+  records (4 / 3); adds struct-field and pointer-offset analysis.
+- **Rodinia HotSpot3D:** unchanged upstream sources, configured for a 64 x 64 x 3
+  grid and two iterations (9 / 11); adds stencil accesses, included source,
+  bounded loops, repeated launches, and buffer swaps.
+- **Rodinia Gaussian elimination:** unchanged upstream source, with a configured
+  3 x 3 input at `ForwardSub` (20 / 39); adds partial, strided buffer regions
+  and safe in-place updates. CPU preparation/back-substitution are outside this graph.
+- **Rodinia HotSpot 2D:** unchanged tiled thermal simulation, 16 x 16 grid,
+  four steps grouped into two launches (9 / 11).
+- **Rodinia Pathfinder:** unchanged tiled path-cost propagation, 5 x 16 grid,
+  two launches advancing two rows each (9 / 11).
+
+- **Rodinia Needleman–Wunsch:** original application flow, dimension 32 and
+  penalty 10; three wavefront launches (12 / 21).
+- **Rodinia LU decomposition:** original application flow with `-s 32`; four
+  diagonal/perimeter/interior launches (10 / 19).
+
+- **[Rodinia Backpropagation](workloads/rodinia/backprop/README.md):** 32 inputs, 16 hidden units and one output; 18 nodes / 28 edges; two kernel launches.
+
+- **[Rodinia SRAD v1](workloads/rodinia/srad/README.md):** 4 × 4 image and two iterations; 66 nodes / 169 edges; ten kernel launches.
+
+- **[Rodinia CFD](workloads/rodinia/cfd/README.md):** four-cell synthetic mesh and two iterations; 102 nodes / 186 edges; seventeen kernel launches.
+
+The tiled cases track global-buffer footprints while keeping shared-memory
+values unknown. They do not add internal GPU transfers or validate shared-memory
+initialization, races, or barrier correctness.
+
+Independent source-to-graph tests cover the configured inputs, byte regions,
+and dependency policy; see [validation details](workloads/rodinia/VALIDATION.md).
+The original four samples have remote CUDA/Nsight evidence. Nearest Neighbor
+and HotSpot3D also have a [captured GPU comparison](results/rodinia_trace_comparison/README.md).
+The other Rodinia cases, including all five new additions, have not been
+run on a GPU here. None has been validated in the simulator. Host numerical
+work and device parameters have the documented abstraction/configuration limits.
+Clang itself was not modified; our Python analyzers that consume its AST were
+extended. Unsupported cases still require additional analysis work.
+
+### Analyzer update: Backpropagation, SRAD and CFD
+
+Adding these three workloads required extending **our Python analyzer that reads
+Clang's abstract syntax tree (AST)**. Clang itself was not modified. The main
+implementation changes are in `cuda_configured_model.py`, with supporting parser
+and analysis-header changes.
+
+- **Backpropagation:** follow selected C and CUDA source files, handle host
+  structures and pointers, and preserve dependencies across a GPU download,
+  CPU processing, and a later upload. CPU processing uses source-hash-checked
+  summaries; dependencies are propagated conservatively per host buffer, without
+  executing the numerical computation or modeling CPU latency.
+- **SRAD:** resolve explicitly initialized integer index arrays through uploads,
+  track dependencies from downloaded scalars into later kernels, and check block
+  barrier participation and phases for global-memory conflicts. These checks do
+  not establish shared-memory numerical correctness.
+- **CFD:** handle device helper functions and references, `float3` fields,
+  constant-memory uploads, device-to-device copies, and neighbor indices from an
+  explicitly configured, hash-checked mesh file.
+
+These are reusable analyzer capabilities, not hardcoded output graphs. Each
+workload still requires an explicit configuration for its bounded input scenario
+and any summarized CPU operations. Unknown runtime decisions that determine
+memory addresses or kernel launches are rejected rather than guessed. The
+resulting graphs describe logical byte footprints and dependencies; they do not
+measure physical DRAM traffic or execution time.
+
+Independent tests check expected footprints and dependencies, alternate small
+inputs, rejection cases, and agreement between saved graphs and fresh analysis.
+GPU execution, numerical correctness and simulator performance validation remain
+separate work. See [validation details](workloads/rodinia/VALIDATION.md) and the
+[five-workload expansion status](workloads/rodinia/EXPANSION.md).
+
+### Source-based expansion: five additional applications
+
+Added **BFS, LavaMD, Particle Filter, K-means and B+tree** with original application drivers and explicit small input scenarios. Our Python evaluator now supports fixed integer state across copies and launches, selected C/CUDA translation units, nested records, legacy texture reads, and bounded exploration of unknown kernel branches. Clang itself is unchanged. CPU numerical preparation may use documented contracts; this is not general numerical execution or arbitrary-input support.
+
+The five scenarios and their specific limits are documented here:
+
+- [BFS](workloads/rodinia/bfs/README.md): Four-node directed chain, source vertex 0.
+- [LavaMD](workloads/rodinia/lavamd/README.md): Default one box with 100 particles.
+- [Particle Filter](workloads/rodinia/particlefilter/README.md): 16 × 16 synthetic video, two frames and one particle.
+- [K-means](workloads/rodinia/kmeans/README.md): One float32 point [2.0], one feature and one cluster, binary input.
+- [B+tree](workloads/rodinia/btree/README.md): One key (0), one lookup, order 4, explicit query random draw 0, and newline on stdin.
+
+Four focused test groups independently check expected byte footprints/dependencies, B+tree CPU serialization, rejection cases, and capture/notebook preparation. Prior CPU-visible downloads conservatively constrain later transfers in this optional analysis mode.
+
+[Open the five-workload GPU notebook in Colab](https://colab.research.google.com/github/pa2746-byte/ESP_workload/blob/pa2746-byte-sampleworkloads/notebooks/rodinia_five_cycles.ipynb). It collects **per-kernel elapsed and active SM cycles** using Nsight Compute and separate transfer/order traces using Nsight Systems. It does not convert time into claimed cycles. Counter permission failures are reported explicitly. Kernel cycles exclude CPU work and PCIe copies; they are not end-to-end application cycles. See [capture details and compatibility adaptations](workloads/rodinia/CYCLES_CAPTURE.md).
+
+### Analyzer changes required by the latest five workloads
+
+We extended **our Python interpreter of Clang's AST**, not the Clang compiler. Clang supplies parsed declarations, types, expressions and control flow; our evaluator resolves the configured inputs, follows supported application paths, records buffer accesses and constructs dependencies. The main additions live in [cuda_integer_model.py](cuda_integer_model.py), with shared parsing and execution support in [cuda_configured_model.py](cuda_configured_model.py).
+
+#### What each workload required
+
+- **BFS:** Previously unknown buffer contents were insufficient to follow the frontier and decide when traversal stops. The optional `integer_state` evaluator now propagates known integer/boolean bytes through host/device copies and kernel writes. For the four-node input, masks, costs and the downloaded stop flag determine four rounds and eight launches from the source. Each thread sees the pre-launch state plus its own writes; conflicting cross-thread accesses remain checked. This does not establish support for arbitrary graph inputs.
+- **LavaMD:** The application spans a C driver, CUDA wrappers and supporting source files. We added C entry-file parsing, configured C/CUDA translation-unit loading, nested plain-record layouts, and shared-record copy handling that records global field reads while leaving shared values unknown. This follows the original one-box application flow and force-buffer accesses without calculating or validating the forces. The configured layout assumes LP64; larger box grids remain unvalidated.
+- **Particle Filter:** Random values and CPU likelihood calculations make some values unknown. Source-hash-checked CPU summaries preserve the application/frame loop while abstracting selected numerical helpers. Bounded kernel branch exploration accepts an unknown decision only when all explored paths have identical memory footprints and barrier sequences. That works for the one-particle fixture; more particles can select different addresses and are rejected. CPU-only unknown addresses are abstracted, not proven memory-safe.
+- **K-means:** Added binary fixture loading, command-line option handling, mutable pointer globals and host pointer tables, legacy texture-binding/fetch models, and legacy constant-memory uploads. Optional known floating-byte propagation is sufficient for the exactly representable single-point fixture: the original convergence loop produces a mapping launch and two membership launches. This is not general floating-point equivalence with GPU execution or a guarantee of convergence for arbitrary data.
+- **B+tree:** Added supported file/command-input handling, explicit random inputs, bounded `do` loops, and symbolic pointer arithmetic within one allocation. Source- and argument-checked CPU preparation contracts provide the serialized record/node bytes for the one-key, height-zero tree; only defined byte ranges are marked known. An independent CPU execution check verifies those bytes. The contract supplies input state, not a prebuilt graph: the original CUDA lookup body still determines accesses. Multi-level trees and arbitrary queries remain unsupported.
+
+#### Shared dependency handling and safeguards
+
+In this optional mode, prior CPU-visible downloads conservatively constrain later transfers. Metadata records these extra edges as `host_control_dependencies`; they preserve host control ordering but may over-constrain parallelism. Known byte state is invalidated when an abstracted host operation overwrites it. Input hashes, CPU-summary source hashes, allocation bounds, loop/thread budgets and race/barrier checks restrict what can be accepted. Unknown GPU branches with differing footprints are rejected rather than silently replaced by a guessed graph.
+
+We also corrected a barrier-checker variable collision that overwrote CUDA block dimensions during thread enumeration. Analysis-only CUDA declarations were extended for legacy APIs; these headers are never used to build the real GPU applications.
+
+#### Validation and what the additions do not provide
+
+The four focused groups in [test_five_source_workloads.py](tests/test_five_source_workloads.py) check independently specified access/dependency schedules, B+tree CPU serialization, selected unsupported/changed-input rejection cases, and capture/parser/notebook preparation. Existing Rodinia regression checks also passed. The [subsequent GPU capture](results/rodinia_gpu_cycles/20261110T152704530565Z/README.md) provides measured cycles and matching expected launch counts; those observations do not prove every dependency edge or numerical result.
+
+The graphs still aggregate **unique logical byte footprints**. They do not model each memory instruction, cache transaction, physical DRAM transfer or compute latency. Measured cycles come from Nsight Compute, not Clang. GPU-build compatibility changes—such as replacing K-means' removed texture API with ordinary loads—are separate from analyzer support and are documented in the [capture guide](workloads/rodinia/CYCLES_CAPTURE.md).
+
+### Captured GPU cycles
+
+The [successful five-workload Colab capture from 10 November 2026](results/rodinia_gpu_cycles/20261110T152704530565Z/README.md) includes the original trace archive, per-kernel cycle CSV, logs and matched Clang graphs. All five scenarios captured their expected kernel counts. These are single-run, kernel-only measurements, not end-to-end application cycles or simulator validation.
+
+### Generated outputs
+
+Current output locations:
+
+- [BFS](results/rodinia_bfs/), [LavaMD](results/rodinia_lavamd/), [Particle Filter](results/rodinia_particlefilter/), [K-means](results/rodinia_kmeans/), and [B+tree](results/rodinia_btree/): JSON, metadata, and PNGs in each `graphs/` directory.
+
+- [Backpropagation](results/rodinia_backprop/), [SRAD v1](results/rodinia_srad/), and [CFD](results/rodinia_cfd/): JSON, metadata and PNGs in each `graphs/` directory.
+
+- [Original samples and stream example](results/logical_transfers/), with images
+  in [graphs](results/logical_transfers/graphs/).
+- [Nearest Neighbor](results/rodinia_nn/), including its
+  [image](results/rodinia_nn/graphs/nn_cuda_simulator.png).
+- [HotSpot3D](results/rodinia_hotspot3d/), including its
+  [image](results/rodinia_hotspot3d/graphs/3D_simulator.png).
+- [Gaussian](results/rodinia_gaussian/), including its
+  [image](results/rodinia_gaussian/graphs/gaussian_simulator.png).
+- [HotSpot 2D](results/rodinia_hotspot2d/), including its
+  [image](results/rodinia_hotspot2d/graphs/hotspot_simulator.png).
+- [Pathfinder](results/rodinia_pathfinder/), including its
+  [image](results/rodinia_pathfinder/graphs/pathfinder_simulator.png).
+- [Needleman–Wunsch](results/rodinia_nw/), including its
+  [image](results/rodinia_nw/graphs/needle_simulator.png).
+- [LU decomposition](results/rodinia_lud/), including its
+  [image](results/rodinia_lud/graphs/analysis_unit_simulator.png).
+
+Use `*_simulator.json` as the intended simulator input. `*_metadata.json` records
+source hashes, node descriptions, and analysis assumptions; Rodinia metadata
+also includes resolved configuration and launch dimensions. PNGs visualize the
+same graph. These files do not contain measured performance metrics.
+
+## Graph representation
+
+Historical February–April 2026 results are collected in
+[past graphs from nsight](<past graphs from nsight/>), including reports,
+graph JSONs, rendered images, and related synthetic examples. Current Clang
+outputs are listed above; September Nsight run directories remain under `results/`.
+
+The target format follows the existing JSON examples supplied as simulator inputs:
+
+- Top-level fields: `directed`, `multigraph`, `graph`, `nodes`, and `edges`.
+- Each node represents a transfer and contains `id`, `vol`, `src_comp`, and
+  `dest_comp`.
+- `vol` is the number of bytes transferred.
+- `cpu` represents the host, `mem` accelerator-accessible memory, and `acc`
+  accelerator compute. Component names may be mapped to numbered instances
+  when required by a simulator architecture.
+- Each edge contains `source` and `target` node IDs. It expresses a dependency:
+  the target transfer waits for the source transfer to finish.
+
+Logical dependencies must preserve independent branches. An observed ordering
+on a CUDA stream is not, by itself, proof that one operation needs another's data.
+
+### When two kernels access the same memory
+
+Clang parses the CUDA source; **our analyzer determines the supported memory
+accesses and dependencies** from its AST. It tracks device allocations, maps
+kernel parameters to the actual buffers passed at each launch, and examines
+reads and writes. Supported pointer swaps are followed by allocation identity,
+so changing a pointer variable's name or value does not create a new buffer.
+This is source analysis, not observation of live GPU memory.
+
+If two kernels access the same buffer, the rules are:
+
+- **Read then read:** no dependency between the reads solely because they share
+  the buffer. Both still depend on the buffer's producer.
+- **Write then read:** the later read waits for the earlier write to produce
+  its input.
+- **Read then write:** the later overwrite waits for the earlier read to finish.
+- **Write then write:** preserve the ordering of the writes.
+
+These dependencies connect transfer nodes, not separate compute-only kernel
+nodes. For example, both branches in `fork_join.cu` read A and B but write
+different outputs. Their shared input reads remain independent; the join's
+reads depend on the branches' output writes. Independence in the logical graph
+does not promise simultaneous execution on the physical GPU.
+
+In the supported explicit-stream analysis, conflicting accesses on different
+streams require provable ordering, such as an event wait or host synchronization.
+Missing ordering is rejected rather than silently repaired by inventing a safe
+execution order. The configured Rodinia analysis currently supports default-stream
+launches only.
+
+Dependency tracking defaults to conservative **whole-buffer granularity**.
+Gaussian, HotSpot 2D, and Pathfinder opt into **byte-region tracking**, distinguishing disjoint regions
+and preserving dependencies on overlapping reads/writes. Other configurations
+retain their existing whole-buffer behavior. Unsupported aliasing or
+data-dependent addresses require further analysis and are rejected rather than
+guessed. Graph volumes describe the configured scenario; values discovered only
+during execution are not automatically available to the analyzer.
+
+## Generate simulator inputs on the remote server
+
+The default generator command selects the original four workloads. The stream
+example and Rodinia applications are selected explicitly below. No files need to
+be generated on the Mac or transferred from it. On the remote server:
+
+```bash
+cd ~/ESP_workload
+git switch pa2746-byte-sampleworkloads
+git pull --ff-only origin pa2746-byte-sampleworkloads
+python3 export_workload_transfers.py
+```
+
+This writes four `*_simulator.json` files and separate explanatory metadata
+under `results/logical_transfers/`. Only the simulator JSON files are intended
+as simulator inputs. Generation requires Python 3 and `clang++`, but no GPU,
+CUDA toolkit, or Nsight run. On Ubuntu, install Clang if needed with
+`sudo apt install clang`. The analyzer was tested locally with Apple Clang 17;
+remote generation has also succeeded after compatibility fixes described below.
+
+To also generate PNGs using the previously configured virtual environment:
+
+```bash
+source .venv/bin/activate
+python export_workload_transfers.py --render
+```
+
+Analyze another CUDA file directly:
+
+```bash
+python export_workload_transfers.py --source workloads/my_workload.cu --render
+```
+
+The generator reads current source on every run. Supported changes to sizes,
+kernel arguments, copies, and global array accesses change the output without
+editing Python models. Unsupported syntax or access patterns cause an error.
+
+PNGs are written under `results/logical_transfers/graphs/`. Select a single
+workload with `--workload fork_join`, or choose another destination with
+`--out-dir`. Re-running replaces outputs with the same names.
+See [transfer model documentation](workloads/TRANSFER_MODELS.md) for assumptions
+and component naming options.
+
+## GPU trace comparison results
+
+The [Rodinia capture comparison](results/rodinia_trace_comparison/README.md) includes
+execution DAGs, grouped and original Clang DAGs, measured event durations, and a
+[self-contained visual report](results/rodinia_trace_comparison/report.html).
+Both captured scenarios match kernel launches and explicit copy sizes/directions.
+Stream ordering and source buffer dependencies remain distinct; the traces do
+not independently validate kernel memory footprints or numerical correctness.
+
+## Collect GPU traces in Google Colab
+
+Open [the Rodinia capture notebook](https://colab.research.google.com/github/pa2746-byte/ESP_workload/blob/pa2746-byte-sampleworkloads/notebooks/rodinia_colab_traces.ipynb), select a GPU runtime, and run its cells in order.
+It collects Nearest Neighbor and HotSpot3D Nsight Systems reports and SQLite
+exports using deterministic synthetic inputs matching our small Clang scenarios.
+The notebook pins workload sources, checks CUDA tracing with a smoke test,
+checks kernel counts/copy volumes, and downloads reports plus provenance in a ZIP.
+Open `.nsys-rep` files in a compatible laptop Nsight Systems GUI; retain SQLite
+for subsequent DAG comparison. Capture happens on Colab, not retrospectively on
+the laptop. Colab profiling availability must be tested in the allocated runtime.
+The notebook has been syntax-checked locally; GPU execution has not been validated
+here. It preserves the documented upstream HotSpot3D download behavior and does
+not certify numerical correctness or build execution DAGs yet.
+
+## How we use Clang
+
+Clang reads the CUDA source and produces an **abstract syntax tree (AST)**:
+a structured representation of declarations, expressions, and calls. Our
+Python analyzer interprets that tree to generate transfer nodes and dependency
+edges. Clang itself does not produce our simulator graph.
+
+The command-line entry point is
+[`export_workload_transfers.py`](export_workload_transfers.py). It uses two
+analysis paths:
+
+- [`cuda_source_model.py`](cuda_source_model.py): affine access analysis for the
+  original samples and explicit stream/event example.
+- [`cuda_configured_model.py`](cuda_configured_model.py): bounded AST evaluation
+  for configured Rodinia inputs, selected by `--analysis-config`. It enumerates
+  kernel thread addresses while keeping device data values unknown. Selected
+  host helpers are analyzed; other helpers have explicit hash-checked contracts.
+
+Both paths use Clang parsing through `cuda_source_model.py`, which invokes
+`clang++` with `--cuda-host-only`, `-fsyntax-only`, and
+`-Xclang -ast-dump=json`. This parses source without executing the workload or
+collecting GPU measurements. `-nocudainc` / `-nocudalib` and a bundled
+[analysis-only header](source_analysis/include/cuda_runtime.h) let it parse
+the supported CUDA APIs without requiring the CUDA toolkit. That header is
+not a CUDA runtime and must not be used for actual workload compilation.
+
+The analyzer performs these steps:
+
+1. Evaluate supported source expressions for sizes and launch dimensions.
+2. Track device allocations and host/device copy calls.
+3. Match each kernel launch to its definition and actual buffer arguments.
+4. Identify supported global array reads/writes and their byte footprints.
+5. Connect producers to consumers and add dependencies for buffer overwrites,
+   while preserving independent reads and branches.
+6. Write simulator JSON, explanatory metadata, and optional PNGs.
+
+The original exporter contained manually specified models for the four
+workloads. Those models have been replaced by source analysis. Supported
+changes to sizes, accesses, or kernel arguments now change the output on the
+next run without editing a workload-specific Python template. Test cases
+modify source code to verify this behavior.
+
+Clang AST output varies across versions. We fixed two differences encountered
+on the remote server: the newer `__cudaPushCallConfiguration` launch helper,
+and default arguments omitted from call-site AST nodes. The latter are resolved
+from constructor parameter declarations rather than guessed. Both cases have
+regression tests. The remotely generated graphs have been pulled back and
+checked against fresh local analysis; their source hashes match the current
+four CUDA files.
+
+### Explicit streams and event joins
+
+The analyzer also supports [fork_join_streams.cu](workloads/fork_join_streams.cu):
+two independent nonblocking worker streams followed by a third stream that
+waits for both completion events. Generate it without running CUDA on a GPU:
+
+```bash
+python3 export_workload_transfers.py --workload fork_join_streams --render
+```
+
+The generated JSON and metadata are in `results/logical_transfers/`; the PNG is
+[graphs/fork_join_streams_simulator.png](results/logical_transfers/graphs/fork_join_streams_simulator.png).
+It has 12 transfers and 13 dependencies, with 4,194,372 bytes per transfer.
+The analyzer checks stream/event ordering and rejects missing synchronization
+for conflicting buffer accesses. It also supports this example's primitive host
+vectors and diagnostic-only CUDA error wrapper. Names and sizes come from the
+source. The original four-example default remains unchanged.
+
+Logical edges describe buffer dependencies; full operation ordering is recorded
+separately in metadata. These outputs do not measure GPU overlap or execution
+time. See [supported scope](workloads/TRANSFER_MODELS.md) for restrictions.
+
+### Scope and portability
+
+Clang is not limited to CUDA, but **our current analyzer is CUDA-specific**.
+OpenCL, HIP, and SYCL inputs would need additional handling for their allocation,
+copy, launch, and access conventions. The intended output remains the same
+simulator JSON schema across supported front ends.
+
+The present implementation supports a restricted source subset, not arbitrary
+real-world applications. Configured runtime sizes, selected included source
+files, bounded loops, and direct pointer offsets are now supported in the
+Rodinia analysis path. General dynamic control flow, arbitrary multi-file
+programs, library calls, aliasing, shared-memory synchronization, and
+input-data-dependent accesses still require more work. The configured path
+limits total enumerated threads and loop iterations; it is intended for small
+validation cases, not production-scale inputs. See
+[supported patterns and limitations](workloads/TRANSFER_MODELS.md).
+
+Nsight is optional for this source-to-graph workflow. It remains useful for
+checking actual execution, copy sizes, and timing. Hardware traffic counters
+are a separate validation path, not a prerequisite for logical graph generation.
+
+## First Rodinia workload: Nearest Neighbor
+
+The original Rodinia CUDA Nearest Neighbor source is now included unchanged,
+with a bounded Clang analysis mode for small configured inputs. Run:
+
+```bash
+python3 export_workload_transfers.py \
+  --source workloads/rodinia/nn/nn_cuda.cu \
+  --analysis-config workloads/rodinia/nn/analysis.json \
+  --out-dir results/rodinia_nn --render
+```
+
+For the configured 513 records, the graph has four transfers and three edges:
+4,104-byte coordinate upload/read and 2,052-byte distance write/download.
+The kernel's struct accesses, pointer offsets, launch geometry, and bounds guard
+are analyzed from source. Input loading and CPU result selection use explicit
+reviewed host contracts; device limits are configuration assumptions. No dataset
+was loaded and no GPU or simulator execution was performed.
+
+See [the Rodinia guide](workloads/rodinia/README.md) for provenance, parameter
+changes, tests, output locations, and limits. This mode is an additional bounded
+analysis path, not unrestricted support for the whole Rodinia suite.
+
+## Second Rodinia workload: HotSpot3D
+
+The unchanged Rodinia HotSpot3D source is also supported for small configured
+inputs. It adds stencil accesses, bounded host/kernel loops, included CUDA
+source, and alternating temperature buffers across iterations.
+
+```bash
+python3 export_workload_transfers.py \
+  --source workloads/rodinia/hotspot3d/3D.cu \
+  --analysis-config workloads/rodinia/hotspot3d/analysis.json \
+  --out-dir results/rodinia_hotspot3d --render
+```
+
+The default 64 x 64 x 3 grid and two iterations produce nine transfers and eleven
+dependencies, each transfer containing 49,152 bytes. The original implementation
+downloads the **previous iteration's buffer** after swapping pointers; the graph
+preserves this source behavior. See the [HotSpot3D guide](workloads/rodinia/hotspot3d/README.md)
+for details, tests, configuration assumptions, and restrictions. No dataset, GPU,
+or simulator execution is performed.
+
+## Third Rodinia workload: Gaussian elimination
+
+The unchanged source is analyzed from `ForwardSub` using a configured matrix
+size and host-buffer shapes. Its two kernels perform partial, strided writes
+and in-place updates across iterations. The 3 x 3 case produces 20 nodes and
+39 edges. CPU initialization and back-substitution are outside this graph.
+
+```bash
+python3 export_workload_transfers.py \
+  --source workloads/rodinia/gaussian/gaussian.cu \
+  --analysis-config workloads/rodinia/gaussian/analysis.json \
+  --out-dir results/rodinia_gaussian --render
+```
+
+See the [Gaussian guide](workloads/rodinia/gaussian/README.md) for assumptions,
+independent source validation, and limits. Results are in
+[results/rodinia_gaussian](results/rodinia_gaussian/), with the
+[DAG image](results/rodinia_gaussian/graphs/gaussian_simulator.png) in `graphs/`.
+No GPU, CUDA execution, or simulator is needed to generate and validate it.
+
+## More Rodinia workloads: HotSpot 2D and Pathfinder
+
+Both preserve the original source and analyze allocations, copies, tile
+geometry, pointer-array buffer swaps, launches, and final downloads. Their host
+input helpers use explicit source-hash-checked summaries. Shared-array values
+remain unknown; the graphs describe global memory only. Bounds and global
+footprints are checked; shared communication/barrier correctness is assumed.
+
+```bash
+python3 export_workload_transfers.py \
+  --source workloads/rodinia/hotspot2d/hotspot.cu \
+  --analysis-config workloads/rodinia/hotspot2d/analysis.json \
+  --out-dir results/rodinia_hotspot2d --render
+
+python3 export_workload_transfers.py \
+  --source workloads/rodinia/pathfinder/pathfinder.cu \
+  --analysis-config workloads/rodinia/pathfinder/analysis.json \
+  --out-dir results/rodinia_pathfinder --render
+```
+
+The default graphs each have 9 nodes and 11 edges. HotSpot 2D transfers contain
+1,024 bytes each. Pathfinder has 64-byte cost rows, a 256-byte wall upload, and
+two distinct 128-byte wall reads. Independent tile/row formulas validate
+multiple sizes, boundary tiles, buffer swaps, and partial final launches.
+See the [HotSpot 2D guide](workloads/rodinia/hotspot2d/README.md) and
+[Pathfinder guide](workloads/rodinia/pathfinder/README.md) for parameters and limits.
+
+## Future benchmarks to investigate
+
+After consolidating the fifteen supported Rodinia cases, expand to other existing
+application sources while preserving their computation. The following are
+extensions beyond the small scenarios currently supported; those larger cases are **not yet validated**.
+The order below is a proposed progression; exact implementation requirements
+must be confirmed by inspecting each selected source version.
+
+1. **Rodinia SRAD — image processing.** The small v1 case is now supported; larger inputs remain a candidate for exploring a larger
+   multi-stage application and intermediate-buffer dependencies. Inspect its
+   CUDA implementation to determine the additional control-flow, reduction,
+   and indexing support needed.
+2. **Rodinia K-means — data mining.** Extend beyond the single-point case to iterative computation
+   whose access patterns and convergence behavior depend on input data. It
+   can help establish where source-only analysis needs user-supplied runtime
+   parameters or conservative dependency handling.
+3. **Rodinia BFS — larger graph inputs.** Extend beyond the four-node chain. Graph traversal introduces irregular,
+   data-dependent accesses. Use it to evaluate the limits of static analysis,
+   not as an immediate promise of exact graph recovery.
+
+Rodinia lists CUDA, OpenCL, and OpenMP implementations for these candidates.
+These are separate implementations: availability across programming models
+does not make our CUDA analyzer portable automatically or guarantee execution
+on every accelerator. [Rodinia benchmark catalog](https://rodinia.cs.virginia.edu/).
+
+For each benchmark, record the source version and input sizes, identify analyzer
+gaps, extend and test generic analysis rules, and validate transfer sizes and
+dependencies before treating its output as a simulator input. Do not silently
+fall back to a hardcoded graph when source analysis fails.
+
+## Why these four workloads?
+
+These small, deterministic programs provide progressively different dependency
+patterns while keeping buffer sizes and expected outputs easy to inspect.
+
+### 1. Vector addition — the baseline
+
+[`workloads/vector_add.cu`](workloads/vector_add.cu) computes `C = A + B`.
+It exercises two input buffers, one compute stage, and one output buffer.
+This is the simplest check of uploads, input reads, output writes, and download.
+The expected printed value is `C[0] = 3`.
+
+### 2. Pipeline — a sequential producer/consumer dependency
+
+[`workloads/pipeline.cu`](workloads/pipeline.cu) computes `C = A + B`, then
+`D = 2 × C`. The second stage requires the first stage's output. This tests
+whether the graph represents intermediate data and a multi-stage dependency.
+The expected printed value is `D[0] = 6`.
+
+### 3. Fork-join — independent branches followed by a join
+
+[`workloads/fork_join.cu`](workloads/fork_join.cu) computes `C = A + B` and
+`D = A - B`, then `E = C × D`. Add and subtract share inputs but do not depend
+on each other's outputs. Multiply requires both outputs.
+This tests whether graph generation preserves independence and a join instead
+of turning everything into a chain. The expected printed value is `E[0] = 8`.
+
+The current CUDA code launches all three kernels on the default stream, so
+they execute sequentially on the GPU. Their logical data graph still has two
+independent branches. The graph does not promise simultaneous execution on a
+single compute resource; the simulator must account for resource contention.
+
+### 4. Reduction — shrinking data volumes across stages
+
+[`workloads/reduction.cu`](workloads/reduction.cu) reduces 65,536 float32
+elements into 256 partial sums and then one final sum. This tests dependencies
+where transfer volumes change significantly between stages:
+262,144 input bytes → 1,024 partial-sum bytes → 4 output bytes.
+The expected result is `65536`, matching the program's printed expected value.
+
+The transfer model describes the global buffers between the two kernels. It
+does not expand the block/thread reduction tree or shared-memory accesses.
+
+Together, these cover a baseline, a pipeline, branching/joining, and reduction.
+They are controlled examples for developing graph generation, rather than a
+comprehensive performance benchmark suite.
+
+## Work completed
+
+### Initial remote CUDA execution and trace conversion (September 23, 2026)
+
+All four programs were compiled and run on the remote NVIDIA machine. The
+user-provided terminal output confirmed the expected printed results above.
+Vector workloads print only the first output element; this is a sanity check,
+not a full-array numerical validation.
+
+Nsight Systems traces were converted into flow JSON and rendered as PNGs:
+
+- Vector addition: 4 trace nodes, 3 edges.
+- Pipeline: 5 trace nodes, 4 edges.
+- Fork-join: 6 trace nodes, 5 edges.
+- Reduction: 4 trace nodes, 3 edges.
+
+The remote vector-add artifacts were saved under `results/20260923T142233Z/`.
+The other three were saved under `results/20260923T215106Z/`. These paths refer
+to the remote run; the reports, CSVs, flow JSONs, and images are now tracked
+in this repository.
+
+### Profiling compatibility fixes
+
+- The remote Nsight Systems installation reported version `2022.4.2.50`.
+- Automatic `.qdstrm` import failed. Explicit conversion with the matching
+  Nsight Systems `QdstrmImporter` successfully produced readable reports.
+- That installation uses the older `gputrace` report name. Its CSV output was
+  renamed to the filename expected by the trace converter.
+- [`nsys_trace_to_flow_json.py`](nsys_trace_to_flow_json.py) was fixed to accept
+  missing sizes represented as `None`, `NaN`, `N/A`, or blank text. Unexpected
+  malformed values still raise errors. The fix was pushed in commit `3f8e144`.
+- Installing matplotlib and NetworkX in a remote virtual environment enabled
+  PNG rendering. Layout warnings did not prevent image generation.
+
+### Logical transfer graph generation
+
+A separate [exporter](export_workload_transfers.py), its
+[tests](tests/test_workload_transfers.py), and documentation are included in this
+repository. It directly generates the simulator-format logical graphs on the
+machine where it runs. The Nsight trace converter continues to serve the
+separate purpose of exporting observed execution.
+
+The generated models contain:
+
+- Vector addition: 6 transfer nodes, 5 dependency edges.
+- Pipeline: 8 transfer nodes, 7 dependency edges.
+- Fork-join: 12 transfer nodes, 13 dependency edges.
+- Reduction: 6 transfer nodes, 5 dependency edges.
+
+They explicitly represent host uploads (`cpu → mem`), kernel input reads
+(`mem → acc`), kernel output writes (`acc → mem`), and host downloads
+(`mem → cpu`). Each read waits for its buffer producer; each kernel output
+write waits for that kernel's input reads. Dependencies operate at whole-buffer
+granularity. Local tests cover schema, sizes, component mapping, fork-join
+independence, command-line generation, changed source sizes and inputs,
+changed dependencies, and rejection of unsupported patterns. Remote JSON and
+PNG generation succeeded for all four workloads. The pulled JSONs match fresh
+local source-analysis output and the recorded source hashes match current files.
+
+The generator replaced its initial hardcoded Python models with Clang AST
+analysis. The original affine path was extended for stream/event ordering;
+the configured path now supports the fifteen Rodinia cases described above.
+These are restricted source-analysis paths, not a general CUDA verifier.
+
+### Later analyzer and repository work
+
+- Added stream/event checks, primitive host-vector handling, and validated CUDA
+  error wrappers; published the independent-stream fork-join example.
+- Added the unchanged Rodinia Nearest Neighbor source with provenance and license,
+  explicit input/device configuration, struct layouts, and pointer-offset reads.
+- Added unchanged HotSpot3D source units and analysis of its host helper,
+  bounded host/kernel loops, neighboring-cell reads, and alternating buffers.
+  Metadata records both source hashes. Tests preserve the actual previous-buffer
+  download and verify that a test-only source correction changes the dependency.
+- Added unchanged Gaussian source with an explicit `ForwardSub` boundary,
+  byte-region tracking, and independent source contracts for sizes 2–5.
+- Added unchanged HotSpot 2D and Pathfinder sources, host pointer arrays,
+  bounded tiled loops, and explicit opaque shared-memory values. Sixteen new
+  tests check independent global footprints/dependencies and rejection cases.
+- Added regression tests for changed sizes, names, launch geometry, dependencies,
+  unsafe accesses, iteration budgets, and stale host-helper contracts.
+- Matched the requested image style with dependency levels, colored transfer
+  boxes, and byte volumes. Long dependency arrows now route around other boxes.
+- Archived February–April outputs in `past graphs from nsight/` and kept current
+  source-analysis outputs separate from historical trace graphs.
+
+Reproduce the 63-test validation without a GPU:
+
+```bash
+python3 -B -m unittest discover -s tests -p '*source_model.py' -v
+python3 -B -m unittest discover -s tests -p test_workload_transfers.py -v
+python3 -B -m unittest discover -s tests -p test_rodinia_graph_contract.py -v
+```
+
+The [independent Rodinia validation](workloads/rodinia/VALIDATION.md) documents
+source-derived expectations for every node and edge. Five additional contract
+tests compare both committed artifacts and fresh analysis against those
+expectations, verify reviewed source hashes, and check address coverage without
+a GPU. These expectations are test fixtures, not graph-generation templates.
+
+The tests establish behavior for the supported examples and rejection cases.
+They do not establish arbitrary CUDA correctness or simulator compatibility.
+
+## Trace graphs versus simulator transfer graphs
+
+The completed remote `--aggregation raw` exports represent **execution order**:
+one node per trace event connected in a chain. They include kernel events and
+use `source_id` / `dest_id`, rather than the reference simulator field names
+`src_comp` / `dest_comp`. They are therefore not equivalent to the intended
+simulator transfer graphs.
+
+The logical models describe **buffer transfers and data dependencies**. Their
+volumes count logical reads and writes. For example, both fork branches read
+A and B, so both reads are represented even if GPU caching could reduce physical
+DRAM traffic. A missing size on a trace kernel event does not mean that the
+kernel accesses zero bytes.
+
+The graph format alone does not encode compute latency, caching, bandwidth,
+or contention policies. Those must come from the simulator's model or a future
+explicit extension. Matching the reference schema is not proof of simulator
+compatibility: access to the simulator is currently unavailable, so no simulator
+execution or resulting performance metrics have been validated.
+
+## Next steps, in priority order
+
+1. **Optionally check compiler portability on remote Linux.** Source validation
+   already runs locally without a GPU. Pull the branch, run the configured Rodinia
+   commands and the test suite, and compare source
+   hashes, configurations, transfer volumes, and edges with the committed
+   artifacts. Record the Clang version. This validates compiler portability
+   without requiring GPU execution.
+2. **Resolve the HotSpot3D output choice before using it as a correctness
+   benchmark.** Keep the original source as a reference. If the goal is the
+   final temperature field, add a separately documented corrected variant that
+   downloads the latest buffer, with tests distinguishing the two graphs.
+   The current original-source graph intentionally describes the previous result.
+3. **Tie input assumptions to actual datasets.** Add dataset manifests or small
+   readers that establish record counts and grid dimensions, record input
+   provenance, and check configuration consistency. Keep unmodeled CPU helpers
+   explicit; gradually replace contracts where useful. No numerical accuracy
+   claims should be made from the current assumed inputs.
+4. **Make analysis scale beyond the small validation cases.** Replace repeated
+   thread/address enumeration with symbolic range analysis for regular patterns.
+   Preserve byte footprints and dependencies against the bounded evaluator as a
+   reference, including boundary cells, buffer swaps, and overwrites. Extend
+   region tracking beyond bounded byte enumeration. Add shared-memory/barrier
+   verification if correctness claims need to cover internal communication;
+   the new tiled graphs currently assume valid internal synchronization.
+5. **Validate the simulator contract when access is available.** Confirm component
+   instance names, byte units, dependency semantics, compute costs, and resource
+   contention. Decide explicitly whether logical dependencies alone are the
+   desired input or whether CUDA stream scheduling also needs representation.
+   Run a small known graph before interpreting any performance metrics. This
+   step remains unvalidated while simulator access is unavailable.
+6. **Expand benchmarks after those checks.** Inspect SRAD next, selecting a
+   concrete source version and documenting its analysis
+   gaps. Keep K-means/BFS for later data-dependent access work. HIP, OpenCL, or
+   SYCL support will require additional front ends; CUDA support does not provide
+   cross-accelerator portability by itself.
+
+GPU execution and profiling are optional validation tracks, not prerequisites
+for source graph generation. When useful, a GPU run can check numerical results
+and Nsight Systems can check observed transfers and scheduling. Internal GPU
+profiling remains deferred: local hardware-profiling drafts are not part of the
+published workflow, and no remote hardware-counter collection has been performed
+with them. Physical DRAM counters would be separate measurements, not replacements
+for logical buffer volumes.
+
+## Existing tools
+
+- [`export_workload_transfers.py`](export_workload_transfers.py): source-to-graph
+  CLI, with optional rendering and configured Rodinia analysis.
+- [`cuda_source_model.py`](cuda_source_model.py) and
+  [`cuda_configured_model.py`](cuda_configured_model.py): the two Clang AST
+  analysis paths described above.
+- [`nsys_trace_to_flow_json.py`](nsys_trace_to_flow_json.py): converts Nsight
+  Systems CSV traces to flow JSON. `raw` and `semantic` produce chains;
+  `stream_dag` infers scheduling relationships from streams and timing, not
+  general data dependencies.
+- [`flow_graph_networkx.py`](flow_graph_networkx.py): renders node-link JSON
+  graphs using matplotlib and NetworkX.
+- [`build_and_profile.sh`](build_and_profile.sh): older workflow for root-level
+  dummy, FFT, and diamond workloads. It is not the four-workload workflow and
+  includes a hardcoded clock assumption that should not be reused blindly.
+- [`ncu_attach_metrics.py`](ncu_attach_metrics.py): existing Nsight Compute
+  metric attachment utility; it has not been validated for the new logical
+  transfer graphs.
+
+## Additional original applications: Needleman–Wunsch and LU decomposition
+
+The [NW guide](workloads/rodinia/nw/README.md) and
+[LUD guide](workloads/rodinia/lud/README.md) provide generation commands,
+node-by-node explanations, unchanged-source provenance, and the exact
+configured application paths. Both start at the original `main`.
+
+The analyzer now supports opt-in lexical variable scopes, bounded `while`
+loops and integer `switch` statements, opaque host numerical arrays, and
+structurally checked scalar device helpers. LU's host input summary checks
+its size argument before allocating the modeled input buffer. These extensions
+preserve unknown values; they do not infer runtime-dependent addresses or
+simulate kernel arithmetic. There are still three pending additions in the
+[five-application expansion](workloads/rodinia/EXPANSION.md).

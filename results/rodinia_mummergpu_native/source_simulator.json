@@ -1,0 +1,739 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "id": 0,
+      "vol": 4107,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 1,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 2,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 3,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 4,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 5,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 6,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 7,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 8,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 9,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 10,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 11,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 12,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 13,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 14,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 15,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 16,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 17,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 18,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 19,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 20,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 21,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 22,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 23,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 24,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 25,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 26,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 27,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 28,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 29,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 30,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 31,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 32,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 33,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 34,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 35,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 36,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 37,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 38,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 39,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 40,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 41,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 42,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 43,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 44,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 45,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 46,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 47,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 48,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 49,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 50,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 51,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 52,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 53,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 54,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 55,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 56,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 57,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 58,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 59,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 60,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 61,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 62,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 63,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 64,
+      "vol": 65536,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 65,
+      "vol": 11,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 66,
+      "vol": 12,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 67,
+      "vol": 12,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 68,
+      "vol": 40,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 69,
+      "vol": 64,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 70,
+      "vol": 32,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 71,
+      "vol": 7,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 72,
+      "vol": 12,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 73,
+      "vol": 12,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 74,
+      "vol": 24,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 75,
+      "vol": 40,
+      "src_comp": "mem",
+      "dest_comp": "cpu"
+    },
+    {
+      "id": 76,
+      "vol": 64,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 77,
+      "vol": 60,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 78,
+      "vol": 144,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 79,
+      "vol": 144,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 80,
+      "vol": 4,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 81,
+      "vol": 8,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 82,
+      "vol": 48,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 83,
+      "vol": 36,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 84,
+      "vol": 64,
+      "src_comp": "mem",
+      "dest_comp": "cpu"
+    }
+  ],
+  "edges": [
+    {
+      "source": 2,
+      "target": 69
+    },
+    {
+      "source": 2,
+      "target": 78
+    },
+    {
+      "source": 3,
+      "target": 69
+    },
+    {
+      "source": 3,
+      "target": 78
+    },
+    {
+      "source": 4,
+      "target": 69
+    },
+    {
+      "source": 4,
+      "target": 78
+    },
+    {
+      "source": 7,
+      "target": 69
+    },
+    {
+      "source": 7,
+      "target": 78
+    },
+    {
+      "source": 8,
+      "target": 78
+    },
+    {
+      "source": 9,
+      "target": 78
+    },
+    {
+      "source": 10,
+      "target": 78
+    },
+    {
+      "source": 11,
+      "target": 78
+    },
+    {
+      "source": 12,
+      "target": 78
+    },
+    {
+      "source": 34,
+      "target": 70
+    },
+    {
+      "source": 34,
+      "target": 79
+    },
+    {
+      "source": 35,
+      "target": 70
+    },
+    {
+      "source": 35,
+      "target": 79
+    },
+    {
+      "source": 36,
+      "target": 79
+    },
+    {
+      "source": 39,
+      "target": 79
+    },
+    {
+      "source": 40,
+      "target": 79
+    },
+    {
+      "source": 41,
+      "target": 79
+    },
+    {
+      "source": 42,
+      "target": 79
+    },
+    {
+      "source": 43,
+      "target": 79
+    },
+    {
+      "source": 44,
+      "target": 79
+    },
+    {
+      "source": 65,
+      "target": 71
+    },
+    {
+      "source": 65,
+      "target": 80
+    },
+    {
+      "source": 66,
+      "target": 72
+    },
+    {
+      "source": 66,
+      "target": 81
+    },
+    {
+      "source": 67,
+      "target": 73
+    },
+    {
+      "source": 68,
+      "target": 74
+    },
+    {
+      "source": 68,
+      "target": 75
+    },
+    {
+      "source": 69,
+      "target": 74
+    },
+    {
+      "source": 70,
+      "target": 74
+    },
+    {
+      "source": 71,
+      "target": 74
+    },
+    {
+      "source": 72,
+      "target": 74
+    },
+    {
+      "source": 73,
+      "target": 74
+    },
+    {
+      "source": 74,
+      "target": 75
+    },
+    {
+      "source": 75,
+      "target": 76
+    },
+    {
+      "source": 75,
+      "target": 77
+    },
+    {
+      "source": 75,
+      "target": 78
+    },
+    {
+      "source": 75,
+      "target": 79
+    },
+    {
+      "source": 75,
+      "target": 80
+    },
+    {
+      "source": 75,
+      "target": 81
+    },
+    {
+      "source": 75,
+      "target": 82
+    },
+    {
+      "source": 75,
+      "target": 83
+    },
+    {
+      "source": 75,
+      "target": 84
+    },
+    {
+      "source": 76,
+      "target": 83
+    },
+    {
+      "source": 76,
+      "target": 84
+    },
+    {
+      "source": 77,
+      "target": 82
+    },
+    {
+      "source": 78,
+      "target": 83
+    },
+    {
+      "source": 79,
+      "target": 83
+    },
+    {
+      "source": 80,
+      "target": 83
+    },
+    {
+      "source": 81,
+      "target": 83
+    },
+    {
+      "source": 82,
+      "target": 83
+    },
+    {
+      "source": 83,
+      "target": 84
+    }
+  ]
+}

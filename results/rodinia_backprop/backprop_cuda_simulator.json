@@ -1,0 +1,229 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "id": 0,
+      "vol": 132,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 1,
+      "vol": 2244,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 2,
+      "vol": 128,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 3,
+      "vol": 2048,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 4,
+      "vol": 2048,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 5,
+      "vol": 128,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 6,
+      "vol": 128,
+      "src_comp": "mem",
+      "dest_comp": "cpu"
+    },
+    {
+      "id": 7,
+      "vol": 68,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 8,
+      "vol": 2244,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 9,
+      "vol": 2244,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 10,
+      "vol": 128,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 11,
+      "vol": 2112,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 12,
+      "vol": 64,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 13,
+      "vol": 2112,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 14,
+      "vol": 2112,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 15,
+      "vol": 2112,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 16,
+      "vol": 132,
+      "src_comp": "mem",
+      "dest_comp": "cpu"
+    },
+    {
+      "id": 17,
+      "vol": 2244,
+      "src_comp": "mem",
+      "dest_comp": "cpu"
+    }
+  ],
+  "edges": [
+    {
+      "source": 0,
+      "target": 2
+    },
+    {
+      "source": 0,
+      "target": 10
+    },
+    {
+      "source": 0,
+      "target": 16
+    },
+    {
+      "source": 1,
+      "target": 3
+    },
+    {
+      "source": 1,
+      "target": 4
+    },
+    {
+      "source": 1,
+      "target": 9
+    },
+    {
+      "source": 2,
+      "target": 4
+    },
+    {
+      "source": 2,
+      "target": 5
+    },
+    {
+      "source": 3,
+      "target": 4
+    },
+    {
+      "source": 3,
+      "target": 5
+    },
+    {
+      "source": 4,
+      "target": 9
+    },
+    {
+      "source": 5,
+      "target": 6
+    },
+    {
+      "source": 6,
+      "target": 7
+    },
+    {
+      "source": 7,
+      "target": 12
+    },
+    {
+      "source": 8,
+      "target": 13
+    },
+    {
+      "source": 8,
+      "target": 15
+    },
+    {
+      "source": 9,
+      "target": 11
+    },
+    {
+      "source": 9,
+      "target": 14
+    },
+    {
+      "source": 9,
+      "target": 17
+    },
+    {
+      "source": 10,
+      "target": 14
+    },
+    {
+      "source": 10,
+      "target": 15
+    },
+    {
+      "source": 11,
+      "target": 14
+    },
+    {
+      "source": 11,
+      "target": 15
+    },
+    {
+      "source": 12,
+      "target": 14
+    },
+    {
+      "source": 12,
+      "target": 15
+    },
+    {
+      "source": 13,
+      "target": 14
+    },
+    {
+      "source": 13,
+      "target": 15
+    },
+    {
+      "source": 14,
+      "target": 17
+    }
+  ]
+}

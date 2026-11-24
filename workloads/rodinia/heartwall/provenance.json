@@ -1,0 +1,20 @@
+{
+  "repository": "https://github.com/yuhc/gpu-rodinia",
+  "revision": "9c10d3ea16ddba2ba057cc3951a9efc4c2cc18a4",
+  "upstream_directory": "cuda/heartwall",
+  "status": "source imported; analyzer support pending",
+  "sha256": {
+    "setdevice.cu": "b9f65672983990be6a623ced7e73efc0b3715aefdc401b1bbc3e848c96899a26",
+    "Makefile": "e4f79221f89e6e8458b9739fdaca3ecb4fb19747c53a217b10ef15a3c3bd5b0a",
+    "kernel.cu": "5ef164410a6ccbcb473f09a6068b046f05338e84de46ee78d442acd9b97cab5a",
+    "README": "fe276264ae54d693c07c4c4a054fe4693bd4b2149f633371fb77fe5119a501bc",
+    "main.cu": "9ad3e8e470bc989585c9d699e51539e3cf2b52c794156337aef9020a6b6a7723",
+    "define.c": "e42a5b00adcf32ee62f163e7586e93d485972696786081693aee315516cca0f1",
+    "run": "d1f38fbb306ad6037acc7ebe3ed0f1db7b96c0bce44eeeb9f3d2c8f9caf955e0",
+    "AVI/avimod.h": "47acda0df3358b4852cba8aba34257bfbde8398d087d81731ba7dd76f7e07621",
+    "AVI/makefile": "80149c64f6cd35f995332fe8663c4607ed6138e28794e1b63648ac63d99508a5",
+    "AVI/avilib.h": "4ae6559bebf7fbc6fd6d5b314fa1c9a64761cde7d30b86b7df7aafe43347e768",
+    "AVI/avimod.c": "38494379dc528b2302c18f60be6421514519850aee1587e4af0efc2755b818b1",
+    "AVI/avilib.c": "2ad236bd5607dfe4d1bc5db488eff30aaf2245d8319a561cee276cd4118a6583"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "case": "streamcluster",
+  "arguments": ["2", "4", "2", "32", "32", "16", "none", "output.txt", "1"],
+  "translation_units": ["streamcluster_cuda_cpu.cpp", "streamcluster_cuda.cu"],
+  "timeout_seconds": 120
+}

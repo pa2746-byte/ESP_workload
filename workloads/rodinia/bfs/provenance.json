@@ -1,0 +1,11 @@
+{
+  "repository": "https://github.com/yuhc/gpu-rodinia",
+  "revision": "9c10d3ea16ddba2ba057cc3951a9efc4c2cc18a4",
+  "upstream_directory": "cuda/bfs",
+  "adaptation": "None in vendored source; GPU-build compatibility changes are recorded separately.",
+  "sha256": {
+    "kernel.cu": "0b404e06838030ec6b1d63ce4d625a49d8f1400f2ad386421b655f11d2b08a5e",
+    "kernel2.cu": "bca41f84cb02532b8675efcc538476ccfcde6d2e37277a0702b101b71079fcb7",
+    "bfs.cu": "227e3eea46ffcbee603085ee4a6341d019d2afb32b6a59a4a25cd6a1652c8eb5"
+  }
+}

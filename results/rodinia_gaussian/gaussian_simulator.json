@@ -1,0 +1,285 @@
+{
+  "directed": true,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "id": 0,
+      "vol": 36,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 1,
+      "vol": 36,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 2,
+      "vol": 12,
+      "src_comp": "cpu",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 3,
+      "vol": 12,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 4,
+      "vol": 8,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 5,
+      "vol": 8,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 6,
+      "vol": 36,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 7,
+      "vol": 12,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 8,
+      "vol": 24,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 9,
+      "vol": 8,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 10,
+      "vol": 8,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 11,
+      "vol": 4,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 12,
+      "vol": 4,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 13,
+      "vol": 16,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 14,
+      "vol": 8,
+      "src_comp": "mem",
+      "dest_comp": "acc"
+    },
+    {
+      "id": 15,
+      "vol": 8,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 16,
+      "vol": 4,
+      "src_comp": "acc",
+      "dest_comp": "mem"
+    },
+    {
+      "id": 17,
+      "vol": 36,
+      "src_comp": "mem",
+      "dest_comp": "cpu"
+    },
+    {
+      "id": 18,
+      "vol": 36,
+      "src_comp": "mem",
+      "dest_comp": "cpu"
+    },
+    {
+      "id": 19,
+      "vol": 12,
+      "src_comp": "mem",
+      "dest_comp": "cpu"
+    }
+  ],
+  "edges": [
+    {
+      "source": 0,
+      "target": 4
+    },
+    {
+      "source": 0,
+      "target": 11
+    },
+    {
+      "source": 0,
+      "target": 17
+    },
+    {
+      "source": 1,
+      "target": 3
+    },
+    {
+      "source": 1,
+      "target": 6
+    },
+    {
+      "source": 1,
+      "target": 8
+    },
+    {
+      "source": 1,
+      "target": 18
+    },
+    {
+      "source": 2,
+      "target": 7
+    },
+    {
+      "source": 2,
+      "target": 9
+    },
+    {
+      "source": 2,
+      "target": 19
+    },
+    {
+      "source": 3,
+      "target": 4
+    },
+    {
+      "source": 3,
+      "target": 8
+    },
+    {
+      "source": 4,
+      "target": 5
+    },
+    {
+      "source": 4,
+      "target": 17
+    },
+    {
+      "source": 5,
+      "target": 8
+    },
+    {
+      "source": 5,
+      "target": 9
+    },
+    {
+      "source": 6,
+      "target": 8
+    },
+    {
+      "source": 6,
+      "target": 9
+    },
+    {
+      "source": 7,
+      "target": 8
+    },
+    {
+      "source": 7,
+      "target": 9
+    },
+    {
+      "source": 8,
+      "target": 10
+    },
+    {
+      "source": 8,
+      "target": 13
+    },
+    {
+      "source": 8,
+      "target": 15
+    },
+    {
+      "source": 8,
+      "target": 18
+    },
+    {
+      "source": 9,
+      "target": 14
+    },
+    {
+      "source": 9,
+      "target": 16
+    },
+    {
+      "source": 9,
+      "target": 19
+    },
+    {
+      "source": 10,
+      "target": 11
+    },
+    {
+      "source": 10,
+      "target": 15
+    },
+    {
+      "source": 11,
+      "target": 12
+    },
+    {
+      "source": 11,
+      "target": 17
+    },
+    {
+      "source": 12,
+      "target": 15
+    },
+    {
+      "source": 12,
+      "target": 16
+    },
+    {
+      "source": 13,
+      "target": 15
+    },
+    {
+      "source": 13,
+      "target": 16
+    },
+    {
+      "source": 14,
+      "target": 15
+    },
+    {
+      "source": 14,
+      "target": 16
+    },
+    {
+      "source": 15,
+      "target": 18
+    },
+    {
+      "source": 16,
+      "target": 19
+    }
+  ]
+}

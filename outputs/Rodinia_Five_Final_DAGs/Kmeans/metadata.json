@@ -1,0 +1,551 @@
+{
+  "workload": "kmeans_cuda",
+  "model": "Clang AST-derived logical global-buffer footprints",
+  "volume_unit": "bytes",
+  "source": "/Users/priyalagarwal/Desktop/ESP_workload/workloads/rodinia/kmeans/kmeans_cuda.cu",
+  "source_sha256": "5c49c806943773e5dd17a813775372438cfd2a6e5f6f73d153c3a5f1f696a29e",
+  "nodes": [
+    {
+      "id": 0,
+      "buffer": "feature_flipped_d",
+      "stage": "upload",
+      "operation_id": 0,
+      "stream": "default",
+      "ordered_after_operations": [],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "buffer": "feature_flipped_d",
+      "stage": "invert_mapping:read",
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "buffer": "feature_d",
+      "stage": "invert_mapping:write",
+      "operation_id": 1,
+      "stream": "default",
+      "ordered_after_operations": [
+        0
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "buffer": "membership_d",
+      "stage": "upload",
+      "operation_id": 2,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 4,
+      "buffer": "clusters_d",
+      "stage": "upload",
+      "operation_id": 3,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 5,
+      "buffer": "c_clusters",
+      "stage": "upload_constant",
+      "operation_id": 4,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 6,
+      "buffer": "c_clusters",
+      "stage": "kmeansPoint:read",
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 7,
+      "buffer": "feature_d",
+      "stage": "kmeansPoint:read",
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 8,
+      "buffer": "membership_d",
+      "stage": "kmeansPoint:write",
+      "operation_id": 5,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 9,
+      "buffer": "membership_d",
+      "stage": "download",
+      "operation_id": 6,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 10,
+      "buffer": "membership_d",
+      "stage": "upload",
+      "operation_id": 7,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "host_control_dependencies": [
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ],
+      "host_input_dependencies": [
+        9
+      ]
+    },
+    {
+      "id": 11,
+      "buffer": "clusters_d",
+      "stage": "upload",
+      "operation_id": 8,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "host_control_dependencies": [
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 12,
+      "buffer": "c_clusters",
+      "stage": "upload_constant",
+      "operation_id": 9,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "host_control_dependencies": [
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 13,
+      "buffer": "c_clusters",
+      "stage": "kmeansPoint:read",
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "host_control_dependencies": [
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 14,
+      "buffer": "feature_d",
+      "stage": "kmeansPoint:read",
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "host_control_dependencies": [
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 15,
+      "buffer": "membership_d",
+      "stage": "kmeansPoint:write",
+      "operation_id": 10,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "host_control_dependencies": [
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    },
+    {
+      "id": 16,
+      "buffer": "membership_d",
+      "stage": "download",
+      "operation_id": 11,
+      "stream": "default",
+      "ordered_after_operations": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "host_control_dependencies": [
+        9
+      ],
+      "byte_ranges": [
+        [
+          0,
+          4
+        ]
+      ]
+    }
+  ],
+  "assumptions": [
+    "Statically analyzed supported CUDA subset; see workloads/TRANSFER_MODELS.md.",
+    "Unique byte footprints per kernel; byte_ranges in metadata are half-open intervals, not measured memory traffic.",
+    "Edges express overlapping-region RAW/WAR/WAW dependencies and conservative kernel input-to-output readiness, not stream execution order.",
+    "Stream/event ordering is checked for conflicting buffer accesses; metadata records operation ordering, not timing.",
+    "No compute time, cache effects, physical DRAM measurements, or internal shared-memory transfers.",
+    "Re-run after source changes; unsupported constructs are errors, not guessed dependencies.",
+    "Host input parsing/loading and CPU result selection use explicit, source-hash-checked summaries; they are not executed.",
+    "Device properties are configured assumptions, not measurements; bounded kernel address evaluation requires no GPU.",
+    "Unresolved device values remain unknown; address/control decisions must resolve from known state or pass explicitly enabled identical-footprint path exploration.",
+    "Fixed-input integer bytes are evaluated from source. Threads use pre-launch state plus their own writes; conflicting threads are rejected.",
+    "All later transfers conservatively depend on prior CPU-visible downloads; host_control_dependencies records these control barriers.",
+    "When enabled, unknown kernel branches are explored only within a bounded path budget and accepted only with identical access footprints and barrier sequences.",
+    "Explicit host-numerical contracts and opaque host addresses do not validate CPU numerical correctness or host memory safety.",
+    "Known floating bytes are evaluated for the small configured fixture, with float32 storage rounding. This does not establish general GPU floating-point equivalence or fused-operation behavior.",
+    "CPU-mediated dependencies are propagated conservatively per host buffer; CPU numerical values and latency are not simulated.",
+    "Block barrier participation and phases are checked for global-memory conflicts; shared-memory numerical correctness is not validated.",
+    "Host numeric array contents and random initialization remain unknown. Host allocation sizes and scalar control flow are evaluated; CPU numerical correctness is not validated.",
+    "Shared-array bounds are checked but contents remain unknown; shared transfers, initialization, races, and barrier correctness are not modeled. Global footprints assume valid kernel synchronization."
+  ],
+  "configured_analysis": {
+    "configuration": {
+      "version": 1,
+      "parameters": {},
+      "arguments": [
+        "-b",
+        "-i",
+        "point1.bin",
+        "-m",
+        "1",
+        "-n",
+        "1"
+      ],
+      "analyzed_functions": [
+        "setup",
+        "cluster",
+        "allocateMemory",
+        "deallocateMemory",
+        "kmeans_clustering",
+        "kmeansCuda"
+      ],
+      "additional_sources": [
+        "kmeans.h",
+        "kmeans_cuda_kernel.cu"
+      ],
+      "scalar_device_functions": [],
+      "lexical_scopes": true,
+      "host_memory": "opaque_values",
+      "shared_memory": "opaque_values",
+      "dependency_granularity": "byte_regions",
+      "device": {
+        "ordinal": 1,
+        "max_grid_size": [
+          65535,
+          65535,
+          65535
+        ],
+        "max_threads_per_block": 1024,
+        "free_memory_bytes": 1073741824,
+        "total_memory_bytes": 2147483648
+      },
+      "max_enumerated_threads": 65536,
+      "max_loop_iterations": 1024,
+      "preprocessor_sha256": "e1bce114c993909d1fe92e193f787a2248034a9822d8690d2885ebb98d28696a",
+      "additional_preprocessor_sha256": {
+        "kmeans.h": "c287693ac6f0705e8c9091db418e097246091d37d793d74a4f2c91e3474c809f",
+        "kmeans_cuda_kernel.cu": "3bdac5d04c6812d34f150fc14964adf6a17f0a7c9ffb4663756b4201afafbc1c",
+        "kmeans.c": "a85316ad9f8a1f6b40ad09f8b4aedf3ffebdd244078b435377b3d05548bc3b8c",
+        "cluster.c": "dbea76a5345f755594fe22cd70c73363d4bfb36dca7e5efcf638789353225ef7",
+        "kmeans_clustering.c": "ae962f15fce025014c8e354fffb9ecdab2eedaec876971fc8942588591641fbc"
+      },
+      "known_integer_inputs": false,
+      "host_dependencies": true,
+      "host_summaries": {},
+      "integer_state": true,
+      "allow_process_exit_allocations": true,
+      "input_files": {
+        "point1.bin": "dede4099cdbbbf7bfa0891e2c0ce0118380c24f2fdcda56f6de04f5e15698770"
+      },
+      "mutable_scalar_globals": [
+        "num_threads_perdim",
+        "num_blocks_perdim",
+        "num_threads",
+        "num_blocks"
+      ],
+      "host_translation_units": [
+        "kmeans.c",
+        "cluster.c",
+        "kmeans_clustering.c"
+      ],
+      "mutable_pointer_globals": [
+        "membership_new",
+        "feature_d",
+        "feature_flipped_d",
+        "membership_d",
+        "block_new_centers",
+        "clusters_d",
+        "block_clusters_d",
+        "block_deltas_d"
+      ],
+      "enumerate_unknown_paths": true,
+      "known_floating_values": true,
+      "checked_block_barriers": true
+    },
+    "launches": [
+      {
+        "kernel": "invert_mapping",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          256,
+          1,
+          1
+        ],
+        "enumerated_threads": 256,
+        "integer_state_evaluated": true
+      },
+      {
+        "kernel": "kmeansPoint",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          256,
+          1,
+          1
+        ],
+        "enumerated_threads": 256,
+        "integer_state_evaluated": true
+      },
+      {
+        "kernel": "kmeansPoint",
+        "grid": [
+          1,
+          1,
+          1
+        ],
+        "block": [
+          256,
+          1,
+          1
+        ],
+        "enumerated_threads": 256,
+        "integer_state_evaluated": true
+      }
+    ],
+    "source_units": {
+      "kmeans_cuda.cu": "5c49c806943773e5dd17a813775372438cfd2a6e5f6f73d153c3a5f1f696a29e",
+      "kmeans.h": "17febbae999007d3a858dc4d7793f7ff93f84ab44de942a54e6164957e1eb29d",
+      "kmeans_cuda_kernel.cu": "2ea02f5cac52aaf2f23bdc38bbaa3f19c8bb33e38a22437ed566b65db089364e",
+      "kmeans.c": "3544ffbe528072518729e41b7241ceb4a699919a8bbeda7ae5f0bcc176e45646",
+      "cluster.c": "28f01b1e4b0656ffa163b513889a29526047444595b415e4a31b889ccf032d10",
+      "kmeans_clustering.c": "4ebdf3a00bc41ebfc340113da816e3aa74dd85a56145df8b4826c0d796660381"
+    },
+    "used_host_summaries": [],
+    "input_files": {
+      "point1.bin": "dede4099cdbbbf7bfa0891e2c0ce0118380c24f2fdcda56f6de04f5e15698770"
+    },
+    "allocations_live_at_process_exit": {
+      "c_clusters": 4352
+    }
+  }
+}

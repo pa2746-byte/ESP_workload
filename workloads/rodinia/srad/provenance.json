@@ -1,0 +1,20 @@
+{
+  "repository": "https://github.com/yuhc/gpu-rodinia",
+  "revision": "9c10d3ea16ddba2ba057cc3951a9efc4c2cc18a4",
+  "upstream_directory": "cuda/srad/srad_v1",
+  "adaptation": "None; source files unchanged.",
+  "sha256": {
+    "srad2_kernel.cu": "2dfb3660fc1eed707ec0fcafdb21a7711479d61f78a28c33f05a5571d4d9db2a",
+    "srad_kernel.cu": "5739dfdc4cfcbed2bbf702757b01eebb2bc50b96d741d33a766344703c53897d",
+    "timer.c": "42c93cffa36dab6969bc3eb22721c475d69f3f199fab6a0221fe1d4f332b03a8",
+    "resize.c": "df16a4f64835018caf1d015efbd9124db7f83574a8333ed85c40255845d399bc",
+    "graphics.c": "6215d9c90d34d25eb7ec4de1987f7651ca19d6131f8aafbb43e82b9104aaf934",
+    "main.cu": "7b9dd42ed57d554b34ce281eb1db5fddfec63ff9679c2c6e0f029d8d69f8c3e2",
+    "reduce_kernel.cu": "48dc76746fc5f83b030e88df3848cdb57059101a081d2d7deef43c9fff6c0634",
+    "define.c": "0ee5faefa693c924fe65b36d595528c6afb280d54744952ef978a5cab1bb7b6b",
+    "extract_kernel.cu": "94dc1329742b5b192001e83ef261e1f5ec811d05c3d1c5360d406c327800c23a",
+    "compress_kernel.cu": "6343624f054900b23bbfcb31085b6bb3801c2706a1af1107ce845aecc362f4d9",
+    "device.c": "2ce481400c22f1bbec0d13cea1fb8269c7aff5050deed72315c037bb9d782fbd",
+    "prepare_kernel.cu": "861337a2101ad23a8df6207d9d0d763d6f4bb0d0062c1342c8a9cf5a1cebad13"
+  }
+}

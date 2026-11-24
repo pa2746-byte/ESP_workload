@@ -1,0 +1,5 @@
+{
+  "entry": "streamcluster_cuda.cu",
+  "parse": "passed",
+  "graph_support": "pending"
+}
